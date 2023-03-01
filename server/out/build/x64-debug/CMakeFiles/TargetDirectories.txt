@@ -1,0 +1,7 @@
+C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/server/out/build/x64-debug/CMakeFiles/test.dir
+C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/server/out/build/x64-debug/CMakeFiles/edit_cache.dir
+C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/server/out/build/x64-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/server/out/build/x64-debug/server/CMakeFiles/server.dir
+C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/server/out/build/x64-debug/server/CMakeFiles/test.dir
+C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/server/out/build/x64-debug/server/CMakeFiles/edit_cache.dir
+C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/server/out/build/x64-debug/server/CMakeFiles/rebuild_cache.dir

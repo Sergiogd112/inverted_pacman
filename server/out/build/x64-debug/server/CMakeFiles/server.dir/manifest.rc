@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+1 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/server/out/build/x64-debug/server/CMakeFiles/server.dir/embed.manifest"
