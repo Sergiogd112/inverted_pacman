@@ -1,0 +1,12 @@
+C:\Jaume\SO\Version #1\Version 1\bin\Debug\Version 1.exe.config
+C:\Jaume\SO\Version #1\Version 1\bin\Debug\Version 1.exe
+C:\Jaume\SO\Version #1\Version 1\bin\Debug\Version 1.pdb
+C:\Jaume\SO\Version #1\Version 1\obj\Debug\Version 1.csproj.AssemblyReference.cache
+C:\Jaume\SO\Version #1\Version 1\obj\Debug\Version 1.csproj.SuggestedBindingRedirects.cache
+C:\Jaume\SO\Version #1\Version 1\obj\Debug\Version_1.LogIn.resources
+C:\Jaume\SO\Version #1\Version 1\obj\Debug\Version_1.Properties.Resources.resources
+C:\Jaume\SO\Version #1\Version 1\obj\Debug\Version 1.csproj.GenerateResource.cache
+C:\Jaume\SO\Version #1\Version 1\obj\Debug\Version 1.csproj.CoreCompileInputs.cache
+C:\Jaume\SO\Version #1\Version 1\obj\Debug\Version 1.exe
+C:\Jaume\SO\Version #1\Version 1\obj\Debug\Version 1.pdb
+C:\Jaume\SO\Version #1\Version 1\obj\Debug\Version_1.Register.resources
