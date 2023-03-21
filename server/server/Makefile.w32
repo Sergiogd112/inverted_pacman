@@ -12,7 +12,7 @@ clean:
 	del /Q ${OBJS} ${OBJS_DIR}/Project.exe
 
 ${OBJS_DIR}/Project.exe: ${OBJS}
-	${GPP} ${OBJS} ${LIBS} -o $@
+	${GCC} ${OBJS} ${LIBS} -o $@
 
 ${OBJS_DIR}:
 	mkdir ${OBJS_DIR}

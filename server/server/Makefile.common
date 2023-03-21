@@ -1,5 +1,7 @@
-OBJS=${OBJS_DIR}/main.o 
+OBJS=${OBJS_DIR}/auth.o ${OBJS_DIR}/main.o
 
-${OBJS_DIR}/main.o: main.cpp
-	${GPP} ${FLAGS} -c main.cpp -o $@
+${OBJS_DIR}/auth.o: auth.c
+	${GCC} ${FLAGS} -c auth.c -o $@
 
+${OBJS_DIR}/main.o: main.c
+	${GCC} ${FLAGS} -c main.c -o $@
