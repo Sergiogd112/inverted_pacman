@@ -13,7 +13,7 @@ version_required=20130729
 custom_tabs=0
 tab_use_spaces=0
 explorer_path=
-current_source=auth.h
+current_source=auth.c
 path_char=/
 [source]
 path=FuncionRanking.c
@@ -23,14 +23,14 @@ path=anadir_partido.c
 cursor=0:0
 [source]
 path=auth.c
-cursor=0:0
+cursor=35:62
 open=true
 [source]
 path=server.c
 cursor=0:0
 [source]
 path=main.c
-cursor=0:16
+cursor=30:28
 open=true
 [header]
 path=server.h

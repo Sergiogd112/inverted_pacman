@@ -8,13 +8,6 @@ int register_user(MYSQL *conn, char name[30], char email[30], char password[30])
 	unsigned char hash[SHA256_DIGEST_LENGTH];
 	char hash_string[SHA256_DIGEST_LENGTH*2+1];
 	
-	printf("Enter your name: ");
-	scanf("%s", name);
-	printf("Enter your email: ");
-	scanf("%s", email);
-	printf("Enter your password: ");
-	scanf("%s", password);
-	
 	SHA256_CTX sha256;
 	SHA256_Init(&sha256);
 	SHA256_Update(&sha256, password,strlen(password));
@@ -38,9 +31,9 @@ int register_user(MYSQL *conn, char name[30], char email[30], char password[30])
 	}
 	
 	int num_fields = mysql_num_fields(result);
-	
+	printf("Comprobando si ya esta registrado ese usuario");
 	if(mysql_num_rows(result)==0){
-		sprintf(query,"INSERT INTO usuarios(nombre,correo,contraseña) VALUES('%s','%s','%s')",name,email,hash_string);
+		sprintf(query,"INSERT INTO usuarios(nombre,correo,contraseÃ±a) VALUES('%s','%s','%s')",name,email,hash_string);
 		
 		if (mysql_query(conn, query)) {
 			fprintf(stderr,"%s\n", mysql_error(conn));
@@ -69,7 +62,7 @@ int login(MYSQL *conn,char name[30], char password[30]) {
 	for (int i = 0; i < SHA256_DIGEST_LENGTH; i++)
 		sprintf(hash_string + (i * 2), "%02x", hash[i]);
 	
-	sprintf(query,"SELECT * FROM usuarios WHERE nombre='%s' AND contraseña='%s'",name,hash_string);
+	sprintf(query,"SELECT * FROM usuarios WHERE nombre='%s' AND contraseï¿½a='%s'",name,hash_string);
 	
 	if (mysql_query(conn, query)) {
 		fprintf(stderr,"%s\n", mysql_error(conn));
