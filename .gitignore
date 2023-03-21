@@ -50,3 +50,22 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+*.cache
+Cliente_test/Cliente/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Cliente_test/Cliente/.vs/Version 1/v17/TestStore/0/testlog.manifest
+Cliente_test/Cliente/.vs/Version 1/v17/TestStore/0/000.testlog
+Cliente_test/Cliente/.vs/Version 1/v17/.suo
+Cliente_test/Cliente/.vs/Version 1/FileContentIndex/dba7b892-1f4b-4510-b94b-8c4736f2ca83.vsidx
+Cliente_test/Cliente/.vs/Version 1/FileContentIndex/d1c9cf9c-8625-4d60-8d09-a972ecca74cb.vsidx
+Cliente_test/Cliente/.vs/Version 1/FileContentIndex/992b6af4-a4a8-445c-b6ec-13231b10e590.vsidx
+Cliente_test/Cliente/.vs/Version 1/FileContentIndex/64046aed-0c39-4691-89d3-847c57228e42.vsidx
+Cliente_test/Cliente/.vs/Version 1/FileContentIndex/630bb999-45b1-49fc-b755-4aecda7988f0.vsidx
+Cliente_test/Cliente/.vs/Version 1/FileContentIndex/5ab5769c-2911-4e78-8feb-edd836ce79ee.vsidx
+Cliente_test/Cliente/.vs/Version 1/FileContentIndex/2a5fcf0e-7842-4ea3-906e-42bacc4806f0.vsidx
+Cliente_test/Cliente/.vs/Version 1/FileContentIndex/086f94d3-6878-4446-a897-1e76a1a5dc08.vsidx
+Cliente_test/Cliente/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Cliente_test/Cliente/.vs/Version 1/v17/.suo
+Cliente_test/Cliente/.vs/Version 1/FileContentIndex/dba7b892-1f4b-4510-b94b-8c4736f2ca83.vsidx
+Cliente_test/Cliente/.vs/Version 1/FileContentIndex/992b6af4-a4a8-445c-b6ec-13231b10e590.vsidx
+Cliente_test/Cliente/.vs/Version 1/FileContentIndex/630bb999-45b1-49fc-b755-4aecda7988f0.vsidx
+Cliente_test/Cliente/.vs/Version 1/FileContentIndex/086f94d3-6878-4446-a897-1e76a1a5dc08.vsidx
