@@ -32,7 +32,7 @@ namespace Version_1
         private void acceptButton_Click(object sender, EventArgs e) //Al apretar el botón accept de Log In
         {
 
-            IPAddress address = IPAddress.Parse("172.23.134.41");
+            IPAddress address = IPAddress.Parse("192.168.56.102");
             IPEndPoint ipep = new IPEndPoint(address, 9050);
 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);

@@ -25,7 +25,7 @@ namespace Version_1
 
 
 
-            IPAddress address = IPAddress.Parse("172.23.134.41");
+            IPAddress address = IPAddress.Parse("192.168.56.102");
             IPEndPoint ipep = new IPEndPoint(address, 9050);
 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
