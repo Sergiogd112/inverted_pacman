@@ -10,3 +10,15 @@ C:\Jaume\SO\Version #1\Version 1\obj\Debug\Version 1.csproj.CoreCompileInputs.ca
 C:\Jaume\SO\Version #1\Version 1\obj\Debug\Version 1.exe
 C:\Jaume\SO\Version #1\Version 1\obj\Debug\Version 1.pdb
 C:\Jaume\SO\Version #1\Version 1\obj\Debug\Version_1.Register.resources
+C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\bin\Debug\Version 1.exe.config
+C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\bin\Debug\Version 1.exe
+C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\bin\Debug\Version 1.pdb
+C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.csproj.AssemblyReference.cache
+C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.csproj.SuggestedBindingRedirects.cache
+C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version_1.LogIn.resources
+C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version_1.Properties.Resources.resources
+C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version_1.Register.resources
+C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.csproj.GenerateResource.cache
+C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.csproj.CoreCompileInputs.cache
+C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.exe
+C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.pdb
