@@ -1,20 +1,23 @@
 #include "auth.h"
 
 
+char* to_sha256(char* string) {
+    unsigned char digest[SHA256_DIGEST_LENGTH];
+    SHA256(string, strlen(string), digest);
+    char* result = malloc(SHA256_DIGEST_LENGTH * 2 + 1);
+    for(int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
+        sprintf(&result[i * 2], "%02x", (unsigned int)digest[i]);
+    }
+    return result;
+}
 
 
 int register_user(MYSQL *conn, char name[30], char email[30], char password[30]) {
 	char query[200];
 	unsigned char hash[SHA256_DIGEST_LENGTH];
-	char hash_string[SHA256_DIGEST_LENGTH*2+1];
-	
-	SHA256_CTX sha256;
-	SHA256_Init(&sha256);
-	SHA256_Update(&sha256, password,strlen(password));
-	SHA256_Final(hash,&sha256);
-	
-	for (int i = 0; i < SHA256_DIGEST_LENGTH; i++)
-		sprintf(hash_string + (i * 2), "%02x", hash[i]);
+
+
+    char* hash_string = to_sha256(password);
 	
 	sprintf(query,"SELECT * FROM usuarios WHERE nombre='%s'",name);
 	
@@ -50,18 +53,10 @@ int register_user(MYSQL *conn, char name[30], char email[30], char password[30])
 int login(MYSQL *conn,char name[30], char password[30]) {
 	char query[200];
 	unsigned char hash[SHA256_DIGEST_LENGTH];
-	char hash_string[SHA256_DIGEST_LENGTH*2+1];
-	
-	
-	
-	SHA256_CTX sha256;
-	SHA256_Init(&sha256);
-	SHA256_Update(&sha256, password,strlen(password));
-	SHA256_Final(hash,&sha256);
-	
-	for (int i = 0; i < SHA256_DIGEST_LENGTH; i++)
-		sprintf(hash_string + (i * 2), "%02x", hash[i]);
-	
+
+
+
+    char* hash_string = to_sha256(password);
 	sprintf(query,"SELECT * FROM usuarios WHERE nombre='%s' AND password='%s'",name,hash_string);
 	
 	if (mysql_query(conn, query)) {

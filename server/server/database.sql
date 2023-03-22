@@ -6,7 +6,7 @@ CREATE TABLE usuarios (
     nombre varchar(256) NOT NULL,
     correo varchar(256) NOT NULL,
     password varchar(256) NOT NULL,
-    puntos int
+    puntos int DEFAULT 0
 );
 CREATE TABLE partidas (
     id_partida int PRIMARY KEY NOT NULL AUTO_INCREMENT,
