@@ -42,3 +42,14 @@ This is a project for SO. A pacman where the ghosts are the players will be comp
   - [ ] Gestor de peticiones
     - [ ] Asignadores de tareas a threads
     - [ ] Añadir/Eliminar conexion
+    - [ ] 
+
+# Entregas
+
+## Version 1
+
+video: [https://youtu.be/WSb276hoSwE]
+
+- Generador: Jaume
+- Verificador: Sergio
+- Comunicador: Joel
