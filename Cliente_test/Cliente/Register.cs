@@ -46,6 +46,13 @@ namespace Version_1
                 server.Receive(msg2);
                 message = Encoding.ASCII.GetString(msg2).Split('\0')[0];
                 MessageBox.Show(message);
+                 message = "0/";
+                msg = Encoding.ASCII.GetBytes(message);
+                server.Send(msg);
+                this.BackColor = Color.DimGray;
+                server.Shutdown(SocketShutdown.Both);
+                server.Close();
+                MessageBox.Show("Desconectado");
             }
             catch (SocketException ex)
             {
