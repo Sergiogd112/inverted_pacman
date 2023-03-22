@@ -5,7 +5,7 @@ CREATE TABLE usuarios (
     ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nombre varchar(256) NOT NULL,
     correo varchar(256) NOT NULL,
-    contraseña varchar(256) NOT NULL,
+    password varchar(256) NOT NULL,
     puntos int
 );
 CREATE TABLE partidas (
@@ -42,5 +42,3 @@ INSERT INTO partidas_usuarios VALUES(3,2,16);
 INSERT INTO partidas_usuarios VALUES(3,3,16);
 INSERT INTO partidas_usuarios VALUES(3,4,16);
 
-SELECT ID, puntos, RANK() OVER (ORDER BY puntos DESC) AS ranking FROM usuarios;
-ORDER BY ranking;
