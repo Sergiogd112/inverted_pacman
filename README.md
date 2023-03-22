@@ -5,9 +5,9 @@ This is a project for SO. A pacman where the ghosts are the players will be comp
 # TODO
 
 - [ ] Cliente
-  - [ ] Inicio
-    - [ ] Registro
-    - [ ] Login
+  - [x] Inicio
+    - [x] Registro
+    - [x] Login
   - [ ] Lobby
     - [ ] Lista de usuarios conectados
     - [ ] Pedir Partida
@@ -22,7 +22,7 @@ This is a project for SO. A pacman where the ghosts are the players will be comp
   - [ ] Resultados
   - [ ] Ranking
 - [ ] Servidor
-  - [ ] Inicio
+  - [x] Inicio
     - [x] Registro
     - [x] Login
   - [ ] Lobby
