@@ -1,10 +1,4 @@
-#include "auth.h"
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <stdio.h>
-#include <string.h>
-#include <mysql/mysql.h>
+#include "main.h"
 
 int main() {
     MYSQL *conn;
