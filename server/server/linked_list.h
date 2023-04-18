@@ -26,7 +26,7 @@ struct Node {
 
 void insert_to_llist(struct Node **head_ref, int new_id, int new_sockfd);
 
-void append_to_llist(struct Node **head_ref, int new_id, int new_sockfd);
+int append_to_llist(struct Node **head_ref, int new_id, int new_sockfd);
 
 int search_on_llist(struct Node *head, int target_id);
 

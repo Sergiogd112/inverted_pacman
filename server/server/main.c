@@ -1,6 +1,6 @@
 #include "main.h"
 
-int main() {
+void *AtenderThread(int sock_conn,int idx, struct Node *node){
     MYSQL *conn;
     conn = mysql_init(NULL);
     char name[30], email[30], password[30];
@@ -8,6 +8,67 @@ int main() {
         fprintf(stderr, "%s\n", mysql_error(conn));
         exit(1);
     }
+    while (1 == 1) {
+        printf("Esperando peticion\n");
+        ret = read(sock_conn, request, sizeof(request));
+
+        printf("Recibido\n");
+
+        request[ret] = '\0';
+
+        printf("Peticion: %s\n", request);
+
+        char *p = strtok(request, "/");
+
+        int code = atoi(p);
+        char name[20];
+        int res;
+        if (code == 0) {
+            break;
+        }
+        p = strtok(NULL, "/");
+        strcpy(name, p);
+        printf("Codigo: %d, Nombre: %s\n", code, name);
+        switch (code) {
+            case 1:
+                p = strtok(NULL, "/");
+                strcpy(email, p);
+                p = strtok(NULL, "/");
+                strcpy(password, p);
+                res = register_user(conn, name, email, password);
+                if (res == 1)
+                    strcpy(response, "1");
+                else if (res == -1)
+                    strcpy(response, "0");
+                else
+                    strcpy(response, "2");
+                break;
+            case 2:
+                p = strtok(NULL, "/");
+                strcpy(password, p);
+                res = login(conn, name, password);
+                if (res !=0){
+                    strcpy(response, "1");
+                    node->id=res;
+                }
+                else if (res == -1)
+                    strcpy(response, "0");
+                else
+                    strcpy(response, "2");
+                break;
+
+            default:
+                printf("Invalid choice!\n");
+        }
+        printf("Respuesta: %s\n", response);
+        write(sock_conn, response, strlen(response));
+    }
+
+    close(sock_conn);
+}
+
+int main() {
+
     int sock_conn, sock_listen, ret;
     struct sockaddr_in server_addr;
     char request[512];
@@ -26,67 +87,16 @@ int main() {
 
     if (listen(sock_listen, 3) < 0)
         printf("Error en el listen\n");
-
+    struct Node node;
+    int idx;
     for (int i = 0; i < 5; i++) {
         printf("Escuchando\n");
 
         sock_conn = accept(sock_listen, NULL, NULL);
         printf("He recibido conexion\n");
-        while (1 == 1) {
-            printf("Esperando peticion\n");
-            ret = read(sock_conn, request, sizeof(request));
+        idx= append_to_llist(&node,-1,sock_conn);
 
-            printf("Recibido\n");
 
-            request[ret] = '\0';
-
-            printf("Peticion: %s\n", request);
-
-            char *p = strtok(request, "/");
-
-            int code = atoi(p);
-            char name[20];
-            int res;
-            if (code == 0) {
-                break;
-            }
-            p = strtok(NULL, "/");
-            strcpy(name, p);
-            printf("Codigo: %d, Nombre: %s\n", code, name);
-            switch (code) {
-                case 1:
-                    p = strtok(NULL, "/");
-                    strcpy(email, p);
-                    p = strtok(NULL, "/");
-                    strcpy(password, p);
-                    res = register_user(conn, name, email, password);
-                    if (res == 1)
-                        strcpy(response, "OK");
-                    else if (res == -1)
-                        strcpy(response, "Existe");
-                    else
-                        strcpy(response, "Error");
-                    break;
-                case 2:
-                    p = strtok(NULL, "/");
-                    strcpy(password, p);
-                    res = login(conn, name, password);
-                    if (res == 1)
-                        strcpy(response, "OK");
-                    else if (res == -1)
-                        strcpy(response, "Incorrecto");
-                    else
-                        strcpy(response, "Error");
-                    break;
-
-                default:
-                    printf("Invalid choice!\n");
-            }
-            printf("Respuesta: %s\n", response);
-            write(sock_conn, response, strlen(response));
-        }
-
-        close(sock_conn);
     }
 
     mysql_close(conn);

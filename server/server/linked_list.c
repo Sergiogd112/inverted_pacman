@@ -21,7 +21,7 @@ void insert_to_llist(struct Node** head_ref, int new_id, int new_sockfd) {
     (*head_ref) = new_node;
 }
 // append a node at the end of the list
-void append_to_llist(struct Node** head_ref, int new_id, int new_sockfd) {
+int append_to_llist(struct Node** head_ref, int new_id, int new_sockfd) {
     // allocate memory for new node
     struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
     // assign data to new node
@@ -30,9 +30,11 @@ void append_to_llist(struct Node** head_ref, int new_id, int new_sockfd) {
     // make next of new node as NULL and prev as last node
     new_node->next = NULL;
     struct Node* last = *head_ref;
+    int idx
     if (last != NULL) {
         while (last->next != NULL)
             last = last->next;
+            idx++;
         last->next = new_node;
         new_node->prev = last;
     }
@@ -41,6 +43,7 @@ void append_to_llist(struct Node** head_ref, int new_id, int new_sockfd) {
         (*head_ref) = new_node;
         new_node->prev = NULL;
     }
+    return idx;
 }
 
 // search a node by id and return its socket file descriptor or -1 if not found

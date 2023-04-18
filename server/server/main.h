@@ -12,4 +12,5 @@
 #include <stdio.h>
 #include <string.h>
 #include <mysql/mysql.h>
+#include <pthread.h>
 #endif //SERVER_MAIN_H

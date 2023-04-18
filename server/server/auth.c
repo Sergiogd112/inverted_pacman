@@ -84,7 +84,7 @@ int login(MYSQL *conn, char name[30], char password[30]) {
     char *hash_string = to_sha256(
             password); // Call the to_sha256 function to compute the SHA256 hash of the password and store it in a new string called hash_string.
 
-    sprintf(query, "SELECT * FROM usuarios WHERE nombre='%s' AND password='%s'", name,
+    sprintf(query, "SELECT usuarios.ID FROM usuarios WHERE nombre='%s' AND password='%s'", name,
             hash_string); // Construct a SQL query to check if a user with the given name and password exists in the database and store it in the query string.
 
     if (mysql_query(conn,
@@ -104,10 +104,11 @@ int login(MYSQL *conn, char name[30], char password[30]) {
 
     if (mysql_num_rows(result) == 0) { // Check if there are any rows in the result set.
         printf("Invalid email or password\n"); // Print a message to the console.
-        return 0; // Return 0 to indicate that the login failed.
+        return -1; // Return 0 to indicate that the login failed.
     } else {
         printf("Login successful!\n"); // Print a message to the console.
-        return 1; // Return 1 to indicate that the login was successful.
+        MYSQL_ROW row= mysql_fetch_row(result);
+        return  atoi(row[0]); // Return 1 to indicate that the login was successful.
     }
 }
 
