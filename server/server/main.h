@@ -5,6 +5,7 @@
 #ifndef SERVER_MAIN_H
 #define SERVER_MAIN_H
 #include "auth.h"
+#include "FuncionRanking.h"
 #include "linked_list.h"
 #include <sys/types.h>
 #include <sys/socket.h>

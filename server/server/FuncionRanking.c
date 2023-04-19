@@ -1,5 +1,8 @@
-int Devuelveme_Ranking(char ID[20],char Nombre[20],int Puntos)
+#include "FuncionRanking.h"
+
+int Devuelveme_Ranking(char res[1000])
 {
+	//char ID[20],char Nombre[20],int Puntos,
 	MYSQL *conn;
 	int err;
 	
@@ -23,7 +26,7 @@ int Devuelveme_Ranking(char ID[20],char Nombre[20],int Puntos)
 	
 	
 	//Consulta para recuperar valores de las columnas
-	mysql *result = mysqlexec(conn, "SELECT ID, puntos, nombre FROM usuarios ORDER BY puntos DESC");
+	mysql *result = mysqlexec(conn, "SELECT TOP 10 ID, puntos, nombre FROM usuarios ORDER BY puntos DESC");
 	
 	//Compruebo si la consulta ha ido bien
 	if (mysqlresultStatus(result) != mysqlRES_TUPLES_OK)
@@ -43,16 +46,17 @@ int Devuelveme_Ranking(char ID[20],char Nombre[20],int Puntos)
 	//Agregar los valores de cada columna a las listas
 	for (int i=0; i < num_rows; i++)
 	{
-		ID[] = strdup(mysqlgetvalue(result, i, 0));
-		Nombre[] = strdup(mysqlgetvalue(result, i, 1));
-		Puntos[] = strdup(mysqlgetvalue(result, i, 2));
+		//ID[] = strdup(mysqlgetvalue(result, i, 0));
+		//Nombre[] = strdup(mysqlgetvalue(result, i, 1));
+		//Puntos[] = strdup(mysqlgetvalue(result, i, 2));
+		sprtinf(res,"%s%s*%s,",res, mysqlgetvalue(result, i, 1), mysqlgetvalue(result, i, 2))
 	}
 	
 	//Liberamos memoria
 	mysqlclear(result);
 	mysqlfinish(conn);
 	
-	return 0;
+	return i;
 	
 	mysql_close (conn);
 	exit(0);

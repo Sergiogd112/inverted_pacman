@@ -5,12 +5,13 @@
 #include "linked_list.h"
 
 
-void insert_to_llist(struct Node** head_ref, int new_id, int new_sockfd) {
+void insert_to_llist(struct Node** head_ref, int new_id, int new_sockfd, char name[20]) {
     // allocate memory for new node
     struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
     // assign data to new node
     new_node->id = new_id;
     new_node->sockfd = new_sockfd;
+    strcpy(new_node->name, name);
     // make new node as head and previous as NULL
     new_node->next = (*head_ref);
     new_node->prev = NULL;
@@ -21,20 +22,15 @@ void insert_to_llist(struct Node** head_ref, int new_id, int new_sockfd) {
     (*head_ref) = new_node;
 }
 // append a node at the end of the list
-int append_to_llist(struct Node** head_ref, int new_id, int new_sockfd) {
+int append_to_llist(struct Node** head_ref, struct Node ** new_node) {
     // allocate memory for new node
-    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
-    // assign data to new node
-    new_node->id = new_id;
-    new_node->sockfd = new_sockfd;
-    // make next of new node as NULL and prev as last node
-    new_node->next = NULL;
+    
     struct Node* last = *head_ref;
-    int idx
+    int idx;
     if (last != NULL) {
         while (last->next != NULL)
             last = last->next;
-            idx++;
+        idx++;
         last->next = new_node;
         new_node->prev = last;
     }
@@ -81,6 +77,14 @@ int remove_node_from_llist(struct Node** head_ref, int target_id) {
             free(current); // free the memory of the node
             return sockfd; // return the socket file descriptor of deleted node
         }
+        current = current->next; // move to next node
+    }
+    return -1; // not found
+}
+int llist_to_string(struct Node* head, char res[200]) {
+    struct Node* current = head;
+    while (current != NULL) {
+        sprintf(res, "%s%s,", current->name);
         current = current->next; // move to next node
     }
     return -1; // not found
