@@ -72,6 +72,7 @@ void *AtenderThread(struct Node * thread_args[2]){
                 if (res != 0) {
                     strcpy(response, "1");
                     node->id = res;
+                    strcpy(node->name,name);
                 }
                 else if (res == -1)
                     strcpy(response, "0");
