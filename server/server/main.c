@@ -44,11 +44,12 @@ void *AtenderThread(struct Node * thread_args[2]){
             //desconectar
             break;
         }
-        p = strtok(NULL, "*");
-        strcpy(name, p);
-        printf("Codigo: %d, Nombre: %s\n", code, name);
+
         switch (code) {
             case 1: //Register
+                p = strtok(NULL, "*");
+                strcpy(name, p);
+                printf("Codigo: %d, Nombre: %s\n", code, name);
                 p = strtok(NULL, "*");
                 strcpy(password, p);
                 p = strtok(NULL, "*");
@@ -62,6 +63,9 @@ void *AtenderThread(struct Node * thread_args[2]){
                     strcpy(response, "2");
                 break;
             case 2: //Login
+                p = strtok(NULL, "*");
+                strcpy(name, p);
+                printf("Codigo: %d, Nombre: %s\n", code, name);
                 p = strtok(NULL, "/");
                 strcpy(password, p);
                 res = login(conn, name, password);
@@ -129,7 +133,7 @@ int main() {
     server_addr.sin_family = AF_INET;
 
     server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    server_addr.sin_port = htons(9050);
+    server_addr.sin_port = htons(9060);
 
     if (bind(sock_listen, (struct sockaddr *) &server_addr, sizeof(server_addr)) < 0)
         printf("Error al bind\n");
