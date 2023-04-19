@@ -1,4 +1,4 @@
-OBJS=${OBJS_DIR}/auth.o ${OBJS_DIR}/main.o ${OBJS_DIR}/linked_list.o ${OBJS_DIR}/map.o
+OBJS=${OBJS_DIR}/auth.o ${OBJS_DIR}/main.o ${OBJS_DIR}/linked_list.o ${OBJS_DIR}/map.o ${OBJS_DIR}/FuncionRanking.o
 
 ${OBJS_DIR}/auth.o: auth.c
 	${GCC} ${FLAGS} -c auth.c -o $@
@@ -8,6 +8,9 @@ ${OBJS_DIR}/linked_list.o: linked_list.c
 
 ${OBJS_DIR}/map.o: map.c
 	${GCC} ${FLAGS} -c map.c -o $@
+
+${OBJS_DIR}/FuncionRanking.o: FuncionRanking.c
+	${GCC} ${FLAGS} -c FuncionRanking.c -o $@
 
 ${OBJS_DIR}/main.o: main.c
 	${GCC} ${FLAGS} -c main.c -o $@

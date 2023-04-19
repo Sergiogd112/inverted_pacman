@@ -1,15 +1,27 @@
 #include "main.h"
 
-void *AtenderThread(int sock_conn,int idx, struct Node *node,struct Node *head){
+void *AtenderThread(struct Node *thread_args[2]){
+    int sock_conn=thread_args[1]->sockfd;
+    struct Node * head=&thread_args[0];
+    struct Node * node=&thread_args[1];
+
     MYSQL *conn;
     char request[512];
     char response[1010];
+    int  ret;
+    char name[20];
     conn = mysql_init(NULL);
     char user[30], email[30], password[30];
     if (!mysql_real_connect(conn, SERVER, USER, PASSWORD, DATABASE, 0, NULL, 0)) {
         fprintf(stderr, "%s\n", mysql_error(conn));
         exit(1);
     }
+    char datos[1000];
+    int n;
+    char id1[20];
+    char id2[20];
+    char id3[20];
+    char id4[20];
     while (1 == 1) {
         printf("Esperando peticion\n");
         ret = read(sock_conn, request, sizeof(request));
@@ -62,23 +74,16 @@ void *AtenderThread(int sock_conn,int idx, struct Node *node,struct Node *head){
 
             
             case 3: //Ranking
-                int n;
-                char datos[1000];
                 n = Devuelveme_Ranking(datos);
                 sprintf(response, "%d/%s", n, datos);
                 break;
             
             case 4: //Pedir online
-                int n;
-
-                char datos[1000];
                 n = llist_to_string(head,datos);
                 sprintf(response, "%d/%s", n, datos);
                 break;
 
             case 5: //Crear Partida
-                char id1[20], id2[20], id3[20], id[20];
-                
                 p = strtok(NULL, "*");
                 strcpy(id1, p);
                 p = strtok(NULL, "*");
@@ -89,10 +94,10 @@ void *AtenderThread(int sock_conn,int idx, struct Node *node,struct Node *head){
                 strcpy(id4, p);
 
 
-                if (search_on_llist(id1) != -1 and search_on_llist(id2) != -1 and search_on_llist(id3) != -1 and search_on_llist(id4) != -1)
-                    strcpy(response, "1"); //si está todo bien
+                if (search_on_llist(head,atoi(id1)) != -1 && search_on_llist(head,atoi(id2)) != -1 && search_on_llist(head,atoi(id3)) != -1 && search_on_llist(head,atoi(id4)) != -1)
+                    strcpy(response, "1"); //todo bn
                 else
-                    strcpy(response, "0"); //alguno de los usuarios no está conectado
+                    strcpy(response, "0"); //alguno de los usuarios no estï¿½ conectado
 
 
 
@@ -107,11 +112,12 @@ void *AtenderThread(int sock_conn,int idx, struct Node *node,struct Node *head){
     }
 
     close(sock_conn);
+    mysql_close(conn);
 }
 
 int main() {
 
-    int sock_conn, sock_listen, ret;
+    int sock_conn, sock_listen;
     struct sockaddr_in server_addr;
     if ((sock_listen = socket(AF_INET, SOCK_STREAM, 0)) < 0)
         printf("socket error\n");
@@ -130,9 +136,10 @@ int main() {
     struct Node node;
     int idx;
     pthread_t thread;
-    int sockets[100]:
     int i = 0;
     struct Node head = node;
+    struct Node * thread_args[2];
+    thread_args[0]=&head;
     for (;;) {
         printf("Escuchando\n");
 
@@ -147,14 +154,12 @@ int main() {
         // make next of new node as NULL and prev as last node
         new_node->next = NULL;
 
-        idx= append_to_llist(&node,new_node);
-
-        sockets[i] = sock_conn;
-        pthread_create(&thread, NULL, AtenderThread, &sockets[i],i,&idx,new_node,&head);
+        idx= append_to_llist(&head,new_node);
+        thread_args[1]=&new_node;
+        pthread_create(&thread, NULL, AtenderThread, thread_args);
         i++;
     }
 
-    mysql_close(conn);
 
     return 0;
 }

@@ -22,7 +22,7 @@ void insert_to_llist(struct Node** head_ref, int new_id, int new_sockfd, char na
     (*head_ref) = new_node;
 }
 // append a node at the end of the list
-int append_to_llist(struct Node** head_ref, struct Node ** new_node) {
+int append_to_llist(struct Node** head_ref, struct Node * new_node) {
     // allocate memory for new node
     
     struct Node* last = *head_ref;

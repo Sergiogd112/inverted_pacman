@@ -12,7 +12,7 @@
 #include <string.h>
 #include <mysql/mysql.h>
 
-int Devuelveme_Ranking(char ID[20], char Nombre[20], int Puntos, char res[1000]);
+int Devuelveme_Ranking(char res[1000]);
 
 #endif //SERVER_RANKING_H
 
