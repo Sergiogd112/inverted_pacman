@@ -21,15 +21,15 @@ struct Node {
     int id;
     int sockfd;
     char name[20];
-    struct Node *prev;
-    struct Node *next;
+    struct Node* prev;
+    struct Node* next;
 };
 
-void insert_to_llist(struct Node **head_ref, int new_id, int new_sockfd,char name[20]);
+void insert_to_llist(struct Node** head_ref, int new_id, int new_sockfd, char name[20]);
 
-int append_to_llist(struct Node **head_ref, int new_id, int new_sockfd,char name[20]);
+int append_to_llist(struct Node** head_ref, int new_id, int new_sockfd, char name[20]);
 
-int search_on_llist(struct Node *head, int target_id);
+int search_on_llist(struct Node* head, int target_id);
 
 int remove_node_from_llist(struct Node** head_ref, int target_id);
 

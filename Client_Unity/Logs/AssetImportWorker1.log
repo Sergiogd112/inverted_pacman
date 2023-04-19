@@ -1,0 +1,387 @@
+Using pre-set license
+Built from '2021.3/staging' branch; Version is '2021.3.21f1 (1b156197d683) revision 1774945'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22621) 64bit Education' Language: 'en' Physical Memory: 40365 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.3.21f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker1
+-projectPath
+C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity
+-logFile
+Logs/AssetImportWorker1.log
+-srvPort
+56810
+Successfully changed project path to: C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity
+C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [26296] Host "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 812412938 [EditorId] 812412938 [Version] 1048832 [Id] WindowsEditor(7,zephyrus_Sergio) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [26296] Host "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 812412938 [EditorId] 812412938 [Version] 1048832 [Id] WindowsEditor(7,zephyrus_Sergio) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 135.11 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.21f1 (1b156197d683)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon(TM) Graphics (ID=0x1636)
+    Vendor:   ATI
+    VRAM:     20182 MB
+    Driver:   26.20.14048.2
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56420
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.006510 seconds.
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 140.26 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.965 seconds
+Domain Reload Profiling:
+	ReloadAssembly (966ms)
+		BeginReloadAssembly (114ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (710ms)
+			LoadAssemblies (112ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (147ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (50ms)
+			SetupLoadedEditorAssemblies (438ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (17ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (140ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (210ms)
+				ProcessInitializeOnLoadMethodAttributes (69ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.008070 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Client_Unity\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Client_Unity\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 132.50 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.634 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1635ms)
+		BeginReloadAssembly (168ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (9ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (27ms)
+		EndReloadAssembly (1317ms)
+			LoadAssemblies (131ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (326ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (92ms)
+			SetupLoadedEditorAssemblies (704ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (133ms)
+				BeforeProcessingInitializeOnLoad (152ms)
+				ProcessInitializeOnLoadAttributes (344ms)
+				ProcessInitializeOnLoadMethodAttributes (56ms)
+				AfterProcessingInitializeOnLoad (8ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (12ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 2.63 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3744 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 41 unused Assets / (229.6 KB). Loaded Objects now: 4199.
+Memory consumption went from 143.2 MB to 142.9 MB.
+Total: 5.668700 ms (FindLiveObjects: 0.605200 ms CreateObjectMapping: 0.397400 ms MarkObjects: 4.433200 ms  DeleteObjects: 0.231100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 47209.625098 seconds.
+  path: Assets/map
+  artifactKey: Guid(fdb5b2be1cdc23d42a8002066863ab01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map using Guid(fdb5b2be1cdc23d42a8002066863ab01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba05e7be9c8110b6d8f2208fd46e486b') in 0.016498 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/map/Map.prefab
+  artifactKey: Guid(5aa90da5051c52448aaab12c9a7131c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/Map.prefab using Guid(5aa90da5051c52448aaab12c9a7131c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bab9182fa0eef11b576b3dde236afc64') in 0.164069 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/map/Ground_pallet.prefab
+  artifactKey: Guid(390ed5b7e452e0148a24be9a59435d77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/Ground_pallet.prefab using Guid(390ed5b7e452e0148a24be9a59435d77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6bbb365a0a6f55d37a8c9dd2595ad1dc') in 0.058581 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 105.252620 seconds.
+  path: Assets/map/Ground_pallet.prefab
+  artifactKey: Guid(390ed5b7e452e0148a24be9a59435d77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/Ground_pallet.prefab using Guid(390ed5b7e452e0148a24be9a59435d77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d09525172384dba8ea7240d3733c226') in 0.046065 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 129.741369 seconds.
+  path: Assets/map/jawbreaker_tiles.png
+  artifactKey: Guid(2754243468621a54288a1ffc9fbe5f0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles.png using Guid(2754243468621a54288a1ffc9fbe5f0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b61ec1786598608c807c6a301fbda42') in 0.224199 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 13.819538 seconds.
+  path: Assets/map/Ground_pallet.prefab
+  artifactKey: Guid(390ed5b7e452e0148a24be9a59435d77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/Ground_pallet.prefab using Guid(390ed5b7e452e0148a24be9a59435d77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b41c842c1e049f8509f060e8a0a3027f') in 0.048493 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.784379 seconds.
+  path: Assets/map/jawbreaker_tiles_0.asset
+  artifactKey: Guid(9b064a3696840dc41b383660b7398b3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_0.asset using Guid(9b064a3696840dc41b383660b7398b3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e0aed961b507ab8fcc2f712b4d9da1b') in 0.025542 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.002545 seconds.
+  path: Assets/map/jawbreaker_tiles_5.asset
+  artifactKey: Guid(74b6a21ef78c5d84e8c3e0261320fb61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_5.asset using Guid(74b6a21ef78c5d84e8c3e0261320fb61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c7e51a089a357ddf516f507a48b14a5') in 0.015631 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/map/jawbreaker_tiles_14.asset
+  artifactKey: Guid(844dfc41a1921f8478f0569059bda994) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_14.asset using Guid(844dfc41a1921f8478f0569059bda994) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e40b7aa8c0407ecd8701e1083fc9e85') in 0.018046 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/map/jawbreaker_tiles_36.asset
+  artifactKey: Guid(308088cc1ce98104c97af9ac2562abd7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_36.asset using Guid(308088cc1ce98104c97af9ac2562abd7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b6d64ebea41943ae26710253c839938') in 0.018637 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/map/jawbreaker_tiles_25.asset
+  artifactKey: Guid(28ab56b0702e580429052c7646c18f95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_25.asset using Guid(28ab56b0702e580429052c7646c18f95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a18c4b3980f04b85dcc6f442737361c6') in 0.014559 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/map/jawbreaker_tiles_11.asset
+  artifactKey: Guid(ae76987d4e3079245974bc4c56c16fdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_11.asset using Guid(ae76987d4e3079245974bc4c56c16fdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4cb89cd3d6d9fcf122447f82cf7f0e9b') in 0.014556 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/map/jawbreaker_tiles_35.asset
+  artifactKey: Guid(840ce3f2ea095e6469e102566579090c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_35.asset using Guid(840ce3f2ea095e6469e102566579090c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca03a7e2cad491a79e70e88b9ff9cc0b') in 0.013890 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/map/jawbreaker_tiles_6.asset
+  artifactKey: Guid(fd153c4c6e6d0f242a6620cefaa60498) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_6.asset using Guid(fd153c4c6e6d0f242a6620cefaa60498) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '682012570783499a1cb036b221c233aa') in 0.014694 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/map/jawbreaker_tiles_9.asset
+  artifactKey: Guid(7b8caf1a241cec54885a5376041bb3b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_9.asset using Guid(7b8caf1a241cec54885a5376041bb3b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9b2c998ef3cff562e60167b551aa568') in 0.014707 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/map/jawbreaker_tiles_7.asset
+  artifactKey: Guid(0b49ee7ebe3967c49b3500a7061dd0e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_7.asset using Guid(0b49ee7ebe3967c49b3500a7061dd0e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71e6152bb198a2b546ece8b481e9dc12') in 0.013317 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/map/jawbreaker_tiles_1.asset
+  artifactKey: Guid(92233a9a21f5af3448ecf403bcb9083f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_1.asset using Guid(92233a9a21f5af3448ecf403bcb9083f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2af993adb3e280ab7a452a697edb87b') in 0.013732 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/map/jawbreaker_tiles_29.asset
+  artifactKey: Guid(9cb7a9f7b546ff6449f2eb808f3b967a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_29.asset using Guid(9cb7a9f7b546ff6449f2eb808f3b967a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a08c55c5667f47f2526d9c4a3e6fbfaf') in 0.016764 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/map/jawbreaker_tiles_30.asset
+  artifactKey: Guid(452c5f5d5c51cd34ba65461ff5127cb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_30.asset using Guid(452c5f5d5c51cd34ba65461ff5127cb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '233d020d7bbfcf0d408ce8c78838be9b') in 0.016288 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000108 seconds.
+  path: Assets/map/jawbreaker_tiles_2.asset
+  artifactKey: Guid(c7c1d024ba66cc74886ed146b3cf155f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_2.asset using Guid(c7c1d024ba66cc74886ed146b3cf155f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6c56bbf2868e46981f2fa49c197aa8b') in 0.015006 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/map/jawbreaker_tiles_12.asset
+  artifactKey: Guid(32c157bae3720424794f32db635b3fb7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_12.asset using Guid(32c157bae3720424794f32db635b3fb7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '120eaaca7e24e8cfd43038a7e0e82f09') in 0.015428 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/map/jawbreaker_tiles_17.asset
+  artifactKey: Guid(8a9fe528b7153884eaabe786787956a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_17.asset using Guid(8a9fe528b7153884eaabe786787956a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a395c48b2b3cda9ea7148d2d1fcc7f0') in 0.017316 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/map/jawbreaker_tiles_20.asset
+  artifactKey: Guid(45c6aa45abd413443bfdeb6b433143e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_20.asset using Guid(45c6aa45abd413443bfdeb6b433143e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7d3f468001e7cd0d6d25aec17a9e28e') in 0.014369 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/map/jawbreaker_tiles_18.asset
+  artifactKey: Guid(8d8422fa3e3930745b5eacbde1b1f8c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_18.asset using Guid(8d8422fa3e3930745b5eacbde1b1f8c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea645e361099a9246ab43496fd26d7da') in 0.014473 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/map/jawbreaker_tiles_26.asset
+  artifactKey: Guid(d08fa818e96f58e40b3245fb19c46014) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_26.asset using Guid(d08fa818e96f58e40b3245fb19c46014) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a16072daf615f9b44a76f41f0060f76') in 0.018034 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/map/jawbreaker_tiles_24.asset
+  artifactKey: Guid(6094c7fa025fa274d8d2967dc914190e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_24.asset using Guid(6094c7fa025fa274d8d2967dc914190e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '480a223bf25ea2ac2fe287eba659c73d') in 0.016820 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 11.050357 seconds.
+  path: Assets/map/jawbreaker_tiles_39.asset
+  artifactKey: Guid(f5fea878d591f544cb579ff4b477f414) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_39.asset using Guid(f5fea878d591f544cb579ff4b477f414) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcecd382d9525842788258421440c3cf') in 0.015647 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/map/jawbreaker_tiles_42.asset
+  artifactKey: Guid(a9cd93e1b1e07d94c9cd3b752593fb38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_42.asset using Guid(a9cd93e1b1e07d94c9cd3b752593fb38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b7747e468ebd664913ebd7972d25757') in 0.017025 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/map/jawbreaker_tiles_41.asset
+  artifactKey: Guid(d3b3b58567ce3294a9af69ee4086959c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_41.asset using Guid(d3b3b58567ce3294a9af69ee4086959c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '293dd49be8d5260f428b919b6e89d771') in 0.016626 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/map/jawbreaker_tiles_43.asset
+  artifactKey: Guid(3ec28d03c1f27d949b7e9a9c9aefe264) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_43.asset using Guid(3ec28d03c1f27d949b7e9a9c9aefe264) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f70954910158fa15dd9225682d1f8bfc') in 0.017354 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.010210 seconds.
+  path: Assets/map/jawbreaker_tiles_49.asset
+  artifactKey: Guid(cbc77011c3de03b46861582d02c7e569) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_49.asset using Guid(cbc77011c3de03b46861582d02c7e569) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b14c0e0aebcac1206e3abca071b8681') in 0.017057 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/map/jawbreaker_tiles_60.asset
+  artifactKey: Guid(23301968ab9b57447a53f456a65bc135) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_60.asset using Guid(23301968ab9b57447a53f456a65bc135) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7aca54d53aad3ce3caef2620c1b19abe') in 0.016391 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/map/jawbreaker_tiles_65.asset
+  artifactKey: Guid(4793b52089e683743a357ec5e68af165) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_65.asset using Guid(4793b52089e683743a357ec5e68af165) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f77c5ad1e96dbb71a11a8048f24de7d3') in 0.018989 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/map/jawbreaker_tiles_58.asset
+  artifactKey: Guid(8c2599de4a3bf4740a2cceb35a663879) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_58.asset using Guid(8c2599de4a3bf4740a2cceb35a663879) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93fd90427d78d23ad98afd895c44d915') in 0.016950 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/map/jawbreaker_tiles_56.asset
+  artifactKey: Guid(6e0f5d16c48bad4499ffc394657abba6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_56.asset using Guid(6e0f5d16c48bad4499ffc394657abba6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e175c2e9831621a7f57c3952422bb9f0') in 0.019623 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.500453 seconds.
+  path: Assets/map/jawbreaker_tiles_69.asset
+  artifactKey: Guid(7fed8bb3fdb841446bbba64c50dc622c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/map/jawbreaker_tiles_69.asset using Guid(7fed8bb3fdb841446bbba64c50dc622c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f656f6d334dbd0280e6abfbf12558000') in 0.019740 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
