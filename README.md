@@ -53,3 +53,7 @@ video: [https://youtu.be/WSb276hoSwE]
 - Generador: Jaume
 - Verificador: Sergio
 - Comunicador: Joel
+
+## Verison 2
+
+video: [ https://youtu.be/YO-3Qa3al2A]

@@ -73,3 +73,6 @@ Cliente_test/Cliente/.vs/*
 Client_Unity/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/hostlin/lld
 Client_Unity/Library/PackageCache/com.unity.burst@1.6.6/.Runtime/hostmac/lld
 Client_Unity/Library/PackageCache/com.unity.toolchain.win-x86_64-linux-x86_64@2.0.4/data~/payload.tar.7z
+Client_Unity/Temp/FSTimeGet-99825bdd68197af4a8c04bc02bf9ab2e
+Client_Unity/Temp/UnityLockfile
+*.dag_fsmtime
