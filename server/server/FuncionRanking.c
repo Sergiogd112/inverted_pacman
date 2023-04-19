@@ -46,7 +46,7 @@ int Devuelveme_Ranking(char res[1000]) {
             //ID[] = strdup(mysqlgetvalue(result, i, 0));
             //Nombre[] = strdup(mysqlgetvalue(result, i, 1));
             //Puntos[] = strdup(mysqlgetvalue(result, i, 2));
-            sprtinf(res, "%s%s*%s,", res, row[2], row[1]);
+            sprintf(res, "%s%s*%s,", res, row[2], row[1]);
             row= mysql_fetch_row(result);
         }
     }

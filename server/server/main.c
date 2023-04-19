@@ -1,9 +1,11 @@
 #include "main.h"
 
-void *AtenderThread(struct Node *thread_args[2]){
+void *AtenderThread(struct Node * thread_args[2]){
     int sock_conn=thread_args[1]->sockfd;
-    struct Node * head=&thread_args[0];
-    struct Node * node=&thread_args[1];
+    struct Node * head;
+    head=thread_args[0];
+    struct Node * node;
+    node=thread_args[1];
 
     MYSQL *conn;
     char request[512];
@@ -126,18 +128,18 @@ int main() {
     server_addr.sin_family = AF_INET;
 
     server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    server_addr.sin_port = htons(9050);
+    server_addr.sin_port = htons(9060);
 
     if (bind(sock_listen, (struct sockaddr *) &server_addr, sizeof(server_addr)) < 0)
         printf("Error al bind\n");
 
     if (listen(sock_listen, 3) < 0)
         printf("Error en el listen\n");
-    struct Node node;
+
     int idx;
     pthread_t thread;
     int i = 0;
-    struct Node head = node;
+    struct Node* head = NULL;
     struct Node * thread_args[2];
     thread_args[0]=&head;
     for (;;) {
@@ -145,7 +147,7 @@ int main() {
 
         sock_conn = accept(sock_listen, NULL, NULL);
         printf("He recibido conexion\n");
-        struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+        struct Node * new_node = (struct Node*)malloc(sizeof(struct Node));
         // assign data to new node
         new_node->id = -1;
         new_node->sockfd = sock_conn;
@@ -153,10 +155,10 @@ int main() {
 
         // make next of new node as NULL and prev as last node
         new_node->next = NULL;
-
+        printf("Nuevo nodo");
         idx= append_to_llist(&head,new_node);
         thread_args[1]=&new_node;
-        pthread_create(&thread, NULL, AtenderThread, thread_args);
+        pthread_create(&thread, NULL, (void *(*)(void *)) AtenderThread, &thread_args);
         i++;
     }
 

@@ -26,7 +26,7 @@ int append_to_llist(struct Node** head_ref, struct Node * new_node) {
     // allocate memory for new node
     
     struct Node* last = *head_ref;
-    int idx;
+    int idx=0;
     if (last != NULL) {
         while (last->next != NULL)
             last = last->next;
