@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638160484060267344
-    m_Hash: 1884343621
+      ticks: 638174438209197718
+    m_Hash: 2025010174
   m_LockFileStatus:
     m_FilePath: C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638160484060347356
-    m_Hash: 2240462503
+      ticks: 638174438209207467
+    m_Hash: 206831217
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:

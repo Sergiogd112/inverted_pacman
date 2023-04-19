@@ -51,7 +51,7 @@ public class Map : MonoBehaviour
         string randomFilePath = filePaths[Random.Range(0, filePaths.Length)];
         string fileContents = File.ReadAllText(randomFilePath);
         Debug.Log(fileContents);
-        TilePalette palette = tilemap.GetComponent<TilemapEditorUserSettings>().tilePalette;
+        // TilePalette palette = tilemap.GetComponent<TilemapEditorUserSettings>().tilePalette;
     }
 
 
