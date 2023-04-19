@@ -67,106 +67,102 @@ namespace Version_1
             dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
-        //private void AtenderServidor()
-        //{
-        //    while (true)
-        //    {
-        //        // Recibimos mensaje del servidor
-        //        byte[] msg2 = new byte[100];
-        //        server.Receive(msg2);
-        //        string[] error_servidor = Encoding.ASCII.GetString(msg2).Split('\0');
-        //        if (error_servidor[0] == "")
-        //        {
-        //            MessageBox.Show("Servidor en tareas de mantenimiento, vuelva a conectarse más tarde");
-        //            Del_ParaDesconectar delegado = new Del_ParaDesconectar(Desconectar);
-        //            passwordBox.Invoke(delegado, new object[] { });
-        //            server.Shutdown(SocketShutdown.Both);
-        //            server.Close();
-        //            atender.Abort();
-        //        }
+        private void AtenderServidor()
+        {
+            while (true)
+            {
+                // Recibimos mensaje del servidor
+                byte[] msg2 = new byte[100];
+                server.Receive(msg2);
+                string[] error_servidor = Encoding.ASCII.GetString(msg2).Split('\0');
+                if (error_servidor[0] == "")
+                {
+                    MessageBox.Show("Servidor en tareas de mantenimiento, vuelva a conectarse más tarde");
+                    Del_ParaDesconectar delegado = new Del_ParaDesconectar(Desconectar);
+                    passwordBox.Invoke(delegado, new object[] { });
+                    server.Shutdown(SocketShutdown.Both);
+                    server.Close();
+                    atender.Abort();
+                }
 
-        //        else
-        //        {
-        //            string[] trozos = error_servidor[0].Split('/');
-        //            int codigo = Convert.ToInt32(trozos[0]);
-        //            switch (codigo)
-        //            {
-        //                case 0: //Resupesta a la desconexión
-        //                    string mensaje1 = trozos[2].Split('\0')[0];
-        //                    int hack = Convert.ToInt32(trozos[1]);
-        //                    if (hack == 1)
-        //                    {
-        //                        MessageBox.Show(mensaje1);
-        //                    }
-        //                    else
-        //                    {
-        //                        MessageBox.Show(mensaje1);
-        //                        Del_ParaDesconectar delegado = new Del_ParaDesconectar(Desconectar);
-        //                        passwordBox.Invoke(delegado, new object[] { });
-        //                        server.Shutdown(SocketShutdown.Both);
-        //                        server.Close();
-        //                        atender.Abort();
+                else
+                {
+                    string[] trozos = error_servidor[0].Split('/');
+                    int codigo = Convert.ToInt32(trozos[0]);
+                    switch (codigo)
+                    {
+                        case 0: //Resupesta a la desconexión
+                            string mensaje1 = trozos[2].Split('\0')[0];
+                            int hack = Convert.ToInt32(trozos[1]);
+                            if (hack == 1)
+                            {
+                                MessageBox.Show(mensaje1);
+                            }
+                            else
+                            {
+                                MessageBox.Show(mensaje1);
+                                Del_ParaDesconectar delegado = new Del_ParaDesconectar(Desconectar);
+                                passwordBox.Invoke(delegado, new object[] { });
+                                server.Shutdown(SocketShutdown.Both);
+                                server.Close();
+                                atender.Abort();
 
-        //                    }
+                            }
 
-        //                    break;
+                            break;
 
-        //                case 1: //Respuesta al registrar
-        //                    string mensaje = trozos[1].Split('\0')[0];
-        //                    MessageBox.Show(mensaje);
-        //                    break;
-        //                case 2: //Respuesta al iniciar sesión
-        //                    string mensaje2 = trozos[2].Split('\0')[0];
-        //                    int hack1 = Convert.ToInt32(trozos[1]);
-        //                    if (hack1 == 0)
-        //                    {
-        //                        MessageBox.Show(mensaje2);
-        //                        Logeado = true;
-        //                    }
-        //                    else
-        //                    {
-        //                        MessageBox.Show(mensaje2);
-        //                    }
-        //                    break;
-        //                case 3: //Respuesta a la consulta 1
-        //                    string mensaje3 = trozos[1].Split('\0')[0];
-        //                    MessageBox.Show(mensaje3);
-        //                    break;
-        //                case 4: //Respuesta a la consulta 2
-        //                    string mensaje4 = trozos[1].Split('\0')[0];
-        //                    MessageBox.Show(mensaje4);
-        //                    break;
-        //                case 5: //Respuesta a la consulta 3
-        //                    string mensaje5 = trozos[1].Split('\0')[0];
-        //                    MessageBox.Show(mensaje5);
-        //                    break;
-        //                case 6:
-        //                    int hack6 = Convert.ToInt32(trozos[1]);
-        //                    if (hack6 == 0)
-        //                        MessageBox.Show("No hay usuarios connectados");
-        //                    else
-        //                    {
-        //                        string[] mensaje6 = new string[hack6];
-        //                        for (int i = 0; i < hack6; i++)
-        //                        {
-        //                            mensaje6[i] = (trozos[i + 2].Split('\0')[0]);
+                        case 1: //Respuesta al registrar
+                            string mensaje = trozos[1].Split('\0')[0];
+                            MessageBox.Show(mensaje);
+                            break;
+                        case 2: //Respuesta al iniciar sesión
+                            string mensaje2 = trozos[2].Split('\0')[0];
+                            int hack1 = Convert.ToInt32(trozos[1]);
+                            if (hack1 == 0)
+                            {
+                                MessageBox.Show(mensaje2);
+                                Logeado = true;
+                            }
+                            else
+                            {
+                                MessageBox.Show(mensaje2);
+                            }
+                            break;
+                        case 3: //Respuesta a la consulta 1
+                            string mensaje3 = trozos[1].Split('\0')[0];
+                            MessageBox.Show(mensaje3);
+                            break;
+                        case 4: //Respuesta a la consulta 2
+                            string mensaje4 = trozos[1].Split('\0')[0];
+                            MessageBox.Show(mensaje4);
+                            break;
+                        case 5: //Respuesta a la consulta 3
+                            string mensaje5 = trozos[1].Split('\0')[0];
+                            MessageBox.Show(mensaje5);
+                            break;
+                        case 6:
+                            int hack6 = Convert.ToInt32(trozos[1]);
+                            if (hack6 == 0)
+                                MessageBox.Show("No hay usuarios connectados");
+                            else
+                            {
+                                string[] mensaje6 = new string[hack6];
+                                for (int i = 0; i < hack6; i++)
+                                {
+                                    mensaje6[i] = (trozos[i + 2].Split('\0')[0]);
 
-        //                        }
+                                }
 
-        //                        Del_ParaGrid delegado = new Del_ParaGrid(PonerEnGrid);
-        //                        dataGridView1.Invoke(delegado, new object[] { mensaje6, hack6 });
-        //                        dataGridView1.Columns.Add("Column",mensaje[0]);
-        //                        connlbl.Text = mensaje;
+                                Del_ParaGrid delegado = new Del_ParaGrid(PonerEnGrid);
+                                dataGridView1.Invoke(delegado, new object[] { mensaje6, hack6 });
+                            }
+                            break;
+                    }
 
+                }
+            }
 
-        //                    }
-        //                    break;
-        //            }
-
-        //        }
-        //    }
-
-        //}
+        }
         private void acceptButton_Click(object sender, EventArgs e) //Al apretar el botón accept de Log In
         {
 
@@ -181,10 +177,20 @@ namespace Version_1
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                         server.Send(msg);
                         changeALLOW = true;
-
+                        byte[] msgLog = new byte[100];
+                        server.Receive(msgLog);
+                        string[] Log = Encoding.ASCII.GetString(msgLog).Split('\0');
+                        if (Log[0] == "0")
+                        {
+                            MessageBox.Show("Contraseña incorrecta");
+                        }
                         //Recibimos la respuesta del servidor
-
-
+                        if (Log[0] == "1")
+                        {
+                            Logeado = true;
+                            Conectado = true;
+                            MessageBox.Show("Se ha iniciado sesion");
+                        }
                     }
                     else
                     {
