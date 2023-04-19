@@ -333,7 +333,7 @@ namespace Version_1
                         for (int i = 0; i < n; i++)
                         {
                             celdas = (filas[i].Split('*'));
-                            dataGridView1.Rows.Add( Convert.ToString(n), celdas[0], celdas[1]);
+                            dataGridView1.Rows.Add( Convert.ToString(i), celdas[0], celdas[1]);
 
                         }
 
