@@ -2,6 +2,7 @@
 
 void *AtenderThread(struct Node * thread_args[2]){
     int sock_conn=thread_args[1]->sockfd;
+    printf("%d\n",sock_conn);
     struct Node * head;
     head=thread_args[0];
     struct Node * node;
@@ -43,15 +44,15 @@ void *AtenderThread(struct Node * thread_args[2]){
             //desconectar
             break;
         }
-        p = strtok(NULL, "/");
+        p = strtok(NULL, "*");
         strcpy(name, p);
         printf("Codigo: %d, Nombre: %s\n", code, name);
         switch (code) {
             case 1: //Register
                 p = strtok(NULL, "*");
-                strcpy(email, "patata@gmail.com");
-                //p = strtok(NULL, "*");
                 strcpy(password, p);
+                p = strtok(NULL, "*");
+                strcpy(email, p);
                 res = register_user(conn, name, email, password);
                 if (res == 1)
                     strcpy(response, "1");
@@ -128,7 +129,7 @@ int main() {
     server_addr.sin_family = AF_INET;
 
     server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    server_addr.sin_port = htons(9060);
+    server_addr.sin_port = htons(9050);
 
     if (bind(sock_listen, (struct sockaddr *) &server_addr, sizeof(server_addr)) < 0)
         printf("Error al bind\n");
@@ -136,12 +137,11 @@ int main() {
     if (listen(sock_listen, 3) < 0)
         printf("Error en el listen\n");
 
-    int idx;
     pthread_t thread;
     int i = 0;
     struct Node* head = NULL;
-    struct Node * thread_args[2];
-    thread_args[0]=&head;
+    struct Node *thread_args[2];
+
     for (;;) {
         printf("Escuchando\n");
 
@@ -155,10 +155,13 @@ int main() {
 
         // make next of new node as NULL and prev as last node
         new_node->next = NULL;
-        printf("Nuevo nodo");
-        idx= append_to_llist(&head,new_node);
-        thread_args[1]=&new_node;
-        pthread_create(&thread, NULL, (void *(*)(void *)) AtenderThread, &thread_args);
+        printf("Nuevo nodo\n");
+        append_to_llist(&head,new_node);
+        thread_args[0]=head;
+        thread_args[1]=new_node;
+        printf("%d\n",sock_conn);
+        printf("%d\n",new_node->sockfd);
+        pthread_create(&thread, NULL, (void *(*)(void *)) AtenderThread, thread_args);
         i++;
     }
 
