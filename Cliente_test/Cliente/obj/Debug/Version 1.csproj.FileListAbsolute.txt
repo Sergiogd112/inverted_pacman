@@ -33,3 +33,14 @@ C:\share\Cliente_test\Cliente\obj\Debug\Version 1.csproj.GenerateResource.cache
 C:\share\Cliente_test\Cliente\obj\Debug\Version 1.csproj.CoreCompileInputs.cache
 C:\share\Cliente_test\Cliente\obj\Debug\Version 1.exe
 C:\share\Cliente_test\Cliente\obj\Debug\Version 1.pdb
+C:\Users\joelm\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\bin\Debug\Version 1.exe.config
+C:\Users\joelm\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\bin\Debug\Version 1.exe
+C:\Users\joelm\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\bin\Debug\Version 1.pdb
+C:\Users\joelm\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.csproj.AssemblyReference.cache
+C:\Users\joelm\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.csproj.SuggestedBindingRedirects.cache
+C:\Users\joelm\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version_1.LogIn.resources
+C:\Users\joelm\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version_1.Properties.Resources.resources
+C:\Users\joelm\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.csproj.GenerateResource.cache
+C:\Users\joelm\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.csproj.CoreCompileInputs.cache
+C:\Users\joelm\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.exe
+C:\Users\joelm\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.pdb

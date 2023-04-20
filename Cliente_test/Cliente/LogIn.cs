@@ -22,10 +22,14 @@ namespace Version_1
         Thread atender;
         delegate void Del_ParaGrid(string[] mensaje, int codigo);
         delegate void Del_ParaDesconectar();
+        delegate void Del_ParaConectados(string[] mensaje, int codigo);
         bool Conectado = false;
         bool Conectado_Click = false;
         bool Logeado = false;
         bool changeALLOW = false;
+        public string usuario;
+        int puerto = 50053;
+        List<string> Conectados = new List<string>();
         public LogIn()
         {
             InitializeComponent();
@@ -33,32 +37,63 @@ namespace Version_1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //No hace nada, dejar vacío
+            //this.BackgroundImage=Properties.Resources.distorsionada;
+            //this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+
+            //Custom main background
+            //this.BackColor = Color.FromArgb(244, 164, 96);
+            //0,89,76 green
+            //42,42,46 grey
+            this.ForeColor = Color.Black;
+            // Custom title
+            //Custom LogIn
+            //Custom buttons
+            //conn.BackColor = Color.FromArgb(0,50,137);
+            //desconn.BackColor = Color.FromArgb(0,50,137);
+            //jugar.BackColor = Color.FromArgb(0, 50, 137);
+            acceptButton.BackColor = Color.FromArgb(135, 206, 235);
+            registerButton.BackColor = Color.FromArgb(135, 206, 235);
+            Enviar_Consulta.BackColor = Color.FromArgb(135, 206, 235);
+            //conn.FlatAppearance.BorderSize = 0;
+            Desconectar_Btn.FlatAppearance.BorderSize = 0;
+            //jugar.FlatAppearance.BorderSize = 0;
+            dataGridView1.BackgroundColor = Color.FromArgb(135, 206, 235);
+            passwordBox.UseSystemPasswordChar = true;
         }
 
         public void Desconectar()
         {
-            if (changeALLOW)
-            {
-
-                this.BackColor = Color.Gray;
-                userBox.Clear();
-                passwordBox.Clear();
-                connlbl.Text = " ";
-                dataGridView1.Rows.Clear();
-                changeALLOW = false;
-            }
-
-
+            jugar.Visible = false;
+            connect_status.BackColor = default(Color);
+            num_usuarios.Text = "No disponible";
+            //dataGridView1.Columns[0].HeaderText = "Usuarios connectados";
+            connect_status.Text = "Desconectado";
+            connect_status.BackColor = Color.Red;
+            userBox.Clear();
+            passwordBox.Clear();
+            dataGridView1.Rows.Clear();
+            Conectado_Click = false;
+            Conectado = false;
+            Logeado = false;
         }
 
         public void PonerEnGrid(string[] mensaje, int hack)
         {
+            jugar.Visible = true;
             dataGridView1.Rows.Clear();
             dataGridView1.ColumnCount = 1;
+            dataGridView1.DefaultCellStyle.BackColor = Color.FromArgb(135, 206, 235);
+            dataGridView1.GridColor = Color.FromArgb(8, 20, 50);
             dataGridView1.ColumnHeadersVisible = true;
-            string c = Convert.ToString(hack);
-            dataGridView1.Rows.Add("Hay " + c + " usuario/s conectado/s");
+            dataGridView1.EnableHeadersVisualStyles = false;
+            //dataGridView1.Columns[0].HeaderText = "Usuarios connectados "+Convert.ToString(hack);
+            //num_usuarios.Text = Convert.ToString(hack);
+            //dataGridView1.Columns[0].HeaderCell.Style.BackColor = Color.FromArgb(62, 120, 138);
+            //dataGridView1.Columns[0].HeaderCell.Style.ForeColor = Color.FromArgb(41, 44, 51);
+            dataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(135, 206, 235);
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(135, 206, 235);
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(135, 206, 235);
+            dataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Green;
             int i;
             for (i = 0; i < hack; i++)
             {
@@ -66,8 +101,19 @@ namespace Version_1
             }
             dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
-
-        private void AtenderServidor()
+        public void anadir_Conectados(string[] mensaje, int hack)
+        {
+            int i;
+            for (i = 0; i < hack; i++)
+            {
+                Conectados.Add(mensaje[i]);
+            }
+        }
+        public List<string> GetConectados()
+        {
+            return Conectados;
+        }
+        private void AtenderServidor()   //ACABAR DE REVISAR
         {
             while (true)
             {
@@ -112,13 +158,29 @@ namespace Version_1
                             break;
 
                         case 1: //Respuesta al registrar
-                            string mensaje = trozos[1].Split('\0')[0];
-                            MessageBox.Show(mensaje);
+                            string mensaje = trozos[2].Split('\0')[0];
+                            int hackS = Convert.ToInt32(trozos[1]);
+                            if (hackS == 1)
+                            {
+                                MessageBox.Show(mensaje);
+                                Logeado = true;
+                            }
+                            else
+                            {
+                                MessageBox.Show(mensaje);
+                                Del_ParaDesconectar delegado = new Del_ParaDesconectar(Desconectar);
+                                passwordBox.Invoke(delegado, new object[] { });
+                                server.Shutdown(SocketShutdown.Both);
+                                server.Close();
+                                atender.Abort();
+                            }
+
                             break;
+
                         case 2: //Respuesta al iniciar sesión
                             string mensaje2 = trozos[2].Split('\0')[0];
                             int hack1 = Convert.ToInt32(trozos[1]);
-                            if (hack1 == 0)
+                            if (hack1 == 1)
                             {
                                 MessageBox.Show(mensaje2);
                                 Logeado = true;
@@ -126,6 +188,11 @@ namespace Version_1
                             else
                             {
                                 MessageBox.Show(mensaje2);
+                                Del_ParaDesconectar delegado = new Del_ParaDesconectar(Desconectar);
+                                passwordBox.Invoke(delegado, new object[] { });
+                                server.Shutdown(SocketShutdown.Both);
+                                server.Close();
+                                atender.Abort();
                             }
                             break;
                         case 3: //Respuesta a la consulta 1
@@ -140,7 +207,7 @@ namespace Version_1
                             string mensaje5 = trozos[1].Split('\0')[0];
                             MessageBox.Show(mensaje5);
                             break;
-                        case 6:
+                        case 6: //notificacion con la lista de conectados actualizada
                             int hack6 = Convert.ToInt32(trozos[1]);
                             if (hack6 == 0)
                                 MessageBox.Show("No hay usuarios connectados");
@@ -155,6 +222,9 @@ namespace Version_1
 
                                 Del_ParaGrid delegado = new Del_ParaGrid(PonerEnGrid);
                                 dataGridView1.Invoke(delegado, new object[] { mensaje6, hack6 });
+
+                                Del_ParaConectados delegado2 = new Del_ParaConectados(anadir_Conectados);
+                                this.Invoke(delegado, new object[] { mensaje6, hack6 });
                             }
                             break;
                     }
@@ -165,51 +235,103 @@ namespace Version_1
         }
         private void acceptButton_Click(object sender, EventArgs e) //Al apretar el botón accept de Log In
         {
-
-            if (Conectado)
+            if (!Logeado)
             {
-                if (!Logeado)
+                if (userBox.Text != "" & passwordBox.Text != "")
                 {
-                    if (userBox.Text != "" & passwordBox.Text != "")
+                    //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
+                    //al que deseamos conectarnos
+                    IPAddress direc = IPAddress.Parse(ipBox.Text);
+                    IPEndPoint ipep = new IPEndPoint(direc, puerto);
+
+
+                    //Creamos el socket 
+                    server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    try
                     {
-                        string mensaje = "2/" + userBox.Text + "*" + passwordBox.Text;
-                        // Enviamos al servidor el nombre tecleado
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                        server.Send(msg);
-                        changeALLOW = true;
-                        byte[] msgLog = new byte[100];
-                        server.Receive(msgLog);
-                        string[] Log = Encoding.ASCII.GetString(msgLog).Split('\0');
-                        if (Log[0] == "0")
-                        {
-                            MessageBox.Show("Contraseña incorrecta");
-                        }
-                        //Recibimos la respuesta del servidor
-                        if (Log[0] == "1")
-                        {
-                            Logeado = true;
-                            Conectado = true;
-                            MessageBox.Show("Se ha iniciado sesion");
-                        }
+                        server.Connect(ipep);//Intentamos conectar el socket
+                        connect_status.BackColor = Color.Green;
+                        connect_status.Text = "Conectado";
+                        connect_status.ForeColor = Color.Black;
+                        Conectado = true;
+                        MessageBox.Show("Conexion establecida comprovando credenciales...");
+
                     }
-                    else
+                    catch (SocketException ex)
                     {
-                        MessageBox.Show("Rellene nombre de usuario y contraseña por favor");
+                        //Si hay excepcion imprimimos error y salimos del programa con return 
+                        MessageBox.Show("No he podido conectar con el servidor");
+
+                        return;
+                    }
+                    ThreadStart ts = delegate { AtenderServidor(); };
+                    atender = new Thread(ts);
+                    atender.Start();
+
+                    string mensaje = "2/" + userBox.Text + "*" + passwordBox.Text;
+                    // Enviamos al servidor el nombre tecleado
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
+
+                    byte[] msgLog = new byte[100];
+                    server.Receive(msgLog);
+                    string[] Log = Encoding.ASCII.GetString(msgLog).Split('\0');
+                    if (Log[0] == "0")
+                    {
+                        MessageBox.Show("Contraseña incorrecta");
+                    }
+                    //Recibimos la respuesta del servidor
+                    if (Log[0] == "1")
+                    {
+                        Logeado = true;
+                        Conectado = true;
+                        MessageBox.Show("Se ha iniciado sesion");
                     }
                 }
                 else
-                    MessageBox.Show("Sesión ya iniciada");
+                {
+                    MessageBox.Show("Rellene nombre de usuario y contraseña por favor");
+                }
             }
             else
-                MessageBox.Show("Inicie conexión");
+                MessageBox.Show("Sesión ya iniciada");
         }
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-            if (Conectado)
+            if (!Logeado)
             {
                 if (userBox.Text != "" & passwordBox.Text != "" & emailBox.Text != "")
                 {
+                    //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
+                    //al que deseamos conectarnos
+                    IPAddress direc = IPAddress.Parse(ipBox.Text);
+                    IPEndPoint ipep = new IPEndPoint(direc, puerto);
+
+
+                    //Creamos el socket 
+                    server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    try
+                    {
+                        server.Connect(ipep);//Intentamos conectar el socket
+                        connect_status.BackColor = Color.Green;
+                        connect_status.Text = "Conectado";
+                        connect_status.ForeColor = Color.Black;
+                        Conectado = true;
+                        MessageBox.Show("Conexion establecida comprovando credenciales...");
+
+                    }
+                    catch (SocketException ex)
+                    {
+                        //Si hay excepcion imprimimos error y salimos del programa con return 
+                        MessageBox.Show("No he podido conectar con el servidor");
+
+                        return;
+                    }
+                    ThreadStart ts = delegate { AtenderServidor(); };
+                    atender = new Thread(ts);
+                    atender.Start();
+
                     string mensaje = "1/" + userBox.Text + "*" + passwordBox.Text + "*" + emailBox.Text;
                     // Enviamos al servidor el nombre tecleado
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
@@ -241,46 +363,46 @@ namespace Version_1
             }
         }
 
-        private void Conectar_Click(object sender, EventArgs e)
-        {
-            if (!Conectado_Click)
-            {
-                //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
-                //al que deseamos conectarnos
-                IPAddress direc = IPAddress.Parse(ipBox.Text);
-                IPEndPoint ipep = new IPEndPoint(direc, Convert.ToInt32(portBox.Text));
+        //private void Conectar_Click(object sender, EventArgs e)
+        //{
+        //    if (!Conectado_Click)
+        //    {
+        //        //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
+        //        //al que deseamos conectarnos
+        //        IPAddress direc = IPAddress.Parse(ipBox.Text);
+        //        IPEndPoint ipep = new IPEndPoint(direc, Convert.ToInt32(portBox.Text));
 
 
-                //Creamos el socket 
-                server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                try
-                {
-                    server.Connect(ipep);//Intentamos conectar el socket
-                    this.BackColor = Color.Green;
-                    MessageBox.Show("Conectado");
-                    Conectado = true;
+        //        //Creamos el socket 
+        //        server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        //        try
+        //        {
+        //            server.Connect(ipep);//Intentamos conectar el socket
+        //            this.BackColor = Color.Green;
+        //            MessageBox.Show("Conectado");
+        //            Conectado = true;
 
-                }
-                catch (SocketException ex)
-                {
-                    //Si hay excepcion imprimimos error y salimos del programa con return 
-                    MessageBox.Show("No he podido conectar con el servidor");
-                    return;
-                }
-                Conectado_Click = true;
-            }
-            else
-                MessageBox.Show("Conexión ya establecida");
+        //        }
+        //        catch (SocketException ex)
+        //        {
+        //            //Si hay excepcion imprimimos error y salimos del programa con return 
+        //            MessageBox.Show("No he podido conectar con el servidor");
+        //            return;
+        //        }
+        //        Conectado_Click = true;
+        //    }
+        //    else
+        //        MessageBox.Show("Conexión ya establecida");
 
 
-            //pongo en marcha el thread que atendera los mensajes del servidor
-            //ThreadStart ts = delegate { AtenderServidor(); };
-            //atender = new Thread(ts);
-            //atender.Start();
+        //    //pongo en marcha el thread que atendera los mensajes del servidor
+        //    //ThreadStart ts = delegate { AtenderServidor(); };
+        //    //atender = new Thread(ts);
+        //    //atender.Start();
 
-        }
+        //}
 
-        private void Desconectar_Click(object sender, EventArgs e)
+        private void Desconectar_Click(object sender, EventArgs e) //MIRAR PORQUE LO TENGO REPETIDO SINO BORRAR
         {
             if (Conectado)
             {
@@ -404,27 +526,16 @@ namespace Version_1
 
         private void Desconectar_Btn_Click(object sender, EventArgs e)
         {
-            if (Conectado)
+            if (Logeado)
             {
-                if (Logeado)
-                {
-                    string mensaje = "0/";
-                    // Enviamos al servidor el nombre tecleado
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                    server.Send(msg);
-                    Conectado_Click = false;
-                    Conectado = false;
-                    Logeado = false;
-                    changeALLOW = true;
-                }
-                else
-                    MessageBox.Show("No hay ninguna sesión iniciada");
-
+                string mensaje = "0/";
+                // Enviamos al servidor el nombre tecleado
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
             }
             else
-            {
-                MessageBox.Show("No hay ninguna conexión no establecida");
-            }
+                MessageBox.Show("No hay ninguna sesión iniciada");
+
         }
 
         private void LogIn_FormClosing(object sender, FormClosingEventArgs e)
