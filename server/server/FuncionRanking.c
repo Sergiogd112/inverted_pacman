@@ -14,7 +14,7 @@ int Devuelveme_Ranking(char res[1000]) {
     }
 
     //Inicializar la conexion
-    conn = mysql_real_connect(conn, "localhost", "root", "mysql", "partidas_usuarios", 0, NULL, 0);
+    conn = mysql_real_connect(conn, "localhost", "root", "mysql", "InvertedPacman", 0, NULL, 0);
     if (conn == NULL) {
         printf("Error al inicializar la conexion: %u %s\n",
                mysql_errno(conn), mysql_error(conn));
@@ -24,7 +24,7 @@ int Devuelveme_Ranking(char res[1000]) {
 
     //Consulta para recuperar valores de las columnas
     MYSQL_RES *result;
-    err = mysql_query(conn, "SELECT TOP 10 ID, puntos, nombre FROM usuarios ORDER BY puntos DESC");
+    err = mysql_query(conn, "SELECT ID, puntos, nombre FROM usuarios ORDER BY puntos DESC LIMIT 10");
 
     //Compruebo si la consulta ha ido bien
     if (err != 0) {

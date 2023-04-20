@@ -50,6 +50,7 @@ int search_on_llist(struct Node* head, int target_id) {
             return current->sockfd; // found the node
         current = current->next; // move to next node
     }
+
     return -1; // not found
 }
 
@@ -84,7 +85,7 @@ int remove_node_from_llist(struct Node** head_ref, int target_id) {
 int llist_to_string(struct Node* head, char res[200]) {
     struct Node* current = head;
     while (current != NULL) {
-        sprintf(res, "%s%s,", current->name);
+        sprintf(res, "%s%s,",res, current->name);
         current = current->next; // move to next node
     }
     return -1; // not found

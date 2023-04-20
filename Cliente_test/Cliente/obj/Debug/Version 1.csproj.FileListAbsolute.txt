@@ -17,7 +17,6 @@ C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\o
 C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.csproj.SuggestedBindingRedirects.cache
 C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version_1.LogIn.resources
 C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version_1.Properties.Resources.resources
-C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version_1.Register.resources
 C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.csproj.GenerateResource.cache
 C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.csproj.CoreCompileInputs.cache
 C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Cliente_test\Cliente\obj\Debug\Version 1.exe

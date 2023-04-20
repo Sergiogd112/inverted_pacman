@@ -2,6 +2,7 @@
 
 void *AtenderThread(struct Node * thread_args[2]){
     int sock_conn=thread_args[1]->sockfd;
+    printf("%d\n",sock_conn);
     struct Node * head;
     head=thread_args[0];
     struct Node * node;
@@ -43,15 +44,16 @@ void *AtenderThread(struct Node * thread_args[2]){
             //desconectar
             break;
         }
-        p = strtok(NULL, "/");
-        strcpy(name, p);
-        printf("Codigo: %d, Nombre: %s\n", code, name);
+
         switch (code) {
             case 1: //Register
                 p = strtok(NULL, "*");
-                strcpy(email, "patata@gmail.com");
-                //p = strtok(NULL, "*");
+                strcpy(name, p);
+                printf("Codigo: %d, Nombre: %s\n", code, name);
+                p = strtok(NULL, "*");
                 strcpy(password, p);
+                p = strtok(NULL, "*");
+                strcpy(email, p);
                 res = register_user(conn, name, email, password);
                 if (res == 1)
                     strcpy(response, "1");
@@ -61,12 +63,16 @@ void *AtenderThread(struct Node * thread_args[2]){
                     strcpy(response, "2");
                 break;
             case 2: //Login
+                p = strtok(NULL, "*");
+                strcpy(name, p);
+                printf("Codigo: %d, Nombre: %s\n", code, name);
                 p = strtok(NULL, "/");
                 strcpy(password, p);
                 res = login(conn, name, password);
                 if (res != 0) {
                     strcpy(response, "1");
                     node->id = res;
+                    strcpy(node->name,name);
                 }
                 else if (res == -1)
                     strcpy(response, "0");
@@ -136,12 +142,11 @@ int main() {
     if (listen(sock_listen, 3) < 0)
         printf("Error en el listen\n");
 
-    int idx;
     pthread_t thread;
     int i = 0;
     struct Node* head = NULL;
-    struct Node * thread_args[2];
-    thread_args[0]=&head;
+    struct Node *thread_args[2];
+
     for (;;) {
         printf("Escuchando\n");
 
@@ -155,10 +160,13 @@ int main() {
 
         // make next of new node as NULL and prev as last node
         new_node->next = NULL;
-        printf("Nuevo nodo");
-        idx= append_to_llist(&head,new_node);
-        thread_args[1]=&new_node;
-        pthread_create(&thread, NULL, (void *(*)(void *)) AtenderThread, &thread_args);
+        printf("Nuevo nodo\n");
+        append_to_llist(&head,new_node);
+        thread_args[0]=head;
+        thread_args[1]=new_node;
+        printf("%d\n",sock_conn);
+        printf("%d\n",new_node->sockfd);
+        pthread_create(&thread, NULL, (void *(*)(void *)) AtenderThread, thread_args);
         i++;
     }
 
