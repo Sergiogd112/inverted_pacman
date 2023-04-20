@@ -78,3 +78,9 @@ Client_Unity/Temp/UnityLockfile
 *.dag_fsmtime
 *.bin
 Cliente_test/Cliente/.vs/Version 1/v17/.suo
+*.dag_fsmtime
+*.dag_fsmtime
+*.traceevents
+
+*.digestcache
+*.state
