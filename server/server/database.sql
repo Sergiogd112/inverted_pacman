@@ -20,10 +20,10 @@ CREATE TABLE partidas_usuarios (
     FOREIGN KEY (id_usuario) REFERENCES usuarios(ID)
 );
 
-INSERT INTO usuarios VALUES(1,"Juan","juan@gmail.com","patata1",100+80+20+10+15+16);
-INSERT INTO usuarios VALUES(2,"Ana","ana@gmail.com","patata2",100+80+20+20+25+16);
-INSERT INTO usuarios VALUES(3,"Carlos","Carlos@gmail.com","patata3",100+80+20+30+35+16);
-INSERT INTO usuarios VALUES(4,"Pepe","pepe@gmail.com","patata4",100+80+20+30+35+16);
+INSERT INTO usuarios VALUES(1,"sergio","pera@gmail.com","8d69eac583367b7ecf431a857fc8e7903ff1ed988e8939fd0e92086dcfc1f98a",100+80+20+10+15+16);
+INSERT INTO usuarios VALUES(2,"Ana","ana@gmail.com","8d69eac583367b7ecf431a857fc8e7903ff1ed988e8939fd0e92086dcfc1f98a",100+80+20+20+25+16);
+INSERT INTO usuarios VALUES(3,"Carlos","Carlos@gmail.com","8d69eac583367b7ecf431a857fc8e7903ff1ed988e8939fd0e92086dcfc1f98a",100+80+20+30+35+16);
+INSERT INTO usuarios VALUES(4,"pepa","george@gmail.com","f0b8c9d84dd2b877e0b952130b73e218106fec04c23852271d390213a1ff96f4",100+80+20+30+35+16);
 
 INSERT INTO partidas VALUES(1,100);
 INSERT INTO partidas VALUES(2,80);
