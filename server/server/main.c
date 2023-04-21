@@ -3,9 +3,9 @@
 void *AtenderThread(struct Node * thread_args[2]){
     int sock_conn=thread_args[1]->sockfd;
     printf("%d\n",sock_conn);
-    struct Node * head;
+    struct Node * head= (struct Node*)malloc(sizeof(struct Node));
     memcpy(head,thread_args[0],sizeof(struct Node *));
-    struct Node * node;
+    struct Node * node = (struct Node*)malloc(sizeof(struct Node));
     memcpy(node,thread_args[1],sizeof(struct Node *));
 
     MYSQL *conn;
@@ -44,7 +44,7 @@ void *AtenderThread(struct Node * thread_args[2]){
             //desconectar
             break;
         }
-        sprintf(res,"%d/",code);
+        sprintf(response,"%d/",code);
         switch (code) {
             case 1: //Register
                 p = strtok(NULL, "*");
@@ -57,11 +57,11 @@ void *AtenderThread(struct Node * thread_args[2]){
                 res = register_user(conn, name, email, password);
 
                 if (res == 1)
-                    strcpy(response, "1");
+                    strcat(response, "1");
                 else if (res == -1)
-                    strcpy(response, "0");
+                    strcat(response, "0");
                 else
-                    strcpy(response, "2");
+                    strcat(response, "2");
                 break;
             case 2: //Login
                 p = strtok(NULL, "*");
@@ -71,25 +71,25 @@ void *AtenderThread(struct Node * thread_args[2]){
                 strcpy(password, p);
                 res = login(conn, name, password);
                 if (res != 0) {
-                    strcpy(response, "1");
+                    strcat(response, "1");
                     node->id = res;
                     strcpy(node->name,name);
                 }
                 else if (res == -1)
-                    strcpy(response, "0");
+                    strcat(response, "0");
                 else
-                    strcpy(response, "2");
+                    strcat(response, "2");
                 break;
 
             
             case 3: //Ranking
                 n = Devuelveme_Ranking(datos);
-                sprintf(response, "%d/%s", n, datos);
+                sprintf(response, "%d/%d/%s",code, n, datos);
                 break;
             
             case 4: //Pedir online
                 n = llist_to_string(head,datos);
-                sprintf(response, "%d/%s", n, datos);
+                sprintf(response, "%d/%d/%s",code, n, datos);
                 break;
 
             case 5: //Crear Partida
@@ -104,9 +104,9 @@ void *AtenderThread(struct Node * thread_args[2]){
 
 
                 if (search_on_llist(head,atoi(id1)) != -1 && search_on_llist(head,atoi(id2)) != -1 && search_on_llist(head,atoi(id3)) != -1 && search_on_llist(head,atoi(id4)) != -1)
-                    strcpy(response, "1"); //todo bn
+                    strcat(response, "1"); //todo bn
                 else
-                    strcpy(response, "0"); //alguno de los usuarios no est� conectado
+                    strcat(response, "0"); //alguno de los usuarios no est� conectado
 
 
 
@@ -115,6 +115,7 @@ void *AtenderThread(struct Node * thread_args[2]){
 
             default:
                 printf("Invalid choice!\n");
+                strcat(response,"error");
         }
         printf("Respuesta: %s\n", response);
         write(sock_conn, response, strlen(response));
