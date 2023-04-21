@@ -464,7 +464,7 @@ namespace Version_1
                         //    {
                         //        MessageBox.Show("No se ha podido crear la partida");
                         //    }
-                            
+
                         //}
 
                     }
@@ -488,6 +488,18 @@ namespace Version_1
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 atender.Abort();
                 server.Send(msg);
+                jugar.Visible = false;
+                connect_status.BackColor = default(Color);
+                num_usuarios.Text = "No disponible";
+                //dataGridView1.Columns[0].HeaderText = "Usuarios connectados";
+                connect_status.Text = "Desconectado";
+                connect_status.BackColor = Color.Red;
+                loading_text.Text = "";
+                userBox.Clear();
+                passwordBox.Clear();
+                dataGridView1.Rows.Clear();
+                Conectado = false;
+                Logeado = false;
             }
             else
                 MessageBox.Show("No hay ninguna sesión iniciada");
