@@ -281,7 +281,7 @@ namespace Version_1
         }
         private void acceptButton_Click(object sender, EventArgs e) //Al apretar el botón accept de Log In
         {
-            if (!Conectado)
+            if (Conectado)
             {
                 if (!Logeado)
                 {
@@ -305,7 +305,7 @@ namespace Version_1
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-            if (!Conectado)
+            if (Conectado)
             {
                 if (!Logeado)
                 {
@@ -493,14 +493,14 @@ namespace Version_1
 
         }
 
-        private void LogIn_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (Conectado)
-            {
-                MessageBox.Show("Por favor asegurese de desconectarse del servidor antes de cerrar la ventana");
-                e.Cancel = true;
-            }
-        }
+        //private void LogIn_FormClosing(object sender, FormClosingEventArgs e)
+        //{
+        //    if (Conectado)
+        //    {
+        //        MessageBox.Show("Por favor asegurese de desconectarse del servidor antes de cerrar la ventana");
+        //        e.Cancel = true;
+        //    }
+        //}
 
         private void Close_Btn_Click(object sender, EventArgs e)
         {
