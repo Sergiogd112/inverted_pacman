@@ -154,7 +154,7 @@ namespace Version_1
                     switch (codigo)
                     {
                         case 0: //Resupesta a la desconexión
-                            string mensaje1 = trozos[2].Split('\0')[0];
+                            string mensaje1 = trozos[2];
                             int hack = Convert.ToInt32(trozos[1]);
                             if (hack == 1)
                             {
@@ -173,16 +173,15 @@ namespace Version_1
                             break;
 
                         case 1: //Respuesta al registrar
-                            string mensaje = trozos[2].Split('\0')[0];
                             int hackS = Convert.ToInt32(trozos[1]);
                             if (hackS == 1)
                             {
-                                MessageBox.Show(mensaje);
+                                MessageBox.Show("Todo bien");
                                 Logeado = true;
                             }
                             else
                             {
-                                MessageBox.Show(mensaje);
+                                MessageBox.Show("Todo mal");
                                 Del_ParaDesconectar delegado = new Del_ParaDesconectar(Desconectar);
                                 passwordBox.Invoke(delegado, new object[] { });
                                 server.Shutdown(SocketShutdown.Both);
@@ -193,7 +192,7 @@ namespace Version_1
                             break;
 
                         case 2: //Respuesta al iniciar sesión
-                            string mensaje2 = trozos[2].Split('\0')[0];
+                            string mensaje2 = trozos[2];
                             int hack1 = Convert.ToInt32(trozos[1]);
                             if (hack1 == 1)
                             {
@@ -211,15 +210,15 @@ namespace Version_1
                             }
                             break;
                         case 3: //Respuesta a la consulta 1
-                            string mensaje3 = trozos[1].Split('\0')[0];
+                            string mensaje3 = trozos[1];
                             MessageBox.Show(mensaje3);
                             break;
                         case 4: //Respuesta a la consulta 2
-                            string mensaje4 = trozos[1].Split('\0')[0];
+                            string mensaje4 = trozos[1];
                             MessageBox.Show(mensaje4);
                             break;
                         case 5: //Respuesta a la consulta 3
-                            string mensaje5 = trozos[1].Split('\0')[0];
+                            string mensaje5 = trozos[1];
                             MessageBox.Show(mensaje5);
                             break;
                         case 6: //notificacion con la lista de conectados actualizada
@@ -231,7 +230,7 @@ namespace Version_1
                                 string[] mensaje6 = new string[hack6];
                                 for (int i = 0; i < hack6; i++)
                                 {
-                                    mensaje6[i] = (trozos[i + 2].Split('\0')[0]);
+                                    mensaje6[i] = (trozos[i + 2]);
 
                                 }
 
@@ -255,7 +254,7 @@ namespace Version_1
                     //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
                     //al que deseamos conectarnos
                     IPAddress direc = IPAddress.Parse(ipBox.Text);
-                    IPEndPoint ipep = new IPEndPoint(direc, puerto);
+                    IPEndPoint ipep = new IPEndPoint(direc, Convert.ToInt32(portBox.Text));
 
 
                     //Creamos el socket 
@@ -319,7 +318,7 @@ namespace Version_1
                     //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
                     //al que deseamos conectarnos
                     IPAddress direc = IPAddress.Parse(ipBox.Text);
-                    IPEndPoint ipep = new IPEndPoint(direc, puerto);
+                    IPEndPoint ipep = new IPEndPoint(direc, Convert.ToInt32(portBox.Text));
 
 
                     //Creamos el socket 
