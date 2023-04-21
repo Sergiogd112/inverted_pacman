@@ -380,6 +380,7 @@
             this.Close_Btn.TabIndex = 26;
             this.Close_Btn.Text = "Close";
             this.Close_Btn.UseVisualStyleBackColor = true;
+            this.Close_Btn.Click += new System.EventHandler(this.Close_Btn_Click);
             // 
             // LogIn
             // 
@@ -401,6 +402,7 @@
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "LogIn";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LogIn_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);

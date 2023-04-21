@@ -486,6 +486,7 @@ namespace Version_1
                 string mensaje = "0/";
                 // Enviamos al servidor el nombre tecleado
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                atender.Abort();
                 server.Send(msg);
             }
             else
@@ -493,18 +494,28 @@ namespace Version_1
 
         }
 
-        //private void LogIn_FormClosing(object sender, FormClosingEventArgs e)
-        //{
-        //    if (Conectado)
-        //    {
-        //        MessageBox.Show("Por favor asegurese de desconectarse del servidor antes de cerrar la ventana");
-        //        e.Cancel = true;
-        //    }
-        //}
-
         private void Close_Btn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (Conectado)
+            {
+                MessageBox.Show("Por favor asegurese de desconectarse del servidor antes de cerrar la ventana");
+            }
+            else
+            {
+                atender.Abort();
+                this.Close();
+            }
+        }
+
+        private void LogIn_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Conectado)
+            {
+                MessageBox.Show("Por favor asegurese de desconectarse del servidor antes de cerrar la ventana");
+                e.Cancel = true;
+            }
+            else
+                atender.Abort();
         }
     }
 }
