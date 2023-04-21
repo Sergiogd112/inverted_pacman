@@ -50,6 +50,7 @@ int Devuelveme_Ranking(char res[1000]) {
             row= mysql_fetch_row(result);
         }
     }
+    res[strlen(res)-1]='\0';
 
 
 

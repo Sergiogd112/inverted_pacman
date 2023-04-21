@@ -118,7 +118,7 @@ void *AtenderThread(struct Node * thread_args[2]){
                 strcat(response,"error");
         }
         printf("Respuesta: %s\n", response);
-        write(sock_conn, response, strlen(response));
+            write(sock_conn, response, strlen(response));
     }
 
     close(sock_conn);
@@ -136,7 +136,7 @@ int main() {
     server_addr.sin_family = AF_INET;
 
     server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    server_addr.sin_port = htons(9060);
+    server_addr.sin_port = htons(9050);
 
     if (bind(sock_listen, (struct sockaddr *) &server_addr, sizeof(server_addr)) < 0)
         printf("Error al bind\n");
