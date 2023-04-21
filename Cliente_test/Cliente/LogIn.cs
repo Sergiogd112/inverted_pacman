@@ -28,7 +28,7 @@ namespace Version_1
         bool Conectado = false;
         bool Logeado = false;
         string ip = "192.168.56.102";
-        int puerto = 50053;
+        int puerto = 9050;
         List<string> Conectados = new List<string>();
         public LogIn()
         {
@@ -63,8 +63,8 @@ namespace Version_1
 
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
-            IPAddress direc = IPAddress.Parse(ipBox.Text);
-            IPEndPoint ipep = new IPEndPoint(direc, Convert.ToInt32(portBox.Text));
+            IPAddress direc = IPAddress.Parse(ip);
+            IPEndPoint ipep = new IPEndPoint(direc, puerto);
 
 
             //Creamos el socket 
@@ -181,6 +181,7 @@ namespace Version_1
                 else
                 {
                     string[] trozos = error_servidor[0].Split('/');
+                    MessageBox.Show(error_servidor[0]);
                     int codigo = Convert.ToInt32(trozos[0]);
                     switch (codigo)
                     {
@@ -223,16 +224,15 @@ namespace Version_1
                             break;
 
                         case 2: //Respuesta al iniciar sesión
-                            string mensaje2 = trozos[2];
                             int hack1 = Convert.ToInt32(trozos[1]);
                             if (hack1 == 1)
                             {
-                                MessageBox.Show(mensaje2);
+                                MessageBox.Show("Todo bien");
                                 Logeado = true;
                             }
                             else
                             {
-                                MessageBox.Show(mensaje2);
+                                MessageBox.Show("Todo mal");
                                 Del_ParaDesconectar delegado = new Del_ParaDesconectar(Desconectar);
                                 passwordBox.Invoke(delegado, new object[] { });
                                 server.Shutdown(SocketShutdown.Both);
@@ -287,21 +287,6 @@ namespace Version_1
                     // Enviamos al servidor el nombre tecleado
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                     server.Send(msg);
-
-                    byte[] msgLog = new byte[100];
-                    server.Receive(msgLog);
-                    string[] Log = Encoding.ASCII.GetString(msgLog).Split('\0');
-                    if (Log[0] == "0")
-                    {
-                        MessageBox.Show("Contraseña incorrecta");
-                    }
-                    //Recibimos la respuesta del servidor
-                    if (Log[0] == "1")
-                    {
-                        Logeado = true;
-                        Conectado = true;
-                        MessageBox.Show("Se ha iniciado sesion");
-                    }
                 }
                 else
                 {
@@ -402,24 +387,24 @@ namespace Version_1
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                         byte[] msg2 = new byte[1000];
                         server.Send(msg);
-                        server.Receive(msg2);                        //Recibimos la respuesta del servidor
-                        string[] respuesta = Encoding.ASCII.GetString(msg2).Split('\0')[0].Split('/');
-                        int n = Convert.ToInt32(respuesta[0]);
-                        string[] filas = respuesta[1].Split(',');
-                        string[] celdas;
-                        Del_ParaGrid delegado = new Del_ParaGrid(PonerEnGrid);
-                        dataGridView1.Columns.Clear();
-                        dataGridView1.Rows.Clear();
-                        dataGridView1.Columns.Add("Pos", "Posición");
-                        dataGridView1.Columns.Add("usuario", "Usuario");
-                        dataGridView1.Columns.Add("pts", "Puntos");
-                        connlbl.Text = mensaje;
-                        for (int i = 0; i < n; i++)
-                        {
-                            celdas = (filas[i].Split('*'));
-                            dataGridView1.Rows.Add( Convert.ToString(i), celdas[0], celdas[1]);
+                        //server.Receive(msg2);                        //Recibimos la respuesta del servidor
+                        //string[] respuesta = Encoding.ASCII.GetString(msg2).Split('\0')[0].Split('/');
+                        //int n = Convert.ToInt32(respuesta[0]);
+                        //string[] filas = respuesta[1].Split(',');
+                        //string[] celdas;
+                        //Del_ParaGrid delegado = new Del_ParaGrid(PonerEnGrid);
+                        //dataGridView1.Columns.Clear();
+                        //dataGridView1.Rows.Clear();
+                        //dataGridView1.Columns.Add("Pos", "Posición");
+                        //dataGridView1.Columns.Add("usuario", "Usuario");
+                        //dataGridView1.Columns.Add("pts", "Puntos");
+                        //connlbl.Text = mensaje;
+                        //for (int i = 0; i < n; i++)
+                        //{
+                        //    celdas = (filas[i].Split('*'));
+                        //    dataGridView1.Rows.Add( Convert.ToString(i), celdas[0], celdas[1]);
 
-                        }
+                        //}
 
                     }
 
@@ -428,24 +413,24 @@ namespace Version_1
                         string mensaje = "4/";
                         // Enviamos al servidor el nombre tecleado
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                        byte[] msg2 = new byte[100];
-                        server.Send(msg);
-                        server.Receive(msg2);           //Recibimos la respuesta del servidor
-                        string[] respuesta = Encoding.ASCII.GetString(msg2).Split('\0')[0].Split('/');
-                        int n = Convert.ToInt32(respuesta[0]);
-                        string[] filas = respuesta[1].Split(',');
-                        string[] celdas;
-                        Del_ParaGrid delegado = new Del_ParaGrid(PonerEnGrid);
-                        dataGridView1.Columns.Clear();
-                        dataGridView1.Rows.Clear();
-                        dataGridView1.Columns.Add("usuarios", "usuarios");
-                        connlbl.Text = mensaje;
-                        for (int i = 0; i < n; i++)
-                        {
-                            celdas = (filas[i].Split('*'));
-                            dataGridView1.Rows.Add(Convert.ToString(n), celdas[0], celdas[1]);
+                        //byte[] msg2 = new byte[100];
+                        //server.Send(msg);
+                        //server.Receive(msg2);           //Recibimos la respuesta del servidor
+                        //string[] respuesta = Encoding.ASCII.GetString(msg2).Split('\0')[0].Split('/');
+                        //int n = Convert.ToInt32(respuesta[0]);
+                        //string[] filas = respuesta[1].Split(',');
+                        //string[] celdas;
+                        //Del_ParaGrid delegado = new Del_ParaGrid(PonerEnGrid);
+                        //dataGridView1.Columns.Clear();
+                        //dataGridView1.Rows.Clear();
+                        //dataGridView1.Columns.Add("usuarios", "usuarios");
+                        //connlbl.Text = mensaje;
+                        //for (int i = 0; i < n; i++)
+                        //{
+                        //    celdas = (filas[i].Split('*'));
+                        //    dataGridView1.Rows.Add(Convert.ToString(n), celdas[0], celdas[1]);
 
-                        }
+                        //}
                     }
                     else if (Consulta3.Checked)  //La consulta 3 es la función que crea una partida
                     {
@@ -454,25 +439,25 @@ namespace Version_1
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                         byte[] msg2 = new byte[100];
                         server.Send(msg);
-                        server.Receive(msg2);    //Recibimos la respuesta del servidor
-                        string respuesta = Encoding.ASCII.GetString(msg2);
-                        if(respuesta == "error")
-                        {
-                            MessageBox.Show("Ha habido un error");
-                        }
-                        else
-                        {
-                            int n = Convert.ToInt32(respuesta);
-                            if (n == 1)
-                            {
-                                MessageBox.Show("Se ha creado la partida con éxito");
-                            }
-                            if (n == 0)
-                            {
-                                MessageBox.Show("No se ha podido crear la partida");
-                            }
+                        //server.Receive(msg2);    //Recibimos la respuesta del servidor
+                        //string respuesta = Encoding.ASCII.GetString(msg2);
+                        //if(respuesta == "error")
+                        //{
+                        //    MessageBox.Show("Ha habido un error");
+                        //}
+                        //else
+                        //{
+                        //    int n = Convert.ToInt32(respuesta);
+                        //    if (n == 1)
+                        //    {
+                        //        MessageBox.Show("Se ha creado la partida con éxito");
+                        //    }
+                        //    if (n == 0)
+                        //    {
+                        //        MessageBox.Show("No se ha podido crear la partida");
+                        //    }
                             
-                        }
+                        //}
 
                     }
                     else
