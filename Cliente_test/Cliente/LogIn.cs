@@ -27,6 +27,7 @@ namespace Version_1
         public int num_conn;
         bool Conectado = false;
         bool Logeado = false;
+        string ip = "192.168.56.102";
         int puerto = 50053;
         List<string> Conectados = new List<string>();
         public LogIn()
@@ -58,6 +59,36 @@ namespace Version_1
             //jugar.FlatAppearance.BorderSize = 0;
             dataGridView1.BackgroundColor = Color.FromArgb(135, 206, 235);
             passwordBox.UseSystemPasswordChar = true;
+
+
+            //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
+            //al que deseamos conectarnos
+            IPAddress direc = IPAddress.Parse(ipBox.Text);
+            IPEndPoint ipep = new IPEndPoint(direc, Convert.ToInt32(portBox.Text));
+
+
+            //Creamos el socket 
+            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            try
+            {
+                server.Connect(ipep);//Intentamos conectar el socket
+                connect_status.BackColor = Color.Green;
+                connect_status.Text = "Conectado";
+                connect_status.ForeColor = Color.Black;
+                Conectado = true;
+                loading_text.Text = "Connexión establecida\nComprobando credenciales";
+
+            }
+            catch (SocketException ex)
+            {
+                //Si hay excepcion imprimimos error y salimos del programa con return 
+                loading_text.Text = "No he podido conectar con el servidor" + ex.ErrorCode;
+
+                return;
+            }
+            ThreadStart ts = delegate { AtenderServidor(); };
+            atender = new Thread(ts);
+            atender.Start();
         }
 
         public void Desconectar()
@@ -251,34 +282,6 @@ namespace Version_1
             {
                 if (userBox.Text != "" & passwordBox.Text != "")
                 {
-                    //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
-                    //al que deseamos conectarnos
-                    IPAddress direc = IPAddress.Parse(ipBox.Text);
-                    IPEndPoint ipep = new IPEndPoint(direc, Convert.ToInt32(portBox.Text));
-
-
-                    //Creamos el socket 
-                    server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    try
-                    {
-                        server.Connect(ipep);//Intentamos conectar el socket
-                        connect_status.BackColor = Color.Green;
-                        connect_status.Text = "Conectado";
-                        connect_status.ForeColor = Color.Black;
-                        Conectado = true;
-                        loading_text.Text = "Connexión establecida\nComprobando credenciales";
-
-                    }
-                    catch (SocketException ex)
-                    {
-                        //Si hay excepcion imprimimos error y salimos del programa con return 
-                        loading_text.Text = "No he podido conectar con el servidor" + ex.ErrorCode;
-
-                        return;
-                    }
-                    ThreadStart ts = delegate { AtenderServidor(); };
-                    atender = new Thread(ts);
-                    atender.Start();
 
                     string mensaje = "2/" + userBox.Text + "*" + passwordBox.Text;
                     // Enviamos al servidor el nombre tecleado
@@ -315,32 +318,6 @@ namespace Version_1
             {
                 if (userBox.Text != "" & passwordBox.Text != "" & emailBox.Text != "")
                 {
-                    //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
-                    //al que deseamos conectarnos
-                    IPAddress direc = IPAddress.Parse(ipBox.Text);
-                    IPEndPoint ipep = new IPEndPoint(direc, Convert.ToInt32(portBox.Text));
-
-
-                    //Creamos el socket 
-                    server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    try
-                    {
-                        server.Connect(ipep);//Intentamos conectar el socket
-                        connect_status.BackColor = Color.Green;
-                        connect_status.Text = "Conectado";
-                        connect_status.ForeColor = Color.Black;
-                        Conectado = true;
-                        loading_text.Text = "Connexión establecida\nComprobando credenciales";
-                    }
-                    catch (SocketException ex)
-                    {
-                        //Si hay excepcion imprimimos error y salimos del programa con return 
-                        loading_text.Text = "No he podido conectar con el servidor" + ex.ErrorCode;
-                        return;
-                    }
-                    ThreadStart ts = delegate { AtenderServidor(); };
-                    atender = new Thread(ts);
-                    atender.Start();
 
                     string mensaje = "1/" + userBox.Text + "*" + passwordBox.Text + "*" + emailBox.Text;
                     // Enviamos al servidor el nombre tecleado
