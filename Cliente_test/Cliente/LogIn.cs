@@ -27,6 +27,7 @@ namespace Version_1
         public int num_conn;
         bool Conectado = false;
         bool Logeado = false;
+        bool Consultas = false;
         string ip = "192.168.56.102";
         int puerto = 9050;
         List<string> Conectados = new List<string>();
@@ -167,6 +168,7 @@ namespace Version_1
                 // Recibimos mensaje del servidor
                 byte[] msg2 = new byte[100];
                 server.Receive(msg2);
+                Consultas = true;
                 string[] error_servidor = Encoding.ASCII.GetString(msg2).Split('\0');
                 if (error_servidor[0] == "")
                 {
@@ -273,50 +275,56 @@ namespace Version_1
                     }
 
                 }
+                Consultas = false;
             }
 
         }
         private void acceptButton_Click(object sender, EventArgs e) //Al apretar el botón accept de Log In
         {
-            if (!Logeado)
+            if (!Conectado)
             {
-                if (userBox.Text != "" & passwordBox.Text != "")
+                if (!Logeado)
                 {
+                    if (userBox.Text != "" & passwordBox.Text != "")
+                    {
 
-                    string mensaje = "2/" + userBox.Text + "*" + passwordBox.Text;
-                    // Enviamos al servidor el nombre tecleado
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                    server.Send(msg);
+                        string mensaje = "2/" + userBox.Text + "*" + passwordBox.Text;
+                        // Enviamos al servidor el nombre tecleado
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                        server.Send(msg);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Rellene nombre de usuario y contraseña por favor");
+                    }
                 }
                 else
-                {
-                    MessageBox.Show("Rellene nombre de usuario y contraseña por favor");
-                }
+                    MessageBox.Show("Sesión ya iniciada");
             }
-            else
-                MessageBox.Show("Sesión ya iniciada");
         }
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-            if (!Logeado)
+            if (!Conectado)
             {
-                if (userBox.Text != "" & passwordBox.Text != "" & emailBox.Text != "")
+                if (!Logeado)
                 {
+                    if (userBox.Text != "" & passwordBox.Text != "" & emailBox.Text != "")
+                    {
 
-                    string mensaje = "1/" + userBox.Text + "*" + passwordBox.Text + "*" + emailBox.Text;
-                    // Enviamos al servidor el nombre tecleado
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                    server.Send(msg);
+                        string mensaje = "1/" + userBox.Text + "*" + passwordBox.Text + "*" + emailBox.Text;
+                        // Enviamos al servidor el nombre tecleado
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                        server.Send(msg);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Rellene nombre de usuario y contraseña por favor");
+                    }
                 }
                 else
-                {
-                    MessageBox.Show("Rellene nombre de usuario y contraseña por favor");
-                }
+                    MessageBox.Show("Inicie conexión");
             }
-            else
-                MessageBox.Show("Inicie conexión");
-
         }
 
         private void Mostrar_Contraseña_CheckedChanged(object sender, EventArgs e)
@@ -378,7 +386,7 @@ namespace Version_1
         {
             if (Conectado)
             {
-                if (Logeado)
+                if (Logeado & !Consultas)
                 {
                     if (Consulta1.Checked)  //La consulta 1 es la función que devuelve el ranking
                     {
