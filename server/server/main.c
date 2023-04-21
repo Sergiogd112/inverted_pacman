@@ -44,7 +44,7 @@ void *AtenderThread(struct Node * thread_args[2]){
             //desconectar
             break;
         }
-
+        sprintf(res,"%d/",code);
         switch (code) {
             case 1: //Register
                 p = strtok(NULL, "*");
@@ -55,6 +55,7 @@ void *AtenderThread(struct Node * thread_args[2]){
                 p = strtok(NULL, "*");
                 strcpy(email, p);
                 res = register_user(conn, name, email, password);
+
                 if (res == 1)
                     strcpy(response, "1");
                 else if (res == -1)
