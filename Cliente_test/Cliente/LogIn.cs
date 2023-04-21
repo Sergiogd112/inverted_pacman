@@ -23,11 +23,10 @@ namespace Version_1
         delegate void Del_ParaGrid(string[] mensaje, int codigo);
         delegate void Del_ParaDesconectar();
         delegate void Del_ParaConectados(string[] mensaje, int codigo);
-        bool Conectado = false;
-        bool Conectado_Click = false;
-        bool Logeado = false;
-        bool changeALLOW = false;
         public string usuario;
+        public int num_conn;
+        bool Conectado = false;
+        bool Logeado = false;
         int puerto = 50053;
         List<string> Conectados = new List<string>();
         public LogIn()
@@ -69,12 +68,24 @@ namespace Version_1
             //dataGridView1.Columns[0].HeaderText = "Usuarios connectados";
             connect_status.Text = "Desconectado";
             connect_status.BackColor = Color.Red;
+            loading_text.Text = "";
             userBox.Clear();
             passwordBox.Clear();
             dataGridView1.Rows.Clear();
-            Conectado_Click = false;
             Conectado = false;
             Logeado = false;
+        }
+
+        public void ActualizarConectados(string[] mensaje)
+        {
+            dataGridView1.Rows.Clear();
+            dataGridView1.ColumnCount = 1;
+            int i;
+            for (i = 0; i < num_conn; i++)
+            {
+                if (mensaje[i] != usuario)
+                    dataGridView1.Rows.Add(mensaje[i]);
+            }
         }
 
         public void PonerEnGrid(string[] mensaje, int hack)
@@ -94,7 +105,12 @@ namespace Version_1
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(135, 206, 235);
             dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(135, 206, 235);
             dataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Green;
+
+            loading_text.Text = "Bienvenido de nuevo " + mensaje[hack - 1];
+
             int i;
+            num_conn = hack;
+            ActualizarConectados(mensaje);
             for (i = 0; i < hack; i++)
             {
                 dataGridView1.Rows.Add(mensaje[i]);
@@ -142,11 +158,10 @@ namespace Version_1
                             int hack = Convert.ToInt32(trozos[1]);
                             if (hack == 1)
                             {
-                                MessageBox.Show(mensaje1);
+                                loading_text.Text = (mensaje1);
                             }
                             else
                             {
-                                MessageBox.Show(mensaje1);
                                 Del_ParaDesconectar delegado = new Del_ParaDesconectar(Desconectar);
                                 passwordBox.Invoke(delegado, new object[] { });
                                 server.Shutdown(SocketShutdown.Both);
@@ -222,8 +237,6 @@ namespace Version_1
 
                                 Del_ParaGrid delegado = new Del_ParaGrid(PonerEnGrid);
                                 dataGridView1.Invoke(delegado, new object[] { mensaje6, hack6 });
-
-                                Del_ParaConectados delegado2 = new Del_ParaConectados(anadir_Conectados);
                                 this.Invoke(delegado, new object[] { mensaje6, hack6 });
                             }
                             break;
@@ -254,13 +267,13 @@ namespace Version_1
                         connect_status.Text = "Conectado";
                         connect_status.ForeColor = Color.Black;
                         Conectado = true;
-                        MessageBox.Show("Conexion establecida comprovando credenciales...");
+                        loading_text.Text = "Connexión establecida\nComprobando credenciales";
 
                     }
                     catch (SocketException ex)
                     {
                         //Si hay excepcion imprimimos error y salimos del programa con return 
-                        MessageBox.Show("No he podido conectar con el servidor");
+                        loading_text.Text = "No he podido conectar con el servidor" + ex.ErrorCode;
 
                         return;
                     }
@@ -318,14 +331,12 @@ namespace Version_1
                         connect_status.Text = "Conectado";
                         connect_status.ForeColor = Color.Black;
                         Conectado = true;
-                        MessageBox.Show("Conexion establecida comprovando credenciales...");
-
+                        loading_text.Text = "Connexión establecida\nComprobando credenciales";
                     }
                     catch (SocketException ex)
                     {
                         //Si hay excepcion imprimimos error y salimos del programa con return 
-                        MessageBox.Show("No he podido conectar con el servidor");
-
+                        loading_text.Text = "No he podido conectar con el servidor" + ex.ErrorCode;
                         return;
                     }
                     ThreadStart ts = delegate { AtenderServidor(); };
@@ -401,31 +412,6 @@ namespace Version_1
         //    //atender.Start();
 
         //}
-
-        private void Desconectar_Click(object sender, EventArgs e) //MIRAR PORQUE LO TENGO REPETIDO SINO BORRAR
-        {
-            if (Conectado)
-            {
-                if (Logeado)
-                {
-                    string mensaje = "0/" + userBox.Text + "/" + passwordBox.Text;
-                    // Enviamos al servidor el nombre tecleado
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                    server.Send(msg);
-                    Conectado_Click = false;
-                    Conectado = false;
-                    Logeado = false;
-                    changeALLOW = true;
-                }
-                else
-                    MessageBox.Show("No hay ninguna sesión iniciada");
-
-            }
-            else
-            {
-                MessageBox.Show("No hay ninguna conexión no establecida");
-            }
-        }
 
         private void Enviar_Consulta_Click(object sender, EventArgs e)
         {
@@ -545,6 +531,11 @@ namespace Version_1
                 MessageBox.Show("Por favor asegurese de desconectarse del servidor antes de cerrar la ventana");
                 e.Cancel = true;
             }
+        }
+
+        private void Close_Btn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

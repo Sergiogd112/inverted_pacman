@@ -57,6 +57,8 @@
             this.num_usuarios = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.jugar = new System.Windows.Forms.Button();
+            this.loading_text = new System.Windows.Forms.Label();
+            this.Close_Btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -125,7 +127,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(281, 420);
+            this.dataGridView1.Size = new System.Drawing.Size(281, 516);
             this.dataGridView1.TabIndex = 6;
             // 
             // connlbl
@@ -197,7 +199,7 @@
             this.panel2.Controls.Add(this.Enviar_Consulta);
             this.panel2.Controls.Add(this.Consulta3);
             this.panel2.Controls.Add(this.Consulta2);
-            this.panel2.Location = new System.Drawing.Point(31, 549);
+            this.panel2.Location = new System.Drawing.Point(31, 627);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(357, 125);
             this.panel2.TabIndex = 13;
@@ -280,13 +282,13 @@
             this.portBox.Name = "portBox";
             this.portBox.Size = new System.Drawing.Size(152, 22);
             this.portBox.TabIndex = 18;
-            this.portBox.Text = "9050";
+            this.portBox.Text = "50053";
             // 
             // Desconectar_Btn
             // 
-            this.Desconectar_Btn.Location = new System.Drawing.Point(726, 577);
+            this.Desconectar_Btn.Location = new System.Drawing.Point(726, 659);
             this.Desconectar_Btn.Name = "Desconectar_Btn";
-            this.Desconectar_Btn.Size = new System.Drawing.Size(655, 97);
+            this.Desconectar_Btn.Size = new System.Drawing.Size(659, 97);
             this.Desconectar_Btn.TabIndex = 20;
             this.Desconectar_Btn.Text = "Disconnect";
             this.Desconectar_Btn.UseVisualStyleBackColor = true;
@@ -296,7 +298,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.RosyBrown;
             this.pictureBox1.Image = global::Version_1.Properties.Resources.PortadaInvertedPacman;
-            this.pictureBox1.Location = new System.Drawing.Point(726, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(726, 35);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(720, 535);
             this.pictureBox1.TabIndex = 21;
@@ -309,7 +311,7 @@
             this.panel1.Controls.Add(this.ipBox);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(31, 351);
+            this.panel1.Location = new System.Drawing.Point(31, 385);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(357, 170);
             this.panel1.TabIndex = 22;
@@ -350,7 +352,7 @@
             // 
             this.jugar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.jugar.ForeColor = System.Drawing.Color.White;
-            this.jugar.Location = new System.Drawing.Point(409, 577);
+            this.jugar.Location = new System.Drawing.Point(409, 658);
             this.jugar.Margin = new System.Windows.Forms.Padding(4);
             this.jugar.Name = "jugar";
             this.jugar.Size = new System.Drawing.Size(281, 97);
@@ -360,12 +362,34 @@
             this.jugar.UseVisualStyleBackColor = true;
             this.jugar.Visible = false;
             // 
+            // loading_text
+            // 
+            this.loading_text.AutoSize = true;
+            this.loading_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loading_text.Location = new System.Drawing.Point(1036, 594);
+            this.loading_text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.loading_text.Name = "loading_text";
+            this.loading_text.Size = new System.Drawing.Size(0, 17);
+            this.loading_text.TabIndex = 25;
+            // 
+            // Close_Btn
+            // 
+            this.Close_Btn.Location = new System.Drawing.Point(1371, 6);
+            this.Close_Btn.Name = "Close_Btn";
+            this.Close_Btn.Size = new System.Drawing.Size(75, 23);
+            this.Close_Btn.TabIndex = 26;
+            this.Close_Btn.Text = "Close";
+            this.Close_Btn.UseVisualStyleBackColor = true;
+            this.Close_Btn.Click += new System.EventHandler(this.Close_Btn_Click);
+            // 
             // LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RosyBrown;
-            this.ClientSize = new System.Drawing.Size(1469, 695);
+            this.ClientSize = new System.Drawing.Size(1469, 764);
+            this.Controls.Add(this.Close_Btn);
+            this.Controls.Add(this.loading_text);
             this.Controls.Add(this.jugar);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
@@ -425,6 +449,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button jugar;
         private System.Windows.Forms.TextBox connect_status;
+        private System.Windows.Forms.Label loading_text;
+        private System.Windows.Forms.Button Close_Btn;
     }
 }
 
