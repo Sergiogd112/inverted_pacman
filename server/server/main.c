@@ -4,9 +4,9 @@ void *AtenderThread(struct Node * thread_args[2]){
     int sock_conn=thread_args[1]->sockfd;
     printf("%d\n",sock_conn);
     struct Node * head;
-    memcpy(head,thread_args[0],sizeof(struct Node));
+    memcpy(head,thread_args[0],sizeof(struct Node *));
     struct Node * node;
-    memcpy(node,thread_args[1],sizeof(struct Node));
+    memcpy(node,thread_args[1],sizeof(struct Node *));
 
     MYSQL *conn;
     char request[512];
