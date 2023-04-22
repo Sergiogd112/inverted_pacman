@@ -1,12 +1,12 @@
 //Progarma en C para la creacion de un metodo para introducir 
 // un partido a nuestra base de datos...
-#include <mysql.h>
+#include <mysql/mysql.h>
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 
 
-void introducir_partido(int *lista_id_usuario, int *lista_puntuaciones, int num_valores, **argv) //num_valores es la cantidas de usuarios-puntuaciones que añadira.
+void introducir_partido(int *lista_id_usuario, int *lista_puntuaciones, int num_valores, **argv) //num_valores es la cantidas de usuarios-puntuaciones que aï¿½adira.
 {
 	MYSQL *conn;
 	int err;

@@ -6,7 +6,7 @@
 #define SERVER_MAIN_H
 #include "auth.h"
 #include "FuncionRanking.h"
-#include "linked_list.h"
+#include "connected_list.h"
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -14,4 +14,11 @@
 #include <string.h>
 #include <mysql/mysql.h>
 #include <pthread.h>
+
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+typedef struct {
+    int i;
+    ConnectedList *list;
+}ThreadArgs;
+
 #endif //SERVER_MAIN_H
