@@ -32,6 +32,7 @@ typedef struct {
     struct Node connections[MAXUSERS];
     int used;
     int idx;
+    int update_connecetions;
 } ConnectedList;
 
 void initialize_list(ConnectedList *list);

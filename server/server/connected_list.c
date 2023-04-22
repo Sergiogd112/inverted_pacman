@@ -7,7 +7,7 @@
 void initialize_list(ConnectedList *list) {
     list->idx = 0;
     list->used = 0;
-
+    list->update_connecetions = 0;
     for (int i = 0; i < MAXUSERS; i++) {
         list->connections[i].id = -1;
         list->connections[i].sockfd = 0;
@@ -18,7 +18,7 @@ void initialize_list(ConnectedList *list) {
     }
 }
 
-void reset_node(struct Node * node){
+void reset_node(struct Node *node) {
     node->id = -1;
     node->sockfd = 0;
     node->using = 0;
@@ -37,7 +37,7 @@ int insert_to_llist(ConnectedList *list, int new_id, int new_sockfd, char name[2
             list->connections[i].sockfd = new_sockfd;
             strcpy(list->connections[i].name, name);
             list->connections[i].idx = list->idx;
-            list->connections[i].using=1;
+            list->connections[i].using = 1;
             list->idx++;
             list->used++;
             return i;
@@ -45,13 +45,14 @@ int insert_to_llist(ConnectedList *list, int new_id, int new_sockfd, char name[2
     }
     return -1;
 }
-int get_empty(ConnectedList *list){
+
+int get_empty(ConnectedList *list) {
     if (list->used == MAXUSERS) {
         return -1;
     }
     for (int i = 0; i < MAXUSERS; i++) {
         if (list->connections[i].using == 0) {
-            list->connections[i].using=1;
+            list->connections[i].using = 1;
             list->connections[i].idx = list->idx;
             list->idx++;
             list->used++;
@@ -121,18 +122,21 @@ void print_idx(ConnectedList *list) {
         }
     }
 
-    res[strlen(res) - 1] = '\0';
+    res[strlen(res) - 2] = '\0';
     printf("%s\n", res);
 }
 
 int connected_to_string(ConnectedList *list, char res[2000]) {
     int i;
+    int count = 0;
     for (i = 0; i < MAXUSERS; i++) {
-        if (list->connections[i].using == 1 && list->connections[i].id == -1)
-            snprintf(res, 2000, "%s%s,", res, list->connections[i].name);
+        if (list->connections[i].using == 1 && list->connections[i].id != -1) {
+            snprintf(res, 2000, "%s%s*,", res, list->connections[i].name);
+            count++;
+        }
     }
-    res[strlen(res) - 1] = '\0';
-    return i;
+    res[strlen(res) - 2] = '\0';
+    return count;
 }
 
 void push_connected(ConnectedList *list, char res[2000], int n) {
@@ -140,7 +144,7 @@ void push_connected(ConnectedList *list, char res[2000], int n) {
     snprintf(response, 2010, "4/%d/%s\x04", n, res);
     printf("%s\n", response);
     for (int i = 0; i < MAXUSERS; i++) {
-        if (list->connections[i].using == 1 && list->connections[i].id == -1) {
+        if (list->connections[i].using == 1 && list->connections[i].id != -1) {
             list->connections[i].sending_connected = 1;
             write(list->connections[i].sockfd, response, strlen(response));
             list->connections[i].sending_connected = 0;

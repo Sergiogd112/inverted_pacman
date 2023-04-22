@@ -1,8 +1,22 @@
 #include "main.h"
 
-void UpdateConnectedThread(struct Nodes **head_ref) {
+void UpdateConnectedThread(ConnectedList * list) {
+    int i =0;
+    char res[2000];
     while (1 == 1) {
-        continue;
+        if(list->update_connecetions==1||i>100000){
+            strcpy(res,"");
+            int n = connected_to_string(list, res);
+            push_connected(list, res, n);
+            pthread_mutex_lock(&update_connected_mutex); //No me interrumpas ahora
+
+            list->update_connecetions=0;
+            pthread_mutex_unlock(&update_connected_mutex); //No me interrumpas ahora
+
+            i=-1;
+        }
+        sleep(0.1);
+        i++;
     }
 }
 
@@ -71,8 +85,10 @@ void *AtenderThread(ThreadArgs * threadArgs) {
                 if (res == 1) {
                     strcat(response, "1");
                     strcpy(list->connections[pos].name, name);
-                    int n = connected_to_string(list, datos);
-                    push_connected(list, datos, n);
+                    pthread_mutex_lock(&update_connected_mutex);
+
+                    list->update_connecetions=1;
+                    pthread_mutex_unlock(&update_connected_mutex);
                 } else if (res == -1)
                     strcat(response, "0");
                 else
@@ -89,8 +105,9 @@ void *AtenderThread(ThreadArgs * threadArgs) {
                     strcat(response, "1");
                     list->connections[pos].id = res;
                     strcpy(list->connections[pos].name, name);
-                    int n = connected_to_string(list, datos);
-                    push_connected(list, datos, n);
+                    pthread_mutex_lock(&update_connected_mutex);
+                    list->update_connecetions=1;
+                    pthread_mutex_unlock(&update_connected_mutex);
                 } else if (res == -1)
                     strcat(response, "0");
                 else
@@ -146,11 +163,11 @@ void *AtenderThread(ThreadArgs * threadArgs) {
 
     close(sock_conn);
     mysql_close(conn);
-    pthread_mutex_lock(&mutex); //No me interrumpas ahora
+    pthread_mutex_lock(&main_mutex); //No me interrumpas ahora
     printf("Removing: %s %d", name, pos);
     remove_node_from_list(list, pos);
     print_idx(list);
-    pthread_mutex_unlock(&mutex); //ya puedes interrumpirme
+    pthread_mutex_unlock(&main_mutex); //ya puedes interrumpirme
 
 }
 
@@ -174,10 +191,12 @@ int main() {
         printf("Error en el listen\n");
 
     pthread_t thread;
+    pthread_t update_thread;
     ConnectedList list;
     initialize_list(&list);
     ThreadArgs threadArgs;
     threadArgs.list=&list;
+    pthread_create(&update_thread, NULL, (void *(*)(void *)) UpdateConnectedThread, &list);
     char res[200];
     int i;
     for (;;) {

@@ -14,8 +14,11 @@
 #include <string.h>
 #include <mysql/mysql.h>
 #include <pthread.h>
+#include <unistd.h>
 
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
+pthread_mutex_t main_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t update_connected_mutex = PTHREAD_MUTEX_INITIALIZER;
 typedef struct {
     int i;
     ConnectedList *list;
