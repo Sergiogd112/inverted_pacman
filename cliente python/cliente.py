@@ -19,8 +19,8 @@ class User:
     def connect(self, host="", port=0):
         if not self.connected:
             self.s.connect((host, port))
-            # self.process = multiprocessing.Process(target=self.recieve, args=())
-            # self.process.start()
+            self.process = multiprocessing.Process(target=self.recieve, args=())
+            self.process.start()
             self.connected = True
             print(self.username, " is connected")
         else:
@@ -37,22 +37,23 @@ class User:
             ("2/" + self.username + "*" + self.password + "*" + self.email).encode(),
         )
         self.loggedin = True
-        self.querying = True
-        data = self.s.recv(1024)
-        if len(data) > 0:
-            text = repr(data.decode())
-            if "1" == text[0]:
-                print(self.username, " register response is:", text)
-            elif "2" == text[0]:
-                print(self.username, " login response is:", text)
-            elif "3" == text[0]:
-                print(self.username, " ranking is response is:", text)
-            elif "4" == text[0]:
-                print(self.username, " Connected list response is:", text)
-            elif "5" == text[0]:
-                print(self.username, " new match response is:", text)
+        # self.querying = True
+        # print(self.username + " q: True")
+        # data = self.s.recv(1024)
+        # if len(data) > 0:
+        #     text = repr(data.decode())
+        #     if "1" == text[0]:
+        #         print(self.username, " register response is:", text)
+        #     elif "2" == text[0]:
+        #         print(self.username, " login response is:", text)
+        #     elif "3" == text[0]:
+        #         print(self.username, " ranking is response is:", text)
+        #     elif "4" == text[0]:
+        #         print(self.username, " Connected list response is:", text)
+        #     elif "5" == text[0]:
+        #         print(self.username, " new match response is:", text)
 
-            self.querying = False
+        #     self.querying = False
 
     def login(self):
         self.s.sendall(("2/" + self.username + "*" + self.password).encode())
@@ -63,29 +64,40 @@ class User:
             ("2/" + self.username + "*" + self.password).encode(),
         )
         self.loggedin = True
-        self.querying = True
-        data = self.s.recv(1024)
-        if len(data) > 0:
-            text = repr(data.decode())
-            if "1" == text[0]:
-                print(self.username, " register response is:", text)
-            elif "2" == text[0]:
-                print(self.username, " login response is:", text)
-            elif "3" == text[0]:
-                print(self.username, " ranking is response is:", text)
-            elif "4" == text[0]:
-                print(self.username, " Connected list response is:", text)
-            elif "5" == text[0]:
-                print(self.username, " new match response is:", text)
+        # self.querying = True
+        # data = self.s.recv(1024)
+        # if len(data) > 0:
+        #     text = repr(data.decode())
+        #     if "1" == text[0]:
+        #         print(self.username, " register response is:", text)
+        #     elif "2" == text[0]:
+        #         print(self.username, " login response is:", text)
+        #     elif "3" == text[0]:
+        #         print(self.username, " ranking is response is:", text)
+        #     elif "4" == text[0]:
+        #         print(self.username, " Connected list response is:", text)
+        #     elif "5" == text[0]:
+        #         print(self.username, " new match response is:", text)
 
-            self.querying = False
+        #     self.querying = False
     def recieve(self):
         i = 0
         while True:
-            
-            if i > 1000:
+            data = self.s.recv(1024)
+            if len(data) > 0:
+                text = repr(data.decode())
                 self.querying = False
-                i = -1
+                print(self.username,text)
+                # if "1" == text[0]:
+                #     print(self.username, " register response is:", text)
+                # elif "2" == text[0]:
+                #     print(self.username, " login response is:", text)
+                # elif "3" == text[0]:
+                #     print(self.username, " ranking is response is:", text)
+                # elif "4" == text[0]:
+                #     print(self.username, " Connected list response is:", text)
+                # elif "5" == text[0]:
+                #     print(self.username, " new match response is:", text)
             i += 1
 
     def disconnect(self):
@@ -97,10 +109,10 @@ class User:
 
             disconect_msg = "0/"
             self.s.sendall(disconect_msg.encode())
-            # self.process.terminate()
+            self.process.terminate()
             self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.connected = False
-            self.loggedins = False
+            self.loggedin = False
             print(self.username + " is disconnected")
         else:
             print(self.username, " is not connected")
@@ -171,9 +183,8 @@ class Manager:
                 idxs = [int(i) for i in text.split(" ")]
                 users = [self.users[int(i)] for i in idx]
         for user, idx in zip(users, idxs):
-            user.connect("192.168.56.102", 9050)
+            user.connect("192.168.56.102", 9060)
             self.df.connected[idx] = True
-            self.df.loggedin[idx] = True
 
     def disconnect(self, all=False):
         if all:
@@ -205,19 +216,19 @@ class Manager:
         )
         text = input(">>")
         if "a" in text:
-            print(self.df[["Username", "email"]])
+            print(self.df)
             return
         if "c" in text:
             if len(text) == 2:
-                print(self.df.query("connected==False")[["Username", "email"]])
+                print(self.df.query("connected==False"))
                 return
-            print(self.df.query("connected==True")[["Username", "email"]])
+            print(self.df.query("connected==True"))
             return
         if "c" in text:
             if len(text) == 2:
-                print(self.df.query("loggedin==False")[["Username", "email"]])
+                print(self.df.query("loggedin==False"))
                 return
-            print(self.df.query("loggedin==True")[["Username", "email"]])
+            print(self.df.query("loggedin==True"))
             return
 
     def run(self):
@@ -263,11 +274,14 @@ def auto(manager):
     manager.update_query()
     print(manager.df)
     input("Disconect")
+    manager.update_query()
+    print(manager.df)
     print("--------------------------------")
     print("Disconnecting...")
     print("--------------------------------")
     manager.disconnect(True)
     sleep(10)
+    input("Reconnect")
     print("--------------------------------")
     print("Connecting...")
     print("--------------------------------")
@@ -276,11 +290,13 @@ def auto(manager):
     print("--------------------------------")
     print("Logging in...")
     print("--------------------------------")
-    manager.loggin(True)
+    manager.login(True)
     manager.update_query()
     print(manager.df)
     sleep(10)
     input("Continue")
+    manager.update_query()
+    print(manager.df)
     print("--------------------------------")
     print("few disconnects...")
     print("--------------------------------")
