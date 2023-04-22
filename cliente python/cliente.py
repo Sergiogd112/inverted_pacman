@@ -3,6 +3,9 @@ from time import sleep
 import multiprocessing
 import pandas as pd
 
+IP = "192.168.56.102"
+PORT = 9060
+
 
 class User:
     def __init__(self, username=None, password=None, email=None):
@@ -80,6 +83,7 @@ class User:
         #         print(self.username, " new match response is:", text)
 
         #     self.querying = False
+
     def recieve(self):
         i = 0
         while True:
@@ -87,7 +91,7 @@ class User:
             if len(data) > 0:
                 text = repr(data.decode())
                 self.querying = False
-                print(self.username,text)
+                print(self.username, text)
                 # if "1" == text[0]:
                 #     print(self.username, " register response is:", text)
                 # elif "2" == text[0]:
@@ -183,7 +187,7 @@ class Manager:
                 idxs = [int(i) for i in text.split(" ")]
                 users = [self.users[int(i)] for i in idx]
         for user, idx in zip(users, idxs):
-            user.connect("192.168.56.102", 9060)
+            user.connect(IP, PORT)
             self.df.connected[idx] = True
 
     def disconnect(self, all=False):
@@ -311,7 +315,7 @@ def auto(manager):
     print("Reconnecting and reloging...")
     print("--------------------------------")
     for i in range(5):
-        manager.users[i].connect()
+        manager.users[i].connect(IP,PORT)
         manager.df.connected[i] = True
         manager.users[i].login()
         manager.df.loggedin[i] = True
