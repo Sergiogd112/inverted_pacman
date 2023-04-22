@@ -10,16 +10,17 @@ class User:
         self.password = password
         self.email = email
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        with open(self.username + ".txt", "w") as f:
-            f.write("")
+        # with open(self.username + ".txt", "w") as f:
+        #     f.write("")
         self.connected = False
         self.loggedin = False
+        self.querying = False
 
     def connect(self, host="", port=0):
         if not self.connected:
             self.s.connect((host, port))
-            self.process = multiprocessing.Process(target=self.recieve, args=())
-            self.process.start()
+            # self.process = multiprocessing.Process(target=self.recieve, args=())
+            # self.process.start()
             self.connected = True
             print(self.username, " is connected")
         else:
@@ -29,24 +30,75 @@ class User:
         self.s.sendall(
             ("1/" + self.username + "*" + self.password + "*" + self.email).encode()
         )
+        print(
+            "sent: ",
+            "1/" + self.username + "*" + self.password + "*" + self.email,
+            " as ",
+            ("2/" + self.username + "*" + self.password + "*" + self.email).encode(),
+        )
         self.loggedin = True
+        self.querying = True
+        data = self.s.recv(1024)
+        if len(data) > 0:
+            text = repr(data.decode())
+            if "1" == text[0]:
+                print(self.username, " register response is:", text)
+            elif "2" == text[0]:
+                print(self.username, " login response is:", text)
+            elif "3" == text[0]:
+                print(self.username, " ranking is response is:", text)
+            elif "4" == text[0]:
+                print(self.username, " Connected list response is:", text)
+            elif "5" == text[0]:
+                print(self.username, " new match response is:", text)
+
+            self.querying = False
 
     def login(self):
         self.s.sendall(("2/" + self.username + "*" + self.password).encode())
+        print(
+            "sent: ",
+            "2/" + self.username + "*" + self.password,
+            " as ",
+            ("2/" + self.username + "*" + self.password).encode(),
+        )
         self.loggedin = True
+        self.querying = True
+        data = self.s.recv(1024)
+        if len(data) > 0:
+            text = repr(data.decode())
+            if "1" == text[0]:
+                print(self.username, " register response is:", text)
+            elif "2" == text[0]:
+                print(self.username, " login response is:", text)
+            elif "3" == text[0]:
+                print(self.username, " ranking is response is:", text)
+            elif "4" == text[0]:
+                print(self.username, " Connected list response is:", text)
+            elif "5" == text[0]:
+                print(self.username, " new match response is:", text)
 
+            self.querying = False
     def recieve(self):
+        i = 0
         while True:
-            data = self.s.recv(1024)
-            if len(data) > 0:
-                with open(self.name + ".txt", "a") as f:
-                    f.write(repr(data.decode()) + "\n---\n---\n")
+            
+            if i > 1000:
+                self.querying = False
+                i = -1
+            i += 1
 
     def disconnect(self):
         if self.connected:
+            i = 0
+            while self.querying and i < 100:
+                i += 1
+                sleep(0.1)
+
             disconect_msg = "0/"
             self.s.sendall(disconect_msg.encode())
-            self.process.terminate()
+            # self.process.terminate()
+            self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.connected = False
             self.loggedins = False
             print(self.username + " is disconnected")
@@ -60,7 +112,11 @@ class Manager:
         self.users = [
             User(row.Username, row.password, row.email) for _, row in self.df.iterrows()
         ]
-        self.df=self.df.assign(connected=False, loggedin=False)
+        self.df = self.df.assign(connected=False, loggedin=False, querying=False)
+
+    def update_query(self):
+        for n, user in enumerate(self.users):
+            self.df.querying[n] = user.querying
 
     def register(self, all=False):
         if all:
@@ -79,6 +135,7 @@ class Manager:
         for user, idx in zip(users, idxs):
             user.register()
             self.df.loggedin[idx] = True
+            sleep(0.5)
 
     def login(self, all=False):
         if all:
@@ -97,6 +154,7 @@ class Manager:
         for user, idx in zip(users, idxs):
             user.login()
             self.df.loggedin[idx] = True
+            sleep(0.5)
 
     def connect(self, all=False):
         if all:
@@ -113,7 +171,7 @@ class Manager:
                 idxs = [int(i) for i in text.split(" ")]
                 users = [self.users[int(i)] for i in idx]
         for user, idx in zip(users, idxs):
-            user.connect("192.168.56.102", 9060)
+            user.connect("192.168.56.102", 9050)
             self.df.connected[idx] = True
             self.df.loggedin[idx] = True
 
@@ -187,6 +245,7 @@ class Manager:
                 self.disconnect()
             elif "q" == text[0]:
                 break
+            self.update_query()
         print("exiting...")
         self.disconnect(True)
 
@@ -197,29 +256,31 @@ def auto(manager):
     print("Connecting...")
     print("--------------------------------")
     manager.connect(True)
-    sleep(1)
     print("--------------------------------")
     print("Registering...")
     print("--------------------------------")
     manager.register(True)
+    manager.update_query()
     print(manager.df)
-    sleep(1)
+    input("Disconect")
     print("--------------------------------")
     print("Disconnecting...")
     print("--------------------------------")
     manager.disconnect(True)
-    sleep(1)
+    sleep(10)
     print("--------------------------------")
     print("Connecting...")
     print("--------------------------------")
     manager.connect(True)
-    sleep(1)
+    sleep(10)
     print("--------------------------------")
     print("Logging in...")
     print("--------------------------------")
     manager.loggin(True)
+    manager.update_query()
     print(manager.df)
-    sleep(1)
+    sleep(10)
+    input("Continue")
     print("--------------------------------")
     print("few disconnects...")
     print("--------------------------------")
@@ -228,6 +289,7 @@ def auto(manager):
         manager.df.connected[i] = False
         manager.df.loggedin[i] = False
         sleep(1)
+    manager.update_query()
     print(manager.df)
     print("--------------------------------")
     print("Reconnecting and reloging...")
@@ -238,8 +300,9 @@ def auto(manager):
         manager.users[i].login()
         manager.df.loggedin[i] = True
         sleep(1)
+    manager.update_query()
     print(manager.df)
-    sleep(1)
+    sleep(10)
     print("--------------------------------")
     print("Disconnecting...")
     print("--------------------------------")
