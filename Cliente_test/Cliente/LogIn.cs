@@ -32,7 +32,7 @@ namespace Version_1
         bool Logeado = false;
         bool Consultas = false;
         string ip = "192.168.56.102";
-        int puerto = 9050;
+        int puerto = 9060;
         public string mensaje_chat;
         public string chat_autor;
         string juego = "Inverted-Pacman";
@@ -170,7 +170,7 @@ namespace Version_1
                 byte[] msg2 = new byte[100];
                 server.Receive(msg2);
                 Consultas = true;
-                string[] error_servidor = Encoding.ASCII.GetString(msg2).Split('\0');
+                string[] error_servidor = Encoding.ASCII.GetString(msg2).Split('\x04');
                 if (error_servidor[0] == "")
                 {
                     MessageBox.Show("Servidor en tareas de mantenimiento, vuelva a conectarse más tarde");
