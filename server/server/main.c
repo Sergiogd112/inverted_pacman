@@ -9,8 +9,7 @@ void UpdateConnectedThread(struct Nodes **head_ref) {
 void *AtenderThread(ThreadArgs * threadArgs) {
     int pos=threadArgs->i;
     ConnectedList *list =threadArgs->list;
-    struct  Node *node=&list->connections[pos];
-    int sock_conn = node->sockfd;
+    int sock_conn = list->connections[pos].sockfd;
     printf("%d\n", sock_conn);
 
 
@@ -71,7 +70,7 @@ void *AtenderThread(ThreadArgs * threadArgs) {
 
                 if (res == 1) {
                     strcat(response, "1");
-                    strcpy(node->name, name);
+                    strcpy(list->connections[pos].name, name);
                     int n = connected_to_string(list, datos);
                     push_connected(list, datos, n);
                 } else if (res == -1)
@@ -88,8 +87,8 @@ void *AtenderThread(ThreadArgs * threadArgs) {
                 res = login(conn, name, password);
                 if (res != 0) {
                     strcat(response, "1");
-                    node->id = res;
-                    strcpy(node->name, name);
+                    list->connections[pos].id = res;
+                    strcpy(list->connections[pos].name, name);
                     int n = connected_to_string(list, datos);
                     push_connected(list, datos, n);
                 } else if (res == -1)
@@ -135,9 +134,9 @@ void *AtenderThread(ThreadArgs * threadArgs) {
                 printf("Invalid choice!\n");
                 strcat(response, "error");
         }
-        if (node->sending_connected == 1) {
+        if (list->connections[pos].sending_connected == 1) {
             printf("waiting to finish sending connected");
-            while (node->sending_connected == 1)
+            while (list->connections[pos].sending_connected == 1)
                 99999 * 99999;
         }
         strcat(response, "\x04");
@@ -148,8 +147,8 @@ void *AtenderThread(ThreadArgs * threadArgs) {
     close(sock_conn);
     mysql_close(conn);
     pthread_mutex_lock(&mutex); //No me interrumpas ahora
-    printf("Removing: %s %d", name, node->idx);
-    remove_node_from_list(list, node->idx);
+    printf("Removing: %s %d", name, pos);
+    remove_node_from_list(list, pos);
     print_idx(list);
     pthread_mutex_unlock(&mutex); //ya puedes interrumpirme
 
