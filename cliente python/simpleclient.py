@@ -21,7 +21,7 @@ def main():
     # create a socket object
     # get local machine name
     host = "192.168.56.102"
-    port = 9050
+    port = 9060
     input("Start:")
     # connection to hostname on the port.
     [s.connect((host, port)) for s in sockets]
