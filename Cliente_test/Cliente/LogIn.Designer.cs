@@ -56,7 +56,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.num_usuarios = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.jugar = new System.Windows.Forms.Button();
             this.loading_text = new System.Windows.Forms.Label();
             this.Close_Btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -127,7 +126,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(281, 516);
+            this.dataGridView1.Size = new System.Drawing.Size(281, 617);
             this.dataGridView1.TabIndex = 6;
             // 
             // connlbl
@@ -348,20 +347,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Usuarios Connectados";
             // 
-            // jugar
-            // 
-            this.jugar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jugar.ForeColor = System.Drawing.Color.White;
-            this.jugar.Location = new System.Drawing.Point(409, 658);
-            this.jugar.Margin = new System.Windows.Forms.Padding(4);
-            this.jugar.Name = "jugar";
-            this.jugar.Size = new System.Drawing.Size(281, 97);
-            this.jugar.TabIndex = 24;
-            this.jugar.Text = "Jugar";
-            this.jugar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.jugar.UseVisualStyleBackColor = true;
-            this.jugar.Visible = false;
-            // 
             // loading_text
             // 
             this.loading_text.AutoSize = true;
@@ -390,7 +375,6 @@
             this.ClientSize = new System.Drawing.Size(1469, 764);
             this.Controls.Add(this.Close_Btn);
             this.Controls.Add(this.loading_text);
-            this.Controls.Add(this.jugar);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
@@ -448,7 +432,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label num_usuarios;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button jugar;
         private System.Windows.Forms.TextBox connect_status;
         private System.Windows.Forms.Label loading_text;
         private System.Windows.Forms.Button Close_Btn;
