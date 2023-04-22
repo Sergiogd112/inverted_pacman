@@ -101,7 +101,6 @@ namespace Version_1
 
         public void Desconectar()
         {
-            jugar.Visible = false;
             connect_status.BackColor = default(Color);
             num_usuarios.Text = "No disponible";
             //dataGridView1.Columns[0].HeaderText = "Usuarios connectados";
@@ -129,7 +128,6 @@ namespace Version_1
 
         public void PonerEnGrid(string[] mensaje, int hack)
         {
-            jugar.Visible = true;
             dataGridView1.Rows.Clear();
             dataGridView1.ColumnCount = 1;
             dataGridView1.DefaultCellStyle.BackColor = Color.FromArgb(135, 206, 235);
@@ -275,119 +273,119 @@ namespace Version_1
                                 this.Invoke(delegado, new object[] { mensaje6, hack6 });
                             }
                             break;
-                        case 7:
-                            int hack7 = Convert.ToInt32(trozos[1]);
-                            int partida = Convert.ToInt32(trozos[3]);
+                        //case 7:
+                        //    int hack7 = Convert.ToInt32(trozos[1]);
+                        //    int partida = Convert.ToInt32(trozos[3]);
                             
                            
-                            if (hack7 == 0)// respuesta para el anfitrion
-                            {
-                                Del_ParaEmpezarPartida delegado7 = new Del_ParaEmpezarPartida(juego, IniciarPartida);
-                                this.Invoke(delegado7, new object[] { hack7, partida });
-                                int num_invitados = Convert.ToInt32(trozos[4]);
+                        //    if (hack7 == 0)// respuesta para el anfitrion
+                        //    {
+                        //        Del_ParaEmpezarPartida delegado7 = new Del_ParaEmpezarPartida(juego, IniciarPartida);
+                        //        this.Invoke(delegado7, new object[] { hack7, partida });
+                        //        int num_invitados = Convert.ToInt32(trozos[4]);
 
-                                //MessageBox.Show("Los jugadores a los que se ha invitado a la partida " + partida);
-                                string[] invitados = new string[num_invitados];
-                                for (int i = 0; i < num_invitados; i++)
-                                {
-                                    invitados[i] = (trozos[i + 5].Split('\0')[0]);
-                                    //MessageBox.Show(invitados[i]);
+                        //        //MessageBox.Show("Los jugadores a los que se ha invitado a la partida " + partida);
+                        //        string[] invitados = new string[num_invitados];
+                        //        for (int i = 0; i < num_invitados; i++)
+                        //        {
+                        //            invitados[i] = (trozos[i + 5].Split('\0')[0]);
+                        //            //MessageBox.Show(invitados[i]);
 
-                                }
+                        //        }
 
-                            }
+                        //    }
 
-                            else //respuesta para el invitado
-                            {
-                                string anfitrion = trozos[4];
-                                string MessageBoxTitle = "Invitación de partida";
-                                string MessageBoxContent = "Hola " + userBox.Text + " " + anfitrion + " te ha retado a una partida de" + juego + "\nDeseas aceptarla?";
-                                string respuesta_invitation;
-                                DialogResult result = MessageBox.Show(MessageBoxContent, MessageBoxTitle, MessageBoxButtons.YesNo);
-                                switch (result)
-                                {
-                                    case DialogResult.Yes:
-                                        //MessageBox.Show("La partida se iniciará en unos instantes");
-                                        respuesta_invitation = "8/" + partida + "/" + anfitrion + "/" + userBox.Text + "/" + Convert.ToString(result) + "/1";
-                                        byte[] accept = System.Text.Encoding.ASCII.GetBytes(respuesta_invitation);
-                                        server.Send(accept);
-                                        break;
-                                    case DialogResult.No:
-                                        //MessageBox.Show("Juegas o eres un llorón?");
-                                        respuesta_invitation = "8/" + partida + "/" + anfitrion + "/" + userBox.Text + "/" + Convert.ToString(result) + "/0";
-                                        byte[] decline = System.Text.Encoding.ASCII.GetBytes(respuesta_invitation);
-                                        server.Send(decline);
-                                        break;
-                                }
+                        //    else //respuesta para el invitado
+                        //    {
+                        //        string anfitrion = trozos[4];
+                        //        string MessageBoxTitle = "Invitación de partida";
+                        //        string MessageBoxContent = "Hola " + userBox.Text + " " + anfitrion + " te ha retado a una partida de" + juego + "\nDeseas aceptarla?";
+                        //        string respuesta_invitation;
+                        //        DialogResult result = MessageBox.Show(MessageBoxContent, MessageBoxTitle, MessageBoxButtons.YesNo);
+                        //        switch (result)
+                        //        {
+                        //            case DialogResult.Yes:
+                        //                //MessageBox.Show("La partida se iniciará en unos instantes");
+                        //                respuesta_invitation = "8/" + partida + "/" + anfitrion + "/" + userBox.Text + "/" + Convert.ToString(result) + "/1";
+                        //                byte[] accept = System.Text.Encoding.ASCII.GetBytes(respuesta_invitation);
+                        //                server.Send(accept);
+                        //                break;
+                        //            case DialogResult.No:
+                        //                //MessageBox.Show("Juegas o eres un llorón?");
+                        //                respuesta_invitation = "8/" + partida + "/" + anfitrion + "/" + userBox.Text + "/" + Convert.ToString(result) + "/0";
+                        //                byte[] decline = System.Text.Encoding.ASCII.GetBytes(respuesta_invitation);
+                        //                server.Send(decline);
+                        //                break;
+                        //        }
 
-                            }
-                            break;
-
-
-                        case 8:
-                            int hack8 = Convert.ToInt32(trozos[1]);
-                            int partida8 = Convert.ToInt32(trozos[3]);
-                            int startGame  = 0;
-
-                            if (hack8 == 0)// respuesta para invitado
-                            {
-
-                                MessageBox.Show("La partida " + partida8 + "de Inverted-Pacman se canceló");
-                            }
-                            else if (hack8 == 1)//respuesta para anfitrion de los distintos invitados
-                            {
-                                string invitado = trozos[4];
-                                string respuesta_inv = trozos[5];
-                                MessageBox.Show("Respuesta del invitado " + invitado + "a la partida de Inverted-Pacman " + partida8 + "es " + respuesta_inv);
-                                if (respuesta_inv == "Yes")
-                                {
-                                    string partidaStart = "10/" + invitado + "/" + partida8;
-                                    startGame = startGame + 1;
-
-                                    byte[] gameStart = System.Text.Encoding.ASCII.GetBytes(partidaStart);
-                                    server.Send(gameStart);
-                                    /* if (startGame == 1)
-                                     {
-                                         DelegadoParaEmpezarPartida delegado8 = new DelegadoParaEmpezarPartida(IniciarPartida);
-                                         this.Invoke(delegado8, new object[] {hack8, partida8 });
-                                     }
-                                     */
-
-                                }
+                        //    }
+                        //    break;
 
 
+                        //case 8:
+                        //    int hack8 = Convert.ToInt32(trozos[1]);
+                        //    int partida8 = Convert.ToInt32(trozos[3]);
+                        //    int startGame  = 0;
 
-                            }
-                            else if (hack8 == 2)// respuesta para anfitrion para cancelar la partida
-                            {
-                                MessageBox.Show("La partida " + partida8 + "del juego " + juego + " se canceló");
-                                Del_ParaFinalizarPartida delegado8 = new Del_ParaFinalizarPartida(FinalizarPartida);
-                                this.Invoke(delegado8, new object[] { hack8, partida8 });
-                            }
-                            else if (hack8 == -1)//respuesta para el invitado si el anfitrion se desconnecta
-                            {
-                                MessageBox.Show("El anfitrion se desconecto");
-                            }
+                        //    if (hack8 == 0)// respuesta para invitado
+                        //    {
+
+                        //        MessageBox.Show("La partida " + partida8 + "de Inverted-Pacman se canceló");
+                        //    }
+                        //    else if (hack8 == 1)//respuesta para anfitrion de los distintos invitados
+                        //    {
+                        //        string invitado = trozos[4];
+                        //        string respuesta_inv = trozos[5];
+                        //        MessageBox.Show("Respuesta del invitado " + invitado + "a la partida de Inverted-Pacman " + partida8 + "es " + respuesta_inv);
+                        //        if (respuesta_inv == "Yes")
+                        //        {
+                        //            string partidaStart = "10/" + invitado + "/" + partida8;
+                        //            startGame = startGame + 1;
+
+                        //            byte[] gameStart = System.Text.Encoding.ASCII.GetBytes(partidaStart);
+                        //            server.Send(gameStart);
+                        //            /* if (startGame == 1)
+                        //             {
+                        //                 DelegadoParaEmpezarPartida delegado8 = new DelegadoParaEmpezarPartida(IniciarPartida);
+                        //                 this.Invoke(delegado8, new object[] {hack8, partida8 });
+                        //             }
+                        //             */
+
+                        //        }
 
 
 
-                            break;
+                        //    }
+                        //    else if (hack8 == 2)// respuesta para anfitrion para cancelar la partida
+                        //    {
+                        //        MessageBox.Show("La partida " + partida8 + "del juego " + juego + " se canceló");
+                        //        Del_ParaFinalizarPartida delegado8 = new Del_ParaFinalizarPartida(FinalizarPartida);
+                        //        this.Invoke(delegado8, new object[] { hack8, partida8 });
+                        //    }
+                        //    else if (hack8 == -1)//respuesta para el invitado si el anfitrion se desconnecta
+                        //    {
+                        //        MessageBox.Show("El anfitrion se desconecto");
+                        //    }
 
-                        case 9:
-                            chat_autor = trozos[1];
-                            mensaje_chat = trozos[2];
 
-                            DelegadoParaEnviarChatMain delegado9 = new DelegadoParaEnviarChatMain(EnviarChat);
-                            this.Invoke(delegado9, new object[] { chat_autor, mensaje_chat });
 
-                            break;
+                        //    break;
 
-                        case 10:
-                            int hack10 = Convert.ToInt32(trozos[1]);
-                            int partida10 = Convert.ToInt32(trozos[2]);
-                            Del_ParaEmpezarPartida delegado10 = new Del_ParaEmpezarPartida(IniciarPartida);
-                            this.Invoke(delegado10, new object[] { hack10, partida10 });
-                            break;
+                        //case 9:
+                        //    chat_autor = trozos[1];
+                        //    mensaje_chat = trozos[2];
+
+                        //    DelegadoParaEnviarChatMain delegado9 = new DelegadoParaEnviarChatMain(EnviarChat);
+                        //    this.Invoke(delegado9, new object[] { chat_autor, mensaje_chat });
+
+                        //    break;
+
+                        //case 10:
+                        //    int hack10 = Convert.ToInt32(trozos[1]);
+                        //    int partida10 = Convert.ToInt32(trozos[2]);
+                        //    Del_ParaEmpezarPartida delegado10 = new Del_ParaEmpezarPartida(IniciarPartida);
+                        //    this.Invoke(delegado10, new object[] { hack10, partida10 });
+                        //    break;
                     }
 
                 }
@@ -604,7 +602,6 @@ namespace Version_1
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 atender.Abort();
                 server.Send(msg);
-                jugar.Visible = false;
                 connect_status.BackColor = default(Color);
                 num_usuarios.Text = "No disponible";
                 //dataGridView1.Columns[0].HeaderText = "Usuarios connectados";
