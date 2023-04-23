@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS InvertedPacman;
-CREATE DATABASE InvertedPacman;
-USE InvertedPacman;
+DROP DATABASE IF EXISTS T1_InvertedPacman;
+CREATE DATABASE T1_InvertedPacman;
+USE T1_InvertedPacman;
 CREATE TABLE usuarios (
     ID int PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nombre varchar(256) NOT NULL,
