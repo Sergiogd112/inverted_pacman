@@ -31,7 +31,8 @@ namespace Version_1
         bool Conectado = false;
         bool Logeado = false;
         bool Consultas = false;
-        string ip = "147.83.117.22";
+        string ip = "192.168.56.102";
+        //string ip = "147.83.117.22";
         int puerto = 50053;
         public string mensaje_chat;
         public string chat_autor;
