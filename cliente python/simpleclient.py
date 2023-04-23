@@ -21,8 +21,8 @@ def main():
     # create a socket object
     # get local machine name
     host = "147.83.117.22"
-    port = 50053
-    input("Start:")
+    port = 5053
+    a=input("Start:")
     # connection to hostname on the port.
     [s.connect((host, port)) for s in sockets]
     # send a thank you message to the client.
