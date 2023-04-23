@@ -34,7 +34,7 @@ void *AtenderThread(ThreadArgs * threadArgs) {
     char name[20];
     conn = mysql_init(NULL);
     char user[30], email[30], password[30];
-    if (!mysql_real_connect(conn, SERVER, USER, PASSWORD, DATABASE, 0, NULL, 0)) {
+    if (!mysql_real_connect(conn, DBSERVER, USER, PASSWORD, DATABASE, 0, NULL, 0)) {
         fprintf(stderr, "%s\n", mysql_error(conn));
         exit(1);
     }
@@ -60,9 +60,7 @@ void *AtenderThread(ThreadArgs * threadArgs) {
         printf("Peticion: %s\n", request);
 
         char *p = strtok(request, "/");
-//        if (p==NULL)
-//            vacios++;
-//            continue;
+
         code = atoi(p); //convierte el string p al entero codigo
         char user[20];
         int res;

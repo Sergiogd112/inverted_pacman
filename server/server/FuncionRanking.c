@@ -14,7 +14,7 @@ int Devuelveme_Ranking(char res[1000]) {
     }
 
     //Inicializar la conexion
-    conn = mysql_real_connect(conn, "localhost", "root", "mysql", "InvertedPacman", 0, NULL, 0);
+    conn = mysql_real_connect(conn,DBSERVER, USER, PASSWORD, DATABASE, 0, NULL, 0);
     if (conn == NULL) {
         printf("Error al inicializar la conexion: %u %s\n",
                mysql_errno(conn), mysql_error(conn));
