@@ -149,6 +149,7 @@ int connected_to_string(ConnectedList *list, char res[2000])
 {
     int i;
     int count = 0;
+    res[0]='\0'
     for (i = 0; i < MAXUSERS; i++)
     {
         if (list->connections[i].using == 1 && list->connections[i].id != -1)
