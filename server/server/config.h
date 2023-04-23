@@ -6,5 +6,5 @@
 #define USER "root"
 #define PASSWORD "mysql"
 #define DATABASE "T1_InvertedPacman"
-#define PORT 50053
+#define PORT 5053
 #endif
