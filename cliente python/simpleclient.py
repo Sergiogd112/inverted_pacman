@@ -12,7 +12,7 @@ def receive(s, name):
 def main():
     name_pwd = [
         ("sergio", "teo"),
-        ("Anna", "teo"),
+        ("Ana", "teo"),
         ("Carlos", "teo"),
     ]
     sockets = [
@@ -20,8 +20,9 @@ def main():
     ]
     # create a socket object
     # get local machine name
-    host = "147.83.117.22"
-    port = 5053
+    # host = "147.83.117.22"
+    host = "192.168.56.102"
+    port = 5052
     a=input("Start:")
     # connection to hostname on the port.
     [s.connect((host, port)) for s in sockets]
