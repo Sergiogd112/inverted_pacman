@@ -68,51 +68,57 @@
             // 
             // acceptButton
             // 
-            this.acceptButton.Location = new System.Drawing.Point(16, 246);
+            this.acceptButton.Location = new System.Drawing.Point(12, 200);
+            this.acceptButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.acceptButton.Name = "acceptButton";
-            this.acceptButton.Size = new System.Drawing.Size(75, 23);
-            this.acceptButton.TabIndex = 0;
+            this.acceptButton.Size = new System.Drawing.Size(56, 19);
+            this.acceptButton.TabIndex = 4;
             this.acceptButton.Text = "Log in";
             this.acceptButton.UseVisualStyleBackColor = true;
             this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
             // 
             // userBox
             // 
-            this.userBox.Location = new System.Drawing.Point(88, 67);
+            this.userBox.Location = new System.Drawing.Point(66, 54);
+            this.userBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.userBox.Name = "userBox";
-            this.userBox.Size = new System.Drawing.Size(144, 22);
+            this.userBox.Size = new System.Drawing.Size(109, 20);
             this.userBox.TabIndex = 1;
             // 
             // userLabel
             // 
             this.userLabel.AutoSize = true;
-            this.userLabel.Location = new System.Drawing.Point(87, 45);
+            this.userLabel.Location = new System.Drawing.Point(65, 37);
+            this.userLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(36, 16);
+            this.userLabel.Size = new System.Drawing.Size(29, 13);
             this.userLabel.TabIndex = 2;
             this.userLabel.Text = "User";
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(85, 92);
+            this.passwordLabel.Location = new System.Drawing.Point(64, 75);
+            this.passwordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(67, 16);
+            this.passwordLabel.Size = new System.Drawing.Size(53, 13);
             this.passwordLabel.TabIndex = 4;
             this.passwordLabel.Text = "Password";
             // 
             // passwordBox
             // 
-            this.passwordBox.Location = new System.Drawing.Point(88, 111);
+            this.passwordBox.Location = new System.Drawing.Point(66, 90);
+            this.passwordBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.passwordBox.Name = "passwordBox";
-            this.passwordBox.Size = new System.Drawing.Size(144, 22);
+            this.passwordBox.Size = new System.Drawing.Size(109, 20);
             this.passwordBox.TabIndex = 3;
             // 
             // registerButton
             // 
-            this.registerButton.Location = new System.Drawing.Point(239, 246);
+            this.registerButton.Location = new System.Drawing.Point(179, 200);
+            this.registerButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(75, 23);
+            this.registerButton.Size = new System.Drawing.Size(56, 19);
             this.registerButton.TabIndex = 5;
             this.registerButton.Text = "Register";
             this.registerButton.UseVisualStyleBackColor = true;
@@ -122,38 +128,42 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(409, 135);
+            this.dataGridView1.Location = new System.Drawing.Point(307, 110);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(281, 617);
+            this.dataGridView1.Size = new System.Drawing.Size(211, 501);
             this.dataGridView1.TabIndex = 6;
             // 
             // connlbl
             // 
             this.connlbl.AutoSize = true;
-            this.connlbl.Location = new System.Drawing.Point(720, 63);
+            this.connlbl.Location = new System.Drawing.Point(540, 51);
+            this.connlbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.connlbl.Name = "connlbl";
-            this.connlbl.Size = new System.Drawing.Size(0, 16);
+            this.connlbl.Size = new System.Drawing.Size(0, 13);
             this.connlbl.TabIndex = 8;
             // 
             // Mostrar_Contraseña
             // 
             this.Mostrar_Contraseña.AutoSize = true;
-            this.Mostrar_Contraseña.Location = new System.Drawing.Point(90, 139);
+            this.Mostrar_Contraseña.Location = new System.Drawing.Point(68, 113);
+            this.Mostrar_Contraseña.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Mostrar_Contraseña.Name = "Mostrar_Contraseña";
-            this.Mostrar_Contraseña.Size = new System.Drawing.Size(124, 20);
-            this.Mostrar_Contraseña.TabIndex = 8;
+            this.Mostrar_Contraseña.Size = new System.Drawing.Size(101, 17);
+            this.Mostrar_Contraseña.TabIndex = 3;
             this.Mostrar_Contraseña.Text = "Show password";
             this.Mostrar_Contraseña.UseVisualStyleBackColor = true;
             this.Mostrar_Contraseña.CheckedChanged += new System.EventHandler(this.Mostrar_Contraseña_CheckedChanged);
             // 
             // Enviar_Consulta
             // 
-            this.Enviar_Consulta.Location = new System.Drawing.Point(125, 82);
+            this.Enviar_Consulta.Location = new System.Drawing.Point(94, 67);
+            this.Enviar_Consulta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Enviar_Consulta.Name = "Enviar_Consulta";
-            this.Enviar_Consulta.Size = new System.Drawing.Size(75, 23);
-            this.Enviar_Consulta.TabIndex = 9;
+            this.Enviar_Consulta.Size = new System.Drawing.Size(56, 19);
+            this.Enviar_Consulta.TabIndex = 11;
             this.Enviar_Consulta.Text = "Consult";
             this.Enviar_Consulta.UseVisualStyleBackColor = true;
             this.Enviar_Consulta.Click += new System.EventHandler(this.Enviar_Consulta_Click);
@@ -161,10 +171,11 @@
             // Consulta1
             // 
             this.Consulta1.AutoSize = true;
-            this.Consulta1.Location = new System.Drawing.Point(19, 29);
+            this.Consulta1.Location = new System.Drawing.Point(14, 24);
+            this.Consulta1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Consulta1.Name = "Consulta1";
-            this.Consulta1.Size = new System.Drawing.Size(78, 20);
-            this.Consulta1.TabIndex = 10;
+            this.Consulta1.Size = new System.Drawing.Size(65, 17);
+            this.Consulta1.TabIndex = 8;
             this.Consulta1.TabStop = true;
             this.Consulta1.Text = "Ranking";
             this.Consulta1.UseVisualStyleBackColor = true;
@@ -172,10 +183,11 @@
             // Consulta2
             // 
             this.Consulta2.AutoSize = true;
-            this.Consulta2.Location = new System.Drawing.Point(125, 29);
+            this.Consulta2.Location = new System.Drawing.Point(94, 24);
+            this.Consulta2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Consulta2.Name = "Consulta2";
-            this.Consulta2.Size = new System.Drawing.Size(102, 20);
-            this.Consulta2.TabIndex = 11;
+            this.Consulta2.Size = new System.Drawing.Size(83, 17);
+            this.Consulta2.TabIndex = 9;
             this.Consulta2.TabStop = true;
             this.Consulta2.Text = "Online users";
             this.Consulta2.UseVisualStyleBackColor = true;
@@ -183,10 +195,11 @@
             // Consulta3
             // 
             this.Consulta3.AutoSize = true;
-            this.Consulta3.Location = new System.Drawing.Point(242, 29);
+            this.Consulta3.Location = new System.Drawing.Point(182, 24);
+            this.Consulta3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Consulta3.Name = "Consulta3";
-            this.Consulta3.Size = new System.Drawing.Size(95, 20);
-            this.Consulta3.TabIndex = 12;
+            this.Consulta3.Size = new System.Drawing.Size(78, 17);
+            this.Consulta3.TabIndex = 10;
             this.Consulta3.TabStop = true;
             this.Consulta3.Text = "New Game";
             this.Consulta3.UseVisualStyleBackColor = true;
@@ -198,9 +211,10 @@
             this.panel2.Controls.Add(this.Enviar_Consulta);
             this.panel2.Controls.Add(this.Consulta3);
             this.panel2.Controls.Add(this.Consulta2);
-            this.panel2.Location = new System.Drawing.Point(31, 627);
+            this.panel2.Location = new System.Drawing.Point(23, 509);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(357, 125);
+            this.panel2.Size = new System.Drawing.Size(269, 102);
             this.panel2.TabIndex = 13;
             // 
             // panel3
@@ -216,79 +230,86 @@
             this.panel3.Controls.Add(this.registerButton);
             this.panel3.Controls.Add(this.passwordBox);
             this.panel3.Controls.Add(this.acceptButton);
-            this.panel3.Location = new System.Drawing.Point(31, 35);
+            this.panel3.Location = new System.Drawing.Point(23, 28);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(357, 286);
+            this.panel3.Size = new System.Drawing.Size(269, 233);
             this.panel3.TabIndex = 14;
             // 
             // connect_status
             // 
             this.connect_status.BackColor = System.Drawing.Color.Red;
             this.connect_status.ForeColor = System.Drawing.Color.White;
-            this.connect_status.Location = new System.Drawing.Point(242, 8);
-            this.connect_status.Margin = new System.Windows.Forms.Padding(4);
+            this.connect_status.Location = new System.Drawing.Point(182, 6);
             this.connect_status.Name = "connect_status";
-            this.connect_status.Size = new System.Drawing.Size(99, 22);
+            this.connect_status.Size = new System.Drawing.Size(75, 20);
             this.connect_status.TabIndex = 19;
             this.connect_status.Text = "Desconectado";
             this.connect_status.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // emailBox
             // 
-            this.emailBox.Location = new System.Drawing.Point(90, 196);
+            this.emailBox.Location = new System.Drawing.Point(68, 159);
+            this.emailBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.emailBox.Name = "emailBox";
-            this.emailBox.Size = new System.Drawing.Size(144, 22);
-            this.emailBox.TabIndex = 10;
+            this.emailBox.Size = new System.Drawing.Size(109, 20);
+            this.emailBox.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(87, 177);
+            this.label1.Location = new System.Drawing.Point(65, 144);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 16);
+            this.label1.Size = new System.Drawing.Size(114, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "Email (Only for register)";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 48);
+            this.label2.Location = new System.Drawing.Point(19, 39);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(19, 16);
+            this.label2.Size = new System.Drawing.Size(17, 13);
             this.label2.TabIndex = 15;
             this.label2.Text = "IP";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 109);
+            this.label3.Location = new System.Drawing.Point(19, 89);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 16);
+            this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 16;
             this.label3.Text = "Port";
             // 
             // ipBox
             // 
-            this.ipBox.Location = new System.Drawing.Point(95, 45);
+            this.ipBox.Location = new System.Drawing.Point(71, 37);
+            this.ipBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ipBox.Name = "ipBox";
-            this.ipBox.Size = new System.Drawing.Size(152, 22);
-            this.ipBox.TabIndex = 17;
+            this.ipBox.Size = new System.Drawing.Size(115, 20);
+            this.ipBox.TabIndex = 6;
             this.ipBox.Text = "192.168.56.102";
             // 
             // portBox
             // 
-            this.portBox.Location = new System.Drawing.Point(95, 106);
+            this.portBox.Location = new System.Drawing.Point(71, 86);
+            this.portBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.portBox.Name = "portBox";
-            this.portBox.Size = new System.Drawing.Size(152, 22);
-            this.portBox.TabIndex = 18;
+            this.portBox.Size = new System.Drawing.Size(115, 20);
+            this.portBox.TabIndex = 7;
             this.portBox.Text = "50053";
             // 
             // Desconectar_Btn
             // 
-            this.Desconectar_Btn.Location = new System.Drawing.Point(726, 659);
+            this.Desconectar_Btn.Location = new System.Drawing.Point(544, 535);
+            this.Desconectar_Btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Desconectar_Btn.Name = "Desconectar_Btn";
-            this.Desconectar_Btn.Size = new System.Drawing.Size(659, 97);
-            this.Desconectar_Btn.TabIndex = 20;
+            this.Desconectar_Btn.Size = new System.Drawing.Size(494, 79);
+            this.Desconectar_Btn.TabIndex = 12;
             this.Desconectar_Btn.Text = "Disconnect";
             this.Desconectar_Btn.UseVisualStyleBackColor = true;
             this.Desconectar_Btn.Click += new System.EventHandler(this.Desconectar_Btn_Click);
@@ -297,9 +318,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.RosyBrown;
             this.pictureBox1.Image = global::Version_1.Properties.Resources.PortadaInvertedPacman;
-            this.pictureBox1.Location = new System.Drawing.Point(726, 35);
+            this.pictureBox1.Location = new System.Drawing.Point(544, 28);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(720, 535);
+            this.pictureBox1.Size = new System.Drawing.Size(540, 435);
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
@@ -310,29 +332,28 @@
             this.panel1.Controls.Add(this.ipBox);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(31, 385);
+            this.panel1.Location = new System.Drawing.Point(23, 313);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(357, 170);
+            this.panel1.Size = new System.Drawing.Size(269, 139);
             this.panel1.TabIndex = 22;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.num_usuarios);
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(409, 35);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel4.Location = new System.Drawing.Point(307, 28);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(281, 69);
+            this.panel4.Size = new System.Drawing.Size(211, 56);
             this.panel4.TabIndex = 23;
             // 
             // num_usuarios
             // 
             this.num_usuarios.AutoSize = true;
             this.num_usuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.num_usuarios.Location = new System.Drawing.Point(90, 47);
-            this.num_usuarios.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.num_usuarios.Location = new System.Drawing.Point(68, 38);
             this.num_usuarios.Name = "num_usuarios";
-            this.num_usuarios.Size = new System.Drawing.Size(107, 17);
+            this.num_usuarios.Size = new System.Drawing.Size(84, 13);
             this.num_usuarios.TabIndex = 1;
             this.num_usuarios.Text = "No disponible";
             // 
@@ -340,10 +361,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(24, 9);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(18, 7);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(231, 25);
+            this.label4.Size = new System.Drawing.Size(191, 20);
             this.label4.TabIndex = 0;
             this.label4.Text = "Usuarios Connectados";
             // 
@@ -351,28 +371,28 @@
             // 
             this.loading_text.AutoSize = true;
             this.loading_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loading_text.Location = new System.Drawing.Point(1036, 594);
-            this.loading_text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.loading_text.Location = new System.Drawing.Point(777, 483);
             this.loading_text.Name = "loading_text";
-            this.loading_text.Size = new System.Drawing.Size(0, 17);
+            this.loading_text.Size = new System.Drawing.Size(0, 13);
             this.loading_text.TabIndex = 25;
             // 
             // Close_Btn
             // 
-            this.Close_Btn.Location = new System.Drawing.Point(1371, 6);
+            this.Close_Btn.Location = new System.Drawing.Point(1028, 5);
+            this.Close_Btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Close_Btn.Name = "Close_Btn";
-            this.Close_Btn.Size = new System.Drawing.Size(75, 23);
-            this.Close_Btn.TabIndex = 26;
+            this.Close_Btn.Size = new System.Drawing.Size(56, 19);
+            this.Close_Btn.TabIndex = 13;
             this.Close_Btn.Text = "Close";
             this.Close_Btn.UseVisualStyleBackColor = true;
             this.Close_Btn.Click += new System.EventHandler(this.Close_Btn_Click);
             // 
             // LogIn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RosyBrown;
-            this.ClientSize = new System.Drawing.Size(1469, 764);
+            this.ClientSize = new System.Drawing.Size(1102, 621);
             this.Controls.Add(this.Close_Btn);
             this.Controls.Add(this.loading_text);
             this.Controls.Add(this.panel4);
@@ -384,10 +404,12 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "LogIn";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LogIn_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.LogIn_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
