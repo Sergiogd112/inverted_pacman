@@ -31,8 +31,8 @@ namespace Version_1
         bool Conectado = false;
         bool Logeado = false;
         bool Consultas = false;
-        string ip = "192.168.56.102";
-        int puerto = 9060;
+        string ip = "shiva.upc.es";
+        int puerto = 50053;
         public string mensaje_chat;
         public string chat_autor;
         string juego = "Inverted-Pacman";

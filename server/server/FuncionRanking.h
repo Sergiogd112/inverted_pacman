@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <mysql/mysql.h>
+#include "config.h"
 
 int Devuelveme_Ranking(char res[1000]);
 
