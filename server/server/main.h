@@ -19,9 +19,10 @@
 
 pthread_mutex_t main_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t update_connected_mutex = PTHREAD_MUTEX_INITIALIZER;
-typedef struct {
+typedef struct
+{
     int i;
     ConnectedList *list;
-}ThreadArgs;
+} ThreadArgs;
 
-#endif //SERVER_MAIN_H
+#endif // SERVER_MAIN_H

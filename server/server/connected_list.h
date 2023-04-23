@@ -7,7 +7,7 @@
 // server.h : Include file for standard system include files,
 // or project specific include files.
 
-//#pragma once
+// #pragma once
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,7 +20,8 @@
 
 #define MAXUSERS 200
 // TODO: Reference additional headers your program requires here.
-struct Node {
+struct Node
+{
     int id;
     int sockfd;
     char name[20];
@@ -29,7 +30,8 @@ struct Node {
     int using;
 };
 
-typedef struct {
+typedef struct
+{
     struct Node connections[MAXUSERS];
     int used;
     int idx;
@@ -56,4 +58,6 @@ void push_connected(ConnectedList *list, char res[200], int n);
 
 void print_Node(struct Node *node);
 
-#endif //SERVER_CONNECTED_LIST_H
+void print_Connections(ConnectedList *list);
+
+#endif // SERVER_CONNECTED_LIST_H

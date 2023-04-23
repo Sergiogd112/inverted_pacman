@@ -7,7 +7,7 @@
 // server.h : Include file for standard system include files,
 // or project specific include files.
 
-//#pragma once
+// #pragma once
 #include <stdio.h>
 #include <string.h>
 #include <mysql/mysql.h>
@@ -15,5 +15,4 @@
 
 int Devuelveme_Ranking(char res[1000]);
 
-#endif //SERVER_RANKING_H
-
+#endif // SERVER_RANKING_H
