@@ -2,7 +2,7 @@ OBJS_DIR=Build.lnx
 GPP=g++
 GCC=gcc
 FLAGS= --show-column  -g2 -Wall -O0  -D_DEBUG  -I .
-LIBS=-lssl -lmysqlclient -lcrypto -phtread
+LIBS=-lssl -lmysqlclient -lcrypto -pthread
 
 
 all: ${OBJS_DIR} ${OBJS_DIR}/Project.bin
