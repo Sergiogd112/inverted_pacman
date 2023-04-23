@@ -52,7 +52,7 @@ int llist_to_string(ConnectedList *list, char res[200]);
 
 void print_idx(ConnectedList *list);
 
-int connected_to_string(ConnectedList *list, char res[200]);
+int connected_to_string(ConnectedList *list, char* res, size_t maxlen);
 
 void push_connected(ConnectedList *list, char res[200], int n);
 

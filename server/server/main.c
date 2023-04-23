@@ -3,13 +3,14 @@
 void UpdateConnectedThread(ConnectedList *list)
 {
     int i = 0;
-    char res[2000];
+    const size_t RES_LEN = 2000;
+    char res[RES_LEN];
     while (1 == 1)
     {
-        if (list->update_connecetions == 1 || i > 100000)
+        if (list->update_connecetions == 1 || i > 10000)
         {
             strcpy(res, "");
-            int n = connected_to_string(list, res);
+            int n = connected_to_string(list, res, RES_LEN);
             pthread_mutex_lock(&update_connected_mutex); // No me interrumpas ahora
 
             push_connected(list, res, n);
@@ -24,7 +25,7 @@ void UpdateConnectedThread(ConnectedList *list)
     }
 }
 
-void *AtenderThread(ThreadArgs *threadArgs)
+void *AtenderThread(ThreadArgs * threadArgs)
 {
     int pos = threadArgs->i;
     ConnectedList *list = threadArgs->list;
@@ -110,12 +111,12 @@ void *AtenderThread(ThreadArgs *threadArgs)
             p = strtok(NULL, "*");
             strcpy(password, p);
             res = login(conn, name, password);
-            if (res != 0)
+            if (res > 0)
             {
                 strcat(response, "1");
                 list->connections[pos].id = res;
-                strcpy(list->connections[pos].name, name);
                 pthread_mutex_lock(&update_connected_mutex);
+                strcpy(list->connections[pos].name, name);
                 list->update_connecetions = 1;
                 pthread_mutex_unlock(&update_connected_mutex);
             }
@@ -201,23 +202,30 @@ int main()
     pthread_t update_thread;
     ConnectedList list;
     initialize_list(&list);
-    ThreadArgs threadArgs;
-    threadArgs.list = &list;
     pthread_create(&update_thread, NULL, (void *(*)(void *))UpdateConnectedThread, &list);
     char res[200];
-    int i;
+    int i=0;
     for (;;)
     {
+        ThreadArgs * threadArgs= (ThreadArgs *) malloc(sizeof(ThreadArgs));
+        threadArgs->list = &list;
+
         printf("Escuchando\n");
 
         sock_conn = accept(sock_listen, NULL, NULL);
         printf("He recibido conexion\n");
         i = get_empty(&list);
+        if(i<0){
+            close(sock_conn);
+            printf("Que is full");
+            continue;
+        }
+        printf("Empty at: %d\n",i);
         list.connections[i].sockfd = sock_conn;
-        threadArgs.i = i;
+        threadArgs->i = i;
         printf("%d\n", sock_conn);
         printf("%d\n", list.connections[i].sockfd);
-        pthread_create(&thread, NULL, (void *(*)(void *))AtenderThread, &threadArgs);
+        pthread_create(&thread, NULL, (void *(*)(void *))AtenderThread, threadArgs);
         print_idx(&list);
     }
 

@@ -145,21 +145,28 @@ void print_idx(ConnectedList *list)
     printf("%s\n", res);
 }
 
-int connected_to_string(ConnectedList *list, char res[2000])
+int connected_to_string(ConnectedList *list, char* res, size_t maxlen)
 {
     int i;
-    int count = 0;
-    res[0]='\0'
+    int connected = 0;
+    size_t count = 0;
+    size_t available = maxlen;
+    memset(res,'\0',available);
     for (i = 0; i < MAXUSERS; i++)
     {
         if (list->connections[i].using == 1 && list->connections[i].id != -1)
         {
-            snprintf(res, 2000, "%s%s*,", res, list->connections[i].name);
-            count++;
+            size_t written = snprintf(&(res[count]), available, "%s,", list->connections[i].name);
+            available -= written;
+            if (available < 1) {
+                break;
+            }
+            count += written;
+            connected++;
         }
     }
-    res[strlen(res) - 2] = '\0';
-    return count;
+    res[count-1] = '\0';
+    return connected;
 }
 
 void push_connected(ConnectedList *list, char res[2000], int n)
