@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2021.3/staging' branch; Version is '2021.3.21f1 (1b156197d683) revision 1774945'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 11  (10.0.22621) 64bit Education' Language: 'en' Physical Memory: 40365 MB
+OS: 'Windows 11  (10.0.22621) 64bit Core' Language: 'es' Physical Memory: 32528 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
 
 COMMAND LINE ARGUMENTS:
@@ -11,13 +11,13 @@ C:\Program Files\Unity\Hub\Editor\2021.3.21f1\Editor\Unity.exe
 -name
 AssetImportWorker2
 -projectPath
-C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity
+C:/Users/joelm/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity
 -logFile
 Logs/AssetImportWorker2.log
 -srvPort
-49770
-Successfully changed project path to: C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity
-C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity
+51166
+Successfully changed project path to: C:/Users/joelm/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity
+C:/Users/joelm/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,121 +47,220 @@ C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [9800] Host "[IP] 10.157.1.15 [Port] 0 [Flags] 2 [Guid] 1780897137 [EditorId] 1780897137 [Version] 1048832 [Id] WindowsEditor(7,zephyrus_Sergio) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [24124] Host "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 870272465 [EditorId] 870272465 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [9800] Host "[IP] 10.157.1.15 [Port] 0 [Flags] 2 [Guid] 1780897137 [EditorId] 1780897137 [Version] 1048832 [Id] WindowsEditor(7,zephyrus_Sergio) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [24124] Host "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 870272465 [EditorId] 870272465 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 107.58 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 123.93 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.21f1 (1b156197d683)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/sergi/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity/Assets
+[Subsystems] Discovering subsystems at path C:/Users/joelm/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 2060 with Max-Q Design (ID=0x1f12)
+    Renderer: NVIDIA GeForce RTX 3070 Laptop GPU (ID=0x249d)
     Vendor:   NVIDIA
-    VRAM:     5968 MB
-    Driver:   31.0.15.2849
+    VRAM:     8044 MB
+    Driver:   30.0.14.9717
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56248
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56088
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.005524 seconds.
+Registered in 0.006585 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 122.76 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 117.68 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.858 seconds
+- Completed reload, in  0.745 seconds
 Domain Reload Profiling:
-	ReloadAssembly (858ms)
-		BeginReloadAssembly (103ms)
+	ReloadAssembly (745ms)
+		BeginReloadAssembly (95ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (639ms)
-			LoadAssemblies (101ms)
+		EndReloadAssembly (531ms)
+			LoadAssemblies (93ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (135ms)
+			SetupTypeCache (110ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (48ms)
-			SetupLoadedEditorAssemblies (373ms)
+			RebuildScriptCaches (32ms)
+			SetupLoadedEditorAssemblies (331ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (17ms)
+				InitializePlatformSupportModulesInManaged (11ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (123ms)
-				BeforeProcessingInitializeOnLoad (2ms)
-				ProcessInitializeOnLoadAttributes (173ms)
-				ProcessInitializeOnLoadMethodAttributes (58ms)
+				RefreshPlugins (118ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (150ms)
+				ProcessInitializeOnLoadMethodAttributes (51ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.007306 seconds.
+Registered in 0.009872 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Client_Unity\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\sergi\OneDrive\Documentos\GitHub\inverted_pacman\Client_Unity\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\joelm\OneDrive\Documentos\GitHub\inverted_pacman\Client_Unity\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\joelm\OneDrive\Documentos\GitHub\inverted_pacman\Client_Unity\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 98.43 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 134.69 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.430 seconds
+- Completed reload, in  1.577 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1431ms)
-		BeginReloadAssembly (191ms)
+	ReloadAssembly (1578ms)
+		BeginReloadAssembly (157ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (7ms)
+			DisableScriptedObjects (8ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (35ms)
-		EndReloadAssembly (1126ms)
-			LoadAssemblies (138ms)
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (1292ms)
+			LoadAssemblies (119ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (280ms)
+			SetupTypeCache (331ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (82ms)
-			SetupLoadedEditorAssemblies (604ms)
+			RebuildScriptCaches (106ms)
+			SetupLoadedEditorAssemblies (633ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (9ms)
+				InitializePlatformSupportModulesInManaged (11ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (99ms)
-				BeforeProcessingInitializeOnLoad (115ms)
-				ProcessInitializeOnLoadAttributes (328ms)
-				ProcessInitializeOnLoadMethodAttributes (47ms)
-				AfterProcessingInitializeOnLoad (5ms)
+				RefreshPlugins (135ms)
+				BeforeProcessingInitializeOnLoad (135ms)
+				ProcessInitializeOnLoadAttributes (300ms)
+				ProcessInitializeOnLoadMethodAttributes (44ms)
+				AfterProcessingInitializeOnLoad (8ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
+			AwakeInstancesAfterBackupRestoration (11ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 1.21 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 0.95 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3796 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 41 unused Assets / (229.3 KB). Loaded Objects now: 4252.
 Memory consumption went from 146.9 MB to 146.7 MB.
-Total: 4.271500 ms (FindLiveObjects: 0.482300 ms CreateObjectMapping: 0.244000 ms MarkObjects: 3.278500 ms  DeleteObjects: 0.263300 ms)
+Total: 4.336000 ms (FindLiveObjects: 0.310500 ms CreateObjectMapping: 0.269800 ms MarkObjects: 3.544800 ms  DeleteObjects: 0.209900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
   custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 353805.355303 seconds.
+  path: Assets/Buttons Pixel Animation Pack/about
+  artifactKey: Guid(fe304b3f81179ba4dbcbcffcf1ea4505) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/about using Guid(fe304b3f81179ba4dbcbcffcf1ea4505) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07deb774452b718cfb02f96a59291b6a') in 0.034238 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.792660 seconds.
+  path: Assets/Buttons Pixel Animation Pack/about/72px
+  artifactKey: Guid(3c2a929674be6b44ea833b6eb98b8fb0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/about/72px using Guid(3c2a929674be6b44ea833b6eb98b8fb0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c5bd6f625ef5b04e5ddfb614c0ed648') in 0.003183 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.105966 seconds.
+  path: Assets/Buttons Pixel Animation Pack/about/72px/about01.png
+  artifactKey: Guid(7e62795bd788b9643ab1d6e6c085b4cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/about/72px/about01.png using Guid(7e62795bd788b9643ab1d6e6c085b4cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b039f4a0177dc332f1c78b3f6e2983a8') in 0.149205 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.332781 seconds.
+  path: Assets/Buttons Pixel Animation Pack/announcement
+  artifactKey: Guid(f3552aaa3a600f24880a8b99fe3c02a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/announcement using Guid(f3552aaa3a600f24880a8b99fe3c02a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a329226d8c4645504655be4d60aca0a') in 0.007690 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.047329 seconds.
+  path: Assets/Buttons Pixel Animation Pack/announcement/72px
+  artifactKey: Guid(1b76703d8dc576941b284efc0e9b9b75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/announcement/72px using Guid(1b76703d8dc576941b284efc0e9b9b75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '048570d37e025fff581ae1f1bfb4ec23') in 0.002234 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.107839 seconds.
+  path: Assets/Buttons Pixel Animation Pack/announcement/72px/announcement01.png
+  artifactKey: Guid(5b96e85d47bebde49b0b9e7ceab44b25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/announcement/72px/announcement01.png using Guid(5b96e85d47bebde49b0b9e7ceab44b25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7302216136d93975fbf84651c00e6916') in 0.023166 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Buttons Pixel Animation Pack/announcement/72px/announcement04.png
+  artifactKey: Guid(bb6746c7799ce78469ea797edda6686d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/announcement/72px/announcement04.png using Guid(bb6746c7799ce78469ea797edda6686d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '946ed6c355da9b874c87c634ca945ddd') in 0.027993 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.611297 seconds.
+  path: Assets/Buttons Pixel Animation Pack/back
+  artifactKey: Guid(1aba38ade7e5dcb4e971f11bc4860ff7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/back using Guid(1aba38ade7e5dcb4e971f11bc4860ff7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1dc680fb92725484abe1c970f00c0b92') in 0.010384 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.096224 seconds.
+  path: Assets/Buttons Pixel Animation Pack/home
+  artifactKey: Guid(8af648e261e726949b64e65c2ccad17d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/home using Guid(8af648e261e726949b64e65c2ccad17d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86ccc977ff6b7eccb18847c2a698fe94') in 0.007218 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.086614 seconds.
+  path: Assets/Buttons Pixel Animation Pack/home/72px
+  artifactKey: Guid(67f814f1159898b40af20c98113f4112) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/home/72px using Guid(67f814f1159898b40af20c98113f4112) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a2a505cd987b9dc4557821bbbbe12e9') in 0.002359 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.108250 seconds.
+  path: Assets/Buttons Pixel Animation Pack/home/72px/home01.png
+  artifactKey: Guid(e3c1be69b87261446a75589a9f77641f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/home/72px/home01.png using Guid(e3c1be69b87261446a75589a9f77641f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ada391712f1e8064b954cc94c2e0bfc2') in 0.032746 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 45.377953 seconds.
+  path: Assets/Scenes/Game.unity
+  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Game.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'adabe13103677901cc82ea2d63185d5f') in 0.009028 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 49.185216 seconds.
+  path: Assets/Buttons Pixel Animation Pack/play
+  artifactKey: Guid(b236a482045e1d34caef34e6d3ef572b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/play using Guid(b236a482045e1d34caef34e6d3ef572b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71c9edf7c9c44572208824e77fb1c4fa') in 0.009254 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.110588 seconds.
+  path: Assets/Buttons Pixel Animation Pack/play/72px/play01.png
+  artifactKey: Guid(80c22d0105a849b4289e8f8f3cf3c399) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/play/72px/play01.png using Guid(80c22d0105a849b4289e8f8f3cf3c399) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34a1efee1e0c2a93ea944f129a085d40') in 0.026823 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Buttons Pixel Animation Pack/play/72px/play05.png
+  artifactKey: Guid(ff3f8e20fdb5dca44ab58deed41e90be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/play/72px/play05.png using Guid(ff3f8e20fdb5dca44ab58deed41e90be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a29432f9bafc6d83a01dc5f8016ddbed') in 0.034055 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Buttons Pixel Animation Pack/play/72px
+  artifactKey: Guid(06de1aa8a4a5b2146b67b09e0908fc44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Buttons Pixel Animation Pack/play/72px using Guid(06de1aa8a4a5b2146b67b09e0908fc44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b8f984599a6c72dbd7244621c95e14b') in 0.003645 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
