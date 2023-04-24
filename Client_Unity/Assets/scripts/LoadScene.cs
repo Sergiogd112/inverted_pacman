@@ -12,13 +12,12 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadScene : MonoBehaviour
+public class LoginRegister : MonoBehaviour
 {
     public Client cliente ;
-    string myip;
 
     private void Start() {
-        Debug.Log(myip);
+        Debug.Log(this.cliente.ip);
         IPAddress direc = IPAddress.Parse(this.cliente.ip);
         IPEndPoint ipep = new IPEndPoint(direc, this.cliente.puerto);
         Debug.Log("creando socket...");
@@ -41,6 +40,7 @@ public class LoadScene : MonoBehaviour
     }
     private void AtenderServidor()   //ACABAR DE REVISAR
         {
+            Debug.Log("AtenderServidor en marcha");
             while (true)
             {
                 // Recibimos mensaje del servidor

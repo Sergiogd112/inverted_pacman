@@ -374,6 +374,7 @@
 "Assets/map/Map_generator.cs"
 "Assets/scripts/Client.cs"
 "Assets/scripts/LoadScene.cs"
+"Assets/scripts/LoginRegister.cs"
 "Assets/scripts/MainMenu.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
