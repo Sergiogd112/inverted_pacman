@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Client", order = 1)]
+[CreateAssetMenu(fileName = "Client", menuName = "ScriptableObjects/Client", order = 1)]
 
 public class Client  : ScriptableObject
 {
