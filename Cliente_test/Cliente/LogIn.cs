@@ -268,11 +268,11 @@ namespace Version_1
                                 atender.Abort();
                             }
                             break;
-                        case 3: //Respuesta a la consulta 1
+                        case 3: //Respuesta a la consulta Ranking
                             string mensaje3 = trozos[1];
                             MessageBox.Show(mensaje3);
                             break;
-                        case 4: //Respuesta a la consulta 2
+                        case 4: //Respuesta a la consulta Conectados
                             this.nueva_connected_list = true;
                             usuarios = trozos[2].Split(',');
                             ActualizarConectados(usuarios);
