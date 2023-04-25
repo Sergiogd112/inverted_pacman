@@ -162,7 +162,7 @@ void *AtenderThread(ThreadArgs * threadArgs)
         {
             printf("waiting to finish sending connected");
             while (list->connections[pos].sending_connected == 1)
-                99999 * 99999;
+                sleep(.1);
         }
         strcat(response, "\x04");
         printf("Respuesta: %s\n", response);
@@ -224,7 +224,6 @@ int main()
         list.connections[i].sockfd = sock_conn;
         threadArgs->i = i;
         printf("%d\n", sock_conn);
-        printf("%d\n", list.connections[i].sockfd);
         pthread_create(&thread, NULL, (void *(*)(void *))AtenderThread, threadArgs);
         print_idx(&list);
     }
