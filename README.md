@@ -61,14 +61,8 @@ This is a project for SO. A pacman where the ghosts are the players will be comp
 A causa de que hemos hechos varios cambios grandes en el proyecto hemos decidido hacer 3 videos. El primero explica los cambios y funcionamiento del programa del servidor. También explica como lo probamos y los problemas que hemos tenido con los servidores de producción. En el segundo se demuestra que el cliente de windows form cumple con los requisitos de la versión 3. Por último, en el tercer vídeo mostramos el prgreso que hemos hecho en Unity. Debido a que hemos intentado avanzar lo máximo posible esta semana (incluyendo partes de futuras entregas), todos los miembros hemos programado, validado y comunicado parte de esta versión.
 
 - Vídeo servidor: [https://youtu.be/SPI8ITyhVLo]
-  - Progamador: Sergio
-  - Verificador: Jaume
-  - Comunicador:Sergio
 - Vídeo windows form: [https://youtu.be/tnBcVmH_FDk]
+- Vídeo unity: [https://youtu.be/EZYAWWVNdIo]
   - Programador: Joel
   - Verificador: Sergio
   - Comunicador: Jaume
-- Vídeo unity: [https://youtu.be/EZYAWWVNdIo]
-  - Programador Joel y Jaume
-  - Verificador: Sergio
-  - Explicado por Joel
