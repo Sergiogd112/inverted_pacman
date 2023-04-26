@@ -50,7 +50,7 @@ vídeo: [https://youtu.be/WSb276hoSwE]
 - Verificador: Sergio
 - Comunicador: Joel
 
-## Verisón 2
+## Versión 2
 
 vídeo: [https://youtu.be/YO-3Qa3al2A]
 
