@@ -16,12 +16,14 @@
 #include <pthread.h>
 #include <unistd.h>
 #include "config.h"
+#include "logger.h"
 pthread_mutex_t main_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t update_connected_mutex = PTHREAD_MUTEX_INITIALIZER;
 typedef struct
 {
     int i;
     ConnectedList *list;
+    LogQueue *queue;
 } ThreadArgs;
 
 #endif // SERVER_MAIN_H

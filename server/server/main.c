@@ -17,6 +17,10 @@ void UpdateConnectedThread(ConnectedList *list)
 
             list->update_connecetions = 0;
             pthread_mutex_unlock(&update_connected_mutex); // No me interrumpas ahora
+            char message[MAXLOGMSGLEN];
+            snprintf(message, MAXLOGMSGLEN, "4/%d/%s\x04", n, res);
+
+            enqueue(&queue, get_iso8601_datetime(), LOGINFO, message, __FILE__, __FUNCTIONW__, __LINE__);
 
             i = -1;
         }
@@ -25,11 +29,12 @@ void UpdateConnectedThread(ConnectedList *list)
     }
 }
 
-void *AtenderThread(ThreadArgs * threadArgs)
+void *AtenderThread(ThreadArgs *threadArgs)
 {
     int pos = threadArgs->i;
     ConnectedList *list = threadArgs->list;
     int sock_conn = list->connections[pos].sockfd;
+    LogQueue *queue=threadArgs->queue;
     printf("%d\n", sock_conn);
 
     MYSQL *conn;
@@ -52,20 +57,23 @@ void *AtenderThread(ThreadArgs * threadArgs)
     char id4[20];
     int vacios = 0;
     int code;
+    char logmsg[MAXLOGMSGLEN];
+
     while (vacios < 6)
     {
-        printf("Esperando peticion\n");
+        enqueue(queue, get_iso8601_datetime(), LOGINFO, "Esperando peticion", __FILE__, __FUNCTIONW__, __LINE__);
+
         ret = read(sock_conn, request, sizeof(request));
         if (ret <= 0)
         {
             vacios++;
             continue;
         }
-        printf("Recibido\n");
+        enqueue(queue, get_iso8601_datetime(), LOGINFO, "Recibido", __FILE__, __FUNCTIONW__, __LINE__);
 
         request[ret] = '\0';
-
-        printf("Peticion: %s\n", request);
+        snprintf(logmsg, MAXLOGMSGLEN, "Conexion %d ha mandado: %s", list->connections[pos].idx, request);
+        enqueue(queue, get_iso8601_datetime(), LOGINFO, logmsg, __FILE__, __FUNCTIONW__, __LINE__);
 
         char *p = strtok(request, "/");
 
@@ -83,6 +91,8 @@ void *AtenderThread(ThreadArgs * threadArgs)
         case 1: // Register
             p = strtok(NULL, "*");
             snprintf(name, 20, "%s", p);
+            snprintf(logmsg, MAXLOGMSGLEN, "Conexion %d ha intentado registrarse con usuario: %s", list->connections[pos].idx, name);
+            enqueue(queue, get_iso8601_datetime(), LOGINFO, logmsg, __FILE__, __FUNCTIONW__, __LINE__);
             printf("Codigo: %d, Nombre: %s\n", code, name);
             p = strtok(NULL, "*");
             snprintf(password, 20, "%s", p);
@@ -98,6 +108,8 @@ void *AtenderThread(ThreadArgs * threadArgs)
 
                 list->update_connecetions = 1;
                 pthread_mutex_unlock(&update_connected_mutex);
+                snprintf(logmsg, MAXLOGMSGLEN, "Conexion %s se ha registrado exitosamente", name);
+                enqueue(queue, get_iso8601_datetime(), LOGINFO, logmsg, __FILE__, __FUNCTIONW__, __LINE__);
             }
             else if (res == -1)
                 strcat(response, "0");
@@ -107,7 +119,8 @@ void *AtenderThread(ThreadArgs * threadArgs)
         case 2: // Login
             p = strtok(NULL, "*");
             strcpy(name, p);
-            printf("Codigo: %d, Nombre: %s\n", code, name);
+            snprintf(logmsg, MAXLOGMSGLEN, "Conexion %d ha intentado logearse con usuario: %s", list->connections[pos].idx, name);
+            enqueue(queue, get_iso8601_datetime(), LOGINFO, logmsg, __FILE__, __FUNCTIONW__, __LINE__);
             p = strtok(NULL, "*");
             strcpy(password, p);
             res = login(conn, name, password);
@@ -119,6 +132,8 @@ void *AtenderThread(ThreadArgs * threadArgs)
                 strcpy(list->connections[pos].name, name);
                 list->update_connecetions = 1;
                 pthread_mutex_unlock(&update_connected_mutex);
+                snprintf(logmsg, MAXLOGMSGLEN, "Conexion %s se ha logeado exitosamente", name);
+                enqueue(queue, get_iso8601_datetime(), LOGINFO, logmsg, __FILE__, __FUNCTIONW__, __LINE__);
             }
             else if (res == -1)
                 strcat(response, "0");
@@ -155,11 +170,14 @@ void *AtenderThread(ThreadArgs * threadArgs)
             break;
 
         default:
-            printf("Invalid choice!\n");
+            snprintf(logmsg, MAXLOGMSGLEN, "Conexion %d ha intentado hacer una conexion no definida %d", code);
+            enqueue(queue, get_iso8601_datetime(), LOGERROR, logmsg, __FILE__, __FUNCTIONW__, __LINE__);
             strcat(response, "error");
         }
         if (list->connections[pos].sending_connected == 1)
         {
+            snprintf(logmsg, MAXLOGMSGLEN, "Conexion %d esperando a que se mande la lista de connectados", code);
+            enqueue(queue, get_iso8601_datetime(), LOGERROR, logmsg, __FILE__, __FUNCTIONW__, __LINE__);
             printf("waiting to finish sending connected");
             while (list->connections[pos].sending_connected == 1)
                 sleep(.1);
@@ -180,11 +198,15 @@ void *AtenderThread(ThreadArgs * threadArgs)
 
 int main()
 {
+    LogQueue queue;
+    queue->count = 0;
+    pthread_t log_thread;
+    pthread_create(&log_thread, NULL, (void *(*)(void *))logthreadboth, &queue);
 
     int sock_conn, sock_listen;
     struct sockaddr_in server_addr;
     if ((sock_listen = socket(AF_INET, SOCK_STREAM, 0)) < 0)
-        printf("socket error\n");
+        enqueue(&queue, get_iso8601_datetime(), LOGERROR, "socket error", __FILE__, __FUNCTIONW__, __LINE__);
 
     memset(&server_addr, 0, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
@@ -193,10 +215,10 @@ int main()
     server_addr.sin_port = htons(PORT);
 
     if (bind(sock_listen, (struct sockaddr *)&server_addr, sizeof(server_addr)) < 0)
-        printf("Error al bind\n");
+        enqueue(&queue, get_iso8601_datetime(), LOGERROR, "Error al bind", __FILE__, __FUNCTIONW__, __LINE__);
 
     if (listen(sock_listen, 3) < 0)
-        printf("Error en el listen\n");
+        enqueue(&queue, get_iso8601_datetime(), LOGERROR, "Error en el listen", __FILE__, __FUNCTIONW__, __LINE__);
 
     pthread_t thread;
     pthread_t update_thread;
@@ -204,28 +226,32 @@ int main()
     initialize_list(&list);
     pthread_create(&update_thread, NULL, (void *(*)(void *))UpdateConnectedThread, &list);
     char res[200];
-    int i=0;
+    int i = 0;
     for (;;)
     {
-        ThreadArgs * threadArgs= (ThreadArgs *) malloc(sizeof(ThreadArgs));
+        ThreadArgs *threadArgs = (ThreadArgs *)malloc(sizeof(ThreadArgs));
         threadArgs->list = &list;
-
-        printf("Escuchando\n");
+        enqueue(&queue, get_iso8601_datetime(), LOGINFO, "Escuchando", __FILE__, __FUNCTIONW__, __LINE__);
 
         sock_conn = accept(sock_listen, NULL, NULL);
-        printf("He recibido conexion\n");
+        enqueue(&queue, get_iso8601_datetime(), LOGINFO, "Conexion recibida", __FILE__, __FUNCTIONW__, __LINE__);
         i = get_empty(&list);
-        if(i<0){
+        if (i < 0)
+        {
             close(sock_conn);
-            printf("Que is full");
+            enqueue(&queue, get_iso8601_datetime(), LOGWARNING, "Lista de conectados llena", __FILE__, __FUNCTIONW__, __LINE__);
             continue;
         }
-        printf("Empty at: %d\n",i);
+        char message[MAXLOGMSGLEN];
+        snprintf(message, MAXLOGMSGLEN, "%d", i)
+            enqueue(&queue, get_iso8601_datetime(), LOGINFO, message, __FILE__, __FUNCTIONW__, __LINE__);
+
         list.connections[i].sockfd = sock_conn;
         threadArgs->i = i;
-        printf("%d\n", sock_conn);
+        threadArgs->queue = &queue;
         pthread_create(&thread, NULL, (void *(*)(void *))AtenderThread, threadArgs);
-        print_idx(&list);
+        llist_to_string(&list, message);
+        enqueue(&queue, get_iso8601_datetime(), LOGINFO, message, __FILE__, __FUNCTIONW__, __LINE__);
     }
 
     return 0;
