@@ -20,7 +20,7 @@ void initialize_list(ConnectedList *list)
     }
 }
 
-void reset_node(struct Node *node)
+void reset_node(struct Connection *node)
 {
     node->id = -1;
     node->sockfd = 0;
@@ -73,12 +73,12 @@ int get_empty(ConnectedList *list)
     return -1;
 }
 //// append a node at the end of the list
-// void append_to_llist(struct Node **head_ref, struct Node **new_node_ref) {
+// void append_to_llist(struct Connection **head_ref, struct Connection **new_node_ref) {
 //     // allocate memory for new node
-//     struct Node *head = *head_ref;
+//     struct Connection *head = *head_ref;
 //
-//     struct Node *last = *head_ref;
-//     struct Node *new_node = *new_node_ref;
+//     struct Connection *last = *head_ref;
+//     struct Connection *new_node = *new_node_ref;
 //     if (last != NULL) {
 //         while (last->next != NULL)
 //             last = last->next;
@@ -186,7 +186,7 @@ void push_connected(ConnectedList *list, char res[2000], int n)
     }
 }
 
-void print_Node(struct Node *node)
+void print_Node(struct Connection *node)
 {
     printf("---\n");
     if (node->using == 0)

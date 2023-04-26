@@ -20,7 +20,7 @@
 
 #define MAXUSERS 200
 // TODO: Reference additional headers your program requires here.
-struct Node
+struct Connection
 {
     int id;
     int sockfd;
@@ -32,7 +32,7 @@ struct Node
 
 typedef struct
 {
-    struct Node connections[MAXUSERS];
+    struct Connection connections[MAXUSERS];
     int used;
     int idx;
     int update_connecetions;
@@ -56,7 +56,7 @@ int connected_to_string(ConnectedList *list, char* res, size_t maxlen);
 
 void push_connected(ConnectedList *list, char res[200], int n);
 
-void print_Node(struct Node *node);
+void print_Node(struct Connection *node);
 
 void print_Connections(ConnectedList *list);
 
