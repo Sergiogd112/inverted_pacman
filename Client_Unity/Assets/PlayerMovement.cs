@@ -7,7 +7,7 @@ using System.Linq;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 3f;
+    public float speed = 2f;
     private Rigidbody2D rb2d;
     private Vector2 movement; // Vector que guardará la dirección de movimiento
     private Bounds levelBounds;
@@ -52,9 +52,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = new Vector2(transform.position.x, screenTop);
         }
-
         //Imprime por pantalla la posición del jugador por la consola
-        Debug.Log("Posición del jugador: " + transform.position); 
-
+        //Debug.Log("Posición del jugador: " + transform.position); 
     }
 }
