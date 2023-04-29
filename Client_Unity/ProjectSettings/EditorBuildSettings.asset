@@ -20,13 +20,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Register.unity
     guid: f3ef47e0da5ad244bbbcec1c050fb1f0
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Play.unity
-    guid: 91152ada6534923488b85cc29c3ff419
+    path: Assets/Scenes/PlayOffline.unity
+    guid: 1d63a30c0a0a5cf499e15768858c0a64
   - enabled: 1
     path: Assets/Scenes/PlayOnline.unity
     guid: 5f8618a8434dda34ab8f8a65a5e7ecfd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PacmanIndividual.unity
     guid: 12954f8513a2c3b48a84cde2bc4280d0
   m_configObjects: {}
