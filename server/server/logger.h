@@ -17,16 +17,10 @@
 #define FILENAMEMAXLEN 30
 #define FUNCTIONNAMEMAXLEN 30
 #define LOGFILE "logfile.log"
+#define LOGINFO "ⓘLOGINFO"
+#define LOGWARNING "⚠LOGWARNING"
+#define LOGERROR "❌LOGERROR"
 
-/**
- * LogType - An enum representing the type of a log.
- */
-enum LogType
-{
-    LOGINFO,
-    LOGWARNING,
-    LOGERROR
-};
 
 /**
  * LogElement - A structure that represents a single log element in the log queue.
@@ -42,18 +36,13 @@ enum LogType
 struct LogElement
 {
     char datetime[DATETIMELOGLEN];
-    enum LogType logType;
+    char logType[20];
     char message[MAXLOGMSGLEN];
     struct LogElement *next;
     char filename[FILENAMEMAXLEN];
     char functionname[FUNCTIONNAMEMAXLEN];
     int linen;
 };
-
-/**
- * LogTypeStrings - An array of strings representing the string representations of the LogType enum values.
- */
-const char *LogTypeStrings[] = {"ⓘLOGINFO", "⚠LOGWARNING", "❌LOGERROR"};
 
 /**
  * LogQueue - A structure that represents a log queue.
@@ -67,14 +56,14 @@ typedef struct
     struct LogElement *head;
     struct LogElement *tail;
     int count;
+    int keeplog;                                             // Global flag to control logging behavior
+
 } LogQueue;
 
-pthread_mutex_t log_queue_mutex = PTHREAD_MUTEX_INITIALIZER; // Mutex for log queue access synchronization
-int keeplog = 1;                                             // Global flag to control logging behavior
 
 char *get_iso8601_datetime();
 
-int enqueue(LogQueue *queue, char datetime[DATETIMELOGLEN], enum LogType logType, char message[MAXLOGMSGLEN],
+int enqueue(LogQueue *queue, char datetime[DATETIMELOGLEN], char logType[20], char message[MAXLOGMSGLEN],
             char filename[FILENAMEMAXLEN], char functionname[FUNCTIONNAMEMAXLEN], int linen);
 int dequeue(LogQueue *queue, struct LogElement *element);
 

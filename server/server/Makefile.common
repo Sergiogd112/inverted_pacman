@@ -12,7 +12,7 @@ ${OBJS_DIR}/map.o: map.c
 ${OBJS_DIR}/FuncionRanking.o: FuncionRanking.c
 	${GCC} ${FLAGS} -c FuncionRanking.c -o $@
 
-${OBJS_DIR}/logger.o: FuncionRanking.c
+${OBJS_DIR}/logger.o: logger.c
 	${GCC} ${FLAGS} -c logger.c -o $@
 
 ${OBJS_DIR}/main.o: main.c

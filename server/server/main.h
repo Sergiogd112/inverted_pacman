@@ -3,7 +3,7 @@
 //
 
 #ifndef SERVER_MAIN_H
-#define SERVER_MAIN_H
+#define SERVER_MAIN_H 1
 #include "auth.h"
 #include "FuncionRanking.h"
 #include "connected_list.h"
@@ -16,14 +16,21 @@
 #include <pthread.h>
 #include <unistd.h>
 #include "config.h"
-#include "logger.h"
+//#include "logger.h"
 pthread_mutex_t main_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t update_connected_mutex = PTHREAD_MUTEX_INITIALIZER;
+
 typedef struct
 {
     int i;
     ConnectedList *list;
-    LogQueue *queue;
+//    LogQueue *queue;
 } ThreadArgs;
+//typedef struct
+//{
+//    ConnectedList *list;
+//    LogQueue *queue;
+//
+//} UpdateConnectedThreadArgs;
 
 #endif // SERVER_MAIN_H

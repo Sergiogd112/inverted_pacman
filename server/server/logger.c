@@ -3,6 +3,7 @@
 //
 
 #include "logger.h"
+pthread_mutex_t log_queue_mutex = PTHREAD_MUTEX_INITIALIZER; // Mutex for log queue access synchronization
 
 /**
  * get_iso8601_datetime - A function that returns the current datetime in ISO 8601 format.
@@ -36,13 +37,13 @@ char *get_iso8601_datetime()
  * @param linen: Line number to be stored in the log element.
  * @return: 0 on success.
  */
-int enqueue(LogQueue *queue, char datetime[DATETIMELOGLEN], enum LogType logType, char message[MAXLOGMSGLEN],
+int enqueue(LogQueue *queue, char datetime[DATETIMELOGLEN], char logType[20], char message[MAXLOGMSGLEN],
             char filename[FILENAMEMAXLEN], char functionname[FUNCTIONNAMEMAXLEN], int linen)
 {
 
     struct LogElement new_element; // LogElement struct to store the new log element
     snprintf(new_element.datetime, DATETIMELOGLEN, "%s", datetime); // Copy the datetime string to the log element
-    new_element.logType = logType; // Set the log type of the log element
+    snprintf(new_element.logType, 20, "%s", logType); // Copy the logType string to the log element
     snprintf(new_element.message, MAXLOGMSGLEN, "%s", message); // Copy the log message string to the log element
     new_element.next = NULL; // Set the next pointer of the log element to NULL
     snprintf(new_element.filename, FILENAMEMAXLEN, "%s", filename); // Copy the filename string to the log element
@@ -94,7 +95,7 @@ int dequeue(LogQueue *queue, struct LogElement *element)
 void print_logelement(struct LogElement *element)
 {
     printf("[%s][%s:%s:%d][%s] %s", element->datetime, element->filename, element->functionname, element->linen,
-           LogTypeStrings[element->logType], element->message);
+           element->logType, element->message);
     // Print the log element details using formatted string
     // element->datetime: datetime string
     // element->filename: filename string
@@ -114,7 +115,7 @@ void string_logelement(struct LogElement *element, char res[DATETIMELOGLEN + MAX
 {
     snprintf(res, DATETIMELOGLEN + MAXLOGMSGLEN + FILENAMEMAXLEN + FUNCTIONNAMEMAXLEN,
              "[%s][%s:%s:%d][%s] %s", element->datetime, element->filename, element->functionname, element->linen,
-             LogTypeStrings[element->logType], element->message);
+             element->logType, element->message);
     // Format the LogElement struct into a string using formatted string
     // element->datetime: datetime string
     // element->filename: filename string
@@ -133,7 +134,7 @@ void string_logelement(struct LogElement *element, char res[DATETIMELOGLEN + MAX
 void logthreadconsole(LogQueue *queue)
 {
     struct LogElement element; // Create a local LogElement struct to store dequeued log element
-    while (keeplog) // Continue logging until keeplog flag is false
+    while (queue->keeplog==1) // Continue logging until keeplog flag is false
     {
         if (queue->count > 0) // Check if there are log elements in the queue
         {
@@ -151,11 +152,10 @@ void logthreadconsole(LogQueue *queue)
  */
 void logthreadfile(LogQueue *queue)
 {
-    char filename[] = "log.txt"; // File name to write logs to
     char res[DATETIMELOGLEN + MAXLOGMSGLEN + FILENAMEMAXLEN + FUNCTIONNAMEMAXLEN]; // Buffer to store formatted log message
     struct LogElement element; // LogElement struct to store dequeued log message
 
-    while (keeplog) // Keep logging while the global variable 'keeplog' is true
+    while (queue->keeplog==1) // Keep logging while the global variable 'keeplog' is true
     {
         if (queue->count > 0) // If there are logs in the queue
         {
@@ -182,11 +182,10 @@ void logthreadfile(LogQueue *queue)
  */
 void logthreadboth(LogQueue *queue)
 {
-    char filename[] = "log.txt"; // Define the filename for the log file
     char res[DATETIMELOGLEN + MAXLOGMSGLEN + FILENAMEMAXLEN + FUNCTIONNAMEMAXLEN]; // Define a char array to store the log element as a string
     struct LogElement element; // Create a local LogElement struct to store dequeued log element
 
-    while (keeplog) // Continue logging until keeplog flag is false
+    while (queue->keeplog==1) // Continue logging until keeplog flag is false
     {
         if (queue->count > 0) // Check if there are log elements in the queue
         {
