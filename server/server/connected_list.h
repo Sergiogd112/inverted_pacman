@@ -7,7 +7,7 @@
 // server.h : Include file for standard system include files,
 // or project specific include files.
 
-// #pragma once
+#pragma once
 
 #include <stdio.h>
 #include <stdlib.h>

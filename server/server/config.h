@@ -1,7 +1,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define DBSERVER "shiva2.upc.es"
+#define DBSERVER "localhost"
 #define USER "root"
 #define PASSWORD "mysql"
 #define DATABASE "T1_InvertedPacman"
