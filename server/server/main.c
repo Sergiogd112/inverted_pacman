@@ -29,7 +29,7 @@ void UpdateConnectedThread(ConnectedList *list) {
 }
 
 void GestionarInvitacionesTread(void *args) {
-    InvitathionArgs *invitathionArgs = (InvitathionArgs *) args;
+    InvitationArgs *invitathionArgs = (InvitationArgs *) args;
     ListaPartidas *listaPartidas = invitathionArgs->listaPartidas;
     Partida *partida = invitathionArgs->partida;
     ConnectedList *list = invitathionArgs->list;
@@ -108,7 +108,7 @@ int GestionarCrearPartida(int pos, ConnectedList *list, ListaPartidas *listaPart
         list->connections[is[i]].invitando = 0;
         pthread_mutex_unlock(&invitation_mutex);
     }
-    InvitathionArgs *threadArgs = (InvitathionArgs *) malloc(sizeof(InvitathionArgs));
+    InvitationArgs *threadArgs = (InvitationArgs *) malloc(sizeof(InvitationArgs));
     pthread_t invitacion_thread;
     pthread_create(&invitacion_thread, NULL,
                    (void *(*)(void *)) GestionarInvitacionesTread, threadArgs);

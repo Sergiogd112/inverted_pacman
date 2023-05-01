@@ -34,7 +34,7 @@ typedef struct {
     ListaPartidas *listaPartidas;
     Partida *partida;
     ConnectedList *list;
-}InvitathionArgs;
+}InvitationArgs;
 
 //typedef struct
 //{

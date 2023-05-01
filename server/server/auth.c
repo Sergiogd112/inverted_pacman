@@ -55,7 +55,7 @@ int register_user(MYSQL *conn, char name[30], char email[30], char password[30])
 
     int num_fields = mysql_num_fields(result); // Get the number of fields in the result set.
 
-    printf("Comprobando si ya esta registrado ese usuario\n"); // Print a message to the console.
+    printf("Checking if user exists already\n"); // Print a message to the console.
 
     if (mysql_num_rows(result) == 0)
     { // Check if there are any rows in the result set.
