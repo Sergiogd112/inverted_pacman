@@ -28,6 +28,44 @@ void UpdateConnectedThread(ConnectedList *list) {
     }
 }
 
+void GestionarInvitacionesTread(void *args) {
+    InvitathionArgs *invitathionArgs = (InvitathionArgs *) args;
+    ListaPartidas *listaPartidas = invitathionArgs->listaPartidas;
+    Partida *partida = invitathionArgs->partida;
+    ConnectedList *list = invitathionArgs->list;
+    int denegado = 0;
+    int sum = 0;
+    char msg[200];
+    while (denegado == 0 && sum < 4) {
+        sum = 0;
+        for (int i = 0; i < 4; i++) {
+            if (partida->answer[i] == -1)
+                denegado = 1;
+            sum += partida->answer[i];
+        }
+    }
+    if (denegado == 1) {
+        snprintf(msg, 200, "7/0/%d", partida->idx);
+        pthread_mutex_lock(&crear_partida_mutex);
+
+        for (int i = 1; i < 4; i++) {
+            write(partida->sockets[i], msg, strlen(msg));
+            int pos_jugador = search_name_on_connected_llist(list, partida->nombres[i]);
+            list->connections[pos_jugador].jugando = 0;
+
+        }
+        remove_node_from_partidas_list(listaPartidas, partida->idx);
+        pthread_mutex_unlock(&crear_partida_mutex);
+
+    } else {
+        snprintf(msg, 200, "7/1/%d", partida->idx);
+        for (int i = 1; i < 4; i++) {
+            write(partida->sockets[i], msg, strlen(msg));
+        }
+    }
+
+}
+
 int GestionarCrearPartida(int pos, ConnectedList *list, ListaPartidas *listaPartidas, Nombre name1, Nombre name2,
                           Nombre name3, char res[200]) {
     int i1 = search_name_on_connected_llist(list, name1);
@@ -60,7 +98,8 @@ int GestionarCrearPartida(int pos, ConnectedList *list, ListaPartidas *listaPart
     }
 
     char invitacion[200];
-    snprintf(invitacion, 200, "6/%d/%s,%s*%s*%s", i_partida, list->connections[pos].name, list->connections[i1].name,
+    snprintf(invitacion, 200, "6/%d/%s,%s*%s*%s", i_partida,
+             list->connections[pos].name, list->connections[i1].name,
              list->connections[i2].name, list->connections[i3].name);
     for (int i = 1; i < 4; i++) {
         pthread_mutex_lock(&invitation_mutex);
@@ -69,9 +108,17 @@ int GestionarCrearPartida(int pos, ConnectedList *list, ListaPartidas *listaPart
         list->connections[is[i]].invitando = 0;
         pthread_mutex_unlock(&invitation_mutex);
     }
-    snprintf(res, 2000, "1/%d", i_partida);
-    return 0;
+    InvitathionArgs *threadArgs = (InvitathionArgs *) malloc(sizeof(InvitathionArgs));
+    pthread_t invitacion_thread;
+    pthread_create(&invitacion_thread, NULL,
+                   (void *(*)(void *)) GestionarInvitacionesTread, threadArgs);
+
+
+    snprintf(res, 2000, "1/%d", listaPartidas->partidas[i_partida].idx);
+
+    return listaPartidas->partidas[i_partida].idx;
 }
+
 
 void *AtenderThread(ThreadArgs *threadArgs) {
     int pos = threadArgs->i;
@@ -100,9 +147,10 @@ void *AtenderThread(ThreadArgs *threadArgs) {
     int vacios = 0;
     int code;
     char logmsg[2000];
-
+    int send_awr = 1;
     while (vacios < 6) {
 //        enqueue(queue, get_iso8601_datetime(), LOGINFO, "Esperando peticion", __FILE__, __FUNCTION__, __LINE__);
+        send_awr = 1;
         printf("Esperando peticion\n");
         ret = read(sock_conn, request, sizeof(request));
         if (ret <= 0) {
@@ -195,11 +243,21 @@ void *AtenderThread(ThreadArgs *threadArgs) {
                 strcpy(name2, p);
                 p = strtok(NULL, "*");
                 strcpy(name3, p);
-                int n=GestionarCrearPartida(pos,list,listaPartidas,name1,name2,name3,datos);
-                snprintf(response, 2000, "%d/%s", code,datos);
+                int n = GestionarCrearPartida(pos, list, listaPartidas, name1, name2, name3, datos);
+                snprintf(response, 2000, "%d/%s", code, datos);
                 break;
             case 6:
-                
+                p = strtok(NULL, "/");
+                int idx_partida = atoi(p);
+                p = strtok(NULL, "/");
+                int i_partida = search_on_partidas_llist(listaPartidas, idx_partida);
+                for (int i = 0; i < 4; i++) {
+                    if (strcmp(list->connections[pos].name, listaPartidas->partidas[i_partida].nombres[i]) == 0) {
+                        listaPartidas->partidas[i_partida].answer[i] = 2 * atoi(p) - 1;
+                        break;
+                    }
+                }
+                send_awr = 0;
                 break;
             default:
                 snprintf(logmsg, 2000, "Conexion %d ha intentado hacer una conexion no definida %d", code);
@@ -207,17 +265,19 @@ void *AtenderThread(ThreadArgs *threadArgs) {
                 printf("%s\n", logmsg);
                 strcat(response, "error");
         }
-        if (list->connections[pos].sending_connected == 1) {
-            snprintf(logmsg, 2000, "Conexion %d esperando a que se mande la lista de connectados", code);
-            printf("%s\n", logmsg);
+        if (send_awr == 1) {
+            if (list->connections[pos].sending_connected == 1) {
+                snprintf(logmsg, 2000, "Conexion %d esperando a que se mande la lista de connectados", code);
+                printf("%s\n", logmsg);
 //            enqueue(queue, get_iso8601_datetime(), LOGERROR, logmsg, __FILE__, __FUNCTION__, __LINE__);
-            printf("waiting to finish sending connected");
-            while (list->connections[pos].sending_connected == 1)
-                usleep(100000);
+                printf("waiting to finish sending connected");
+                while (list->connections[pos].sending_connected == 1)
+                    usleep(100000);
+            }
+            strcat(response, "\x04");
+            printf("Respuesta: %s\n", response);
+            write(sock_conn, response, strlen(response));
         }
-        strcat(response, "\x04");
-        printf("Respuesta: %s\n", response);
-        write(sock_conn, response, strlen(response));
     }
 
     close(sock_conn);

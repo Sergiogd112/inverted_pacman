@@ -30,6 +30,12 @@ typedef struct
     ListaPartidas *lista_partidas;
 //    LogQueue *queue;
 } ThreadArgs;
+typedef struct {
+    ListaPartidas *listaPartidas;
+    Partida *partida;
+    ConnectedList *list;
+}InvitathionArgs;
+
 //typedef struct
 //{
 //    ConnectedList *list;
