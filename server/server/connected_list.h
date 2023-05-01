@@ -24,10 +24,12 @@ struct Connection
 {
     int id;
     int sockfd;
-    char name[20];
+    Nombre name;
     int idx;
     int sending_connected;
     int using;
+    int jugando;
+    int invitando;
 };
 
 typedef struct
@@ -38,19 +40,21 @@ typedef struct
     int update_connecetions;
 } ConnectedList;
 
-void initialize_list(ConnectedList *list);
+void initialize_connected_list(ConnectedList *list);
 
-int insert_to_llist(ConnectedList *list, int new_id, int new_sockfd, char name[20]);
+int insert_to_connected_llist(ConnectedList *list, int new_id, int new_sockfd, char name[20]);
 
-int get_empty(ConnectedList *list);
+int get_empty_from_connected_list(ConnectedList *list);
 
-int search_on_llist(ConnectedList *list, int target_id);
+int search_id_on_connected_llist(ConnectedList *list, int target_id);
 
-int remove_node_from_list(ConnectedList *list, int target_i);
+int search_name_on_connected_llist(ConnectedList *list, Nombre nombre);
 
-int llist_to_string(ConnectedList *list, char res[200]);
+int remove_node_from_connected_list(ConnectedList *list, int target_i);
 
-void print_idx(ConnectedList *list);
+int connected_llist_to_string(ConnectedList *list, char res[200]);
+
+void print_connected_idx(ConnectedList *list);
 
 int connected_to_string(ConnectedList *list, char* res, size_t maxlen);
 
