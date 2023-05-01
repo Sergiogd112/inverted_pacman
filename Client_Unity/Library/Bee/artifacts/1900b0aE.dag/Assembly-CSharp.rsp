@@ -388,6 +388,8 @@
 "Assets/ScriptsPacmanIndividual/Movement.cs"
 "Assets/ScriptsPacmanIndividual/Pacman.cs"
 "Assets/Slime_Movement.cs"
+"Assets/SNAKE/Food.cs"
+"Assets/SNAKE/Snake.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
