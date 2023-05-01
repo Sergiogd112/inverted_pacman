@@ -110,15 +110,15 @@ int search_on_partidas_llist(ListaPartidas *list, int target_idx)
  * @return: Returns -1 if target_i is out of range, -2 if the connection at target_i is not in use,
  *          and 0 if the connection was successfully removed.
  */
-int remove_node_from_partidas_list(ListaPartidas *list, int target_i)
+int remove_node_from_partidas_list(ListaPartidas *list, int target_idx)
 {
-    if (target_i > MAXPARTIDAS) // Check if target_i is out of range
+    if (target_idx > MAXPARTIDAS) // Check if target_i is out of range
         return -1;           // Return -1 if target_i is out of range
 
-    if (list->partidas[target_i].jugando == 0) // Check if the connection at target_i is not in use
+    if (list->partidas[target_idx].jugando == 0) // Check if the connection at target_i is not in use
         return -2;                              // Return -2 if the connection at target_i is not in use
-
-    reset_partida(&list->partidas[target_i]); // Reset the connection at target_i
+    int i=search_on_partidas_llist(list,target_idx);
+    reset_partida(&list->partidas[i]); // Reset the connection at target_i
     list->used--;                             // Decrement the used count in the list
 
     return 0; // Return 0 to indicate successful removal
