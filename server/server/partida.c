@@ -8,7 +8,6 @@
 // Created by Sergio on 22/03/23.
 //
 
-#include "connected_list.h"
 
 /**
  * initialize_partidas_list - A function that initializes a ListaPartidas structure.
@@ -138,7 +137,7 @@ int partidas_llist_to_string(ListaPartidas *list, char res[200])
     for (i = 0; i < MAXPARTIDAS; i++)
     {
         if (list->partidas[i].jugando == 1)
-            snprintf(res, 2000, "%s%s,", res, list->partidas[i].idx);
+            snprintf(res, 2000, "%s%d,", res, list->partidas[i].idx);
     }
 
     res[strlen(res) - 1] = '\0'; // Remove trailing comma

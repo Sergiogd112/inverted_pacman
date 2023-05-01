@@ -58,7 +58,7 @@ void print_connected_idx(ConnectedList *list);
 
 int connected_to_string(ConnectedList *list, char* res, size_t maxlen);
 
-void push_connected(ConnectedList *list, char res[200], int n);
+void push_connected(ConnectedList *list, char res[2000], int n);
 
 void print_Node(struct Connection *node);
 

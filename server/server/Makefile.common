@@ -1,4 +1,4 @@
-OBJS=${OBJS_DIR}/auth.o ${OBJS_DIR}/main.o ${OBJS_DIR}/connected_list.o ${OBJS_DIR}/map.o ${OBJS_DIR}/FuncionRanking.o ${OBJS_DIR}/logger.o ${OBJS_DIR}/partida.o
+OBJS=${OBJS_DIR}/auth.o ${OBJS_DIR}/main.o ${OBJS_DIR}/connected_list.o ${OBJS_DIR}/FuncionRanking.o ${OBJS_DIR}/logger.o ${OBJS_DIR}/partida.o
 
 ${OBJS_DIR}/auth.o: auth.c
 	${GCC} ${FLAGS} -c auth.c -o $@
@@ -6,8 +6,6 @@ ${OBJS_DIR}/auth.o: auth.c
 ${OBJS_DIR}/connected_list.o: connected_list.c
 	${GCC} ${FLAGS} -c connected_list.c -o $@
 
-${OBJS_DIR}/map.o: map.c
-	${GCC} ${FLAGS} -c map.c -o $@
 
 ${OBJS_DIR}/FuncionRanking.o: FuncionRanking.c
 	${GCC} ${FLAGS} -c FuncionRanking.c -o $@
@@ -15,7 +13,7 @@ ${OBJS_DIR}/FuncionRanking.o: FuncionRanking.c
 ${OBJS_DIR}/logger.o: logger.c
 	${GCC} ${FLAGS} -c logger.c -o $@
 
-${OBJS_DIR}/logger.o: partida.c
+${OBJS_DIR}/partida.o: partida.c
 	${GCC} ${FLAGS} -c partida.c -o $@
 
 ${OBJS_DIR}/main.o: main.c

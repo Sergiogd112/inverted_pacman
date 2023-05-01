@@ -196,7 +196,7 @@ int connected_llist_to_string(ConnectedList *list, char res[200])
     for (i = 0; i < MAXUSERS; i++)
     {
         if (list->connections[i].using == 1)
-            snprintf(res, 2000, "%s%s,", res, list->connections[i].idx);
+            snprintf(res, 2000, "%s%d,", res, list->connections[i].idx);
     }
 
     res[strlen(res) - 1] = '\0'; // Remove trailing comma
@@ -297,7 +297,7 @@ void print_Node(struct Connection *node)
     if (node->using == 0)
         printf("Not using"); // Print a message if the connection is not in use
     else
-        printf("id: %d\nsocketfd: %d\nname: %s\nidx: %d\nsending_connected: %d\n%jugando %d\n",
+        printf("id: %d\nsocketfd: %d\nname: %s\nidx: %d\nsending_connected: %d\njugando %d\n",
                node->id,                 // Print the 'id' field of the Connection structure
                node->sockfd,             // Print the 'sockfd' field of the Connection structure
                node->name,               // Print the 'name' field of the Connection structure

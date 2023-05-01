@@ -23,7 +23,7 @@ void UpdateConnectedThread(ConnectedList *list) {
 
             i = -1;
         }
-        sleep(0.1);
+        usleep(100000);
         i++;
     }
 }
@@ -33,35 +33,44 @@ int GestionarCrearPartida(int pos, ConnectedList *list, ListaPartidas *listaPart
     int i1 = search_name_on_connected_llist(list, name1);
     int i2 = search_name_on_connected_llist(list, name2);
     int i3 = search_name_on_connected_llist(list, name3);
-    int is[]={pos,i1,i2,13};
+    int is[] = {pos, i1, i2, 13};
     pthread_mutex_lock(&crear_partida_mutex);
-    if (i1 == -1 || i2 == -1 || i3 == -1)
+    if (i1 == -1 || i2 == -1 || i3 == -1) {
+        snprintf(res, 2000, "0/");
+
         return -1;
-    if (list->connections[i1].jugando + list->connections[i2].jugando + list->connections[i3].jugando != 0)
+
+    }
+    if (list->connections[i1].jugando + list->connections[i2].jugando + list->connections[i3].jugando != 0) {
+        snprintf(res, 2000, "0/");
+
         return -1;
+
+    }
     int i_partida = get_empty_from_partidas_list(listaPartidas);
     listaPartidas->partidas[i_partida].answer[0] = 1;
-    for (int i=0;i<4;i++){
+    for (int i = 0; i < 4; i++) {
         list->connections[is[i]].jugando = 1;
     }
     pthread_mutex_unlock(&crear_partida_mutex);
-    for(int i =0;i<4 ;i++){
+    for (int i = 0; i < 4; i++) {
         listaPartidas->partidas[i_partida].sockets[i] = list->connections[is[i]].sockfd;
         snprintf(listaPartidas->partidas[i_partida].nombres[i], 20, list->connections[is[i]].name);
 
     }
 
     char invitacion[200];
-    snprintf(invitacion, 200, "6/%d/%s,%s*%s*%s",i_partida, list->connections[pos].name, list->connections[i1].name,
+    snprintf(invitacion, 200, "6/%d/%s,%s*%s*%s", i_partida, list->connections[pos].name, list->connections[i1].name,
              list->connections[i2].name, list->connections[i3].name);
-    for(int i =1; i<4; i++){
+    for (int i = 1; i < 4; i++) {
         pthread_mutex_lock(&invitation_mutex);
-        list->connections[is[i]].invitando=1;
-        write(list->connections[is[i]].sockfd,invitacion,strlen(invitacion));
-        list->connections[is[i]].invitando=0;
+        list->connections[is[i]].invitando = 1;
+        write(list->connections[is[i]].sockfd, invitacion, strlen(invitacion));
+        list->connections[is[i]].invitando = 0;
         pthread_mutex_unlock(&invitation_mutex);
     }
-
+    snprintf(res, 2000, "1/%d", i_partida);
+    return 0;
 }
 
 void *AtenderThread(ThreadArgs *threadArgs) {
@@ -75,12 +84,12 @@ void *AtenderThread(ThreadArgs *threadArgs) {
     MYSQL *conn;
     char request[512];
     char response[2010];
-    int ret;
+    ssize_t ret;
     char name[20];
     conn = mysql_init(NULL);
-    char user[30], email[30], password[30];
+    char email[30], password[30];
     if (!mysql_real_connect(conn, DBSERVER, USER, PASSWORD, DATABASE, 0, NULL, 0)) {
-        printf(stderr, "%s\n", mysql_error(conn));
+        fprintf(stderr, "%s\n", mysql_error(conn));
         exit(1);
     }
     char datos[2000];
@@ -109,7 +118,6 @@ void *AtenderThread(ThreadArgs *threadArgs) {
         char *p = strtok(request, "/");
 
         code = atoi(p); // convierte el string p al entero codigo
-        char user[20];
         int res;
         if (code == 0) {
             // desconectar
@@ -187,10 +195,12 @@ void *AtenderThread(ThreadArgs *threadArgs) {
                 strcpy(name2, p);
                 p = strtok(NULL, "*");
                 strcpy(name3, p);
-
-
+                int n=GestionarCrearPartida(pos,list,listaPartidas,name1,name2,name3,datos);
+                snprintf(response, 2000, "%d/%s", code,datos);
                 break;
-
+            case 6:
+                
+                break;
             default:
                 snprintf(logmsg, 2000, "Conexion %d ha intentado hacer una conexion no definida %d", code);
 //                enqueue(queue, get_iso8601_datetime(), LOGERROR, logmsg, __FILE__, __FUNCTION__, __LINE__);
@@ -203,7 +213,7 @@ void *AtenderThread(ThreadArgs *threadArgs) {
 //            enqueue(queue, get_iso8601_datetime(), LOGERROR, logmsg, __FILE__, __FUNCTION__, __LINE__);
             printf("waiting to finish sending connected");
             while (list->connections[pos].sending_connected == 1)
-                sleep(.1);
+                usleep(100000);
         }
         strcat(response, "\x04");
         printf("Respuesta: %s\n", response);

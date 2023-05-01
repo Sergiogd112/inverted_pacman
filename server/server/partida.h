@@ -30,7 +30,7 @@ typedef struct{
     int vidas[4];
     int jugando;
     int idx;
-    int answer[4]
+    int answer[4];
 }Partida;
 
 typedef struct{
