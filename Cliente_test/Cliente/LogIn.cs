@@ -16,6 +16,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Version_1
 {
+
     public partial class LogIn : Form
     {
         Socket Server;
@@ -31,7 +32,7 @@ namespace Version_1
         //Variable boleana para las consultas al servidor
         bool Queries = false;
         string Ip = "192.168.56.102";
-        int Port = 5052;
+        int Port = 5051;
         public bool New_Connected_List = false;
         string[] Users;
         List<string> Connected = new List<string>();
@@ -48,6 +49,15 @@ namespace Version_1
             Enviar_Consulta.BackColor = Color.FromArgb(135, 206, 235);
             Desconectar_Btn.FlatAppearance.BorderSize = 0;
             dataGridView1.BackgroundColor = Color.FromArgb(135, 206, 235);
+            DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
+            checkColumn.Name = "Invitar";
+            checkColumn.HeaderText = "Invitar";
+            checkColumn.Width = 50;
+            checkColumn.ReadOnly = false;
+            checkColumn.FillWeight = 10;
+            dataGridView1.Columns.Add(checkColumn);
+            dataGridView1.Columns.Add("Nombre", "Nombre");
+
             passwordBox.UseSystemPasswordChar = true;
 
 
@@ -55,7 +65,7 @@ namespace Version_1
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse(Ip);
             IPEndPoint ipep = new IPEndPoint(direc, Port);
-            dataGridView1.ColumnCount = 1;
+            dataGridView1.ColumnCount = 2;
 
 
             //Creamos el socket 
@@ -102,15 +112,15 @@ namespace Version_1
         /// Añade una fila a la tabla de conectados
         /// </summary>
         /// <param name="row"></param>
-        private void AddRow(string[] row)
+        private void AddRow(string s)
         {
             if (dataGridView1.InvokeRequired)
             {
-                dataGridView1.Invoke(new Action<string[]>(AddRow), new object[] { row });
+                dataGridView1.Invoke(new Action<string>(AddRow), new object[] { s });
                 return;
             }
 
-            dataGridView1.Rows.Add(row);
+            dataGridView1.Rows.Add(false,s);
         }
         /// <summary>
         /// Vacia la tabla de conectados
@@ -136,8 +146,7 @@ namespace Version_1
             ClearGrid();
             foreach (string s in message)
             {
-                row[0]=s;
-                AddRow(row);
+                AddRow(s);
             }            
         }
         /// <summary>
@@ -357,11 +366,29 @@ namespace Version_1
                     }
                     else if (Consulta3.Checked)  //La consulta 3 es la función que crea una partida
                     {
-                        string message = "5/1*2*3*4";
-                        // Enviamos al servidor el nombre tecleado
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(message);
-                        byte[] msg2 = new byte[100];
-                        Server.Send(msg);
+                        int count = 0;
+                        string[] names = new string[3];
+                        bool selected= false;
+                        for (int i=0;i<dataGridView1.Rows.Count;i++)
+                        {
+                            if (Convert.ToBoolean(dataGridView1.Rows[i].Cells[0].Value))
+                            {
+                                names[count]= dataGridView1.Rows[i].Cells[1].Value.ToString();
+                                count += 1;
+                            }
+                        }
+                        if (count < 3 | count > 3)
+                        {
+                            MessageBox.Show("selecciona tres nombres");
+                        }
+                        else
+                        {
+                            string message = "5/"+string.Join("*",names);
+                            // Enviamos al servidor el nombre tecleado
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(message);
+                            byte[] msg2 = new byte[100];
+                            Server.Send(msg);
+                        }
                     }
                     else
                         MessageBox.Show("No query selected");
@@ -420,7 +447,13 @@ namespace Version_1
                 e.Cancel = true;
             }
             else
-                Attend.Abort();
+                try
+                {
+                    Attend.Abort();
+                }
+                catch (Exception ex)
+                {
+                }
         }
     }
 }
