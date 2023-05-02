@@ -109,8 +109,11 @@ int GestionarCrearPartida(int pos, ConnectedList *list, ListaPartidas *listaPart
         pthread_mutex_unlock(&invitation_mutex);
     }
     InvitationArgs *threadArgs = (InvitationArgs *) malloc(sizeof(InvitationArgs));
-    pthread_t invitacion_thread;
-    pthread_create(&invitacion_thread, NULL,
+    threadArgs->listaPartidas=listaPartidas;
+    threadArgs->partida=&listaPartidas->partidas[i_partida];
+    threadArgs->list=list;
+    pthread_t invitation_thread;
+    pthread_create(&invitation_thread, NULL,
                    (void *(*)(void *)) GestionarInvitacionesTread, threadArgs);
 
 
@@ -319,6 +322,7 @@ int main() {
     pthread_t thread;
     pthread_t update_thread;
     ConnectedList *list = (ConnectedList *) malloc(sizeof(ConnectedList));
+    ListaPartidas *listaPartidas = (ListaPartidas *) malloc(sizeof(ListaPartidas));
     list->update_connecetions = 0;
     initialize_connected_list(list);
 //    UpdateConnectedThreadArgs ucthreadargs;
@@ -331,6 +335,7 @@ int main() {
     for (;;) {
         ThreadArgs *threadArgs = (ThreadArgs *) malloc(sizeof(ThreadArgs));
         threadArgs->list = list;
+        threadArgs->lista_partidas=listaPartidas;
         printf("Escuchando\n");
 
 //        enqueue(&queue, get_iso8601_datetime(), LOGINFO, "Escuchando", __FILE__, __FUNCTION__, __LINE__);
