@@ -102,6 +102,7 @@ int GestionarCrearPartida(int pos, ConnectedList *list, ListaPartidas *listaPart
              list->connections[pos].name, list->connections[i1].name,
              list->connections[i2].name, list->connections[i3].name);
     for (int i = 1; i < 4; i++) {
+        printf("&d: %s\n",is[i],invitacion);
         pthread_mutex_lock(&invitation_mutex);
         list->connections[is[i]].invitando = 1;
         write(list->connections[is[i]].sockfd, invitacion, strlen(invitacion));
