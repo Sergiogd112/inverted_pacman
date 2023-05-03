@@ -66,3 +66,10 @@ A causa de que hemos hechos varios cambios grandes en el proyecto hemos decidido
   - Programador: Joel
   - Verificador: Sergio
   - Comunicador: Jaume
+
+## Version 4
+
+- Video [https://youtu.be/hsrXQxNiyeQ]
+- Programador: Sergio
+- Verificador: Jaume
+- Comunicador: Joel
