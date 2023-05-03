@@ -12,14 +12,13 @@ public class Slime_Movement : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        direction = Vector2.right; // establecer una dirección inicial
+        direction = Vector2.left; // establecer una dirección inicial
         
     }
 
     // Update is called once per frame
     void Update()
-    {
-        Debug.Log("HEY HEY HEY");       
+    {              
     }
     void FixedUpdate()
     {
@@ -67,4 +66,36 @@ public class Slime_Movement : MonoBehaviour
         }
         Debug.Log("Direction: " + direction);
     }
+
+
+
+    //detecta cuando se choca el objeto
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            gameObject.SetActive(false); // desactiva el objeto al chocar
+            Invoke("ToRespawn", 3f); // espera 3 segundos y lo envía al respawn
+        }
+    }
+
+    void ToRespawn()
+    {
+        //Creamos una matriz para guardar los 4 posibles respawns
+        Vector2[] respawnPositions = new Vector2[] {
+            new Vector2(-3.21f, 2.59f),
+            new Vector2(3.21f, 2.59f),
+            new Vector2(-2.25f, -2.94f),
+            new Vector2(2.25f, -2.94f)
+        };
+
+        //Elegimos un respawn random
+        int randomIndex = Random.Range(0, respawnPositions.Length);
+        //Cambiamos la posición a la random
+        transform.position = respawnPositions[randomIndex];
+
+        
+        gameObject.SetActive(true); // activa el objeto después de 3 segundos
+    }
+
 }
