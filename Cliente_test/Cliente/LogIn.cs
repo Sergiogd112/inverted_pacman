@@ -226,7 +226,6 @@ namespace Version_1
                             this.New_Connected_List = true;
                             Users = trozos[2].Split(',');
                             UpdateConnected(Users);
-                            MessageBox.Show(trozos[2]);
                             break;
                         case 5: 
                             //Respuesta crear partida
