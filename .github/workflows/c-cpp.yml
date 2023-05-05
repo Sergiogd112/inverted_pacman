@@ -13,11 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: cd
-      run: cd server/server
     - name: make
+      working-directory: ./server/server
       run: make
     - name: make check
+      working-directory: ./server/server
       run: make check
     - name: make distcheck
+      working-directory: ./server/server
       run: make distcheck
