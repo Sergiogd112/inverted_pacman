@@ -1,0 +1,33 @@
+# Mensages
+
+En este documento se describe la estructura de los mensajes entre el cliente y el seridor:
+
+- `0/`: mandado desde el cliente e indica al servidor que el cliente se quiere desconectar
+- Registro:
+  - Petidion del cliente: `1/nombre*password*email`
+  - Respuesta del servidor:
+    - `1/0`: El usuario ya existe
+    - `1/1`: Se ha registrado exitosamente
+    - `1/2`: Se ha producido un error
+- Login:
+  - Petición del cliente: `2/nombre*password`
+  - Respuesta del servidor:
+    - `2/0`: Usuario o contraseña incorrectos
+    - `2/1`: Se iniciado exitosamente
+    - `2/2`: Error
+- Ranking:
+  - Petición del cliente: `3/`
+  - Respuesta del servidor: `3/n/nombre1,nombre2` Donde `n` es el numero de jugadores en el ranking y los nombres estan ordenados en orden descendiente de puntos.
+- Lista de conectados
+  - Notificación/respuesta del servidor: `4/n/nombre1,nombre2` mismo formato que en el anterior, solo que unicamente se devuelven los usuarios conectados
+  - Peticion del cliente: `4/` no es necesaria, ya que el servidor manda automaticamente la lista de conectedos, pero es posible mandar esta peticion para obtenerla.
+- Invitar: para este caso seguiremos la logica, ya que facilita la explicación
+  - Peticion del cliente: `5/nombre1*nombre2*nombre3` Siendo los `nombre1,nombre2,nombre3` los nombres de los usuarios a invitar
+  - Respuestas del servidor:
+    - `5/1/n` si se ha poidido mandar la invitación y n es el identificador de partida
+    - `5/0`: no se ha podido invitar
+- Notificación a los invitados (Solo en el primer caso anterior): `6/n/nombreAmfitrion,invitado1*invitado2*invitado3`
+  - Respuesta de los usuarios:
+    - `6/1/n` si se quiere participar, donde n es el identificador de partida
+    - `6/0/n`: no se quiere participar, donde n es el identificador de partida
+- Notificacion de inicio de partida(Solo en el primer caso anterior): `7/n/nombreAmfitrion,invitado1*invitado2*invitado3`

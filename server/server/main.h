@@ -44,3 +44,4 @@ typedef struct {
 //} UpdateConnectedThreadArgs;
 
 #endif // SERVER_MAIN_H
+c
