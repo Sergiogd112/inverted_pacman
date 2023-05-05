@@ -31,3 +31,13 @@ En este documento se describe la estructura de los mensajes entre el cliente y e
     - `6/1/n` si se quiere participar, donde n es el identificador de partida
     - `6/0/n`: no se quiere participar, donde n es el identificador de partida
 - Notificacion de inicio de partida(Solo en el primer caso anterior): `7/n/nombreAmfitrion,invitado1*invitado2*invitado3`
+- Partida `8/` Reservado para uso exclusivo durante partidas
+- Enviar al chat:
+  - Peticion del cliente: `9/mensage`
+  - Respuesta servidor:
+    - `9/0`: no se ha podido mandar el mensage
+    - `9/1`: se ha mandado exitosamente
+    - `9/2`: error
+- Recibir mensages del chat:
+  - Peticion cliente: `10/`
+  - Notificacion/respuesta del servidor: `10/n/nombre1*timestamp*mensage,nombre2*timestamp2*mensage2...` donde n es el numero de mensages
