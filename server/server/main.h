@@ -17,11 +17,13 @@
 #include <unistd.h>
 #include "config.h"
 #include "partida.h"
+#include "chat.h"
 //#include "logger.h"
 pthread_mutex_t main_mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutex_t update_connected_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t glubal_update_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t crear_partida_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t invitation_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t chat_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 typedef struct
 {

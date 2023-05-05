@@ -1,27 +1,41 @@
 #include "main.h"
 
-void UpdateConnectedThread(ConnectedList *list) {
+void UpdateThreads(ConnectedList *list) {
     //    ConnectedList *list=threadArgs->list;
     //    LogQueue *queue=threadArgs->queue;
     int i = 0;
     const size_t RES_LEN = 2000;
     char res[RES_LEN];
+    MYSQL *conn;
+    conn = mysql_init(NULL);
+    if (!mysql_real_connect(conn, DBSERVER, USER, PASSWORD, DATABASE, 0, NULL, 0)) {
+        fprintf(stderr, "%s\n", mysql_error(conn));
+        exit(1);
+    }
     while (1 == 1) {
-        if (list->update_connecetions == 1 || i >= 10000) {
+        if (list->global_message == 1 || i >= 10000) {
             strcpy(res, "");
             int n = connected_to_string(list, res, RES_LEN);
-            pthread_mutex_lock(&update_connected_mutex); // No me interrumpas ahora
+            pthread_mutex_lock(&glubal_update_mutex); // No me interrumpas ahora
 
             push_connected(list, res, n);
 
-            list->update_connecetions = 0;
-            pthread_mutex_unlock(&update_connected_mutex); // No me interrumpas ahora
+
             char message[2000];
             snprintf(message, 2000, "4/%d/%s\x04", n, res);
             printf("%s\n", message);
             //            enqueue(queue, get_iso8601_datetime(), LOGINFO, message, __FILE__, __FUNCTION__, __LINE__);
+            char *msg=NULL;
+            int m = chat_to_string(conn,msg);
+            if(m!=0){
+                push_chat(list,res,n);
+                free(msg);
+            }
 
+            list->global_message = 0;
+            pthread_mutex_unlock(&glubal_update_mutex); // No me interrumpas ahora
             i = -1;
+
         }
         usleep(100000);
         i++;
@@ -176,10 +190,10 @@ void *AtenderThread(ThreadArgs *threadArgs) {
 
                     snprintf(response,sizeof(response),"%d/1",code);
                     strcpy(list->connections[pos].name, name);
-                    pthread_mutex_lock(&update_connected_mutex);
+                    pthread_mutex_lock(&glubal_update_mutex);
 
-                    list->update_connecetions = 1;
-                    pthread_mutex_unlock(&update_connected_mutex);
+                    list->global_message = 1;
+                    pthread_mutex_unlock(&glubal_update_mutex);
                     snprintf(logmsg, 2000, "Conexion %s se ha registrado exitosamente", name);
                     printf("%s\n", logmsg);
                     //                    enqueue(queue, get_iso8601_datetime(), LOGINFO, logmsg, __FILE__, __FUNCTION__, __LINE__);
@@ -203,10 +217,10 @@ void *AtenderThread(ThreadArgs *threadArgs) {
                 if (res > 0) {
                     snprintf(response,sizeof(response),"%d/1",code);
                     list->connections[pos].id = res;
-                    pthread_mutex_lock(&update_connected_mutex);
+                    pthread_mutex_lock(&glubal_update_mutex);
                     strcpy(list->connections[pos].name, name);
-                    list->update_connecetions = 1;
-                    pthread_mutex_unlock(&update_connected_mutex);
+                    list->global_message = 1;
+                    pthread_mutex_unlock(&glubal_update_mutex);
                     snprintf(logmsg, 2000, "Conexion %s se ha logeado exitosamente", name);
                     //                    enqueue(queue, get_iso8601_datetime(), LOGINFO, logmsg, __FILE__, __FUNCTION__, __LINE__);
                 } else if (res == -1)
@@ -253,6 +267,23 @@ void *AtenderThread(ThreadArgs *threadArgs) {
                 GestionarInvitaciones(listaPartidas, &listaPartidas->partidas[i_partida], list);
                 send_awr = 0;
                 break;
+            case 7:
+                Atender_Cliente_Partida();
+                break;
+
+            case 9:
+                p= strtok(NULL,"/");
+                write_message(conn,list->connections[pos].name,p);
+                response= malloc(sizeof(char )*4);
+                if (n==0)
+                    snprintf(response,4,"9/1");
+                else if(n==1)
+                    snprintf(response,4,"9/0");
+                else
+                    snprintf(response,4,"9/2");
+                break;
+
+
             default:
                 snprintf(logmsg, 2000, "Conexion %d ha intentado hacer una conexion no definida %d", sock_conn, code);
                 //                enqueue(queue, get_iso8601_datetime(), LOGERROR, logmsg, __FILE__, __FUNCTION__, __LINE__);
@@ -284,10 +315,10 @@ void *AtenderThread(ThreadArgs *threadArgs) {
 
     print_connected_idx(list);
     pthread_mutex_unlock(&main_mutex); // ya puedes interrumpirme
-    pthread_mutex_lock(&update_connected_mutex);
+    pthread_mutex_lock(&glubal_update_mutex);
 
-    list->update_connecetions = 1;
-    pthread_mutex_unlock(&update_connected_mutex);
+    list->global_message = 1;
+    pthread_mutex_unlock(&glubal_update_mutex);
 }
 
 int main() {
@@ -321,13 +352,13 @@ int main() {
     pthread_t update_thread;
     ConnectedList *list = (ConnectedList *) malloc(sizeof(ConnectedList));
     ListaPartidas *listaPartidas = (ListaPartidas *) malloc(sizeof(ListaPartidas));
-    list->update_connecetions = 0;
+    list->global_message = 0;
     initialize_connected_list(list);
     //    UpdateConnectedThreadArgs ucthreadargs;
     //    ucthreadargs.list=list;
     //    ucthreadargs.queue=&queue;
 
-    pthread_create(&update_thread, NULL, (void *(*)(void *)) UpdateConnectedThread, list);
+    pthread_create(&update_thread, NULL, (void *(*)(void *)) UpdateThreads, list);
     int i = 0;
     for (;;) {
         ThreadArgs *threadArgs = (ThreadArgs *) malloc(sizeof(ThreadArgs));

@@ -87,3 +87,7 @@ INSERT INTO partidas_usuarios
 VALUES (3, 3, 16);
 INSERT INTO partidas_usuarios
 VALUES (3, 4, 16);
+INSERT INTO chat (id_usuario, time, mensage) VALUES ((SELECT id FROM usuarios WHERE nombre = 'Carlos'), NOW(), 'Hello!');
+INSERT INTO chat (id_usuario, time, mensage) VALUES ((SELECT id FROM usuarios WHERE nombre = 'Ana'), NOW(), 'How are you?');
+INSERT INTO chat (id_usuario, time, mensage) VALUES ((SELECT id FROM usuarios WHERE nombre = 'Sergio'), NOW(), 'What are you doing?');
+INSERT INTO chat (id_usuario, time, mensage) VALUES ((SELECT id FROM usuarios WHERE nombre = 'Pepa'), NOW(), 'Nice to meet you!');

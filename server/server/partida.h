@@ -59,6 +59,6 @@ int partidas_llist_to_string(ListaPartidas *list, char res[200]);
 
 void print_partidas_idx(ListaPartidas *list);
 
-void Thread_Partida(void * PartidasArgs);
+void Atender_Cliente_Partida();
 
 #endif //SERVER_PARTIDA_H

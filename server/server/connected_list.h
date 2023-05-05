@@ -37,7 +37,7 @@ typedef struct
     struct Connection connections[MAXUSERS];
     int used;
     int idx;
-    int update_connecetions;
+    int global_message;
 } ConnectedList;
 
 void initialize_connected_list(ConnectedList *list);
