@@ -164,6 +164,6 @@ void print_partidas_idx(ListaPartidas *list)
     printf("%s\n", res);         // Print the resulting string
 }
 
-void Thread_Partida(void * PartidasArgs){
+void Atender_Cliente_Partida(){
 
 }

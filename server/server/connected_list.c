@@ -13,7 +13,7 @@ void initialize_connected_list(ConnectedList *list)
 {
     list->idx = 0;                 // Initialize idx to 0
     list->used = 0;                // Initialize used to 0
-    list->update_connecetions = 0; // Initialize update_connecetions to 0
+    list->global_message = 0; // Initialize global_message to 0
     for (int i = 0; i < MAXUSERS; i++)
     {
         list->connections[i].id = -1;               // Initialize id to -1
@@ -282,7 +282,6 @@ void push_connected(ConnectedList *list, char res[2000], int n)
             list->connections[i].sending_connected = 0;                     // Reset sending_connected flag after sending the message
         }
 
-        snprintf(res, 2000, "%s%s,", res, list->connections[i].name); // Update the list of connected users string
     }
 }
 
