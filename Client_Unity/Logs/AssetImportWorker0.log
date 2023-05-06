@@ -15,9 +15,15 @@ C:/share/inverted_pacman/Client_Unity
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
+<<<<<<< Updated upstream
 58229
 Successfully changed project path to: C:/share/inverted_pacman/Client_Unity
 C:/share/inverted_pacman/Client_Unity
+=======
+56985
+Successfully changed project path to: C:/Users/joelm/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity
+C:/Users/joelm/OneDrive/Documentos/GitHub/inverted_pacman/Client_Unity
+>>>>>>> Stashed changes
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,11 +53,19 @@ C:/share/inverted_pacman/Client_Unity
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
+<<<<<<< Updated upstream
 Player connection [22456] Host "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 1545324534 [EditorId] 1545324534 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-TG765E2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
 Player connection [22456] Host "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 1545324534 [EditorId] 1545324534 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-TG765E2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 Refreshing native plugins compatible for Editor in 204.65 ms, found 4 plugins.
+=======
+Player connection [24212] Host "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 2498156023 [EditorId] 2498156023 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [24212] Host "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 2498156023 [EditorId] 2498156023 [Version] 1048832 [Id] WindowsEditor(7,MSI) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 516.44 ms, found 4 plugins.
+>>>>>>> Stashed changes
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.21f1 (1b156197d683)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/Resources/UnitySubsystems
@@ -67,11 +81,16 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/MonoBleedingEdge/etc'
+<<<<<<< Updated upstream
 Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56612
+=======
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56020
+>>>>>>> Stashed changes
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+<<<<<<< Updated upstream
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.21f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
 Registered in 0.012090 seconds.
 Native extension for UWP target not found
@@ -84,10 +103,23 @@ Mono: successfully reloaded assembly
 Domain Reload Profiling:
 	ReloadAssembly (1442ms)
 		BeginReloadAssembly (333ms)
+=======
+Registered in 0.023784 seconds.
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 515.98 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.013 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3015ms)
+		BeginReloadAssembly (352ms)
+>>>>>>> Stashed changes
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
+<<<<<<< Updated upstream
 			CreateAndSetChildDomain (2ms)
 		EndReloadAssembly (909ms)
 			LoadAssemblies (328ms)
@@ -103,19 +135,41 @@ Domain Reload Profiling:
 				BeforeProcessingInitializeOnLoad (2ms)
 				ProcessInitializeOnLoadAttributes (269ms)
 				ProcessInitializeOnLoadMethodAttributes (67ms)
+=======
+			CreateAndSetChildDomain (3ms)
+		EndReloadAssembly (2230ms)
+			LoadAssemblies (342ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (476ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (120ms)
+			SetupLoadedEditorAssemblies (1403ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (44ms)
+				SetLoadedEditorAssemblies (2ms)
+				RefreshPlugins (516ms)
+				BeforeProcessingInitializeOnLoad (5ms)
+				ProcessInitializeOnLoadAttributes (634ms)
+				ProcessInitializeOnLoadMethodAttributes (201ms)
+>>>>>>> Stashed changes
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
+<<<<<<< Updated upstream
 Registered in 0.008675 seconds.
+=======
+Registered in 0.035018 seconds.
+>>>>>>> Stashed changes
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\share\inverted_pacman\Client_Unity\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image C:\share\inverted_pacman\Client_Unity\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for UWP target not found
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
+<<<<<<< Updated upstream
 Refreshing native plugins compatible for Editor in 142.38 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
@@ -543,15 +597,57 @@ Domain Reload Profiling:
 				ProcessInitializeOnLoadMethodAttributes (71ms)
 				AfterProcessingInitializeOnLoad (12ms)
 				EditorAssembliesLoaded (0ms)
+=======
+Refreshing native plugins compatible for Editor in 487.01 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  5.459 seconds
+Domain Reload Profiling:
+	ReloadAssembly (5463ms)
+		BeginReloadAssembly (542ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (27ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (72ms)
+		EndReloadAssembly (4416ms)
+			LoadAssemblies (444ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (1075ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (243ms)
+			SetupLoadedEditorAssemblies (2524ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (31ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (487ms)
+				BeforeProcessingInitializeOnLoad (428ms)
+				ProcessInitializeOnLoadAttributes (1348ms)
+				ProcessInitializeOnLoadMethodAttributes (197ms)
+				AfterProcessingInitializeOnLoad (32ms)
+				EditorAssembliesLoaded (1ms)
+>>>>>>> Stashed changes
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (17ms)
+			AwakeInstancesAfterBackupRestoration (36ms)
 Platform modules already initialized, skipping
+<<<<<<< Updated upstream
 Refreshing native plugins compatible for Editor in 5.12 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 4138 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 29 unused Assets / (196.0 KB). Loaded Objects now: 4639.
 Memory consumption went from 163.0 MB to 162.8 MB.
 Total: 8.730800 ms (FindLiveObjects: 0.748800 ms CreateObjectMapping: 0.831000 ms MarkObjects: 6.906900 ms  DeleteObjects: 0.241700 ms)
+=======
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.19 seconds
+Refreshing native plugins compatible for Editor in 2.58 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4156 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 44 unused Assets / (229.0 KB). Loaded Objects now: 4614.
+Memory consumption went from 160.7 MB to 160.5 MB.
+Total: 13.050300 ms (FindLiveObjects: 0.950000 ms CreateObjectMapping: 0.966100 ms MarkObjects: 10.594800 ms  DeleteObjects: 0.535500 ms)
+>>>>>>> Stashed changes
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -564,15 +660,34 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
+<<<<<<< Updated upstream
 Received Prepare
 Registering precompiled user dll's ...
 Registered in 0.010488 seconds.
+=======
+Received Import Request.
+  Time since last request: 117092.763496 seconds.
+  path: Assets/Scenes/WarGame.unity
+  artifactKey: Guid(d4ec53a869b28a94db5db6b28cc88fc7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/WarGame.unity using Guid(d4ec53a869b28a94db5db6b28cc88fc7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d195e8dca84af50c1767b26c29cfed3') in 0.039684 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 375.790435 seconds.
+  path: Assets/WarGame
+  artifactKey: Guid(9f713ccef36175248a24ed71bdb46fc7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame using Guid(9f713ccef36175248a24ed71bdb46fc7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d25864d0cce0ba14a2b1c66b3f1f1e5') in 0.022551 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.029092 seconds.
+>>>>>>> Stashed changes
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\share\inverted_pacman\Client_Unity\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image C:\share\inverted_pacman\Client_Unity\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for UWP target not found
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
+<<<<<<< Updated upstream
 Refreshing native plugins compatible for Editor in 1.73 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
@@ -610,6 +725,45 @@ Unloading 4138 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 29 unused Assets / (195.7 KB). Loaded Objects now: 4642.
 Memory consumption went from 163.0 MB to 162.8 MB.
 Total: 6.163200 ms (FindLiveObjects: 0.662700 ms CreateObjectMapping: 0.459000 ms MarkObjects: 4.718500 ms  DeleteObjects: 0.321100 ms)
+=======
+Refreshing native plugins compatible for Editor in 2.32 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.531 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3532ms)
+		BeginReloadAssembly (453ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (26ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (99ms)
+		EndReloadAssembly (2731ms)
+			LoadAssemblies (353ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (857ms)
+			ReleaseScriptCaches (3ms)
+			RebuildScriptCaches (147ms)
+			SetupLoadedEditorAssemblies (1264ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (28ms)
+				SetLoadedEditorAssemblies (2ms)
+				RefreshPlugins (3ms)
+				BeforeProcessingInitializeOnLoad (274ms)
+				ProcessInitializeOnLoadAttributes (826ms)
+				ProcessInitializeOnLoadMethodAttributes (109ms)
+				AfterProcessingInitializeOnLoad (22ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (32ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 12.53 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4142 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 29 unused Assets / (195.6 KB). Loaded Objects now: 4621.
+Memory consumption went from 158.8 MB to 158.6 MB.
+Total: 12.677700 ms (FindLiveObjects: 0.809200 ms CreateObjectMapping: 0.905500 ms MarkObjects: 10.506700 ms  DeleteObjects: 0.453100 ms)
+>>>>>>> Stashed changes
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -622,6 +776,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
+<<<<<<< Updated upstream
 Received Prepare
 Registering precompiled user dll's ...
 Registered in 0.009307 seconds.
@@ -1317,3 +1472,308 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+=======
+Received Import Request.
+  Time since last request: 347.203707 seconds.
+  path: Assets/WarGame/Prefabs/Bullet.prefab
+  artifactKey: Guid(25e8272bdec09f94e877850708a6b54f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/Prefabs/Bullet.prefab using Guid(25e8272bdec09f94e877850708a6b54f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f1c1e274c0104e40fa52ae3c701eb28') in 0.513182 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.464994 seconds.
+  path: Assets/WarGame/SpriteSheets/cave_tileset.png
+  artifactKey: Guid(55c070e12d23acb439aa72ec494661b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/cave_tileset.png using Guid(55c070e12d23acb439aa72ec494661b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3224bf0424dc11ce4f48821cf4ebe799') in 0.281518 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000065 seconds.
+  path: Assets/WarGame/SpriteSheets/tileset.png
+  artifactKey: Guid(1b586fa1e356edc4e9e8990d055f112a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/tileset.png using Guid(1b586fa1e356edc4e9e8990d055f112a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f388531a8ec9032c26b58552bec1621') in 0.058616 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.437722 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/Palette.prefab
+  artifactKey: Guid(444ce6954bc914146a76561906183a90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/Palette.prefab using Guid(444ce6954bc914146a76561906183a90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06c10bb98b3f1d5a59e87f4b1c308384') in 0.183048 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000067 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_9.asset
+  artifactKey: Guid(fa96165e5c661454088a7786fed0eb76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_9.asset using Guid(fa96165e5c661454088a7786fed0eb76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e91ff10b538e17fbcabff4afa7bf718') in 0.063858 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000079 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_25.asset
+  artifactKey: Guid(ff9fd6881c5d2bf4191ee709b9350924) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_25.asset using Guid(ff9fd6881c5d2bf4191ee709b9350924) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '941979cefda65ddbd7d5a03fdcd9dd06') in 0.043575 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000064 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_32.asset
+  artifactKey: Guid(7314a0f827c1438479338e6c0b129937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_32.asset using Guid(7314a0f827c1438479338e6c0b129937) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50f686c245f0ee647012cce4b9f38322') in 0.041814 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000059 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_5.asset
+  artifactKey: Guid(a03cc2d0932c4c944a43d668a0c5e971) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_5.asset using Guid(a03cc2d0932c4c944a43d668a0c5e971) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1ebcd68280d1ce1716374ccf53c8f87') in 0.042181 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_10.asset
+  artifactKey: Guid(933ca8f7ee4ea5e41a548688163fffce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_10.asset using Guid(933ca8f7ee4ea5e41a548688163fffce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b3447755a65d6cc3f8513943e592541') in 0.040034 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000099 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_6.asset
+  artifactKey: Guid(47ad5e3991dd17f408da9bc8abe88c57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_6.asset using Guid(47ad5e3991dd17f408da9bc8abe88c57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a88da6016e06c30cd32b315c043191c') in 0.044404 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_33.asset
+  artifactKey: Guid(33ba57b0a7891694fb0d781b9ea7503a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_33.asset using Guid(33ba57b0a7891694fb0d781b9ea7503a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c72940ecc55392c76e4b1d9297d8d96') in 0.040511 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_21.asset
+  artifactKey: Guid(82c3703e8b23a624d896180f8fb644dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_21.asset using Guid(82c3703e8b23a624d896180f8fb644dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1def3ef09a4001894a90d8c78f13f5db') in 0.041367 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_3.asset
+  artifactKey: Guid(1dacf89e6a2104f478078097c4e4f8d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_3.asset using Guid(1dacf89e6a2104f478078097c4e4f8d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1b3f0eef194813ecb65743a7b8c52b3') in 0.044563 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000265 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_18.asset
+  artifactKey: Guid(02e00df91ad958241b5d4df039dad3e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_18.asset using Guid(02e00df91ad958241b5d4df039dad3e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '062c7c1579b81f5717309ed91e39efb6') in 0.043005 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000100 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_24.asset
+  artifactKey: Guid(fcd2998865429eb48bf220858916f20e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_24.asset using Guid(fcd2998865429eb48bf220858916f20e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb816f36db1e1aa129bddcd68f153bef') in 0.044044 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_2.asset
+  artifactKey: Guid(8221fc946975c7d4a9eff8969cc97be1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_2.asset using Guid(8221fc946975c7d4a9eff8969cc97be1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff4176f966ba50a2879f7caabed93b90') in 0.045319 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000068 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_29.asset
+  artifactKey: Guid(80f480b21cb57894a934d6fa39f0fc20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_29.asset using Guid(80f480b21cb57894a934d6fa39f0fc20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9f07610eff8e3cc1889c54d43aaed66') in 0.044460 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_23.asset
+  artifactKey: Guid(e3d8ff707fc8cd34b8564eddd10ae708) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_23.asset using Guid(e3d8ff707fc8cd34b8564eddd10ae708) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5418a86a0f1fefaee0f72cdb51260342') in 0.046369 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000073 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_17.asset
+  artifactKey: Guid(393863f097cde9b48ae11ce9b6af232a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_17.asset using Guid(393863f097cde9b48ae11ce9b6af232a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '394c36e24b7babfeb6d41babdcb83426') in 0.039922 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.446751 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_34.asset
+  artifactKey: Guid(1e034303e5e5266468b34b7095d5ad56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_34.asset using Guid(1e034303e5e5266468b34b7095d5ad56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cfa915c6ab945e06850e3c3396f50bea') in 0.045340 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_42.asset
+  artifactKey: Guid(2d21c98a4b4c52940bb57c89b4b81896) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_42.asset using Guid(2d21c98a4b4c52940bb57c89b4b81896) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9e427dda14daf64c1486893d61b309f') in 0.041396 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_46.asset
+  artifactKey: Guid(d6d2da982063cf44f90b3ef5fd17eec8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_46.asset using Guid(d6d2da982063cf44f90b3ef5fd17eec8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96ad42e1b6cba734ea17ef900b0fa250') in 0.045104 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000077 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_52.asset
+  artifactKey: Guid(995b9876f64d4fb42ab117cbbe966e73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_52.asset using Guid(995b9876f64d4fb42ab117cbbe966e73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f461028c2ffe13fb762747270d7d019') in 0.040813 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000066 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_58.asset
+  artifactKey: Guid(9b96ed683f8c31e4bbdf9f219bd0d27e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_58.asset using Guid(9b96ed683f8c31e4bbdf9f219bd0d27e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf3e7853b9f37d0691ca89b257a4036e') in 0.039221 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000064 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_45.asset
+  artifactKey: Guid(6b6070263978ed743b0f873298c80c77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_45.asset using Guid(6b6070263978ed743b0f873298c80c77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30efae2f5642f2657a1d71588c3520ce') in 0.040737 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000071 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_56.asset
+  artifactKey: Guid(1be5ba0a56dc4f54ebf967235c2dbc94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_56.asset using Guid(1be5ba0a56dc4f54ebf967235c2dbc94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '524322b34cbc51fec074ed4247bdf44e') in 0.039911 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000079 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_37.asset
+  artifactKey: Guid(4cd275554e1f9e940a268b44ccb195fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_37.asset using Guid(4cd275554e1f9e940a268b44ccb195fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2cc51d51246eacc085ba3655cd8d1c46') in 0.042136 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000093 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_41.asset
+  artifactKey: Guid(ae4e5f3b5b7143b4c932096f339441cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_41.asset using Guid(ae4e5f3b5b7143b4c932096f339441cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58e66c333a36cea1297580abdd9c7a9e') in 0.037584 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_47.asset
+  artifactKey: Guid(421690cbc2f6a4642b1311c71d7db2cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_47.asset using Guid(421690cbc2f6a4642b1311c71d7db2cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5305ddc8d8b4676520d9a033eea0e061') in 0.042820 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_38.asset
+  artifactKey: Guid(55ba8317a569ffb458a4b27d3a190d80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_38.asset using Guid(55ba8317a569ffb458a4b27d3a190d80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '206a0b6fcf69af6acc6f344d5e1db43d') in 0.044587 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000064 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_59.asset
+  artifactKey: Guid(09519d1cfa5e164429c09a77ba02b321) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_59.asset using Guid(09519d1cfa5e164429c09a77ba02b321) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84d263b579fb474f6b5e2b5531bf34ba') in 0.043499 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_44.asset
+  artifactKey: Guid(49682476f7a6bdd4ba899b253038ac30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/Palette/tiles_spritesheet_44.asset using Guid(49682476f7a6bdd4ba899b253038ac30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f904099517411464581c0ab7247a210') in 0.041173 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.799292 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_crouch.png
+  artifactKey: Guid(4da3d64e7b6ff214ba08a6c495a35577) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_crouch.png using Guid(4da3d64e7b6ff214ba08a6c495a35577) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '218dc7b49de09dbc33be325cc1501bbe') in 0.062006 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000075 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_defeated_ng.png
+  artifactKey: Guid(7b74227ef99be7049b5d59f40f7bf0a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_defeated_ng.png using Guid(7b74227ef99be7049b5d59f40f7bf0a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9427a3bdd433c30f867792eb209d9a9f') in 0.069951 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000079 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_hagging_aimupup.png
+  artifactKey: Guid(f81aa48c7729fef43b478d621388b626) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_hagging_aimupup.png using Guid(f81aa48c7729fef43b478d621388b626) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e40eee0d8ad0869122ab8059895b491e') in 0.057278 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_run_NG_diag_aimdowndiag.png
+  artifactKey: Guid(598265bebc1e24a4188ab1e1814d0ea2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_run_NG_diag_aimdowndiag.png using Guid(598265bebc1e24a4188ab1e1814d0ea2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95f856ba16c3523dd58492555c3469fc') in 0.056982 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000071 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_hagging_idle.png
+  artifactKey: Guid(12a09b4862e029547b8a708a327f7a69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_hagging_idle.png using Guid(12a09b4862e029547b8a708a327f7a69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52fffdcb3fae332f99b514f357194e3e') in 0.058041 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000073 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_idle_ng.png
+  artifactKey: Guid(dfcbd84b1646bc249bf71f565e993638) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_idle_ng.png using Guid(dfcbd84b1646bc249bf71f565e993638) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b942396494b8436754a350753148bfd8') in 0.061671 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000091 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_landing.png
+  artifactKey: Guid(ea54b23e917bf28479c2b8e17c4abc2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_landing.png using Guid(ea54b23e917bf28479c2b8e17c4abc2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e9d61e0512eb1b2e98b43f967954ca2') in 0.061630 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000066 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_crouch_shoot_ng.png
+  artifactKey: Guid(4e4b5dfe5e86c9c4dbd4970fae3cebcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_crouch_shoot_ng.png using Guid(4e4b5dfe5e86c9c4dbd4970fae3cebcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5283570bfd87629ade703220853aaedf') in 0.050646 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_hagging_aimdowndiag.png
+  artifactKey: Guid(9a4578ecc61cc9342adef12ca133ac55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_hagging_aimdowndiag.png using Guid(9a4578ecc61cc9342adef12ca133ac55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d9222e4c3c7f07c29a534fedb127cd0') in 0.050731 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_dead.png
+  artifactKey: Guid(9185a9447facac54e8388f7b79bbe9a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_dead.png using Guid(9185a9447facac54e8388f7b79bbe9a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51eb09626c731f347d78245fc16a4765') in 0.058461 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000086 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_jump_ng_aimdown.png
+  artifactKey: Guid(f369753a74f1ed64b8edeea5860b9d43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_jump_ng_aimdown.png using Guid(f369753a74f1ed64b8edeea5860b9d43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2ae41780f1c9427044bd0b7ce445736') in 0.060215 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_jump_ng_aimdiagdown.png
+  artifactKey: Guid(4b9096055b5c5224688ec19dd965693e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_jump_ng_aimdiagdown.png using Guid(4b9096055b5c5224688ec19dd965693e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '665a54e8cd58b8ab3e7c6332cbcdda87') in 0.053112 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000062 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_defeated.png
+  artifactKey: Guid(64680037ee1b61946a9132833c18d4ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_defeated.png using Guid(64680037ee1b61946a9132833c18d4ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73604258ebb49982c0c64afecaee1eaf') in 0.052559 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_hagging_aimupdiag_firing.png
+  artifactKey: Guid(a935594d0808f8f45af889e18039d6f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_hagging_aimupdiag_firing.png using Guid(a935594d0808f8f45af889e18039d6f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f49f4cceb32421c4b776ca689c9b585') in 0.047889 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000077 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_idle.png
+  artifactKey: Guid(e56c669cdf4be3a49a088878dc824364) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_idle.png using Guid(e56c669cdf4be3a49a088878dc824364) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '798fb6271e0b1d46af8e2a277a73bc69') in 0.075495 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_hithurt_ng.png
+  artifactKey: Guid(902ce91a8be8a734e8316484c2960216) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_hithurt_ng.png using Guid(902ce91a8be8a734e8316484c2960216) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f780d3bb87d98fabad56a9c7cd2a354d') in 0.048448 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_hithurt.png
+  artifactKey: Guid(60b5b0319d20e074eb6c8156a59593f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_hithurt.png using Guid(60b5b0319d20e074eb6c8156a59593f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd47b4e7f15defca6cc94a464e4792aad') in 0.047376 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000059 seconds.
+  path: Assets/WarGame/SpriteSheets/player/john_hagging_aimdown_firing.png
+  artifactKey: Guid(6759b5d12a4ca114ab138be51e4f61a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WarGame/SpriteSheets/player/john_hagging_aimdown_firing.png using Guid(6759b5d12a4ca114ab138be51e4f61a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84621255d688215e75ff18c576ca0081') in 0.048051 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
+>>>>>>> Stashed changes
