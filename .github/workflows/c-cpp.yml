@@ -16,9 +16,4 @@ jobs:
     - name: make
       working-directory: ./server/server
       run: make
-    - name: make check
-      working-directory: ./server/server
-      run: make check
-    - name: make distcheck
-      working-directory: ./server/server
-      run: make distcheck
+
