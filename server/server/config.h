@@ -8,7 +8,7 @@
 #define USER "root"
 #define PASSWORD "mysql"
 #define DATABASE "T1_InvertedPacman"
-#define PORT 5051
+#define PORT 50053
 #define MAXCHATMSGLEN 2000
 #define MAXNOMBRELEN 20
 typedef char Nombre[MAXNOMBRELEN];
