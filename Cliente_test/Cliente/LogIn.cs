@@ -157,9 +157,10 @@ namespace Version_1
             while (true)
             {
                 // Recibe mensaje del servidor
-                byte[] msg2 = new byte[100];
+                byte[] msg2 = new byte[10000000];
                 Server.Receive(msg2);
                 Queries = true;
+                MessageBox.Show(Encoding.ASCII.GetString(msg2));
                 string[] Server_Error = Encoding.ASCII.GetString(msg2).Split('\x04');
                 if (Server_Error[0] == "")
                 {
