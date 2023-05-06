@@ -31,7 +31,28 @@ En este documento se describe la estructura de los mensajes entre el cliente y e
     - `6/1/n` si se quiere participar, donde n es el identificador de partida
     - `6/0/n`: no se quiere participar, donde n es el identificador de partida
 - Notificacion de inicio de partida(Solo en el primer caso anterior): `7/n/nombreAmfitrion,invitado1*invitado2*invitado3`
-- Partida `8/` Reservado para uso exclusivo durante partidas
+- Partida
+  - Mensages del cliente: `8/`
+    - `8/0/1`: jugador listo
+    - `8/0/0/nombre1*x1*y1*p1*v1,nombre2*x2*y2*p2*v2,nombre3*x3*y3*p3*v3,nombre4*x4*y4*p4*v4|id1*x1*y1,id2*x2*y2,id3*x3*y3,id4*x4*y4` datos de inicio de partida(mandados por el host)
+    - `8/1/`: Relacionado con el jugador
+      - `8/1/0/nombre*x*y`: posicion del jugador
+      - `8/1/1/nombre*m*p`: el jugador ha derrotado al enemigo con id m y su puntuación actual es de p
+      - `8/1/2/nombre*m`: el jugador ha sido atacado por m
+      - `8/1/3/nombre*m`: el jugador ha muerto a manos de m
+    - `8/2/`
+      - `8/2/0/id1*x1*y1,id2*x2*y2,id3*x3*y3,id4*x4*y4`: actualización de la posicion de los enemigos (solo lo puede mandar el host)
+      - `8/2/1/id*x*y` crear un nuevo enemigo en la posición x,y(solo lo puede mandar el host)
+  - Notificaciones servidor
+    - `8/0/nombre1*x1*y1*p1*v1,nombre2*x2*y2*p2*v2,nombre3*x3*y3*p3*v3,nombre4*x4*y4*p4*v4|id1*x1*y1,id2*x2*y2,id3*x3*y3,id4*x4*y4` datos de inicio de partida
+    - Relacionadas con los jugadores
+      - `8/1/0/nombre1*x1*y1*p1*v1,nombre2*x2*y2*p2*v2,nombre3*x3*y3*p3*v3,nombre4*x4*y4*p4*v4` posición, puntación y vidas actuales de los jugadores
+      - `8/1/1/nombre*m`: el jugador ha derrotado a m
+      - `8/1/2/nombre*m`: el jugador ha sido atacado por m
+      - `8/1/3/nombre*m`: el jugador ha muerto a manos de m
+    - Relacionada con los enemigos
+      - `8/2/0/id1*x1*y1,id2*x2*y2,id3*x3*y3,id4*x4*y4`: actualización de la posicion de los enemigos
+      - `8/2/1/id*x*y` crear un nuevo enemigo en la posición x,y(solo lo puede mandar el host)
 - Enviar al chat:
   - Peticion del cliente: `9/mensage`
   - Respuesta servidor:
