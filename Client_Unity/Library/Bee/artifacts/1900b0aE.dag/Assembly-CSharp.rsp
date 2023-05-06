@@ -429,6 +429,8 @@
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
+"Assets/WarGame/Scripts/BulletScript.cs"
+"Assets/WarGame/Scripts/JohnMovement.cs"
 -langversion:9.0
 
 /deterministic
