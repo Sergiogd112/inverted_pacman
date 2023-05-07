@@ -9,7 +9,7 @@
 #include "connected_list.h"
 #include <mysql/mysql.h>
 #include <string.h>
-int write_message(MYSQL *conn, Nombre name, char *text);
-char * chat_to_string(MYSQL *conn, int *n);
+void write_message(MYSQL *conn, Nombre name, char *text);
+int chat_to_string(MYSQL *conn, char *res);
 void push_chat(ConnectedList *list, char *res, int n);
 #endif //SERVER_CHAT_H

@@ -14,29 +14,23 @@
 #include <arpa/inet.h>
 #include <string.h>
 #include "config.h"
-#include <pthread.h>
+
 typedef struct{
     float x;
     float y;
 }Position;
-typedef struct{
-    Position pos;
-    int id;
-}Enemy;
+
 
 typedef struct{
     Nombre nombres[4];
     Position player_pos[4];
-    Enemy enemys[4];
+    Position enemy_pos[4];
     int sockets[4];
     int puntos[4];
     int vidas[4];
-    int usando;
     int jugando;
     int idx;
     int answer[4];
-    int listos[4];
-    pthread_mutex_t mutex;
 }Partida;
 
 typedef struct{
@@ -50,10 +44,6 @@ typedef struct {
     Partida *partida;
     int player;
 }PartidaArgs;
-
-
-
-
 
 void initialize_partidas_list(ListaPartidas *list);
 

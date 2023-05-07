@@ -19,7 +19,7 @@ void initialize_connected_list(ConnectedList *list)
         list->connections[i].id = -1;               // Initialize id to -1
         list->connections[i].sockfd = 0;            // Initialize sockfd to 0
         list->connections[i].using = 0;             // Initialize using to 0
-        list->connections[i].jugando = 0;             // Initialize usando to 0
+        list->connections[i].jugando = 0;             // Initialize jugando to 0
         list->connections[i].invitando = 0;             // Initialize invitando to 0
         list->connections[i].sending_connected = 0; // Initialize sending_connected to 0
         strcpy(list->connections[i].name, "name");  // Initialize name to "name"
@@ -37,7 +37,7 @@ void reset_node(struct Connection *node)
     node->id = -1;               // Reset id to -1
     node->sockfd = 0;            // Reset sockfd to 0
     node->using = 0;             // Reset using to 0
-    node->jugando = 0;             // Reset usando to 0
+    node->jugando = 0;             // Reset jugando to 0
     node->invitando = 0;             // Reset invitando to 0
     node->sending_connected = 0; // Reset sending_connected to 0
     strcpy(node->name, "name");  // Reset name to "name"
@@ -278,7 +278,7 @@ void push_connected(ConnectedList *list, char res[2000], int n)
         if (list->connections[i].using == 1 && list->connections[i].id != -1)
         {
             list->connections[i].sending_connected = 1;                     // Set sending_connected flag to indicate a message is being sent
-            write(list->connections[i].sockfd, response, strlen(response)+1); // Write the response string to the socket
+            write(list->connections[i].sockfd, response, strlen(response)); // Write the response string to the socket
             list->connections[i].sending_connected = 0;                     // Reset sending_connected flag after sending the message
         }
 

@@ -1,8 +1,28 @@
 #include "FuncionRanking.h"
 
-int Devuelveme_Ranking(MYSQL *conn , char res[1000])
+int Devuelveme_Ranking(char res[1000])
 {
+    // char ID[20],char Nombre[20],int Puntos,
+    MYSQL *conn;
     int err;
+
+    // Creamos una conexion al servidor MYSQL
+    conn = mysql_init(NULL);
+    if (conn == NULL)
+    {
+        printf("Error al crear la conexion: %u %s\n",
+               mysql_errno(conn), mysql_error(conn));
+        exit(1);
+    }
+
+    // Inicializar la conexion
+    conn = mysql_real_connect(conn, DBSERVER, USER, PASSWORD, DATABASE, 0, NULL, 0);
+    if (conn == NULL)
+    {
+        printf("Error al inicializar la conexion: %u %s\n",
+               mysql_errno(conn), mysql_error(conn));
+        exit(1);
+    }
 
     // Consulta para recuperar valores de las columnas
     MYSQL_RES *result;

@@ -24,7 +24,6 @@ pthread_mutex_t glubal_update_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t crear_partida_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t invitation_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t chat_mutex = PTHREAD_MUTEX_INITIALIZER;
-char DBSERVER[30];
 
 typedef struct
 {

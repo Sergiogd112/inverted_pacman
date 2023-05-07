@@ -20,25 +20,20 @@ void UpdateThreads(ConnectedList *list) {
 
             push_connected(list, res, n);
 
-            pthread_mutex_unlock(&glubal_update_mutex); // No me interrumpas ahora
 
-            char mensage[2000];
-            snprintf(mensage, 2000, "4/%d/%s\x04", n, res);
-            printf("%s\n", mensage);
-            sleep(1);
-            //            enqueue(queue, get_iso8601_datetime(), LOGINFO, mensage, __FILE__, __FUNCTION__, __LINE__);
-            pthread_mutex_lock(&glubal_update_mutex); // No me interrumpas ahora
-
-            char *msg;
-            int m;
-            msg = chat_to_string(conn,&m);
-            if(m!=0 && msg!=NULL){
-                push_chat(list,msg,n);
+            char message[2000];
+            snprintf(message, 2000, "4/%d/%s\x04", n, res);
+            printf("%s\n", message);
+            //            enqueue(queue, get_iso8601_datetime(), LOGINFO, message, __FILE__, __FUNCTION__, __LINE__);
+            char *msg=NULL;
+            int m = chat_to_string(conn,msg);
+            if(m!=0){
+                push_chat(list,res,n);
+                free(msg);
             }
 
             list->global_message = 0;
             pthread_mutex_unlock(&glubal_update_mutex); // No me interrumpas ahora
-
             i = -1;
 
         }
@@ -235,7 +230,7 @@ void *AtenderThread(ThreadArgs *threadArgs) {
                 break;
 
             case 3: // Ranking
-                n = Devuelveme_Ranking(conn,datos);
+                n = Devuelveme_Ranking(datos);
                 response=malloc(sizeof(datos)+sizeof(char)*12);
                 snprintf(response, sizeof(response), "%d/%d/%s", code, n, datos);
                 break;
@@ -278,7 +273,7 @@ void *AtenderThread(ThreadArgs *threadArgs) {
 
             case 9:
                 p= strtok(NULL,"/");
-                n=write_message(conn,list->connections[pos].name,p);
+                write_message(conn,list->connections[pos].name,p);
                 response= malloc(sizeof(char )*4);
                 if (n==0)
                     snprintf(response,4,"9/1");
@@ -332,12 +327,7 @@ int main() {
     //    queue.keeplog=1;
     //    pthread_t log_thread;
     //    pthread_create(&log_thread, NULL, (void *(*)(void *)) logthreadboth, &queue);
-    char buf[1024];
-    getlogin_r(buf, sizeof(buf));
-    if(strcmp(buf,"antonia")==0)
-        snprintf(DBSERVER,30,LDBSERVER);
-    else
-        snprintf(DBSERVER,30,PDBSERVER);
+
     int sock_conn, sock_listen;
     struct sockaddr_in server_addr;
     if ((sock_listen = socket(AF_INET, SOCK_STREAM, 0)) < 0)
@@ -350,10 +340,8 @@ int main() {
     server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
     server_addr.sin_port = htons(PORT);
 
-    if (bind(sock_listen, (struct sockaddr *) &server_addr, sizeof(server_addr)) < 0){
+    if (bind(sock_listen, (struct sockaddr *) &server_addr, sizeof(server_addr)) < 0)
         printf("Error en el bind\n");
-        exit(1);
-    }
     //        enqueue(&queue, get_iso8601_datetime(), LOGERROR, "Error al bind", __FILE__, __FUNCTION__, __LINE__);
 
     if (listen(sock_listen, 3) < 0)
@@ -366,7 +354,9 @@ int main() {
     ListaPartidas *listaPartidas = (ListaPartidas *) malloc(sizeof(ListaPartidas));
     list->global_message = 0;
     initialize_connected_list(list);
-
+    //    UpdateConnectedThreadArgs ucthreadargs;
+    //    ucthreadargs.list=list;
+    //    ucthreadargs.queue=&queue;
 
     pthread_create(&update_thread, NULL, (void *(*)(void *)) UpdateThreads, list);
     int i = 0;
