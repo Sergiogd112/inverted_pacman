@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    private List<Transform> _segments; 
+    private List<Transform> _segments;
     public Transform segmentPrefab;
     private Vector2 _direction = Vector2.right;
     public int initialSize = 8;
+    
 
     private void Start()
     {

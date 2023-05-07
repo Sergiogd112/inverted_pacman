@@ -661,6 +661,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segmentPrefab: {fileID: 5709258501444905341, guid: c350e746cd4774d44b86912235614b06, type: 3}
+  initialSize: 8
+  speed: 0.4
 --- !u!1 &1247522327
 GameObject:
   m_ObjectHideFlags: 0
