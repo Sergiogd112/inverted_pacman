@@ -11,5 +11,7 @@
 #define PORT 50053
 #define MAXCHATMSGLEN 2000
 #define MAXNOMBRELEN 20
+#define NJUGADORESPARTIDA 4
+
 typedef char Nombre[MAXNOMBRELEN];
 #endif
