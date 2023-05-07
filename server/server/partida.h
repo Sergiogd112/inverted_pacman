@@ -37,6 +37,7 @@ typedef struct{
     int answer[4];
     int listos[4];
     pthread_mutex_t mutex;
+    int kill;
 }Partida;
 
 typedef struct{
@@ -48,7 +49,8 @@ typedef struct{
 
 typedef struct {
     Partida *partida;
-    int player;
+    ListaPartidas *listaPartidas;
+
 }PartidaArgs;
 
 

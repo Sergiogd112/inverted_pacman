@@ -37,9 +37,10 @@ void initialize_partidas_list(ListaPartidas *list) {
 
         }
         list->partidas[i].jugando = 0;
-        pthread_mutex_init(&list->partidas[i].mutex,NULL);
+        pthread_mutex_init(&list->partidas[i].mutex, NULL);
         list->partidas[i].usando = 0;
         list->partidas[i].idx = 0;
+        list->partidas[i].kill = 0;
     }
 }
 
@@ -62,6 +63,7 @@ void reset_partida(Partida *partida) {
     partida->jugando = 0;
     partida->usando = 0;
     partida->idx = 0;
+    partida->kill = 0;
 }
 
 
@@ -80,7 +82,7 @@ int get_empty_from_partidas_list(ListaPartidas *list) {
     {
         if (list->partidas[i].usando == 0) // Check if connection is not in use
         {
-            list->partidas[i].jugando = 1;       // Set using of the connection to 1, indicating it's in use
+            list->partidas[i].usando = 1;       // Set using of the connection to 1, indicating it's in use
             list->partidas[i].idx = list->idx; // Set idx of the connection to list->idx
             list->idx++;                          // Increment idx in the list
             list->used++;                         // Increment used in the list
@@ -177,7 +179,7 @@ int mensage_to_jugadores(Partida *partida, char mesg[512]) {
     char *p;
     for (int i = 0; i < 4; i++) {
         p = strtok(mesg, "*");//extract name
-        if (strcmp(partida->nombres[i],p)!=0)
+        if (strcmp(partida->nombres[i], p) != 0)
             return 1;
         p = strtok(mesg, "*");//extract x
         partida->player_pos[i].x = atof(p);
@@ -208,14 +210,15 @@ int mensage_to_enemigos(Partida *partida, char mesg[512]) {
 
 int mesage_to_partida(Partida *partida, char mesg[512]) {
     char *p = strtok(mesg, "|");
-    int n=mensage_to_jugadores(partida, p);
+    int n = mensage_to_jugadores(partida, p);
     p = strtok(mesg, "|");
-    int m=mensage_to_enemigos(partida, p);
-    return n+m*2;
+    int m = mensage_to_enemigos(partida, p);
+    return n + m * 2;
 }
-int get_enemy_with_id(Partida *partida,int id){
-    for(int i =0; i<4;i++)
-        if(partida->enemys[i].id==id)
+
+int get_enemy_with_id(Partida *partida, int id) {
+    for (int i = 0; i < 4; i++)
+        if (partida->enemys[i].id == id)
             return i;
     return -1;
 }
@@ -255,8 +258,8 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre) {
                     partida->listos[ij] = 1;
                     pthread_mutex_unlock(&partida->mutex);
                 } else if (sscode == 1 && ij == 0) {
-                    p= strtok(NULL,"/");
-                    mesage_to_partida(partida,p);
+                    p = strtok(NULL, "/");
+                    mesage_to_partida(partida, p);
                     pthread_mutex_lock(&partida->mutex);
                     partida->listos[ij] = 1;
                     pthread_mutex_unlock(&partida->mutex);
@@ -267,8 +270,8 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre) {
                 switch (sscode) {
                     case 0:
                         pthread_mutex_lock(&partida->mutex);
-                        p=strtok(NULL,"*");
-                        if(strcmp(nombre,p)==0){
+                        p = strtok(NULL, "*");
+                        if (strcmp(nombre, p) == 0) {
                             p = strtok(p, "*");//extract x
                             partida->player_pos[ij].x = atof(p);
                             p = strtok(p, "*");//extract y
@@ -278,69 +281,69 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre) {
                         break;
                     case 1:
                         pthread_mutex_lock(&partida->mutex);
-                        p=strtok(NULL,"*");
-                        if(strcmp(nombre,p)==0){
+                        p = strtok(NULL, "*");
+                        if (strcmp(nombre, p) == 0) {
                             p = strtok(p, "*");//extract id
-                            partida->enemys[get_enemy_with_id(partida,atoi(p))].id = -1;
+                            partida->enemys[get_enemy_with_id(partida, atoi(p))].id = -1;
                             p = strtok(p, "*");//extract p
                             partida->puntos[ij] = atof(p);
                         }
                         pthread_mutex_unlock(&partida->mutex);
-                        for(int i=0;i<4;i++)
-                            if(i!=ij)
-                                write(sock_conn,request, strlen(request));
+                        for (int i = 0; i < 4; i++)
+                            if (i != ij)
+                                write(sock_conn, request, strlen(request));
                         break;
                     case 2:
                         pthread_mutex_lock(&partida->mutex);
-                        p=strtok(NULL,"*");
-                        if(strcmp(nombre,p)==0){
+                        p = strtok(NULL, "*");
+                        if (strcmp(nombre, p) == 0) {
                             p = strtok(p, "*");//extract id
                             partida->vidas[ij]--;
                         }
                         pthread_mutex_unlock(&partida->mutex);
-                        for(int i=0;i<4;i++)
-                            if(i!=ij)
-                                write(sock_conn,request, strlen(request));
+                        for (int i = 0; i < 4; i++)
+                            if (i != ij)
+                                write(sock_conn, request, strlen(request));
                         break;
                     case 3:
                         pthread_mutex_lock(&partida->mutex);
-                        p=strtok(NULL,"*");
-                        if(strcmp(nombre,p)==0){
+                        p = strtok(NULL, "*");
+                        if (strcmp(nombre, p) == 0) {
                             p = strtok(p, "*");//extract id
-                            partida->vidas[ij]=0;
+                            partida->vidas[ij] = 0;
                         }
                         pthread_mutex_unlock(&partida->mutex);
-                        for(int i=0;i<4;i++)
-                            if(i!=ij)
-                                write(sock_conn,request, strlen(request));
+                        for (int i = 0; i < 4; i++)
+                            if (i != ij)
+                                write(sock_conn, request, strlen(request));
                         break;
                     default:
                         break;
                 }
                 break;
             case 2:
-                if(ij==0){
+                if (ij == 0) {
                     pthread_mutex_lock(&partida->mutex);
-                    if(sscode==0){
-                        p= strtok(NULL,"/");
-                        mensage_to_enemigos(partida,p);
+                    if (sscode == 0) {
+                        p = strtok(NULL, "/");
+                        mensage_to_enemigos(partida, p);
                         pthread_mutex_unlock(&partida->mutex);
 
-                    }else{
-                        int ie= get_enemy_with_id(partida,-1);
+                    } else {
+                        int ie = get_enemy_with_id(partida, -1);
 
-                        if(ie>=0&&ie<4){
-                            p= strtok(NULL,"*");
-                            partida->enemys[ie].pos.x=atof(p);
-                            p= strtok(NULL,"*");
-                            partida->enemys[ie].pos.y=atof(p);
-                            p= strtok(NULL,"*");
-                            partida->enemys[ie].id=atoi(p);
+                        if (ie >= 0 && ie < 4) {
+                            p = strtok(NULL, "*");
+                            partida->enemys[ie].pos.x = atof(p);
+                            p = strtok(NULL, "*");
+                            partida->enemys[ie].pos.y = atof(p);
+                            p = strtok(NULL, "*");
+                            partida->enemys[ie].id = atoi(p);
                         }
                         pthread_mutex_unlock(&partida->mutex);
-                        for(int i=0;i<4;i++)
-                            if(i!=ij)
-                                write(sock_conn,request, strlen(request));
+                        for (int i = 0; i < 4; i++)
+                            if (i != ij)
+                                write(sock_conn, request, strlen(request));
                     }
 
                 }
@@ -350,7 +353,31 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre) {
         }
     }
 }
+char * server_mesg_1(Partida *partida){
+    char res[300]
+}
+void Partida_Thread(void *args) {
+    PartidaArgs *partidaArgs = (PartidaArgs *) args;
+    Partida *partida = partidaArgs->partida;
+    ListaPartidas *listaPartidas = partidaArgs->listaPartidas;
+    int sumres=0;
+    while (sumres < 4) {
+        pthread_mutex_lock(&partida->mutex);
+        usleep(100000);
+        sumres=sum(partida->listos, 4);
+        pthread_mutex_unlock(&partida->mutex);
+    }
+    pthread_mutex_lock(&partida->mutex);
+    sumres=sum(partida->vidas, 4);
+    pthread_mutex_unlock(&partida->mutex);
 
-void Partida_Thread() {
+    while (sumres > 0) {
+        pthread_mutex_lock(&partida->mutex);
+        for (int i = 0; i < 4; i++) {
+            char msg;
+            write(partida->sockets[i],);
+        }
+        pthread_mutex_unlock(&partida->mutex);
 
+    }
 }
