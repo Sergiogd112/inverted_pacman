@@ -32,7 +32,7 @@ namespace Version_1
         //Variable boleana para las consultas al servidor
         bool Queries = false;
         string Ip = "192.168.56.102";
-        int Port = 5051;
+        int Port = 50053;
         public bool New_Connected_List = false;
         string[] Users;
         List<string> Connected = new List<string>();
