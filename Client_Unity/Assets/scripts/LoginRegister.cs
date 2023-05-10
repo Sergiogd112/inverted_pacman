@@ -14,7 +14,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-    public Client cliente ;
+    public Client cliente;
 
     private void Start() {
         Debug.Log(this.cliente.ip);

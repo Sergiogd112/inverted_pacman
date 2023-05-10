@@ -196,7 +196,7 @@ void SetRandomDirection()
         if (distanciaAlJugador <= radiodeDeteccion)
         {
             GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f); //pintarlo rojo
-            //Debug.Log("Slime: Cercaaa " + radiodeDeteccion);
+            Debug.Log("Slime: Cercaaa " + radiodeDeteccion);
         }
         else
         {

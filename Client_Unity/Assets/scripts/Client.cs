@@ -27,5 +27,6 @@ public class Client  : ScriptableObject
     public int puerto;
     public bool nueva_connected_list = false;
 
+    public int numplayergame = 0;
 
 }

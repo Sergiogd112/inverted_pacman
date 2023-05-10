@@ -8,6 +8,8 @@ using System.Linq;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Client cliente;
+    public int idjugador = 0;
     public float speed = 2f;
     private Rigidbody2D rb2d;
     private Vector2 movement; // Vector que guardará la dirección de movimiento
@@ -17,17 +19,26 @@ public class PlayerMovement : MonoBehaviour
 
     public int puntuation = 0;
 
+    public float startx = -1.051f;
+    public float starty = 0.575f;
+
     void Start()
     {
         radio = GameObject.FindObjectOfType<Management>();
         rb2d = GetComponent<Rigidbody2D>();
-        transform.position = new Vector2(-1.051f, 0.575f);
+        transform.position = new Vector2(startx, starty);
     }
 
     void Update()
     {
-        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        killSlime();
+
+        if(cliente.numplayergame == idjugador){
+            movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            killSlime();
+        }
+        else{
+
+        }
     }
 
 
