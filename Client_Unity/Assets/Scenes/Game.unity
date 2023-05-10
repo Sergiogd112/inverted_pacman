@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 1495487383}
   m_Layer: 0
   m_Name: Slime
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,7 +240,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008, y: -0.03}
+  m_Offset: {x: 0.002, y: -0.01}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -251,7 +251,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.05}
+  m_Size: {x: 0.05, y: 0.04}
   m_EdgeRadius: 0.05
 --- !u!50 &1495487380
 Rigidbody2D:
@@ -334,7 +334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495487377}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07, y: 3.49, z: 0}
+  m_LocalPosition: {x: -0.18, y: 4.36, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -350,10 +350,63 @@ MonoBehaviour:
   m_GameObject: {fileID: 1495487377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae450d20b5d4ac145aaa9585de24babe, type: 3}
+  m_Script: {fileID: 11500000, guid: efb322672bd63fc4883b87e5c0c1ca6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  nuevoColor: {r: 1, g: 0, b: 0, a: 1}
+  colorOriginal: {r: 0, g: 0, b: 0, a: 0}
+  colision_player: 0
+  colision_pared: 0
+  bajas_slime: 0
+--- !u!1 &1666662900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1666662902}
+  - component: {fileID: 1666662901}
+  m_Layer: 0
+  m_Name: Organizer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1666662901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666662900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d5a9a69e8ea9f44a23b18bbcb49e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radiodeDeteccion: 0.5
+  tiemporespawnslime: 3
+  player: {fileID: 0}
+  slime: {fileID: 0}
+--- !u!4 &1666662902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666662900}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.390415, y: 1.85496, z: -0.059457473}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1856495635
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  puntuation: 0
 --- !u!61 &1963035753
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -540,7 +594,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1963035751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -0.39, z: 0}
+  m_LocalPosition: {x: -0.67, y: -0.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
