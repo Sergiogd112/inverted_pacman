@@ -1,61 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static System.Net.Mime.MediaTypeNames;
+using UnityEngine.UI;
 
 public class GameManagerFB : MonoBehaviour
 {
-    //private Player player;
+    public Player player;
     //private Spawner spawner;
 
     //public Text scoreText;
-    //public GameObject playButton;
-    //public GameObject gameOver;
-    public int score; //{ get; private set; }
+    public GameObject playButton;
+    public GameObject gameOver;
+    private int score; 
 
-    //private void Awake()
-    //{
-    //    Application.targetFrameRate = 60;
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
 
-    //    player = FindObjectOfType<Player>();
+        //player = FindObjectOfType<Player>();
     //    spawner = FindObjectOfType<Spawner>();
 
-    //    Pause();
-    //}
+        Pause();
+    }
 
-    //public void Play()
-    //{
-    //    score = 0;
-    //    scoreText.text = score.ToString();
+    public void Play()
+    {
+        score = 0;
+        //scoreText.text = score.ToString();
 
-    //    playButton.SetActive(false);
-    //    gameOver.SetActive(false);
+        playButton.SetActive(false);
+        gameOver.SetActive(false);
 
-    //    Time.timeScale = 1f;
-    //    player.enabled = true;
+        Time.timeScale = 1f;
+        player.enabled = true;
 
-    //    Pipes[] pipes = FindObjectsOfType<Pipes>();
+        Pipes[] pipes = FindObjectsOfType<Pipes>();
 
-    //    for (int i = 0; i < pipes.Length; i++)
-    //    {
-    //        Destroy(pipes[i].gameObject);
-    //    }
-    //}
+        for (int i = 0; i < pipes.Length; i++)
+        {
+            Destroy(pipes[i].gameObject);
+        }
+    }
 
     public void GameOver()
     {
-        Debug.Log("Game over");
-        //playButton.SetActive(true);
-        //gameOver.SetActive(true);
+        playButton.SetActive(true);
+        gameOver.SetActive(true);
 
-        //Pause();
+        Pause();
     }
 
-    //public void Pause()
-    //{
-    //    Time.timeScale = 0f;
-    //    player.enabled = false;
-    //}
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+        player.enabled = false;
+    }
 
     public void IncreaseScore()
     {

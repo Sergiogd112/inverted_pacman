@@ -62,7 +62,7 @@
             // 
             // acceptButton
             // 
-            this.acceptButton.Location = new System.Drawing.Point(12, 200);
+            this.acceptButton.Location = new System.Drawing.Point(182, 70);
             this.acceptButton.Margin = new System.Windows.Forms.Padding(2);
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(56, 19);
@@ -73,7 +73,7 @@
             // 
             // userBox
             // 
-            this.userBox.Location = new System.Drawing.Point(66, 54);
+            this.userBox.Location = new System.Drawing.Point(10, 23);
             this.userBox.Margin = new System.Windows.Forms.Padding(2);
             this.userBox.Name = "userBox";
             this.userBox.Size = new System.Drawing.Size(109, 20);
@@ -83,7 +83,7 @@
             // userLabel
             // 
             this.userLabel.AutoSize = true;
-            this.userLabel.Location = new System.Drawing.Point(65, 37);
+            this.userLabel.Location = new System.Drawing.Point(9, 6);
             this.userLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.userLabel.Name = "userLabel";
             this.userLabel.Size = new System.Drawing.Size(29, 13);
@@ -93,7 +93,7 @@
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(64, 75);
+            this.passwordLabel.Location = new System.Drawing.Point(8, 44);
             this.passwordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(53, 13);
@@ -102,7 +102,7 @@
             // 
             // passwordBox
             // 
-            this.passwordBox.Location = new System.Drawing.Point(66, 90);
+            this.passwordBox.Location = new System.Drawing.Point(10, 59);
             this.passwordBox.Margin = new System.Windows.Forms.Padding(2);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.Size = new System.Drawing.Size(109, 20);
@@ -111,7 +111,7 @@
             // 
             // registerButton
             // 
-            this.registerButton.Location = new System.Drawing.Point(179, 200);
+            this.registerButton.Location = new System.Drawing.Point(182, 113);
             this.registerButton.Margin = new System.Windows.Forms.Padding(2);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(56, 19);
@@ -129,7 +129,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(211, 501);
+            this.dataGridView1.Size = new System.Drawing.Size(211, 379);
             this.dataGridView1.TabIndex = 6;
             // 
             // connlbl
@@ -144,7 +144,7 @@
             // Mostrar_Contraseña
             // 
             this.Mostrar_Contraseña.AutoSize = true;
-            this.Mostrar_Contraseña.Location = new System.Drawing.Point(68, 113);
+            this.Mostrar_Contraseña.Location = new System.Drawing.Point(12, 82);
             this.Mostrar_Contraseña.Margin = new System.Windows.Forms.Padding(2);
             this.Mostrar_Contraseña.Name = "Mostrar_Contraseña";
             this.Mostrar_Contraseña.Size = new System.Drawing.Size(101, 17);
@@ -207,7 +207,7 @@
             this.panel2.Controls.Add(this.Enviar_Consulta);
             this.panel2.Controls.Add(this.Consulta3);
             this.panel2.Controls.Add(this.Consulta2);
-            this.panel2.Location = new System.Drawing.Point(23, 281);
+            this.panel2.Location = new System.Drawing.Point(23, 216);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(269, 102);
@@ -229,7 +229,7 @@
             this.panel3.Location = new System.Drawing.Point(23, 28);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(269, 233);
+            this.panel3.Size = new System.Drawing.Size(269, 173);
             this.panel3.TabIndex = 14;
             // 
             // connect_status
@@ -245,7 +245,7 @@
             // 
             // emailBox
             // 
-            this.emailBox.Location = new System.Drawing.Point(68, 159);
+            this.emailBox.Location = new System.Drawing.Point(12, 128);
             this.emailBox.Margin = new System.Windows.Forms.Padding(2);
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(109, 20);
@@ -254,7 +254,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(65, 144);
+            this.label1.Location = new System.Drawing.Point(9, 113);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 13);
@@ -263,10 +263,10 @@
             // 
             // Desconectar_Btn
             // 
-            this.Desconectar_Btn.Location = new System.Drawing.Point(544, 531);
+            this.Desconectar_Btn.Location = new System.Drawing.Point(22, 345);
             this.Desconectar_Btn.Margin = new System.Windows.Forms.Padding(2);
             this.Desconectar_Btn.Name = "Desconectar_Btn";
-            this.Desconectar_Btn.Size = new System.Drawing.Size(494, 79);
+            this.Desconectar_Btn.Size = new System.Drawing.Size(270, 118);
             this.Desconectar_Btn.TabIndex = 12;
             this.Desconectar_Btn.Text = "Disconnect";
             this.Desconectar_Btn.UseVisualStyleBackColor = true;
@@ -323,7 +323,7 @@
             // 
             // Close_Btn
             // 
-            this.Close_Btn.Location = new System.Drawing.Point(1028, 5);
+            this.Close_Btn.Location = new System.Drawing.Point(462, 4);
             this.Close_Btn.Margin = new System.Windows.Forms.Padding(2);
             this.Close_Btn.Name = "Close_Btn";
             this.Close_Btn.Size = new System.Drawing.Size(56, 19);
@@ -337,7 +337,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RosyBrown;
-            this.ClientSize = new System.Drawing.Size(1102, 621);
+            this.ClientSize = new System.Drawing.Size(1048, 474);
             this.Controls.Add(this.Close_Btn);
             this.Controls.Add(this.loading_text);
             this.Controls.Add(this.panel4);

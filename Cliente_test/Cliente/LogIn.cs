@@ -32,7 +32,7 @@ namespace Version_1
         //Variable boleana para las consultas al servidor
         bool Queries = false;
         string Ip = "192.168.56.102";
-        int Port = 5051;
+        int Port = 50053;
         public bool New_Connected_List = false;
         string[] Users;
         List<string> Connected = new List<string>();
@@ -157,9 +157,10 @@ namespace Version_1
             while (true)
             {
                 // Recibe mensaje del servidor
-                byte[] msg2 = new byte[100];
+                byte[] msg2 = new byte[10000000];
                 Server.Receive(msg2);
                 Queries = true;
+                MessageBox.Show(Encoding.ASCII.GetString(msg2));
                 string[] Server_Error = Encoding.ASCII.GetString(msg2).Split('\x04');
                 if (Server_Error[0] == "")
                 {
@@ -226,7 +227,6 @@ namespace Version_1
                             this.New_Connected_List = true;
                             Users = trozos[2].Split(',');
                             UpdateConnected(Users);
-                            MessageBox.Show(trozos[2]);
                             break;
                         case 5: 
                             //Respuesta crear partida
