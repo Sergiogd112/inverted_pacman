@@ -4,6 +4,7 @@
 #include <string.h>
 #include <openssl/sha.h>
 #include <stdio.h>
+#include "logger.h"
 
 
 int register_user(MYSQL *conn, char name[30], char email[30], char password[30]);

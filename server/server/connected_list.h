@@ -17,7 +17,7 @@
 #include <arpa/inet.h>
 #include <string.h>
 #include "config.h"
-
+#include "logger.h"
 #define MAXUSERS 200
 // TODO: Reference additional headers your program requires here.
 struct Connection

@@ -12,10 +12,10 @@ int write_message(MYSQL *conn, Nombre name, char *text) {
              text);
     if (mysql_query(conn,
                     query)) { // Execute the query using the mysql_query function and check if it returns an error.
-        fprintf(stderr, "%s\n", mysql_error(conn));
+        fprintf(stderr, "%s: %s\n",LOGERROR, mysql_error(conn));
         return 2;
     }
-    printf("Chat writen successfully");
+    logger(LOGINFO,"Chat writen successfully");
     return 0;
 }
 
@@ -81,7 +81,7 @@ void push_chat(ConnectedList *list, char *res, int n) {
                                             13));                             // Buffer to hold the formatted response string
     snprintf(response, (strlen(res) + 13), "10/%d/%s\x04", n, res); // Format the response string
 
-    printf("%s\n", response); // Print the response string
+    logger(LOGINFO, response); // Print the response string
 
     for (int i = 0; i < MAXUSERS; i++) {
         if (list->connections[i].using == 1 && list->connections[i].id != -1) {

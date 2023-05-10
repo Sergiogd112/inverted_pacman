@@ -1,0 +1,475 @@
+Tue May  9 19:27:50 2023
+ [ⓘLOGINFO] (TID: 5824) main.c:331:main(): Identificando tipo de servidor
+Tue May  9 19:27:50 2023
+ [ⓘLOGINFO] (TID: 5824) main.c:333:main(): Se ha detectado como maquina virtual
+Tue May  9 19:27:50 2023
+ [ⓘLOGINFO] (TID: 5824) main.c:368:main(): Empezando bucle principal
+Tue May  9 19:27:50 2023
+ [ⓘLOGINFO] (TID: 5824) main.c:373:main(): Escuchando
+
+Tue May  9 19:28:19 2023
+ [ⓘLOGINFO] (TID: 5871) main.c:331:main(): Identificando tipo de servidor
+Tue May  9 19:28:19 2023
+ [ⓘLOGINFO] (TID: 5871) main.c:333:main(): Se ha detectado como maquina virtual
+Tue May  9 19:28:19 2023
+ [ⓘLOGINFO] (TID: 5871) main.c:368:main(): Empezando bucle principal
+Tue May  9 19:28:19 2023
+ [ⓘLOGINFO] (TID: 5871) main.c:373:main(): Escuchando
+
+Tue May  9 19:28:41 2023
+ [ⓘ LOGINFO] (TID: 5942) main.c:331:main(): Identificando tipo de servidor
+Tue May  9 19:28:41 2023
+ [ⓘ LOGINFO] (TID: 5942) main.c:333:main(): Se ha detectado como maquina virtual
+Tue May  9 19:28:41 2023
+ [ⓘ LOGINFO] (TID: 5942) main.c:368:main(): Empezando bucle principal
+Tue May  9 19:28:41 2023
+ [ⓘ LOGINFO] (TID: 5942) main.c:373:main(): Escuchando
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5942) main.c:377:main(): Conexion recibida
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5942) main.c:386:main(): 0
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5950) main.c:134:AtenderThread(): 5
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5942) main.c:373:main(): Escuchando
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5942) main.c:377:main(): Conexion recibida
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5942) main.c:386:main(): 1
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5950) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5950) main.c:166:AtenderThread(): Recibido
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5950) main.c:169:AtenderThread(): Conexion 0 ha mandado: 2/sergio*teo
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5952) main.c:134:AtenderThread(): 8
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5942) main.c:373:main(): Escuchando
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5942) main.c:377:main(): Conexion recibida
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5942) main.c:386:main(): 2
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5942) main.c:373:main(): Escuchando
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5954) main.c:134:AtenderThread(): 10
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5950) main.c:212:AtenderThread(): Conexion 0 ha intentado logearse con usuario: sergio
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5952) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5952) main.c:166:AtenderThread(): Recibido
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5952) main.c:169:AtenderThread(): Conexion 1 ha mandado: 2/Ana*teo
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5952) main.c:212:AtenderThread(): Conexion 1 ha intentado logearse con usuario: Ana
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5954) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5954) main.c:166:AtenderThread(): Recibido
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5954) main.c:169:AtenderThread(): Conexion 2 ha mandado: 2/Carlos*teo
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5954) main.c:212:AtenderThread(): Conexion 2 ha intentado logearse con usuario: Carlos
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5950) main.c:226:AtenderThread(): Conexion sergio se ha logeado exitosamente
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5950) main.c:307:AtenderThread(): 2/1
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5950) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5954) main.c:226:AtenderThread(): Conexion Carlos se ha logeado exitosamente
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5954) main.c:307:AtenderThread(): 2/1
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5954) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5946) main.c:27:UpdateThreads(): 4/2/sergio,Carlos
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5952) main.c:226:AtenderThread(): Conexion Ana se ha logeado exitosamente
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5952) main.c:307:AtenderThread(): 2/1
+Tue May  9 19:29:28 2023
+ [ⓘ LOGINFO] (TID: 5952) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:35:49 2023
+ [ⓘ LOGINFO] (TID: 5950) main.c:166:AtenderThread(): Recibido
+
+Tue May  9 19:35:49 2023
+ [ⓘ LOGINFO] (TID: 5950) main.c:169:AtenderThread(): Conexion 0 ha mandado: 0/
+Tue May  9 19:35:49 2023
+ [ⓘ LOGINFO] (TID: 5950) main.c:317:AtenderThread(): Removing: sergio 0
+Tue May  9 19:35:49 2023
+ [ⓘ LOGINFO] (TID: 5950) main.c:322:AtenderThread(): Actualizando lista de conectados a los clientes
+Tue May  9 19:35:49 2023
+ [ⓘ LOGINFO] (TID: 5954) main.c:166:AtenderThread(): Recibido
+
+Tue May  9 19:35:49 2023
+ [ⓘ LOGINFO] (TID: 5954) main.c:169:AtenderThread(): Conexion 2 ha mandado: 0/
+Tue May  9 19:35:49 2023
+ [ⓘ LOGINFO] (TID: 5952) main.c:166:AtenderThread(): Recibido
+
+Tue May  9 19:35:49 2023
+ [ⓘ LOGINFO] (TID: 5952) main.c:169:AtenderThread(): Conexion 1 ha mandado: 0/
+Tue May  9 19:35:49 2023
+ [ⓘ LOGINFO] (TID: 5952) main.c:317:AtenderThread(): Removing: Ana 1
+Tue May  9 19:35:49 2023
+ [ⓘ LOGINFO] (TID: 5952) main.c:322:AtenderThread(): Actualizando lista de conectados a los clientes
+Tue May  9 19:35:49 2023
+ [ⓘ LOGINFO] (TID: 5954) main.c:317:AtenderThread(): Removing: Carlos 2
+Tue May  9 19:35:49 2023
+ [ⓘ LOGINFO] (TID: 5954) main.c:322:AtenderThread(): Actualizando lista de conectados a los clientes
+Tue May  9 19:35:49 2023
+ [ⓘ LOGINFO] (TID: 5946) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 19:36:06 2023
+ [ⓘ LOGINFO] (TID: 6062) main.c:331:main(): Identificando tipo de servidor
+Tue May  9 19:36:06 2023
+ [ⓘ LOGINFO] (TID: 6062) main.c:333:main(): Se ha detectado como maquina virtual
+Tue May  9 19:36:06 2023
+ [ⓘ LOGINFO] (TID: 6062) main.c:368:main(): Empezando bucle principal
+Tue May  9 19:36:06 2023
+ [ⓘ LOGINFO] (TID: 6062) main.c:373:main(): Escuchando
+
+Tue May  9 19:36:24 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6133) main.c:331:main(): Identificando tipo de servidor
+Tue May  9 19:36:24 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6133) main.c:333:main(): Se ha detectado como maquina virtual
+Tue May  9 19:36:24 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6133) main.c:368:main(): Empezando bucle principal
+Tue May  9 19:36:24 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6133) main.c:373:main(): Escuchando
+
+Tue May  9 19:36:34 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6133) main.c:377:main(): Conexion recibida
+
+Tue May  9 19:36:34 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6133) main.c:386:main(): 0
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6133) main.c:373:main(): Escuchando
+
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:134:AtenderThread(): 5
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6133) main.c:377:main(): Conexion recibida
+
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6133) main.c:386:main(): 1
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:166:AtenderThread(): Recibido
+
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:169:AtenderThread(): Conexion 0 ha mandado: 2/sergio*teo
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:212:AtenderThread(): Conexion 0 ha intentado logearse con usuario: sergio
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:134:AtenderThread(): 8
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6133) main.c:373:main(): Escuchando
+
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6133) main.c:377:main(): Conexion recibida
+
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6133) main.c:386:main(): 2
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:166:AtenderThread(): Recibido
+
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:169:AtenderThread(): Conexion 1 ha mandado: 2/Ana*teo
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:212:AtenderThread(): Conexion 1 ha intentado logearse con usuario: Ana
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:226:AtenderThread(): Conexion sergio se ha logeado exitosamente
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:307:AtenderThread(): 2/1
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:226:AtenderThread(): Conexion Ana se ha logeado exitosamente
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:307:AtenderThread(): 2/1
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:134:AtenderThread(): 10
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6133) main.c:373:main(): Escuchando
+
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:166:AtenderThread(): Recibido
+
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:169:AtenderThread(): Conexion 2 ha mandado: 2/Carlos*teo
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:212:AtenderThread(): Conexion 2 ha intentado logearse con usuario: Carlos
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:226:AtenderThread(): Conexion Carlos se ha logeado exitosamente
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:307:AtenderThread(): 2/1
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:35 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/3/sergio,Ana,Carlos
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:317:AtenderThread(): Removing: Ana 1
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6139) main.c:322:AtenderThread(): Actualizando lista de conectados a los clientes
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:317:AtenderThread(): Removing: sergio 0
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6138) main.c:322:AtenderThread(): Actualizando lista de conectados a los clientes
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:159:AtenderThread(): Esperando peticion
+
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:317:AtenderThread(): Removing: Carlos 2
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6140) main.c:322:AtenderThread(): Actualizando lista de conectados a los clientes
+Tue May  9 19:36:49 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 19:53:54 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 20:10:59 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 20:28:03 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 20:45:07 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 21:02:11 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 21:19:20 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 21:36:24 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 21:53:29 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 22:10:34 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 22:27:38 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 22:44:43 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 23:01:48 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 23:18:53 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 23:35:58 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Tue May  9 23:53:02 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Wed May 10 00:10:04 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Wed May 10 00:27:08 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Wed May 10 00:44:10 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Wed May 10 01:01:12 2023
+ [[34mⓘ LOGINFO[0m] (TID: 6137) main.c:27:UpdateThreads(): 4/0/
+Wed May 10 15:31:43 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4240) main.c:335:main(): Identificando tipo de servidor
+Wed May 10 15:31:43 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4240) main.c:337:main(): Se ha detectado como maquina virtual
+Wed May 10 15:31:43 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4240) main.c:372:main(): Empezando bucle principal
+Wed May 10 15:31:43 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4240) main.c:377:main(): Escuchando
+
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4240) main.c:381:main(): Conexion recibida
+
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4240) main.c:390:main(): 0
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4240) main.c:377:main(): Escuchando
+
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4247) main.c:138:AtenderThread(): 5
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4240) main.c:381:main(): Conexion recibida
+
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4240) main.c:390:main(): 1
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4248) main.c:138:AtenderThread(): 7
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4240) main.c:377:main(): Escuchando
+
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4240) main.c:381:main(): Conexion recibida
+
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4240) main.c:390:main(): 2
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4247) main.c:163:AtenderThread(): Esperando peticion
+
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4247) main.c:170:AtenderThread(): Recibido
+
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4247) main.c:173:AtenderThread(): Conexion 0 ha mandado: 2/sergio*teo
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4247) main.c:216:AtenderThread(): Conexion 0 ha intentado logearse con usuario: sergio
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4250) main.c:138:AtenderThread(): 10
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4248) main.c:163:AtenderThread(): Esperando peticion
+
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4248) main.c:170:AtenderThread(): Recibido
+
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4248) main.c:173:AtenderThread(): Conexion 1 ha mandado: 2/Ana*teo
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4248) main.c:216:AtenderThread(): Conexion 1 ha intentado logearse con usuario: Ana
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4240) main.c:377:main(): Escuchando
+
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4250) main.c:163:AtenderThread(): Esperando peticion
+
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4250) main.c:170:AtenderThread(): Recibido
+
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4250) main.c:173:AtenderThread(): Conexion 2 ha mandado: 2/Carlos*teo
+Wed May 10 15:31:51 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4250) main.c:216:AtenderThread(): Conexion 2 ha intentado logearse con usuario: Carlos
+Wed May 10 15:31:52 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4247) auth.c:123:login(): Login successful!
+
+Wed May 10 15:31:52 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4247) main.c:230:AtenderThread(): Conexion sergio se ha logeado exitosamente
+Wed May 10 15:31:52 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4247) main.c:311:AtenderThread(): 2/1
+Wed May 10 15:31:52 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4247) main.c:163:AtenderThread(): Esperando peticion
+
+Wed May 10 15:31:52 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4250) auth.c:123:login(): Login successful!
+
+Wed May 10 15:31:52 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4250) main.c:230:AtenderThread(): Conexion Carlos se ha logeado exitosamente
+Wed May 10 15:31:52 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4250) main.c:311:AtenderThread(): 2/1
+Wed May 10 15:31:52 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4250) main.c:163:AtenderThread(): Esperando peticion
+
+Wed May 10 15:31:52 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4248) auth.c:123:login(): Login successful!
+
+Wed May 10 15:31:52 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4248) main.c:230:AtenderThread(): Conexion Ana se ha logeado exitosamente
+Wed May 10 15:31:52 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4248) main.c:311:AtenderThread(): 2/1
+Wed May 10 15:31:52 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4248) main.c:163:AtenderThread(): Esperando peticion
+
+Wed May 10 15:31:52 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4245) connected_list.c:274:push_connected(): 4/3/sergio,Ana,Carlos
+Wed May 10 15:31:52 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4245) main.c:27:UpdateThreads(): 4/3/sergio,Ana,Carlos
+Wed May 10 15:32:05 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4245) chat.c:84:push_chat(): 10/3/sergio*2023-05-05 23:16:11*What are you doing?,Ana*2023-05-05 23:16:11*How are you?,Carlos*2023-05-05 23:16:10*Hello!,pepa*2023-05-05 23:16:12*Nice to meet you!
+Wed May 10 15:32:13 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4247) main.c:170:AtenderThread(): Recibido
+
+Wed May 10 15:32:13 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4247) main.c:173:AtenderThread(): Conexion 0 ha mandado: 0/
+Wed May 10 15:32:13 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4247) main.c:321:AtenderThread(): Removing: sergio 0
+Wed May 10 15:32:13 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4247) main.c:326:AtenderThread(): Actualizando lista de conectados a los clientes
+Wed May 10 15:32:13 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4248) main.c:170:AtenderThread(): Recibido
+
+Wed May 10 15:32:13 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4248) main.c:173:AtenderThread(): Conexion 1 ha mandado: 0/
+Wed May 10 15:32:13 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4250) main.c:170:AtenderThread(): Recibido
+
+Wed May 10 15:32:13 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4250) main.c:173:AtenderThread(): Conexion 2 ha mandado: 0/
+Wed May 10 15:32:13 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4250) main.c:321:AtenderThread(): Removing: Carlos 2
+Wed May 10 15:32:13 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4250) main.c:326:AtenderThread(): Actualizando lista de conectados a los clientes
+Wed May 10 15:32:13 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4248) main.c:321:AtenderThread(): Removing: Ana 1
+Wed May 10 15:32:13 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4248) main.c:326:AtenderThread(): Actualizando lista de conectados a los clientes
+Wed May 10 15:32:13 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4245) connected_list.c:274:push_connected(): 4/0/
+Wed May 10 15:32:13 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4245) main.c:27:UpdateThreads(): 4/0/
+Wed May 10 15:32:14 2023
+ [[34mⓘ LOGINFO[0m] (TID: 4245) chat.c:84:push_chat(): 10/0/sergio*2023-05-05 23:16:11*What are you doing?,Ana*2023-05-05 23:16:11*How are you?,Carlos*2023-05-05 23:16:10*Hello!,pepa*2023-05-05 23:16:12*Nice to meet you!

@@ -164,7 +164,7 @@ void print_partidas_idx(ListaPartidas *list) {
     }
 
     res[strlen(res) - 2] = '\0'; // Remove trailing comma
-    printf("%s\n", res);         // Print the resulting string
+    logger(LOGINFO,res);         // Print the resulting string
 }
 
 int i_jugador_partida(Partida *partida, Nombre nombre) {
@@ -232,6 +232,7 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre) {
     int code;
     int scode;
     int sscode;
+    char logmsg[2000];
     while (sum(partida->vidas, NJUGADORESPARTIDA) > 0) {
         ret = read(sock_conn, request, sizeof(request));
         if (ret <= 0) {
@@ -239,7 +240,8 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre) {
             continue;
         }
         request[ret] = '\0';
-        printf("Conexion %s ha mandado: %s\n", nombre, request);
+        snprintf(logmsg,2000,"Conexion %s ha mandado: %s\n", nombre, request);
+        logger(LOGINFO,logmsg);
         char *p = strtok(request, "/");
 
         code = atoi(p);

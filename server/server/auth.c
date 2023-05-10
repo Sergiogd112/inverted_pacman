@@ -55,7 +55,7 @@ int register_user(MYSQL *conn, char name[30], char email[30], char password[30])
 
     int num_fields = mysql_num_fields(result); // Get the number of fields in the result set.
 
-    printf("Checking if user exists already\n"); // Print a message to the console.
+    logger(LOGINFO,"Checking if user exists already"); // Print a message to the console.
 
     if (mysql_num_rows(result) == 0)
     { // Check if there are any rows in the result set.
@@ -69,12 +69,12 @@ int register_user(MYSQL *conn, char name[30], char email[30], char password[30])
             exit(1);
         }
 
-        printf("User registered successfully!\n"); // Print a message to the console.
+        logger(LOGINFO,"User registered successfully!"); // Print a message to the console.
         return 1;                                  // Return 1 to indicate that the user was registered successfully.
     }
     else
     {
-        printf("A user with this name already exists!\n"); // Print a message to the console.
+        logger(LOGWARNING,"A user with this name already exists!\n"); // Print a message to the console.
         return -1;                                         // Return -1 to indicate that the registration failed.
     }
 }
@@ -115,12 +115,12 @@ int login(MYSQL *conn, char name[30], char password[30])
 
     if (mysql_num_rows(result) == 0)
     {                                          // Check if there are any rows in the result set.
-        printf("Invalid email or password\n"); // Print a message to the console.
+        logger(LOGWARNING,"Invalid email or password\n"); // Print a message to the console.
         return -1;                             // Return 0 to indicate that the login failed.
     }
     else
     {
-        printf("Login successful!\n"); // Print a message to the console.
+        logger(LOGINFO,"Login successful!\n"); // Print a message to the console.
         MYSQL_ROW row = mysql_fetch_row(result);
         return atoi(row[0]); // Return 1 to indicate that the login was successful.
     }

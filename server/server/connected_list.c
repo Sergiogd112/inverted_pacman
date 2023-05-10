@@ -221,7 +221,7 @@ void print_connected_idx(ConnectedList *list)
     }
 
     res[strlen(res) - 2] = '\0'; // Remove trailing comma
-    printf("%s\n", res);         // Print the resulting string
+    logger(LOGINFO, res);         // Print the resulting string
 }
 
 /**
@@ -271,7 +271,7 @@ void push_connected(ConnectedList *list, char res[2000], int n)
     char response[2010];                             // Buffer to hold the formatted response string
     snprintf(response, 2010, "4/%d/%s\x04", n, res); // Format the response string
 
-    printf("%s\n", response); // Print the response string
+    logger(LOGINFO, response); // Print the response string
 
     for (int i = 0; i < MAXUSERS; i++)
     {
@@ -292,18 +292,19 @@ void push_connected(ConnectedList *list, char res[2000], int n)
  */
 void print_Node(struct Connection *node)
 {
-    printf("---\n"); // Print a separator line
+    char logmsg[500];
     if (node->using == 0)
-        printf("Not using"); // Print a message if the connection is not in use
-    else
-        printf("id: %d\nsocketfd: %d\nname: %s\nidx: %d\nsending_connected: %d\njugando %d\n",
+        logger(LOGINFO,"Not using"); // Print a message if the connection is not in use
+    else{
+        snprintf(logmsg,500,"---\n---\nid: %d\nsocketfd: %d\nname: %s\nidx: %d\nsending_connected: %d\njugando %d\n---\n",
                node->id,                 // Print the 'id' field of the Connection structure
                node->sockfd,             // Print the 'sockfd' field of the Connection structure
                node->name,               // Print the 'name' field of the Connection structure
                node->idx,                // Print the 'idx' field of the Connection structure
                node->sending_connected,  // Print the 'sending_connected' field of the Connection structure
                node->jugando);
-    printf("---\n");                     // Print a separator line
+        logger(LOGINFO,logmsg);
+    }
 }
 
 /**

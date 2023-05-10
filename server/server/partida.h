@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include "config.h"
 #include <pthread.h>
+#include "logger.h"
 typedef struct{
     float x;
     float y;
