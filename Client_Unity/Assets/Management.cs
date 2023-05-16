@@ -8,7 +8,7 @@ public class Management : MonoBehaviour
     public float radiodeDeteccion = 0.5f;
     public float tiemporespawnslime = 3f;
 
-    public int numplayers = 4;
+    public int numplayers = 4; //variable para definir los jugadores online que habrán el la partida
 
 
 

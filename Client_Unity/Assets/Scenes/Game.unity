@@ -155,7 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220ee54c5a1794d4189a2c0c8ea9d700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cliente: {fileID: 0}
+  cliente: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
+  idjugador: 0
   speed: 3
   puntuation: 0
   startx: 0.854
@@ -390,7 +391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220ee54c5a1794d4189a2c0c8ea9d700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cliente: {fileID: 0}
+  cliente: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
+  idjugador: 0
   speed: 3
   puntuation: 0
   startx: -0.437
@@ -541,7 +543,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220ee54c5a1794d4189a2c0c8ea9d700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cliente: {fileID: 0}
+  cliente: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
+  idjugador: 0
   speed: 3
   puntuation: 0
   startx: 0.223
@@ -938,7 +941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220ee54c5a1794d4189a2c0c8ea9d700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cliente: {fileID: 0}
+  cliente: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
+  idjugador: 0
   speed: 3
   puntuation: 0
   startx: -1.051
