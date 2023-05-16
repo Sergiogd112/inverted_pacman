@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usuario: 
   num_conn: 0
-  Conectado: 1
+  Conectado: 0
   Logeado: 0
   Consultas: 0
-  ip: 192.168.56.102
-  puerto: 5052
+  ip: 147.83.117.22
+  puerto: 50053
   nueva_connected_list: 0
+  numplayergame: 0

@@ -34,9 +34,9 @@ public class LoginRegister : MonoBehaviour
             Debug.LogError(ex.ToString());
             return;
         }
-        ThreadStart ts = delegate { AtenderServidor(); };
-        this.cliente.atender = new Thread(ts);
-        this.cliente.atender.Start();
+        //ThreadStart ts = delegate { AtenderServidor(); };
+        //this.cliente.atender = new Thread(ts);
+        //this.cliente.atender.Start();
     }
     private void AtenderServidor()   //ACABAR DE REVISAR
         {
