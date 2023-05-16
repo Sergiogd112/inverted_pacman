@@ -18,10 +18,11 @@ def main():
     sockets = [
         socket.socket(socket.AF_INET, socket.SOCK_STREAM) for i in range(len(name_pwd))
     ]
+    
     # create a socket object
     # get local machine name
-    host = "147.83.117.22"
-    # host = "192.168.56.102"
+    # host = "147.83.117.22"
+    host = "192.168.56.102"
     port = 50053
     a=input("Start:")
     # connection to hostname on the port.
