@@ -25,10 +25,9 @@ public class Client  : ScriptableObject
     public bool Logeado = false;
     public bool Consultas = false;
     public string ip;
-    //string ip = "147.83.117.22";
     public int puerto;
-    public bool nueva_connected_list = false;
-
+    public bool updated_conected_list = false;
+    public string[] connected;
     public int numplayergame = 0;
     public int StartAtender()
     {
@@ -40,13 +39,13 @@ public class Client  : ScriptableObject
         while (true)
         { 
             // Recibimos mensaje del servidor
-            byte[] msg2 = new byte[100];
+            byte[] msg2 = new byte[1000];
             this.server.Receive(msg2);
             this.Consultas = true;
             string[] error_servidor = Encoding.ASCII.GetString(msg2).Split('\x04');
             if (error_servidor[0] == "")
             {
-                UnityEngine.Debug.Log("Servidor en tareas de mantenimiento, vuelva a conectarse más tarde");
+                UnityEngine.Debug.Log("Servidor en tareas de mantenimiento, vuelva a conectarse mï¿½s tarde");
                 // Del_ParaDesconectar delegado = new Del_ParaDesconectar(Desconectar);
                 this.server.Shutdown(SocketShutdown.Both);
                 this.server.Close();
@@ -55,14 +54,14 @@ public class Client  : ScriptableObject
 
             else
             {
-                string[] trozos = error_servidor[0].Split('/');
+                string[] elements = error_servidor[0].Split('/');
                 UnityEngine.Debug.Log(error_servidor[0]);
-                int codigo = Convert.ToInt32(trozos[0]);
+                int codigo = Convert.ToInt32(elements[0]);
                 switch (codigo)
                 {
-                    case 0: //Resupesta a la desconexión
-                        string mensaje1 = trozos[2];
-                        int hack = Convert.ToInt32(trozos[1]);
+                    case 0: //Resupesta a la desconexiï¿½n
+                        string mensaje1 = elements[2];
+                        int hack = Convert.ToInt32(elements[1]);
                         if (hack == 1)
                         {
                             UnityEngine.Debug.Log(mensaje1);
@@ -73,13 +72,13 @@ public class Client  : ScriptableObject
                             this.server.Shutdown(SocketShutdown.Both);
                             this.server.Close();
                             this.atender.Abort();
-
+                            SceneManager.LoadScene("Login");
                         }
 
                         break;
 
                     case 1: //Respuesta al registrar
-                        int hackS = Convert.ToInt32(trozos[1]);
+                        int hackS = Convert.ToInt32(elements[1]);
                         if (hackS == 1)
                         {
                             UnityEngine.Debug.Log("Todo bien");
@@ -96,8 +95,8 @@ public class Client  : ScriptableObject
 
                         break;
 
-                    case 2: //Respuesta al iniciar sesión
-                        int hack1 = Convert.ToInt32(trozos[1]);
+                    case 2: //Respuesta al iniciar sesiï¿½n
+                        int hack1 = Convert.ToInt32(elements[1]);
                         if (hack1 == 1)
                         {
                             UnityEngine.Debug.Log("Todo bien");
@@ -113,29 +112,30 @@ public class Client  : ScriptableObject
                         }
                         break;
                     case 3: //Respuesta a la consulta 1
-                        string mensaje3 = trozos[1];
+                        string mensaje3 = elements[1];
                         UnityEngine.Debug.Log(mensaje3);
                         break;
                     case 4: //Respuesta a la consulta 2
-                        this.nueva_connected_list = true;
-                        string[] usuarios = trozos[2].Split(',');
+                        this.updated_conected_list = true;
+                        connected = elements[2].Split(',');
                         // ActualizarConectados(usuarios);
-                        UnityEngine.Debug.Log(trozos[2]);
+                        UnityEngine.Debug.Log(connected);
+                        updated_conected_list = true;
                         break;
                     case 5: //Respuesta a la consulta 3
-                        string mensaje5 = trozos[1];
+                        string mensaje5 = elements[1];
                         UnityEngine.Debug.Log(mensaje5);
                         break;
                     case 6: //notificacion con la lista de conectados actualizada
-                        int hack6 = Convert.ToInt32(trozos[1]);
-                        if (hack6 == 0)
+                        int res = Convert.ToInt32(elements[1]);
+                        if (res == 0)
                             UnityEngine.Debug.Log("No hay usuarios connectados");
                         else
                         {
-                            string[] mensaje6 = new string[hack6];
-                            for (int i = 0; i < hack6; i++)
+                            string[] message = new string[res];
+                            for (int i = 0; i < res; i++)
                             {
-                                mensaje6[i] = (trozos[i + 2]);
+                                message[i] = (elements[i + 2]);
 
                             }
 
@@ -169,20 +169,20 @@ public class Client  : ScriptableObject
                         //    else //respuesta para el invitado
                         //    {
                         //        string anfitrion = trozos[4];
-                        //        string MessageBoxTitle = "Invitación de partida";
+                        //        string MessageBoxTitle = "Invitaciï¿½n de partida";
                         //        string MessageBoxContent = "Hola " + userBox.Text + " " + anfitrion + " te ha retado a una partida de" + juego + "\nDeseas aceptarla?";
                         //        string respuesta_invitation;
                         //        DialogResult result = UnityEngine.Debug.Log(MessageBoxContent, MessageBoxTitle, MessageBoxButtons.YesNo);
                         //        switch (result)
                         //        {
                         //            case DialogResult.Yes:
-                        //                //Debug.Log("La partida se iniciará en unos instantes");
+                        //                //Debug.Log("La partida se iniciarï¿½ en unos instantes");
                         //                respuesta_invitation = "8/" + partida + "/" + anfitrion + "/" + userBox.Text + "/" + Convert.ToString(result) + "/1";
                         //                byte[] accept = System.Text.Encoding.ASCII.GetBytes(respuesta_invitation);
                         //                server.Send(accept);
                         //                break;
                         //            case DialogResult.No:
-                        //                //Debug.Log("Juegas o eres un llorón?");
+                        //                //Debug.Log("Juegas o eres un llorï¿½n?");
                         //                respuesta_invitation = "8/" + partida + "/" + anfitrion + "/" + userBox.Text + "/" + Convert.ToString(result) + "/0";
                         //                byte[] decline = System.Text.Encoding.ASCII.GetBytes(respuesta_invitation);
                         //                server.Send(decline);
@@ -201,7 +201,7 @@ public class Client  : ScriptableObject
                         //    if (hack8 == 0)// respuesta para invitado
                         //    {
 
-                        //        UnityEngine.Debug.Log("La partida " + partida8 + "de Inverted-Pacman se canceló");
+                        //        UnityEngine.Debug.Log("La partida " + partida8 + "de Inverted-Pacman se cancelï¿½");
                         //    }
                         //    else if (hack8 == 1)//respuesta para anfitrion de los distintos invitados
                         //    {
@@ -229,7 +229,7 @@ public class Client  : ScriptableObject
                         //    }
                         //    else if (hack8 == 2)// respuesta para anfitrion para cancelar la partida
                         //    {
-                        //        UnityEngine.Debug.Log("La partida " + partida8 + "del juego " + juego + " se canceló");
+                        //        UnityEngine.Debug.Log("La partida " + partida8 + "del juego " + juego + " se cancelï¿½");
                         //        Del_ParaFinalizarPartida delegado8 = new Del_ParaFinalizarPartida(FinalizarPartida);
                         //        this.Invoke(delegado8, new object[] { hack8, partida8 });
                         //    }

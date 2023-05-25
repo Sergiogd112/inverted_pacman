@@ -7,6 +7,8 @@ using System.Net.Sockets;
 using System.Text;
 using System;
 using UnityEngine.SceneManagement;
+using System.Threading;
+using System.Threading.Tasks;
 
 public class logginbutton : MonoBehaviour
 {
@@ -53,6 +55,9 @@ public class logginbutton : MonoBehaviour
                                 UnityEngine.Debug.Log("OK");
                                 cliente.Logeado = true;
                                 SceneManager.LoadScene(sceneName);
+                                ThreadStart ts= delegate{cliente.AtenderServidor();};
+                                cliente.atender=new Thread(ts);
+                                cliente.atender.Start();
                             }
                             else
                             {

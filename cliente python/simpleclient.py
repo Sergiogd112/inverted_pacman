@@ -22,7 +22,7 @@ def main():
     # create a socket object
     # get local machine name
     # host = "147.83.117.22"
-    host = "192.168.56.102"
+    host = "147.83.117.22"
     port = 50053
     a=input("Start:")
     # connection to hostname on the port.
