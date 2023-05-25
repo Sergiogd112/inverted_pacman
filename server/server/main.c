@@ -267,7 +267,7 @@ void *AtenderThread(ThreadArgs *threadArgs) {
                 break;
 
             case 3: // Ranking
-                n = Devuelveme_Ranking(conn, datos); // Call Devuelveme_Ranking function
+                n = Get_Ranking(conn, datos); // Call Devuelveme_Ranking function
                 response = malloc(sizeof(datos) + sizeof(char) * 12);
                 snprintf(response, sizeof(response), "%d/%d/%s", code, n, datos);
                 break;

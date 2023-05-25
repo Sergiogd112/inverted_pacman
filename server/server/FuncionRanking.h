@@ -13,6 +13,6 @@
 #include <mysql/mysql.h>
 #include "config.h"
 
-int Devuelveme_Ranking(MYSQL *conn, char res[1000]);
+int Get_Ranking(MYSQL *conn, char res[1000]);
 
 #endif // SERVER_RANKING_H
