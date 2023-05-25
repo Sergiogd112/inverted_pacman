@@ -6,7 +6,6 @@
 
 /**
  * initialize_connected_list - A function that initializes a ConnectedList structure.
- *
  * @param list: Pointer to a ConnectedList structure to be initialized.
  */
 void initialize_connected_list(ConnectedList *list)
@@ -29,7 +28,6 @@ void initialize_connected_list(ConnectedList *list)
 
 /**
  * reset_node - A function that resets the values of a Connection structure.
- *
  * @param node: Pointer to a Connection structure to be reset.
  */
 void reset_node(struct Connection *node)
@@ -46,7 +44,6 @@ void reset_node(struct Connection *node)
 
 /**
  * insert_to_connected_llist - A function that inserts a new node with given values into a ConnectedList.
- *
  * @param list: Pointer to a ConnectedList structure.
  * @param new_id: Integer value of the new node's id.
  * @param new_sockfd: Integer value of the new node's sockfd.
@@ -78,7 +75,6 @@ int insert_to_connected_llist(ConnectedList *list, int new_id, int new_sockfd, c
 
 /**
  * get_empty_from_connected_list - A function that returns the index of an empty slot in the ConnectedList.
- *
  * @param list: Pointer to a ConnectedList structure.
  * @return: Returns the index of an empty slot in the list, or -1 if the list is full.
  */
@@ -101,28 +97,9 @@ int get_empty_from_connected_list(ConnectedList *list)
     }
     return -1; // Return -1 if no empty slot found in the list
 }
-//// append a node at the end of the list
-// void append_to_llist(struct Connection **head_ref, struct Connection **new_node_ref) {
-//     // allocate memory for new node
-//     struct Connection *head = *head_ref;
-//
-//     struct Connection *last = *head_ref;
-//     struct Connection *new_node = *new_node_ref;
-//     if (last != NULL) {
-//         while (last->next != NULL)
-//             last = last->next;
-//         last->next = new_node;
-//         new_node->prev = last;
-//     } else {
-//         // if the list is empty, make new node as head and prev as NULL
-//         head = new_node;
-//         new_node->prev = NULL;
-//     }
-// }
 
 /**
  * search_id_on_connected_llist - A function that searches for a target_id in the ConnectedList.
- *
  * @param list: Pointer to a ConnectedList structure.
  * @param target_id: The target_id to search for in the list.
  * @return: Returns the index of the connection with matching target_id, or -1 if not found.
@@ -139,7 +116,6 @@ int search_id_on_connected_llist(ConnectedList *list, int target_id)
 }
 /**
  * search_name_on_connected_llist - A function that searches for a target_id in the ConnectedList.
- *
  * @param list: Pointer to a ConnectedList structure.
  * @param nombre: The name to search for in the list.
  * @return: Returns the index of the connection with matching target_id, or -1 if not found.
@@ -157,7 +133,6 @@ int search_name_on_connected_llist(ConnectedList *list, Nombre nombre)
 
 /**
  * remove_node_from_connected_list - A function that removes a connection from the ConnectedList.
- *
  * @param list: Pointer to a ConnectedList structure.
  * @param target_i: The index of the connection to be removed.
  * @return: Returns -1 if target_i is out of range, -2 if the connection at target_i is not in use,
@@ -185,7 +160,6 @@ int remove_node_from_connected_list(ConnectedList *list, int target_i)
 
 /**
  * connected_llist_to_string - A function that converts a ConnectedList to a string representation.
- *
  * @param list: Pointer to a ConnectedList structure.
  * @param res: The buffer to store the resulting string.
  * @return: Returns the total number of connections processed.
@@ -205,7 +179,6 @@ int connected_llist_to_string(ConnectedList *list, char res[200])
 
 /**
  * print_connected_idx - A function that prints the indices of active connections in a ConnectedList.
- *
  * @param list: Pointer to a ConnectedList structure.
  */
 void print_connected_idx(ConnectedList *list)
@@ -226,7 +199,6 @@ void print_connected_idx(ConnectedList *list)
 
 /**
  * connected_to_string - A function that converts active connections in a ConnectedList to a string.
- *
  * @param list: Pointer to a ConnectedList structure.
  * @param res: Pointer to a character buffer to store the resulting string.
  * @param maxlen: Maximum length of the resulting string buffer.
@@ -261,7 +233,6 @@ int connected_to_string(ConnectedList *list, char *res, size_t maxlen)
 
 /**
  * push_connected - A function that pushes a list of connected users as a string to all active connections in a ConnectedList.
- *
  * @param list: Pointer to a ConnectedList structure.
  * @param res: Pointer to a character buffer containing the list of connected users as a string.
  * @param n: Number of connected users.
@@ -287,7 +258,6 @@ void push_connected(ConnectedList *list, char res[2000], int n)
 
 /**
  * print_Node - A function that prints the details of a Connection structure.
- *
  * @param node: Pointer to a Connection structure.
  */
 void print_Node(struct Connection *node)
@@ -309,7 +279,6 @@ void print_Node(struct Connection *node)
 
 /**
  * print_Connections - A function that prints the details of all active Connection structures in a ConnectedList.
- *
  * @param list: Pointer to a ConnectedList structure.
  */
 void print_Connections(ConnectedList *list)
