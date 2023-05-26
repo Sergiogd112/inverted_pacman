@@ -7,7 +7,7 @@ public class chooseplayers : MonoBehaviour
 {
     public void pressed()
     {
-        SceneManager.LoadScene("Conectados");
+        SceneManager.LoadScene("Invitar");
     }
 
 }

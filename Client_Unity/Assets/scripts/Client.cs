@@ -15,7 +15,7 @@ using System.Diagnostics;
 
 [CreateAssetMenu(fileName = "this", menuName = "ScriptableObjects/this", order = 1)]
 
-public class Client  : ScriptableObject
+public class Client : ScriptableObject
 {
     public Socket server;
     public Thread atender;
@@ -29,6 +29,11 @@ public class Client  : ScriptableObject
     public bool updated_conected_list = false;
     public string[] connected;
     public int numplayergame = 0;
+    public string amfitrion;
+    public string[] invitados;
+    public int idpartida;
+    public bool invitado = false;
+    public string pscene;
     public int StartAtender()
     {
         return 0;
@@ -37,7 +42,7 @@ public class Client  : ScriptableObject
     {
         UnityEngine.Debug.Log("AtenderServidor en marcha");
         while (true)
-        { 
+        {
             // Recibimos mensaje del servidor
             byte[] msg2 = new byte[1000];
             this.server.Receive(msg2);
@@ -127,23 +132,17 @@ public class Client  : ScriptableObject
                         UnityEngine.Debug.Log(mensaje5);
                         break;
                     case 6: //notificacion con la lista de conectados actualizada
-                        int res = Convert.ToInt32(elements[1]);
-                        if (res == 0)
-                            UnityEngine.Debug.Log("No hay usuarios connectados");
-                        else
-                        {
-                            string[] message = new string[res];
-                            for (int i = 0; i < res; i++)
-                            {
-                                message[i] = (elements[i + 2]);
+                        string[] jugadores = elements[2].Split(',');
+                        amfitrion = jugadores[0];
+                        invitados = jugadores[1].Split('*');
+                        idpartida = Convert.ToInt32(elements[1]);
+                        invitado = true;
 
-                            }
-
-                            // Del_ParaGrid delegado = new Del_ParaGrid(PonerEnGrid);
-                            // dataGridView1.Invoke(delegado, new object[] { mensaje6, hack6 });
-                            // this.Invoke(delegado, new object[] { mensaje6, hack6 });
-                        }
                         break;
+                    case 7:
+                        atender.Abort();
+                        break;
+                    
                         //case 7:
                         //    int hack7 = Convert.ToInt32(trozos[1]);
                         //    int partida = Convert.ToInt32(trozos[3]);
