@@ -54,6 +54,7 @@ public class logginbutton : MonoBehaviour
                             {
                                 UnityEngine.Debug.Log("OK");
                                 cliente.Logeado = true;
+                                cliente.usuario=name;
                                 SceneManager.LoadScene(sceneName);
                                 ThreadStart ts= delegate{cliente.AtenderServidor();};
                                 cliente.atender=new Thread(ts);

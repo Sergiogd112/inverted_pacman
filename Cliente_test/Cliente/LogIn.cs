@@ -31,7 +31,7 @@ namespace Version_1
         bool LoggedIn = false;
         //Variable boleana para las consultas al servidor
         bool Queries = false;
-        string Ip = "192.168.56.102";
+        string Ip = "147.83.117.22";
         int Port = 50053;
         public bool New_Connected_List = false;
         string[] Users;
@@ -160,7 +160,7 @@ namespace Version_1
                 byte[] msg2 = new byte[10000000];
                 Server.Receive(msg2);
                 Queries = true;
-                MessageBox.Show(Encoding.ASCII.GetString(msg2));
+                //MessageBox.Show(Encoding.ASCII.GetString(msg2));
                 string[] Server_Error = Encoding.ASCII.GetString(msg2).Split('\x04');
                 if (Server_Error[0] == "")
                 {
