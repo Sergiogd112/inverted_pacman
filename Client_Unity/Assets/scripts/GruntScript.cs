@@ -6,6 +6,7 @@ public class GruntScript : MonoBehaviour
 {
     public Transform John;
     public GameObject BulletPrefab;
+    
 
     private int Health = 3;
     private float LastShoot;
