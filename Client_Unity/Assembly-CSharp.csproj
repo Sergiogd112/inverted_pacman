@@ -45,6 +45,7 @@
      <Compile Include="Assets\Map.cs" />
      <Compile Include="Assets\FlappyBird\Scripts\GameManagerFB.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
+     <Compile Include="Assets\SNAKE\GameManagerGO.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
      <Compile Include="Assets\ScriptsPacmanIndividual\GameManagerPMI.cs" />
      <Compile Include="Assets\FlappyBird\Scripts\Pipes.cs" />
@@ -54,6 +55,7 @@
      <Compile Include="Assets\scripts\LoginRegister.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
+     <Compile Include="Assets\MenuCanvas.cs" />
      <Compile Include="Assets\ScriptsPacmanIndividual\Ghost.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
@@ -76,8 +78,10 @@
      <Compile Include="Assets\SNAKE\Food.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+     <Compile Include="Assets\GameManagerSN.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
      <Compile Include="Assets\scripts\Client.cs" />
+     <Compile Include="Assets\invitation.cs" />
      <Compile Include="Assets\PlayerMovement.cs" />
      <Compile Include="Assets\SNAKE\Snake.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -89,10 +93,12 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
      <Compile Include="Assets\scripts\JohnMovement.cs" />
      <Compile Include="Assets\ScriptsPacmanIndividual\Movement.cs" />
+     <Compile Include="Assets\manageinvitacion.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
      <Compile Include="Assets\scripts\LoadScene.cs" />
+     <Compile Include="Assets\loading.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
      <Compile Include="Assets\Management.cs" />
@@ -103,7 +109,7 @@
      <Compile Include="Assets\logginbutton.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\map\Map_generator.cs" />
-     <Compile Include="Assets\ChatManager.cs" />
+     <Compile Include="Assets\GameManager.cs" />
      <None Include="Assets\map\maps\198.txt" />
      <None Include="Assets\map\maps\35.txt" />
      <None Include="Assets\map\maps\56.txt" />
