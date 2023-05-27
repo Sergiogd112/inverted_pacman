@@ -77,7 +77,7 @@ public class Snake : MonoBehaviour
         else if (other.tag == "Obstacle")
         {
             gameManager.gameOver();
-            ResetState();
+            //ResetState();
         }
     }
 
