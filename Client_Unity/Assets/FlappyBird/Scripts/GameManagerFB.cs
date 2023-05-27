@@ -11,6 +11,7 @@ public class GameManagerFB : MonoBehaviour
     //public Text scoreText;
     public GameObject playButton;
     public GameObject gameOver;
+    public GameObject MenuOffButton;
     private int score; 
 
     private void Awake()
@@ -30,6 +31,7 @@ public class GameManagerFB : MonoBehaviour
 
         playButton.SetActive(false);
         gameOver.SetActive(false);
+        MenuOffButton.SetActive(false);
 
         Time.timeScale = 1f;
         player.enabled = true;
@@ -46,6 +48,7 @@ public class GameManagerFB : MonoBehaviour
     {
         playButton.SetActive(true);
         gameOver.SetActive(true);
+        MenuOffButton.SetActive(true);
 
         Pause();
     }

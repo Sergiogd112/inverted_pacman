@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Snake : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class Snake : MonoBehaviour
     public Transform segmentPrefab;
     private Vector2 _direction = Vector2.right;
     public int initialSize = 8;
+    public GameManagerGO gameManager;
+    //private bool isDead;
     
 
     private void Start()
@@ -73,6 +76,7 @@ public class Snake : MonoBehaviour
         }
         else if (other.tag == "Obstacle")
         {
+            gameManager.gameOver();
             ResetState();
         }
     }
