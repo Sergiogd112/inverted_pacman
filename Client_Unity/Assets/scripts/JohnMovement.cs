@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JohnMovement : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class JohnMovement : MonoBehaviour
     private bool Grounded;
     private float LastShoot;
     private int Health = 5;
+    public GameManagerWO gameManager;
+    private bool isDead;
 
     private void Start()
     {
@@ -75,10 +78,16 @@ public class JohnMovement : MonoBehaviour
 
     public void Hit()
     {
+        int cont = 0;
         Health -= 1;
         if (Health == 0) 
         {
+            cont = cont + 1;
             Destroy(gameObject);
+        }
+        if (cont == 3)
+        {
+            gameManager.gameOver();
         }
     }
 }
