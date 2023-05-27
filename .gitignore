@@ -125,3 +125,6 @@ sysinfo.txt
 *.apk
 *.unitypackage
 *.log
+
+# Unity Layouts
+Client_Unity/UserSettings/Layouts
