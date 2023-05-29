@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
+using System.Threading.Tasks;
+
 [CreateAssetMenu(fileName = "MainGameManager", menuName = "ScriptableObjects/MainGameManager", order = 1)]
 public class MainGameManager : ScriptableObject
 {
