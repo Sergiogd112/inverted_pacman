@@ -20,12 +20,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Register.unity
     guid: f3ef47e0da5ad244bbbcec1c050fb1f0
+  - enabled: 1
+    path: Assets/Scenes/OnlineMenu.unity
+    guid: c151dd3600734c3439c3b89e683ee80c
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
+    path: Assets/Scenes/MenuInvitation.unity
+    guid: da8caad35eee2d44f9ff3e721dc6c165
+  - enabled: 1
+    path: Assets/Scenes/MenuPlay.unity
+    guid: f4c45d2753e2ca84e8a2648f2dcaebee
+  - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: 1cdbc073215dd0d4eba96b9089b6402b
+  - enabled: 1
+    path: Assets/Scenes/WGame.unity
+    guid: d4cf7b4b5aebaba4c89af77a4b79a0e0
   - enabled: 1
     path: Assets/Scenes/Snake.unity
     guid: 7afe90f04dad85643944bf2d82d221ef
@@ -35,11 +47,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayOnline.unity
     guid: 5f8618a8434dda34ab8f8a65a5e7ecfd
+  - enabled: 1
+    path: Assets/Scenes/Chat.unity
+    guid: 5886930c69e717648825334d2f53eb77
+  - enabled: 1
+    path: Assets/Scenes/FlappyBird.unity
+    guid: 1f0befabcf8cccf439b682e3ac19e743
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/Conectados.unity
+    path: 
     guid: 11a87cf6630c447429ca092f347e7562
   - enabled: 1
     path: Assets/Scenes/Invitar.unity
