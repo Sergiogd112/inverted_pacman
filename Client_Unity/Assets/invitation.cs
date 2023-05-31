@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using System.Text;
+using UnityEngine.SceneManagement;
 
 public class invitation : MonoBehaviour
 {
@@ -20,6 +21,13 @@ public class invitation : MonoBehaviour
         }
         GetComponent<TextMeshProUGUI>().text = client.amfitrion +
                                                 " has invited you to play with:\n" + mates + "Do you want to accpt the invitation?";
+    }
+    void Update()
+    {
+        if (client.invitacionres == -1)
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 
 

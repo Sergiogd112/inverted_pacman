@@ -30,7 +30,9 @@ En este documento se describe la estructura de los mensajes entre el cliente y e
   - Respuesta de los usuarios:
     - `6/1/n` si se quiere participar, donde n es el identificador de partida
     - `6/0/n`: no se quiere participar, donde n es el identificador de partida
-- Notificacion de inicio de partida(Solo en el primer caso anterior): `7/n/nombreAmfitrion,invitado1*invitado2*invitado3`
+- Notificacion de inicio de partida(Solo en el primer caso anterior): 
+  - `7/1/nombreAmfitrion,invitado1*invitado2*invitado3` se acepta
+  - `7/0/nombreAmfitrion,invitado1*invitado2*invitado3` se cancela
 - Partida
   - Mensages del cliente: `8/`
     - `8/0/1`: jugador listo

@@ -34,6 +34,7 @@ public class Client : ScriptableObject
     public int idpartida;
     public bool invitado = false;
     public string pscene;
+    public int invitationres = 0;
     public int StartAtender()
     {
         return 0;
@@ -140,9 +141,17 @@ public class Client : ScriptableObject
 
                         break;
                     case 7:
-                        atender.Abort();
+                        if (elements[1] == "1")
+                        {
+                            atender.Abort();
+                            invitationres = 1;
+                        }
+                        else
+                        {
+                            invitationres = -1;
+                        }
                         break;
-                    
+
                         //case 7:
                         //    int hack7 = Convert.ToInt32(trozos[1]);
                         //    int partida = Convert.ToInt32(trozos[3]);
