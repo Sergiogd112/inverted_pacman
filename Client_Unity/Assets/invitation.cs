@@ -24,7 +24,7 @@ public class invitation : MonoBehaviour
     }
     void Update()
     {
-        if (client.invitacionres == -1)
+        if (client.invitationres == -1)
         {
             SceneManager.LoadScene("Menu");
         }
