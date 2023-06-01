@@ -21,11 +21,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Register.unity
     guid: f3ef47e0da5ad244bbbcec1c050fb1f0
   - enabled: 1
+    path: Assets/Scenes/Splash1.unity
+    guid: dc6fea04c67e3c94bb0160d51b7aa54b
+  - enabled: 1
+    path: Assets/Scenes/Splash2.unity
+    guid: 03cf1c07914145d44b0d72dda51b15e0
+  - enabled: 1
+    path: Assets/Scenes/Splash3.unity
+    guid: d5e741cc61326d14494b2665bb8a929b
+  - enabled: 1
     path: Assets/Scenes/OnlineMenu.unity
     guid: c151dd3600734c3439c3b89e683ee80c
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/MenuInvitation.unity
     guid: da8caad35eee2d44f9ff3e721dc6c165
@@ -53,12 +59,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FlappyBird.unity
     guid: 1f0befabcf8cccf439b682e3ac19e743
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 11a87cf6630c447429ca092f347e7562
   - enabled: 1
     path: Assets/Scenes/Invitar.unity
     guid: 60b1f6374af8afc46b0c54216affa69b
