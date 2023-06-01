@@ -11,6 +11,11 @@ public class MenuPause : MonoBehaviour
     private bool juegoPausado;
     public GameObject playButton;
 
+    private void Start()
+    {
+        botonPausa.SetActive(false);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
