@@ -39,7 +39,7 @@ public class SplashScenes : MonoBehaviour
 
     IEnumerator ToSplashTwo()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         SceneNumber = 6;
         SceneManager.LoadScene(6);
     }
