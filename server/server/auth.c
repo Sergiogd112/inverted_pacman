@@ -131,7 +131,7 @@ int login(MYSQL *conn, char name[30], char password[30])
  * @param name The user's name.
  * @return 1 if the user was deleted successfully, 0 if the deletion failed
  */
-int deleteUser(MYSQL *conn, name)
+int deleteUser(MYSQL *conn, char name[30])
 {
     char query[200]; // Declare a character array called query with a length of 200.
 
