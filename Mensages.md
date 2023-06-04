@@ -30,7 +30,7 @@ En este documento se describe la estructura de los mensajes entre el cliente y e
   - Respuesta de los usuarios:
     - `6/1/n` si se quiere participar, donde n es el identificador de partida
     - `6/0/n`: no se quiere participar, donde n es el identificador de partida
-- Notificacion de inicio de partida(Solo en el primer caso anterior): 
+- Notificacion de inicio de partida:
   - `7/1/nombreAmfitrion,invitado1*invitado2*invitado3` se acepta
   - `7/0/nombreAmfitrion,invitado1*invitado2*invitado3` se cancela
 - Partida
@@ -64,3 +64,9 @@ En este documento se describe la estructura de los mensajes entre el cliente y e
 - Recibir mensages del chat:
   - Peticion cliente: `10/`
   - Notificacion/respuesta del servidor: `10/n/nombre1*timestamp*mensage,nombre2*timestamp2*mensage2...` donde n es el numero de mensages
+- Eliminar usuario:
+  - Peticion cliente `11/`
+  - Respuesta servidor
+    - `11/0` No se ha podido eliminar
+    - `11/1` Se ha eliminado correctamente
+    - `11/2` Se ha producido un error

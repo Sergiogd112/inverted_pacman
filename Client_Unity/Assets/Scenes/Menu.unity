@@ -5324,6 +5324,7 @@ GameObject:
   - component: {fileID: 1412010512}
   - component: {fileID: 1412010511}
   - component: {fileID: 1412010510}
+  - component: {fileID: 1412010513}
   m_Layer: 5
   m_Name: YesButton
   m_TagString: Untagged
@@ -5395,7 +5396,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1412010511}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1412010513}
+        m_TargetAssemblyTypeName: delete, Assembly-CSharp
+        m_MethodName: deletePlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1412010511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5434,6 +5447,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412010508}
   m_CullTransparentMesh: 1
+--- !u!114 &1412010513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412010508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7af12ccf899c0148bdd01a654ab6fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  client: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
 --- !u!1 &1414680596
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Diagnostics;
-
+using System.Text.RegularExpressions;
 
 [CreateAssetMenu(fileName = "MainGameManager", menuName = "ScriptableObjects/MainGameManager", order = 1)]
 public class MainGameManager : ScriptableObject
@@ -113,7 +113,7 @@ public class MainGameManager : ScriptableObject
                     ppositions[i, 1] = float.Parse(properties[2]);
                     points[i] = Convert.ToInt32(properties[3]);
                     health[i] = Convert.ToInt32(properties[4]);
-                    names[i] = properties[0];
+                    names[i] = Regex.Unescape(properties[0]);
                 }
                 break;
             case 1:
@@ -123,7 +123,7 @@ public class MainGameManager : ScriptableObject
                 }
                 string[] log1 = data.Split('*');
                 logcodes.Add(1);
-                lognames.Add(log1[1]);
+                lognames.Add(Regex.Unescape(log1[1]));
                 logids.Add(Convert.ToInt32(log1[2]));
                 break;
             case 2:
@@ -133,7 +133,7 @@ public class MainGameManager : ScriptableObject
                 }
                 string[] log2 = data.Split('*');
                 logcodes.Add(3);
-                lognames.Add(log2[1]);
+                lognames.Add(Regex.Unescape(log2[1]));
                 logids.Add(Convert.ToInt32(log2[2]));
                 break;
             case 3:
@@ -143,7 +143,7 @@ public class MainGameManager : ScriptableObject
                 }
                 string[] log3 = data.Split('*');
                 logcodes.Add(3);
-                lognames.Add(log3[1]);
+                lognames.Add(Regex.Unescape(log3[1]));
                 logids.Add(Convert.ToInt32(log3[2]));
                 break;
         }

@@ -7,7 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using System;
 using UnityEngine.SceneManagement;
-
+using System.Text.RegularExpressions;
 public class registerbutton : MonoBehaviour
 {
     public Client cliente;
@@ -29,7 +29,7 @@ public class registerbutton : MonoBehaviour
                 if (name != "" & password != "" & newpassword != "" & email != "")
                 {
 
-                    string message = "1/" + name + "*" + password + "*" + email;
+                    string message = "1/" + Regex.Escape(name) + "*" + Regex.Escape(password) + "*" + email;
                     // Enviamos al servidor el nombre tecleado
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(message);
                     cliente.server.Send(msg);

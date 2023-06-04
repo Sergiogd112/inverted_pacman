@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using System;
 using System.Text;
 using UnityEngine.SceneManagement;
-
+using System.Text.RegularExpressions;
 public class conected : MonoBehaviour
 {
     public Client client;
@@ -17,8 +17,8 @@ public class conected : MonoBehaviour
     {
         for (int i = 0; i < client.connected.Length; i++)
         {
-            if (client.connected[i] == client.usuario) continue;
-            addPlayer(client.connected[i]);
+            if (Regex.Unescape(client.connected[i]) == client.usuario) continue;
+            addPlayer(Regex.Unescape(client.connected[i]));
         }
         client.updated_conected_list = false;
     }
@@ -35,8 +35,8 @@ public class conected : MonoBehaviour
             buttons = new List<GameObject>();
             for (int i = 0; i < client.connected.Length; i++)
             {
-                if (client.connected[i] == client.usuario) continue;
-                addPlayer(client.connected[i]);
+                if (Regex.Unescape(client.connected[i]) == client.usuario) continue;
+                addPlayer(Regex.Unescape(client.connected[i]));
             }
             client.updated_conected_list = false;
         }
@@ -62,11 +62,11 @@ public class conected : MonoBehaviour
             {
                 if (count == 0)
                 {
-                    mensage += user.GetComponentInChildren<TextMeshProUGUI>().text;
+                    mensage += Regex.Escape(user.GetComponentInChildren<TextMeshProUGUI>().text);
                 }
                 else
                 {
-                    mensage += "*" + user.GetComponentInChildren<TextMeshProUGUI>().text;
+                    mensage += "*" + Regex.Escape(user.GetComponentInChildren<TextMeshProUGUI>().text);
                 }
                 count++;
             }

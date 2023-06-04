@@ -28,3 +28,5 @@ MonoBehaviour:
   idpartida: 0
   invitado: 0
   pscene: 
+  invitationres: 0
+  chatdata: {fileID: 11400000, guid: 8f3c0768113c0b040a9e76cdafe992dd, type: 2}

@@ -55,7 +55,7 @@ int register_user(MYSQL *conn, char name[30], char email[30], char password[30])
 
     int num_fields = mysql_num_fields(result); // Get the number of fields in the result set.
 
-    logger(LOGINFO,"Checking if user exists already"); // Print a message to the console.
+    logger(LOGINFO, "Checking if user exists already"); // Print a message to the console.
 
     if (mysql_num_rows(result) == 0)
     { // Check if there are any rows in the result set.
@@ -69,13 +69,13 @@ int register_user(MYSQL *conn, char name[30], char email[30], char password[30])
             exit(1);
         }
 
-        logger(LOGINFO,"User registered successfully!"); // Print a message to the console.
-        return 1;                                  // Return 1 to indicate that the user was registered successfully.
+        logger(LOGINFO, "User registered successfully!"); // Print a message to the console.
+        return 1;                                         // Return 1 to indicate that the user was registered successfully.
     }
     else
     {
-        logger(LOGWARNING,"A user with this name already exists!\n"); // Print a message to the console.
-        return -1;                                         // Return -1 to indicate that the registration failed.
+        logger(LOGWARNING, "A user with this name already exists!\n"); // Print a message to the console.
+        return -1;                                                     // Return -1 to indicate that the registration failed.
     }
 }
 
@@ -114,14 +114,38 @@ int login(MYSQL *conn, char name[30], char password[30])
     int num_fields = mysql_num_fields(result); // Get the number of fields in the result set.
 
     if (mysql_num_rows(result) == 0)
-    {                                          // Check if there are any rows in the result set.
-        logger(LOGWARNING,"Invalid email or password\n"); // Print a message to the console.
-        return -1;                             // Return 0 to indicate that the login failed.
+    {                                                      // Check if there are any rows in the result set.
+        logger(LOGWARNING, "Invalid email or password\n"); // Print a message to the console.
+        return -1;                                         // Return 0 to indicate that the login failed.
     }
     else
     {
-        logger(LOGINFO,"Login successful!\n"); // Print a message to the console.
+        logger(LOGINFO, "Login successful!\n"); // Print a message to the console.
         MYSQL_ROW row = mysql_fetch_row(result);
         return atoi(row[0]); // Return 1 to indicate that the login was successful.
+    }
+}
+/**
+ * Deletes a user from a MySQL database. In case of errors it logs them using the logger and returns 2.
+ * @param conn A pointer to a MySQL connection object.
+ * @param name The user's name.
+ * @return 1 if the user was deleted successfully, 0 if the deletion failed
+ */
+int deleteUser(MYSQL *conn, name)
+{
+    char query[200]; // Declare a character array called query with a length of 200.
+
+    sprintf(query, "DELETE FROM usuarios WHERE nombre='%s'", name); // Construct a SQL query to delete the user with the given name from the database and store it in the query string.
+
+    if (mysql_query(conn,
+                    query))
+    {                                                                     // Execute the query using the mysql_query function and check if it returns an error.
+        logger(LOGERROR, "Error deleting user: %s\n", mysql_error(conn)); // Print a message to the console.
+        return 0;                                                         // Return 0 to indicate that the deletion failed.
+    }
+    else
+    {
+        logger(LOGINFO, "User deleted successfully!\n"); // Print a message to the console.
+        return 1;                                        // Return 1 to indicate that the user was deleted successfully.
     }
 }

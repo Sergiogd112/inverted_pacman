@@ -9,6 +9,7 @@ using System;
 using UnityEngine.SceneManagement;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 public class logginbutton : MonoBehaviour
 {
@@ -22,12 +23,12 @@ public class logginbutton : MonoBehaviour
         {
             if (!cliente.Logeado)
             {
-                string name=nameField.text;
-                string password=passwordField.text;
+                string name = nameField.text;
+                string password = passwordField.text;
                 if (name != "" & password != "")
                 {
 
-                    string message = "2/" + name + "*" + password;
+                    string message = "2/" + Regex.Escape(name) + "*" + Regex.Escape(password);
                     // Enviamos al servidor el nombre tecleado
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(message);
                     cliente.server.Send(msg);
@@ -48,16 +49,17 @@ public class logginbutton : MonoBehaviour
                     {
                         string[] trozos = Server_Error[0].Split('/');
                         int code = Convert.ToInt32(trozos[0]);
-                        if (code == 2){
+                        if (code == 2)
+                        {
                             int num2 = Convert.ToInt32(trozos[1]);
                             if (num2 == 1)
                             {
                                 UnityEngine.Debug.Log("OK");
                                 cliente.Logeado = true;
-                                cliente.usuario=name;
+                                cliente.usuario = name;
                                 SceneManager.LoadScene(sceneName);
-                                ThreadStart ts= delegate{cliente.AtenderServidor();};
-                                cliente.atender=new Thread(ts);
+                                ThreadStart ts = delegate { cliente.AtenderServidor(); };
+                                cliente.atender = new Thread(ts);
                                 cliente.atender.Start();
                             }
                             else

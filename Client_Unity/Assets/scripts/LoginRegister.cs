@@ -17,6 +17,9 @@ public class LoadScene : MonoBehaviour
     public Client cliente;
 
     private void Start() {
+        if(cliente.Conectado){
+            return;
+        }
         Debug.Log(this.cliente.ip);
         IPAddress direc = IPAddress.Parse(this.cliente.ip);
         IPEndPoint ipep = new IPEndPoint(direc, this.cliente.puerto);
