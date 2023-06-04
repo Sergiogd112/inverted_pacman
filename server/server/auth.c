@@ -139,9 +139,11 @@ int deleteUser(MYSQL *conn, char name[30])
 
     if (mysql_query(conn,
                     query))
-    {                                                                     // Execute the query using the mysql_query function and check if it returns an error.
-        logger(LOGERROR, "Error deleting user: %s\n", mysql_error(conn)); // Print a message to the console.
-        return 0;                                                         // Return 0 to indicate that the deletion failed.
+    {
+        char log[200];
+        snprintf(log, 200, "Error deleting user: %s\n", mysql_error(conn)); // Execute the query using the mysql_query function and check if it returns an error.
+        logger(LOGERROR, log);                                              // Print a message to the console.
+        return 0;                                                           // Return 0 to indicate that the deletion failed.
     }
     else
     {
