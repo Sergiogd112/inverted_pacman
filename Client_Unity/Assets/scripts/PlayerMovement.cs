@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private Bounds levelBounds;
 
     private Management radio; //Con esto importaré el valor del radio de deteccion definido en Management
+    private Management numplayers; //Con esto importaré el numero de jugadores en la partida
+    
 
     public int puntuation = 0;
 
@@ -92,6 +94,15 @@ public class PlayerMovement : MonoBehaviour
         }
         return false;
 
+    }
+
+    internal int killSlimeI(){
+        
+
+
+
+
+        return 0;
     }
 
 

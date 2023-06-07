@@ -20,10 +20,14 @@ public class SlimeMovement : MonoBehaviour
 
     public int bajas_slime = 0;
 
+    public float startx = -2.051f;
+    public float starty = 0.575f;
+
     // Start is called before the first frame update
     void Start()
     {
         radio = GameObject.FindObjectOfType<Management>();
+        transform.position = new Vector2(startx, starty);
 
         rb2d = GetComponent<Rigidbody2D>();
         SetRandomDirection();
@@ -41,6 +45,7 @@ public class SlimeMovement : MonoBehaviour
         if(colision_pared){
             Debug.Log("Pum Pared ");
             SetRandomDirection();
+            colision_pared = false;
         } 
     }
 
