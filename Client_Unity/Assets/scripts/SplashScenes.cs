@@ -54,6 +54,6 @@ public class SplashScenes : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         SceneNumber = 0;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Menu");
     }
 }
