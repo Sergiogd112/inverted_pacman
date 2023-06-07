@@ -348,7 +348,12 @@ void *AtenderThread(ThreadArgs *threadArgs)
             n = write_message(conn, list->connections[pos].name, p); // Call write_message function
             response = malloc(sizeof(char) * 4);
             if (n == 0)
+            {
                 snprintf(response, 4, "9/1");
+                int l;
+                char *res = chat_to_string(list, &l);
+                push_chat(list, res, l);
+            }
             else if (n == 1)
                 snprintf(response, 4, "9/0");
             else

@@ -12,67 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be17bd16c59f584185ed695388772d1, type: 3}
   m_Name: chatdata
   m_EditorClassIdentifier: 
-  users:
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  - paco
-  timestamps:
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  - 10/10
-  messages:
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
-  - hola
+  users: []
+  timestamps: []
+  messages: []
   updated_chat: 0

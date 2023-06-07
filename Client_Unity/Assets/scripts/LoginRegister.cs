@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadScene : MonoBehaviour
+public class LoginRegister : MonoBehaviour
 {
     public Client cliente;
 
