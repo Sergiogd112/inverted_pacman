@@ -156,9 +156,12 @@ public class Client : ScriptableObject
                         break;
                     case 10:
                         string[] messages = elements[2].Split(",");
-                        for (int i = chatdata.users.Count(); i < Convert.ToInt32(elements[1]); i++)
+                        for (int i = chatdata.users.Count(); i < messages.Length; i++)
                         {
                             string[] data = messages[i].Split("*");
+                            UnityEngine.Debug.Log(data[0]);
+                            UnityEngine.Debug.Log(data[1]);
+                            UnityEngine.Debug.Log(data[2]);
                             chatdata.addMessage(Regex.Unescape(data[0]), Regex.Unescape(data[1]), Regex.Unescape(data[2]));
                         }
                         chatdata.updated_chat = true;
