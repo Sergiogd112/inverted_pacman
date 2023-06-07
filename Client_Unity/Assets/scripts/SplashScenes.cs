@@ -7,6 +7,8 @@ public class SplashScenes : MonoBehaviour
 {
     public static int SceneNumber;
 
+    [SerializeField] Animator transitionAnim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,12 +41,14 @@ public class SplashScenes : MonoBehaviour
 
     IEnumerator ToSplashTwo()
     {
+        transitionAnim.SetTrigger("exit");
         yield return new WaitForSeconds(2);
         SceneNumber = 6;
         SceneManager.LoadScene(6);
     }
     IEnumerator ToSplashOne()
     {
+        transitionAnim.SetTrigger("exit");
         yield return new WaitForSeconds(1);
         SceneNumber = 7;
         SceneManager.LoadScene(7);
@@ -52,6 +56,7 @@ public class SplashScenes : MonoBehaviour
 
     IEnumerator ToMenu()
     {
+        transitionAnim.SetTrigger("exit");
         yield return new WaitForSeconds(3);
         SceneNumber = 0;
         SceneManager.LoadScene("Menu");
