@@ -351,7 +351,7 @@ void *AtenderThread(ThreadArgs *threadArgs)
             {
                 snprintf(response, 4, "9/1");
                 int l;
-                char *res = chat_to_string(list, &l);
+                char *res = chat_to_string(conn, &l);
                 push_chat(list, res, l);
             }
             else if (n == 1)

@@ -25,8 +25,8 @@ public class Client : ScriptableObject
     public bool Conectado = false;
     public bool Logeado = false;
     public bool Consultas = false;
-    public string ip;
-    public int puerto;
+    public string ip="147.83.117.22";
+    public int puerto=50053;
     public bool updated_conected_list = false;
     public string[] connected;
     public int numplayergame = 0;
