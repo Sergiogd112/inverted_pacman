@@ -78,16 +78,10 @@ public class JohnMovement : MonoBehaviour
 
     public void Hit()
     {
-        int cont = 0;
         Health -= 1;
         if (Health == 0) 
         {
-            cont = cont + 1;
             Destroy(gameObject);
-        }
-        if (cont == 3)
-        {
-            gameManager.gameOver();
         }
     }
 }

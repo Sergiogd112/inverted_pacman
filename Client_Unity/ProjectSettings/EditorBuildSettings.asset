@@ -75,6 +75,9 @@ EditorBuildSettings:
     path: Assets/Scenes/HelpFlappy.unity
     guid: 92b5edd555be51e47899f85b1cedc137
   - enabled: 1
+    path: Assets/Scenes/WarningWGame.unity
+    guid: 2baf93ac7fe814d48b6b2d630e739699
+  - enabled: 1
     path: Assets/Scenes/HelpSnake.unity
     guid: d196b763046cfba4781d9acfcad26c20
   m_configObjects: {}
