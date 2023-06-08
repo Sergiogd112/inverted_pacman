@@ -80,4 +80,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HelpSnake.unity
     guid: d196b763046cfba4781d9acfcad26c20
+  - enabled: 1
+    path: Assets/Scenes/Chat.unity
+    guid: 304e559fd689a324b887ebbfe3facf97
   m_configObjects: {}

@@ -856,6 +856,7 @@ GameObject:
   - component: {fileID: 888405033}
   - component: {fileID: 888405032}
   - component: {fileID: 888405031}
+  - component: {fileID: 888405034}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -928,10 +929,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 888405034}
+        m_TargetAssemblyTypeName: backbuttonchat, Assembly-CSharp
+        m_MethodName: BackClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -978,6 +979,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888405029}
   m_CullTransparentMesh: 1
+--- !u!114 &888405034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888405029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 414f9a098dceb2948930ea8effac89dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &987390916
 GameObject:
   m_ObjectHideFlags: 0
