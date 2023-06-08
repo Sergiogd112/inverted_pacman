@@ -4,12 +4,18 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// This is the script for the invite button.
+/// </summary>
 public class invitarbtn : MonoBehaviour
 {
-    public VertexGradient unselected;
-    public VertexGradient selected;
-    public TMP_ColorGradient test;
-    public bool pressed = false;
+    public VertexGradient unselected; // This is the unselected color.
+    public VertexGradient selected; // This is the selected color.
+    public TMP_ColorGradient test; // This is the test color.
+    public bool pressed = false; // This is whether the button is pressed or not.
+    /// <summary>
+    /// This is called when the button is clicked.
+    /// </summary>
     public void Toggle()
     {
         // TextMeshProUGUI textMeshPro = GetComponentInChildren<TextMeshProUGUI>();

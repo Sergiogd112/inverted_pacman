@@ -14,35 +14,41 @@ using UnityEngine.SceneManagement;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 
+/// <summary>
+/// 
+/// </summary>
 [CreateAssetMenu(fileName = "this", menuName = "ScriptableObjects/this", order = 1)]
 
 public class Client : ScriptableObject
 {
-    public Socket server;
-    public Thread atender;
-    public string usuario;
-    public int num_conn;
-    public bool Conectado = false;
-    public bool Logeado = false;
-    public bool Consultas = false;
-    public string ip="147.83.117.22";
-    public int puerto=50053;
-    public bool updated_conected_list = false;
-    public string[] connected;
-    public int numplayergame = 0;
-    public string amfitrion;
-    public string[] invitados;
-    public int idpartida;
-    public bool invitado = false;
-    public string pscene;
-    public int invitationres = 0;
-    public ChatData chatdata;
-    public int delete = 0;
+    public Socket server; // This is the server.
+    public Thread atender; // This is the thread.
+    public string usuario; // This is the username.
+    public int num_conn; // This is the number of connections.
+    public bool Conectado = false; // This is used to check if the client is connected.
+    public bool Logeado = false; // This is used to check if the client is logged in.
+    public bool Consultas = false; // This is used to check if the client is making a query.
+    public string ip="147.83.117.22"; // This is the ip.
+    public int puerto=50053; // This is the port.
+    public bool updated_conected_list = false; // This is used to check if the connected list has been updated.
+    public string[] connected; // This is the list of connected users.
+    public int numplayergame = 0; // This is the number of players in the game.
+    public string amfitrion; // This is the host.
+    public string[] invitados; // This is the list of guests.
+    public int idpartida; // This is the id of the game.
+    public bool invitado = false; // This is used to check if the client is a guest.
+    public string pscene; // This is the previous scene.
+    public int invitationres = 0; // This is the invitation response.
+    public ChatData chatdata; // This is the chat data.
+    public int delete = 0; // This is used to store the result of the delete account query.
     public int StartAtender()
     {
         return 0;
     }
-    public void AtenderServidor()   //ACABAR DE REVISAR
+    /// <summary>
+    /// This is called when the client is created. It manages the connection to the server.
+    /// </summary>
+    public void AtenderServidor()
     {
         UnityEngine.Debug.Log("AtenderServidor en marcha");
         while (true)
@@ -68,7 +74,7 @@ public class Client : ScriptableObject
                 int codigo = Convert.ToInt32(elements[0]);
                 switch (codigo)
                 {
-                    case 0: //Resupesta a la desconexi�n
+                    case 0: //Respuesta al desconectar
                         string mensaje1 = elements[2];
                         int hack = Convert.ToInt32(elements[1]);
                         if (hack == 1)
@@ -77,7 +83,6 @@ public class Client : ScriptableObject
                         }
                         else
                         {
-                            // Del_ParaDesconectar delegado = new Del_ParaDesconectar(Desconectar);
                             this.server.Shutdown(SocketShutdown.Both);
                             this.server.Close();
                             this.atender.Abort();
@@ -143,7 +148,7 @@ public class Client : ScriptableObject
                         invitado = true;
 
                         break;
-                    case 7:
+                    case 7: //notificacion de que se ha unido un jugador a la partida
                         if (elements[1] == "1")
                         {
                             atender.Abort();
@@ -154,7 +159,7 @@ public class Client : ScriptableObject
                             invitationres = -1;
                         }
                         break;
-                    case 10:
+                    case 10: // notificacion de actualizacion de chat
                         string[] messages = elements[2].Split(",");
                         for (int i = chatdata.users.Count(); i < messages.Length; i++)
                         {
@@ -166,7 +171,7 @@ public class Client : ScriptableObject
                         }
                         chatdata.updated_chat = true;
                         break;
-                    case 11:
+                    case 11: // respuesta a la consulta de eliminar cuenta
                         if (elements[1] == "1")
                         {
                             delete = 1;
