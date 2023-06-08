@@ -45,7 +45,7 @@ public class GruntScript : MonoBehaviour
     }
 
     /// <summary>
-    /// This is called when the grunt is hit.
+    /// This is called when the grunt is hit by a bullet.
     /// </summary>
     public void Hit()
     {

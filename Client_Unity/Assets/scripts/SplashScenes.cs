@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// This is the script for the splash scenes.
+/// </summary>
 public class SplashScenes : MonoBehaviour
 {
-    public static int SceneNumber;
+    public static int SceneNumber; // This is the scene number.
 
-    [SerializeField] Animator transitionAnim;
+    [SerializeField] Animator transitionAnim; // This is the animator object.
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +21,7 @@ public class SplashScenes : MonoBehaviour
         }
         if (SceneNumber == 6)
         {
-            StartCoroutine(ToSplashOne());
-        }
+            StartCoroutine(ToSplashOne());         }
         if (SceneNumber == 7)
         {
             StartCoroutine(ToMenu());
