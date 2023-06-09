@@ -17,16 +17,17 @@ public class chat : MonoBehaviour
     public ChatData chatdata; // This is the chat data.
     public int count = 0;   // This is the number of messages.
     public TMP_InputField messageField; // This is the message field.
+    public List<GameObject> messageList;
+    public int maxMessages = 10;
     /// <summary>
     /// This is called when the chat is created. It adds the messages to the chat.
     /// </summary>
     void Start()
     {
-        for (int i = count; i < chatdata.users.Count; i++)
+        for (count = (chatdata.users.Count - maxMessages) * Convert.ToInt32(maxMessages < chatdata.users.Count); count < chatdata.users.Count; count++)
         {
-            addMessage(chatdata.users[i], chatdata.timestamps[i], chatdata.messages[i]); // Add the message.
+            addMessage(chatdata.users[count], chatdata.timestamps[count], chatdata.messages[count]); // Add the message.
         }
-        count = chatdata.users.Count; // Set the count.
     }
 
     /// <summary>
@@ -34,11 +35,22 @@ public class chat : MonoBehaviour
     /// </summary>
     void Update()
     {
-        for (int i = count; i < chatdata.users.Count; i++)
+        if (count < chatdata.users.Count) // If there are new messages.
         {
-            addMessage(chatdata.users[i], chatdata.timestamps[i], chatdata.messages[i]);
+            if (count > 0)
+            {
+                foreach (GameObject message in messageList) // Destroy the old messages.
+                {
+                    Destroy(message);
+                }
+            }
+            int i;
+            for (i = (chatdata.users.Count - maxMessages) * Convert.ToInt32(maxMessages < chatdata.users.Count); i < chatdata.users.Count; i++)
+            {
+                addMessage(chatdata.users[i], chatdata.timestamps[i], chatdata.messages[i]);
+            }
+            count = i;
         }
-        count = chatdata.users.Count;
     }
     /// <summary>
     /// Adds a message to the chat scroll view. It is called when a new message is received.
@@ -52,6 +64,7 @@ public class chat : MonoBehaviour
         messgObj.transform.SetParent(transform); // Set the parent.
         messgObj.transform.Find("Sender").GetComponent<TextMeshProUGUI>().text = user + " at:" + time; // Set the sender.
         messgObj.transform.Find("text").GetComponent<TextMeshProUGUI>().text = text; // Set the text.
+        messageList.Add(messgObj); // Add the message to the list.
     }
     /// <summary>
     /// This is called when the user clicks the send button. It sends the message to the server.
