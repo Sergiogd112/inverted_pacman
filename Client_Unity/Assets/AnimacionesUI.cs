@@ -10,7 +10,7 @@ public class AnimacionesUI : MonoBehaviour
 
     private void Start()
     {
-        LeanTween.moveX(logo.GetComponent<RectTransform>(), 0, 1.5f).setDelay(2.5f).setEase(LeanTweenType.easeOutBounce).setOnComplete(BajarAlpha);
+        LeanTween.moveX(logo.GetComponent<RectTransform>(), 0, 1f).setDelay(1.5f).setEase(LeanTweenType.easeOutBounce).setOnComplete(BajarAlpha);
     }
 
     private void BajarAlpha()
