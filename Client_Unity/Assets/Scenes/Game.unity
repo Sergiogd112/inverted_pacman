@@ -313,8 +313,8 @@ MonoBehaviour:
   colision_player: 0
   colision_pared: 0
   bajas_slime: 0
-  startx: -2.051
-  starty: 0.575
+  startx: -2.25
+  starty: -2.94
 --- !u!61 &124730882
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -422,7 +422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124730880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18, y: 4.36, z: 0}
+  m_LocalPosition: {x: -2.51, y: -2.98, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -855,8 +855,8 @@ MonoBehaviour:
   colision_player: 0
   colision_pared: 0
   bajas_slime: 0
-  startx: -2.051
-  starty: 0.575
+  startx: -2.25
+  starty: -2.94
 --- !u!61 &639420662
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -964,7 +964,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639420660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18, y: 4.36, z: 0}
+  m_LocalPosition: {x: 2.36, y: -2.97, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1009,8 +1009,8 @@ MonoBehaviour:
   colision_player: 0
   colision_pared: 0
   bajas_slime: 0
-  startx: -2.051
-  starty: 0.575
+  startx: 3.21
+  starty: 2.59
 --- !u!61 &689348834
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1118,7 +1118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689348832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18, y: 4.36, z: 0}
+  m_LocalPosition: {x: 3.11, y: 2.57, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1252,7 +1252,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495487377}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18, y: 4.36, z: 0}
+  m_LocalPosition: {x: -3.31, y: 2.52, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1277,8 +1277,8 @@ MonoBehaviour:
   colision_player: 0
   colision_pared: 0
   bajas_slime: 0
-  startx: -2.051
-  starty: 0.575
+  startx: -3.21
+  starty: 2.59
 --- !u!1 &1666662900
 GameObject:
   m_ObjectHideFlags: 0
