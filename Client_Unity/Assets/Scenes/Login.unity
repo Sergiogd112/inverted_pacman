@@ -1001,7 +1001,7 @@ MonoBehaviour:
   cliente: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
   nameField: {fileID: 950512814}
   passwordField: {fileID: 732218093}
-  sceneName: Splash1
+  sceneName: Menu
 --- !u!1 &647996725
 GameObject:
   m_ObjectHideFlags: 0
