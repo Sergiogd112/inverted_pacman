@@ -12,37 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be17bd16c59f584185ed695388772d1, type: 3}
   m_Name: chatdata
   m_EditorClassIdentifier: 
-  users:
-  - Carlos
-  - Ana
-  - sergio
-  - pepa
-  - pepa
-  - pepa
-  - pepa
-  - pepa
-  - pepa
-  - pepa
-  timestamps:
-  - 2023-05-06 20:55:06
-  - 2023-05-06 20:55:06
-  - 2023-05-06 20:55:06
-  - 2023-05-06 20:55:06
-  - 2023-06-07 12:19:36
-  - 2023-06-07 12:30:04
-  - 2023-06-07 12:30:04
-  - 2023-06-07 12:30:04
-  - 2023-06-07 12:30:04
-  - 2023-06-07 12:30:04
-  messages:
-  - Hello!
-  - How are you?
-  - What are you doing?
-  - Nice to meet you!
-  - hola
-  - holahola
-  - holahola
-  - holahola
-  - holahola
-  - holahola
-  updated_chat: 1
+  users: []
+  timestamps: []
+  messages: []
+  updated_chat: 0

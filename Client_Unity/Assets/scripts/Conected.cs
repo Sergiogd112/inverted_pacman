@@ -47,6 +47,7 @@ public class conected : MonoBehaviour
             }
             client.updated_conected_list = false; // Set the updated list to false.
         }
+         
 
     }
     /// <summary>
