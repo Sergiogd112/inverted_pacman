@@ -88,7 +88,7 @@ public class conected : MonoBehaviour
         UnityEngine.Debug.Log(mensage);
         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensage); // Convert the message to bytes.
         client.server.Send(msg); // Send the message to the server.
-        SceneManager.LoadScene("Invitacion"); // Load the invitation scene.
+        SceneManager.LoadScene("Loading"); // Load the invitation scene.
     }
 
 }

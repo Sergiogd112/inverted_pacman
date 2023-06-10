@@ -13,6 +13,14 @@ public class ChatData : ScriptableObject
     public List<string> messages; // This is the list of messages.
     public bool updated_chat = false; // This is used to check if the chat has been updated.
 
+    void Awake()
+    {
+        users = new List<string>(); // Initialize the list of users.
+        timestamps = new List<string>(); // Initialize the list of timestamps.
+        messages = new List<string>(); // Initialize the list of messages.
+        updated_chat = false; // Set the chat as not updated.
+    }
+
     /// <summary>
     /// This is called when the chat is created. It initializes the lists.
     /// </summary>
