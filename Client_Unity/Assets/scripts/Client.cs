@@ -28,8 +28,8 @@ public class Client : ScriptableObject
     public bool Conectado = false; // This is used to check if the client is connected.
     public bool Logeado = false; // This is used to check if the client is logged in.
     public bool Consultas = false; // This is used to check if the client is making a query.
-    public string ip="147.83.117.22"; // This is the ip.
-    public int puerto=50053; // This is the port.
+    public string ip = "147.83.117.22"; // This is the ip.
+    public int puerto = 50053; // This is the port.
     public bool updated_conected_list = false; // This is used to check if the connected list has been updated.
     public string[] connected; // This is the list of connected users.
     public int numplayergame = 0; // This is the number of players in the game.
@@ -41,6 +41,17 @@ public class Client : ScriptableObject
     public int invitationres = 0; // This is the invitation response.
     public ChatData chatdata; // This is the chat data.
     public int delete = 0; // This is used to store the result of the delete account query.
+    void Awake()
+    {
+        Conectado = false;
+        Logeado = false;
+        Consultas = false;
+        updated_conected_list = false;
+        invitado = false;
+        invitationres = 0;
+        delete = 0;
+        invitados = new string[0];
+    }
     public int StartAtender()
     {
         return 0;
