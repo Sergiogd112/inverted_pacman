@@ -7,14 +7,16 @@ IP = "192.168.56.102"
 PORT = 9060
 
 
+import socket
+import multiprocessing
+from time import sleep
+
 class User:
     def __init__(self, username=None, password=None, email=None):
         self.username = username
         self.password = password
         self.email = email
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        # with open(self.username + ".txt", "w") as f:
-        #     f.write("")
         self.connected = False
         self.loggedin = False
         self.querying = False
@@ -22,7 +24,7 @@ class User:
     def connect(self, host="", port=0):
         if not self.connected:
             self.s.connect((host, port))
-            self.process = multiprocessing.Process(target=self.recieve, args=())
+            self.process = multiprocessing.Process(target=self.receive, args=())
             self.process.start()
             self.connected = True
             print(self.username, " is connected")
@@ -40,23 +42,6 @@ class User:
             ("2/" + self.username + "*" + self.password + "*" + self.email).encode(),
         )
         self.loggedin = True
-        # self.querying = True
-        # print(self.username + " q: True")
-        # data = self.s.recv(1024)
-        # if len(data) > 0:
-        #     text = repr(data.decode())
-        #     if "1" == text[0]:
-        #         print(self.username, " register response is:", text)
-        #     elif "2" == text[0]:
-        #         print(self.username, " login response is:", text)
-        #     elif "3" == text[0]:
-        #         print(self.username, " ranking is response is:", text)
-        #     elif "4" == text[0]:
-        #         print(self.username, " Connected list response is:", text)
-        #     elif "5" == text[0]:
-        #         print(self.username, " new match response is:", text)
-
-        #     self.querying = False
 
     def login(self):
         self.s.sendall(("2/" + self.username + "*" + self.password).encode())
@@ -67,42 +52,14 @@ class User:
             ("2/" + self.username + "*" + self.password).encode(),
         )
         self.loggedin = True
-        # self.querying = True
-        # data = self.s.recv(1024)
-        # if len(data) > 0:
-        #     text = repr(data.decode())
-        #     if "1" == text[0]:
-        #         print(self.username, " register response is:", text)
-        #     elif "2" == text[0]:
-        #         print(self.username, " login response is:", text)
-        #     elif "3" == text[0]:
-        #         print(self.username, " ranking is response is:", text)
-        #     elif "4" == text[0]:
-        #         print(self.username, " Connected list response is:", text)
-        #     elif "5" == text[0]:
-        #         print(self.username, " new match response is:", text)
 
-        #     self.querying = False
-
-    def recieve(self):
-        i = 0
+    def receive(self):
         while True:
             data = self.s.recv(1024)
             if len(data) > 0:
                 text = repr(data.decode())
                 self.querying = False
                 print(self.username, text)
-                # if "1" == text[0]:
-                #     print(self.username, " register response is:", text)
-                # elif "2" == text[0]:
-                #     print(self.username, " login response is:", text)
-                # elif "3" == text[0]:
-                #     print(self.username, " ranking is response is:", text)
-                # elif "4" == text[0]:
-                #     print(self.username, " Connected list response is:", text)
-                # elif "5" == text[0]:
-                #     print(self.username, " new match response is:", text)
-            i += 1
 
     def disconnect(self):
         if self.connected:
@@ -111,8 +68,8 @@ class User:
                 i += 1
                 sleep(0.1)
 
-            disconect_msg = "0/"
-            self.s.sendall(disconect_msg.encode())
+            disconnect_msg = "0/"
+            self.s.sendall(disconnect_msg.encode())
             self.process.terminate()
             self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.connected = False
@@ -120,7 +77,6 @@ class User:
             print(self.username + " is disconnected")
         else:
             print(self.username, " is not connected")
-
 
 class Manager:
     def __init__(self):

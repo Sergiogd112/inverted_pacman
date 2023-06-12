@@ -1,12 +1,17 @@
 import socket
 import multiprocessing
 
-
+invi = False
+idgame=0
 def receive(s, name):
     while True:
         data = s.recv(1024)
         if len(data) > 0:
             print(name, "Received", repr(data.decode()))
+            if(data.decode().split('/')[0]=="5"):
+                print("Invitacion recibida")
+                invi=True
+                idgame=int(data.decode().split('/')[1])
 
 
 def main():
@@ -41,6 +46,13 @@ def main():
     invitar=input("Intitar: ")
     message="5/Ana*Carlos*pepa"
     sockets[0].sendall(message.encode())
+    # while True:
+    #     if invi:
+    #         print("Invitacion recibida")
+    #         for i in range(1,len(sockets)):
+    #             sockets[i].sendall(("6/1"+str(idgame)).encode())
+    #         break
+    
     input("Acabar:")
     [thread.terminate() for thread in processes]
     message = "0/"
