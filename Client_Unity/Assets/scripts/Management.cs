@@ -26,6 +26,10 @@ public class Management : MonoBehaviour
     GameObject[] slime = new GameObject[4];
 
 
+    //[SerializeField] private Transform objetivo;
+    private NavMeshAgent navMeshAgent;
+
+
 
     void Start()
     {
@@ -36,6 +40,7 @@ public class Management : MonoBehaviour
         for(int i = 1; i <= numslimes; i++){
             slime[i-1] = GameObject.Find("Slime" + i.ToString());
         }
+
         //slime = GameObject.Find("Slime1"); //antigua forma para cuando solo había 1 slime
         //InvokeRepeating("printMatrix2", 0.01f, 4f);
     }
@@ -176,8 +181,6 @@ public class Management : MonoBehaviour
     
     
 
-
-
         //Imprime la matriz del jugador más cercano a cada slime
         private void printMatrix2()
         {
@@ -197,7 +200,7 @@ public class Management : MonoBehaviour
     
     
     
-        //Metodo para hacer que el slime4 vaya directamente  a por el jugador 1
+        //Metodo para hacer que el slime1 vaya directamente  a por el jugador 1
     
         private void aporelplayer(){
             SlimeMovement[] slimemov = new SlimeMovement[numslimes];
@@ -215,11 +218,13 @@ public class Management : MonoBehaviour
             }
 
             // Accedo al componente NavMeshAgent del slime4
-            NavMeshAgent slime4NavAgent = slime[3].GetComponent<NavMeshAgent>();
-
+            NavMeshAgent slime4NavAgent = slime[0].GetComponent<NavMeshAgent>();
             // Establezco el destino del slime4 como la posición del jugador1
-            //slime4NavAgent.SetDestination(playermov[0].transform.position);
+            slime4NavAgent.SetDestination(playermov[0].transform.position);
 
+            //navMeshAgent = slime[0].GetComponent<NavMeshAgent>();
+            //navMeshAgent.updateRotation = false;
+            //navMeshAgent.updateUpAxis = false;
 
 
 
