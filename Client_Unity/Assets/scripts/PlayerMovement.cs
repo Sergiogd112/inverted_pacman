@@ -17,8 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Management radio; //Con esto importaré el valor del radio de deteccion definido en Management
     private Management numplayers; //Con esto importaré el numero de jugadores en la partida
-    
 
+    public MainGameManager mainGameManager;
     public int puntuation = 0;
 
     public float startx = -1.051f;
@@ -34,12 +34,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        if(cliente.numplayergame == idjugador){
+        if (cliente.numplayergame == idjugador)
+        {
             movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             killSlime();
         }
-        else{
-
+        else
+        {
         }
     }
 
@@ -76,28 +77,33 @@ public class PlayerMovement : MonoBehaviour
 
 
     //Si entro en el radio y aprieto el espacio devuelve true
-    internal bool killSlime(){
-        
+    internal bool killSlime()
+    {
+
         float distanciaAlSlime;
-        if(GameObject.FindGameObjectWithTag("Food") != null){
+        if (GameObject.FindGameObjectWithTag("Food") != null)
+        {
             distanciaAlSlime = Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag("Food").transform.position);
         }
-        else{
+        else
+        {
             distanciaAlSlime = 999;
         }
 
-        
+
         float radiodeDeteccion = radio.radiodeDeteccion;
-         
-        if (Input.GetKeyDown(KeyCode.Space) && distanciaAlSlime <= radiodeDeteccion) {
-            return true;                  
+
+        if (Input.GetKeyDown(KeyCode.Space) && distanciaAlSlime <= radiodeDeteccion)
+        {
+            return true;
         }
         return false;
 
     }
 
-    internal int killSlimeI(){
-        
+    internal int killSlimeI()
+    {
+
 
 
 
@@ -113,18 +119,26 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Mover el jugador utilizando el componente rigidbody
-        rb2d.MovePosition(rb2d.position + movement * speed * Time.fixedDeltaTime);
-        ToroidalMap();
-        //Imprime por pantalla la posición del jugador por la consola
-        //Debug.Log("Posición del jugador: " + transform.position); 
+        if (cliente.numplayergame == idjugador)
+        {
+            // Mover el jugador utilizando el componente rigidbody
+            rb2d.MovePosition(rb2d.position + movement * speed * Time.fixedDeltaTime);
+            ToroidalMap();
+        }
+        else
+        {
+            rb2d.MovePosition(new Vector2(mainGameManager.ppositions[idjugador, 0], mainGameManager.ppositions[idjugador, 1]));
+            ToroidalMap();
+
+        }
     }
 
 
 
 
     //Método para fijar cuanto tiempo tarda el slime en respawnear
-    internal void tiempoRespawn(float time){
+    internal void tiempoRespawn(float time)
+    {
         gameObject.SetActive(false); // desactiva el objeto al chocar
         Invoke("ToRespawn", time); // espera time segundos y lo envía al respawn
     }

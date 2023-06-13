@@ -24,7 +24,7 @@ public class Management : MonoBehaviour
 
     GameObject[] player = new GameObject[4];
     GameObject[] slime = new GameObject[4];
-
+    public MainGameManager mainGameManager;
 
     //[SerializeField] private Transform objetivo;
     private NavMeshAgent navMeshAgent;
