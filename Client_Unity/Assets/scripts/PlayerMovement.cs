@@ -116,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-
+    
     void FixedUpdate()
     {
         if (cliente.numplayergame == idjugador)
