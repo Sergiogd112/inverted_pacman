@@ -21,6 +21,8 @@ public class Management : MonoBehaviour
     //public PlayerMovement player;
     public GameObject playerprefab;
 
+    private Rigidbody2D rb2d;
+
 
     GameObject[] player = new GameObject[4];
     GameObject[] slime = new GameObject[4];
@@ -222,17 +224,44 @@ public class Management : MonoBehaviour
             slimemov[s] = slime[s].GetComponent<SlimeMovement>();
         }
 
-        // Accedo al componente NavMeshAgent del slime4
-        NavMeshAgent slime4NavAgent = slime[0].GetComponent<NavMeshAgent>();
-        // Establezco el destino del slime4 como la posición del jugador1
-        slime4NavAgent.SetDestination(playermov[0].transform.position);
-
-        //navMeshAgent = slime[0].GetComponent<NavMeshAgent>();
-        //navMeshAgent.updateRotation = false;
-        //navMeshAgent.updateUpAxis = false;
+        Vector2 direction = player[0].transform.position - slime[0].transform.position;
+        direction.Normalize();
 
 
+        rb2d = slime[0].GetComponent<Rigidbody2D>();
 
+        
+        float velocidad = 12f;
+
+        
+        if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y)){ //derecha o izq
+            if (direction.x > 0) //mueve hacia la derecha
+            { 
+                rb2d.MovePosition(rb2d.position + new Vector2(velocidad * Time.deltaTime, 0f));
+                Debug.Log("HAcia derecha " + direction);
+            }
+            if (direction.x < 0) //mueve hacia la izq
+            { 
+                rb2d.MovePosition(rb2d.position + new Vector2(-velocidad * Time.deltaTime, 0f));
+                Debug.Log("HAcia izq " + direction);
+            }
+        }
+        else{
+
+            if (direction.y > 0) //mueve hacia arriba
+            {
+                Debug.Log("Arriba " + direction);
+                rb2d.MovePosition(rb2d.position + new Vector2(0f, velocidad * Time.deltaTime));
+            }
+            if (direction.y < 0) //mueve hacia abajp
+            { 
+                Debug.Log("Abajo " + direction);
+                rb2d.MovePosition(rb2d.position + new Vector2(0f, -velocidad * Time.deltaTime));
+            }
+        }
+
+
+        //rb2d.MovePosition(rb2d.position + direction * velocidad * Time.deltaTime);
 
 
 

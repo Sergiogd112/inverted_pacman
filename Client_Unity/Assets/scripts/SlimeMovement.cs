@@ -30,7 +30,7 @@ public class SlimeMovement : MonoBehaviour
         transform.position = new Vector2(startx, starty);
 
         rb2d = GetComponent<Rigidbody2D>();
-        SetRandomDirection();
+
         // obtiene el SpriteRenderer del objeto y guarda su color original
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         colorOriginal = spriteRenderer.color;    
@@ -40,11 +40,12 @@ public class SlimeMovement : MonoBehaviour
     void Update()
     {
         if (InFrontOfPlayer()) {
-            SetRandomDirection();
+            Debug.Log("Edtoy delante del jugador");
+            //SetRandomDirection();
         }
         if(colision_pared){
             Debug.Log("Pum Pared ");
-            SetRandomDirection();
+            //SetRandomDirection();
             colision_pared = false;
         } 
     }
@@ -128,7 +129,7 @@ void SetRandomDirection()
         //Debug.DrawLine(rb2d.position, rb2d.position + direction * 2f, Color.red);
 
         // Mover el slime en la dirección actual
-        rb2d.MovePosition(rb2d.position + direction * speed * Time.fixedDeltaTime);
+        //rb2d.MovePosition(rb2d.position + direction * speed * Time.fixedDeltaTime);
 
         ToroidalMap();
         inRadius();
@@ -171,10 +172,7 @@ void SetRandomDirection()
     {
         //Creamos una matriz para guardar los 4 posibles respawns
         Vector2[] respawnPositions = new Vector2[] {
-            new Vector2(-3.21f, 2.59f),
-            new Vector2(3.21f, 2.59f),
-            new Vector2(-2.25f, -2.94f),
-            new Vector2(2.25f, -2.94f)
+
         };
         //Elegimos un respawn random
         int randomIndex = Random.Range(0, respawnPositions.Length);
