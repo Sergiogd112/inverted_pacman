@@ -72,3 +72,12 @@ En este documento se describe la estructura de los mensajes entre el cliente y e
     - `11/0` No se ha podido eliminar
     - `11/1` Se ha eliminado correctamente
     - `11/2` Se ha producido un error
+- Lista usuarios con los que he jugado
+  - Peticion cliente `12/nombre`
+  - Respuesta servidor `12/nombre1,nombre2,..`
+  <!-- - Lista de partidas con 2 jugadores
+  - Petición Cliente `13/nombre1/nombre2`
+  - Respuesta servidor `13/n/id1*nombre11*nombre12*nombre13*nombre14*puntos1,id2*nombre21*nombre22*nombre23*nombre24*puntos2...` donde `n` es el numero de partidas y `id` es el identificador de la partida -->
+- Lista de partidas con 1 jugador
+  - Petición Cliente `14/nombre`
+  - Respuesta servidor `14/id1*nombre11*nombre12*nombre13*nombre14*puntos1,id2*nombre21*nombre22*nombre23*nombre24*puntos2...`

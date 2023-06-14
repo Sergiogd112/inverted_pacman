@@ -19,6 +19,7 @@
 #include "partida.h"
 #include "chat.h"
 #include "logger.h"
+#include "peticiones.h"
 pthread_mutex_t main_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t glubal_update_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutex_t crear_partida_mutex = PTHREAD_MUTEX_INITIALIZER;

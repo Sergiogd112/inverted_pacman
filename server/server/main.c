@@ -383,7 +383,21 @@ void *AtenderThread(ThreadArgs *threadArgs)
                 snprintf(response, 5, "11/0");
             }
             break;
-
+        case 12:
+            logger(LOGINFO, "Se ha pedido la lista usuarios con los que he jugado");
+            int n;
+            char *res=obtenerNombres(conn, list->connections[pos].name,&n); // Call obtenerNombres function
+            response = malloc(sizeof(char) * (n + 4));
+            snprintf(response, n + 4, "12/%s", res);
+            break;
+        case 14:
+            logger(LOGINFO, "Se ha pedido la lista de partidas");
+            int n;
+            p=strtok(NULL,"/");
+            char *res=get_partidas_string_by_name(conn, p, &n); // Call get_partidas_string_by_name function
+            response = malloc(sizeof(char) * (n + 4));
+            snprintf(response, n + 4, "14/%s", res);
+            break;
         default:
             snprintf(logmsg, 2000, "Conexion %d ha intentado hacer una conexion no definida %d", sock_conn, code);
             logger(LOGWARNING, logmsg); // Log a warning message indicating an undefined connection attempt
