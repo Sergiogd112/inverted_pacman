@@ -1,4 +1,4 @@
-OBJS=${OBJS_DIR}/auth.o ${OBJS_DIR}/main.o ${OBJS_DIR}/connected_list.o ${OBJS_DIR}/FuncionRanking.o ${OBJS_DIR}/logger.o ${OBJS_DIR}/partida.o ${OBJS_DIR}/chat.o
+OBJS=${OBJS_DIR}/auth.o ${OBJS_DIR}/main.o ${OBJS_DIR}/connected_list.o ${OBJS_DIR}/FuncionRanking.o ${OBJS_DIR}/logger.o ${OBJS_DIR}/partida.o ${OBJS_DIR}/chat.o ${OBJS_DIR}/peticiones.o
 
 ${OBJS_DIR}/auth.o: auth.c
 	${GCC} ${FLAGS} -c auth.c -o $@
@@ -21,3 +21,5 @@ ${OBJS_DIR}/chat.o: chat.c
 
 ${OBJS_DIR}/main.o: main.c
 	${GCC} ${FLAGS} -c main.c -o $@
+${OBJS_DIR}/peticiones.o: peticiones.c
+	${GCC} ${FLAGS} -c peticiones.c -o $@
