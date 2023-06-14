@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cliente: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
-  idjugador: 0
+  idjugador: 3
   speed: 3
   mainGameManager: {fileID: 0}
   puntuation: 0
@@ -547,7 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cliente: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
-  idjugador: 0
+  idjugador: 1
   speed: 3
   mainGameManager: {fileID: 0}
   puntuation: 0
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cliente: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
-  idjugador: 0
+  idjugador: 2
   speed: 3
   mainGameManager: {fileID: 0}
   puntuation: 0

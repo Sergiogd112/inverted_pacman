@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beaa3e28debd82d4a8e515b67b29db8e, type: 3}
   m_Name: MainGameManager
   m_EditorClassIdentifier: 
-  client: {fileID: 0}
+  client: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
   host: 0
   names:
   - 

@@ -45,6 +45,7 @@ En este documento se describe la estructura de los mensajes entre el cliente y e
     - `8/2/`
       - `8/2/0/id1*x1*y1,id2*x2*y2,id3*x3*y3,id4*x4*y4`: actualización de la posicion de los enemigos (solo lo puede mandar el host)
       - `8/2/1/id*x*y` crear un nuevo enemigo en la posición x,y(solo lo puede mandar el host)
+    - `8/3` fin de partida
   - Notificaciones servidor
     - `8/0/nombre1*x1*y1*p1*v1,nombre2*x2*y2*p2*v2,nombre3*x3*y3*p3*v3,nombre4*x4*y4*p4*v4|id1*x1*y1,id2*x2*y2,id3*x3*y3,id4*x4*y4` datos de inicio de partida
     - Relacionadas con los jugadores
@@ -55,6 +56,7 @@ En este documento se describe la estructura de los mensajes entre el cliente y e
     - Relacionada con los enemigos
       - `8/2/0/id1*x1*y1,id2*x2*y2,id3*x3*y3,id4*x4*y4`: actualización de la posicion de los enemigos
       - `8/2/1/id*x*y` crear un nuevo enemigo en la posición x,y(solo lo puede mandar el host)
+    - Fin de partida `8/3`
 - Enviar al chat:
   - Peticion del cliente: `9/mensage`
   - Respuesta servidor:
