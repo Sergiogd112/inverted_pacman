@@ -1,0 +1,7 @@
+4/4/pepa,sergio,Ana,Carlos
+10/4/Carlos*2023-05-06 20:55:06*Hello!,Ana*2023-05-06 20:55:06*How are you?,sergio*2023-05-06 20:55:06*What are you doing?,pepa*2023-05-06 20:55:06*Nice to meet you!,pepa*2023-06-07 12:19:36*hola,pepa*2023-06-07 12:30:04*holahola,pepa*2023-06-09 19:39:02*como va?,pepa*2023-06-09 19:56:53*todo bn?,pepa*2023-06-10 11:23:12*holaaaaaaaaaaaaaaaaaaaaa,sergio*2023-06-10 11:23:16*hola,pepa*2023-06-10 11:23:40*wtf,pepa*2023-06-10 11:38:22*hola sergio
+10/13/Carlos*2023-05-06 20:55:06*Hello!,Ana*2023-05-06 20:55:06*How are you?,sergio*2023-05-06 20:55:06*What are you doing?,pepa*2023-05-06 20:55:06*Nice to meet you!,pepa*2023-06-07 12:19:36*hola,pepa*2023-06-07 12:30:04*holahola,pepa*2023-06-09 19:39:02*como va?,pepa*2023-06-09 19:56:53*todo bn?,pepa*2023-06-10 11:23:12*holaaaaaaaaaaaaaaaaaaaaa,sergio*2023-06-10 11:23:16*hola,pepa*2023-06-10 11:23:40*wtf,pepa*2023-06-10 11:38:22*hola sergio,pepa*2023-06-16 19:59:51*hola
+9/1
+4/5/pepa,sergio,Ana,Carlos,pepa
+4/5/pepa,sergio,Ana,Carlos,pepa
+10/5/Carlos*2023-05-06 20:55:06*Hello!,Ana*2023-05-06 20:55:06*How are you?,sergio*2023-05-06 20:55:06*What are you doing?,pepa*2023-05-06 20:55:06*Nice to meet you!,pepa*2023-06-07 12:19:36*hola,pepa*2023-06-07 12:30:04*holahola,pepa*2023-06-09 19:39:02*como va?,pepa*2023-06-09 19:56:53*todo bn?,pepa*2023-06-10 11:23:12*holaaaaaaaaaaaaaaaaaaaaa,sergio*2023-06-10 11:23:16*hola,pepa*2023-06-10 11:23:40*wtf,pepa*2023-06-10 11:38:22*hola sergio,pepa*2023-06-16 19:59:51*hola

@@ -1,18 +1,13 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Net.Sockets;
-using System.Net;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Diagnostics;
 using System.Text.RegularExpressions;
+using System.IO;
+
 
 /// <summary>
 /// 
@@ -29,10 +24,10 @@ public class Client : ScriptableObject
     public bool Logeado = false; // This is used to check if the client is logged in.
     public bool Consultas = false; // This is used to check if the client is making a query.
     public string ip = "147.83.117.22"; // This is the ip.
-    public int puerto = 50053; // This is the port.
+    public int puerto = 50053; // This is the port. 
     public bool updated_conected_list = false; // This is used to check if the connected list has been updated.
     public string[] connected; // This is the list of connected users.
-    public int numplayergame = 0; // This is the number of players in the game.
+    public int numplayergame = 0; // This is the number of players in the game. 
     public string amfitrion; // This is the host.
     public string[] invitados; // This is the list of guests.
     public int idpartida; // This is the id of the game.
@@ -81,6 +76,13 @@ public class Client : ScriptableObject
             else
             {
                 string[] elements = error_servidor[0].Split('/');
+                // Set a variable to the Documents path.
+
+                // Append text to an existing file named "WriteLines.txt".
+                using (StreamWriter outputFile = new StreamWriter( "log.txt", true))
+                {
+                    outputFile.WriteLine(error_servidor[0]);
+                }
                 UnityEngine.Debug.Log(error_servidor[0]);
                 int codigo = Convert.ToInt32(elements[0]);
                 switch (codigo)

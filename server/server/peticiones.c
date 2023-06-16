@@ -8,7 +8,7 @@ char *get_partidas_string_by_name(MYSQL *conn, const char *name, int *string_len
     char *partidas_string = NULL;
     *string_length = 0;
 
-    snprintf(query, 2000, "SELECT GROUP_CONCAT(CONCAT(partidas.id_partida, '*', usuarios_partida.str, '*', partidas.puntuacion_global) SEPARATOR ',') AS partidas_string "
+    snprintf(query, 2000y<, "SELECT GROUP_CONCAT(CONCAT(partidas.id_partida, '*', usuarios_partida.str, '*', partidas.puntuacion_global) SEPARATOR ',') AS partidas_string "
                                       "FROM partidas "
                                       "INNER JOIN ( "
                                       "SELECT id_partida, GROUP_CONCAT(usuarios.nombre ORDER BY partidas_usuarios.id_usuario SEPARATOR '*') AS str "
