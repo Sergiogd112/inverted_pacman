@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using System.Text.Json;
+using System.Text;
+using System.Linq;
+using System;
+
 
 /// <summary>
 /// This is the script for the chat data. It is a scriptable object. It is used to store the chat data.
@@ -15,10 +18,14 @@ public class ChatData : ScriptableObject
     public List<string> timestamps; // This is the list of timestamps.
     public List<string> messages; // This is the list of messages.
     public bool updated_chat = false; // This is used to check if the chat has been updated.
-    public void ToJson()
+    public void Save()
     {
-        string json = JsonSerializer.Serialize(this);
-        File.WriteAllText("chatdata.json", json);
+        using (StreamWriter outputFile = new StreamWriter("chatdata.json", true))
+        {
+            outputFile.WriteLine(String.Join(",", users));
+            outputFile.WriteLine(String.Join(",", timestamps));
+            outputFile.WriteLine(String.Join(",", messages));
+        }
     }
 
     /// <summary>

@@ -7,7 +7,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
 using System.IO;
-using System.Text.Json;
 
 
 /// <summary>
@@ -41,9 +40,14 @@ public class Client : ScriptableObject
     {
         return 0;
     }
-    public void ToJson(){
-        string json = JsonSerializer.Serialize(this);
-        File.WriteAllText("client.json", json);
+    public void Save()
+    {
+
+        using (StreamWriter outputFile = new StreamWriter("client.json", true))
+        {
+            outputFile.WriteLine(String.Join(",", connected));
+        }
+
     }
     /// <summary>
     /// This is called when the client is created. It manages the connection to the server.
@@ -73,7 +77,7 @@ public class Client : ScriptableObject
                 // Set a variable to the Documents path.
 
                 // Append text to an existing file named "WriteLines.txt".
-                using (StreamWriter outputFile = new StreamWriter( "log.txt", true))
+                using (StreamWriter outputFile = new StreamWriter("log.txt", true))
                 {
                     outputFile.WriteLine(error_servidor[0]);
                 }
