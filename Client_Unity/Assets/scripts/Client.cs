@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Text.Json;
 
 
 /// <summary>
@@ -36,20 +37,13 @@ public class Client : ScriptableObject
     public int invitationres = 0; // This is the invitation response.
     public ChatData chatdata; // This is the chat data.
     public int delete = 0; // This is used to store the result of the delete account query.
-    void Awake()
-    {
-        Conectado = false;
-        Logeado = false;
-        Consultas = false;
-        updated_conected_list = false;
-        invitado = false;
-        invitationres = 0;
-        delete = 0;
-        invitados = new string[0];
-    }
     public int StartAtender()
     {
         return 0;
+    }
+    public void ToJson(){
+        string json = JsonSerializer.Serialize(this);
+        File.WriteAllText("client.json", json);
     }
     /// <summary>
     /// This is called when the client is created. It manages the connection to the server.

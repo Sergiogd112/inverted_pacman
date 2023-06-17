@@ -24,6 +24,8 @@ public class chat : MonoBehaviour
     /// </summary>
     void Start()
     {
+        client.ToJson(); // Save the client data.
+        chatdata.ToJson(); // Save the chat data.
         for (count = (chatdata.users.Count - maxMessages) * Convert.ToInt32(maxMessages < chatdata.users.Count); count < chatdata.users.Count; count++)
         {
             addMessage(chatdata.users[count], chatdata.timestamps[count], chatdata.messages[count]); // Add the message.
