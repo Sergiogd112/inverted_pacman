@@ -42,7 +42,7 @@ public class Teamates : MonoBehaviour
                 if (Regex.Unescape(client.usjugado[i]) == client.usuario) continue; // If the player is the user, skip it.
                 addPlayer(Regex.Unescape(client.usjugado[i]));
             }
-            client.updated_conected_list = false; // Set the updated list to false.
+            client.updated_usjugado = false; // Set the updated list to false.
         }
 
 
