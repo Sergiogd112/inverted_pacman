@@ -20,6 +20,8 @@ public class conected : MonoBehaviour
     /// </summary>
     void Start()
     {
+        client.Save(); // Save the client data.
+
         for (int i = 0; i < client.connected.Length; i++)
         {
             if (Regex.Unescape(client.connected[i]) == client.usuario) continue; // If the player is the user, skip it.
