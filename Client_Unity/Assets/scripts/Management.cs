@@ -7,7 +7,8 @@ using UnityEngine.AI;
 
 public class Management : MonoBehaviour
 {
-    public float radiodeDeteccion = 0.5f;
+    public Client cliente;
+    public float radiodeDeteccion = 0.5f; //radio desde el cual el jugador ya puede matar
     public float tiemporespawnslime = 3f;
 
     public int numslimes = 4; //variable para definir los slime que habrán el la partida
@@ -45,6 +46,7 @@ public class Management : MonoBehaviour
             slime[i - 1] = GameObject.Find("Slime" + i.ToString());
         }
 
+
         //slime = GameObject.Find("Slime1"); //antigua forma para cuando solo había 1 slime
         //InvokeRepeating("printMatrix2", 0.01f, 4f);
     }
@@ -61,7 +63,9 @@ public class Management : MonoBehaviour
         //PrintMatrix();
         calculateNearest();
         aporelplayer();
+        slimesRojos();
         muerteSlime();
+        
 
         /*
         for(int i = 0; i < numplayers; i++)
@@ -86,7 +90,9 @@ public class Management : MonoBehaviour
     }
 
 
-    void muerteSlime(){
+
+    //Esta función hace que si hay algún jugador cerca de cualquiera de los slimes, éste último se pondrá rojo
+    void slimesRojos(){
         SlimeMovement[] slimemov = new SlimeMovement[numslimes];
         PlayerMovement[] playermov = new PlayerMovement[numplayers];
 
@@ -101,30 +107,68 @@ public class Management : MonoBehaviour
             slimemov[s] = slime[s].GetComponent<SlimeMovement>();
         }
 
-        for(int i = 0; i < slimemov.GetLength(0); i++)
+        for(int i = 0; i < distanceMatrix.GetLength(0); i++) //recorre las filas (slimes)
         {
-            for(int k = 0; k < playermov.GetLength(0); k++)
-            {
-                if(distanceMatrix[i, k] <= radiodeDeteccion)
-                {
-                    slimemov[i].tiempoRespawn(tiemporespawnslime);
-                    playermov[k].puntuation += 1;
-                    Debug.Log("Bajas del Player " + (k+1).ToString() + ": " + playermov[k].puntuation);
-                }
+            bool algunoCerca = false; //variable que me dirá si cada uno de los slimes tiene algun jugador cerca
             
+            for(int k = 0; k < distanceMatrix.GetLength(0); k++)
+            {
+                if(distanceMatrix[i, k] <= radiodeDeteccion) //el slime son las filas
+                {
+                    algunoCerca = true;
+                    break;
+                }
+            }
+            if(algunoCerca)
+            {
+                slimemov[i].colorRojo();
+            }
+            else
+            {
+                slimemov[i].colorOriginal();
             }
         }
+    }
 
 
+    //Este método mata al slime, suma la puntuación al player que lo mata y envía al respawn al slime 
+    void muerteSlime()
+    {
+        SlimeMovement[] slimemov = new SlimeMovement[numslimes];
+        PlayerMovement[] playermov = new PlayerMovement[numplayers];
 
+        //Guardo todos los players en playersmov
+        for (int p = 0; p < numplayers; p++)
+        {
+            playermov[p] = player[p].GetComponent<PlayerMovement>();
+        }
+        //Guardo todos los slimes en slimesmov
+        for (int s = 0; s < numslimes; s++)
+        {
+            slimemov[s] = slime[s].GetComponent<SlimeMovement>();
+        }
+
+        //si cliente.numplayergame me da 1, en realidad llevo al player2, que está ubicado en la columna 1 de la distanceMatrix
+        int idplayer = cliente.numplayergame;
+
+        for(int i = 0; i < distanceMatrix.GetLength(0); i++) //recorre las filas (slimes)
+        {               
+            if(Input.GetKeyDown(KeyCode.Space) && distanceMatrix[i, idplayer] < radiodeDeteccion)         
+            {
+                slimemov[i].tiempoRespawn(tiemporespawnslime);
+                playermov[idplayer].puntuation += 1;
+                //Debug.Log("Bajas del Player " + (idplayer+1).ToString() + ": " + playermov[idplayer].puntuation);
+                //Debug.Log("El player " + (idplayer+1).ToString() + " mata al slime " + (i+1).ToString());      
+            }            
+        }
     }
 
 
 
 
-
-
-
+    void muertePlayer(){
+        
+    }
 
 
     //Calcula la matriz de distancias

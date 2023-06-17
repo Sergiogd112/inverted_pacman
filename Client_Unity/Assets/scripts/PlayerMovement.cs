@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         if (cliente.numplayergame == idjugador)
         {
             movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            killSlime();
+            //killSlime();
         }
         else
         {
@@ -135,6 +135,13 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+
+    internal bool spacebarPressed(){
+        if(Input.GetKeyDown(KeyCode.Space)){
+            return true;
+        }
+        return false;
+    }
 
     //Método para fijar cuanto tiempo tarda el slime en respawnear
     internal void tiempoRespawn(float time)

@@ -13,7 +13,7 @@ public class SlimeMovement : MonoBehaviour
 
 
     public Color nuevoColor = new Color(1.0f, 0.0f, 0.0f, 1.0f); // Color del slime cuando el jugador esté cerca
-    public Color colorOriginal; // color original del objeto
+    public Color originalColor; // color original del objeto
 
     public bool colision_player = false;
     public bool colision_pared = false;
@@ -33,7 +33,7 @@ public class SlimeMovement : MonoBehaviour
 
         // obtiene el SpriteRenderer del objeto y guarda su color original
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        colorOriginal = spriteRenderer.color;    
+        originalColor = spriteRenderer.color;    
     }
 
     // Update is called once per frame
@@ -132,7 +132,6 @@ void SetRandomDirection()
         //rb2d.MovePosition(rb2d.position + direction * speed * Time.fixedDeltaTime);
 
         ToroidalMap();
-        inRadius();
     }
 
 
@@ -190,29 +189,16 @@ void SetRandomDirection()
 
 
     //Método para hacerse rojo si un player está cerca
-    void inRadius()
+    internal void colorRojo()
     {
-        float distanciaAlJugador;
-        if(GameObject.FindGameObjectWithTag("Player") != null){
-            distanciaAlJugador = Vector2.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position);
-        }
-        else{
-            distanciaAlJugador = 999;
-        }
-
-        float radiodeDeteccion = radio.radiodeDeteccion;
-
-        if (distanciaAlJugador <= radiodeDeteccion)
-        {
             GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f); //pintarlo rojo
-            Debug.Log("Slime: Cercaaa " + radiodeDeteccion);
-        }
-        else
-        {
-            GetComponent<SpriteRenderer>().color = colorOriginal;
-        }
-
     }
+    internal void colorOriginal()
+    {
+            GetComponent<SpriteRenderer>().color = originalColor;
+    }
+
+    
 
 
 }
