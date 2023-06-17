@@ -36,6 +36,10 @@ public class Client : ScriptableObject
     public int invitationres = 0; // This is the invitation response.
     public ChatData chatdata; // This is the chat data.
     public int delete = 0; // This is used to store the result of the delete account query.
+    public string[] usjugado; // This is the list of players that the user has played with.
+    public bool updated_usjugado = false; // This is used to check if the list of players that the user has played with has been updated.
+    public string[] partidas; // This is the list of games.
+    public bool updated_partidas = false; // This is used to check if the list of games has been updated.
     public int StartAtender()
     {
         return 0;
@@ -196,6 +200,15 @@ public class Client : ScriptableObject
                             delete = -1;
                         }
                         break;
+                    case 12: // Lista de los usuarios con los que he jugado
+                        usjugado = elements[2].Split(',');
+                        updated_usjugado = true;
+                        break;
+                    case 14: // partidas en las que alguien ha jugado
+                        partidas = elements[2].Split(',');
+                        updated_partidas = true;
+                        break;
+
                     default:
                         break;
 

@@ -104,6 +104,7 @@
     <Compile Include="Assets\quit.cs" />
     <Compile Include="Assets\scripts\logginbutton.cs" />
     <Compile Include="Assets\scripts\LoginRegister.cs" />
+    <Compile Include="Assets\Teamates.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\map\maps\198.txt" />

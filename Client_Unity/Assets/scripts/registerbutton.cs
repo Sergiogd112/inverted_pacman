@@ -50,7 +50,7 @@ public class registerbutton : MonoBehaviour
                     {
                         string[] trozos = Server_Error[0].Split('/');
                         int code = Convert.ToInt32(trozos[0]);
-                        if (code == 2)
+                        if (code == 1)
                         {
                             int num2 = Convert.ToInt32(trozos[1]);
                             if (num2 == 1)
