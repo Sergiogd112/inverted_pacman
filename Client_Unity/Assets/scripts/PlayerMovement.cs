@@ -9,7 +9,7 @@ using System.Linq;
 public class PlayerMovement : MonoBehaviour
 {
     public Client cliente;
-    public int idjugador = 0;
+    public int idjugador = 1;
     public float speed = 2f;
     private Rigidbody2D rb2d;
     private Vector2 movement; // Vector que guardará la dirección de movimiento
