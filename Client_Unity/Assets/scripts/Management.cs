@@ -61,6 +61,7 @@ public class Management : MonoBehaviour
         //PrintMatrix();
         calculateNearest();
         aporelplayer();
+        muerteSlime();
 
         /*
         for(int i = 0; i < numplayers; i++)
@@ -82,9 +83,47 @@ public class Management : MonoBehaviour
                 Debug.Log("El Slime lleva " + slimemov.bajas_slime + " bajas y ha matado al Player " + (i+1).ToString());
                 slimemov.colision_player = false;
             }   */
+    }
+
+
+    void muerteSlime(){
+        SlimeMovement[] slimemov = new SlimeMovement[numslimes];
+        PlayerMovement[] playermov = new PlayerMovement[numplayers];
+
+        //Guardo todos los players en playersmov
+        for (int p = 0; p < numplayers; p++)
+        {
+            playermov[p] = player[p].GetComponent<PlayerMovement>();
+        }
+        //Guardo todos los slimes en slimesmov
+        for (int s = 0; s < numslimes; s++)
+        {
+            slimemov[s] = slime[s].GetComponent<SlimeMovement>();
+        }
+
+        for(int i = 0; i < slimemov.GetLength(0); i++)
+        {
+            for(int k = 0; k < playermov.GetLength(0); k++)
+            {
+                if(distanceMatrix[i, k] <= radiodeDeteccion)
+                {
+                    slimemov[i].tiempoRespawn(tiemporespawnslime);
+                    playermov[k].puntuation += 1;
+                    Debug.Log("Bajas del Player " + (k+1).ToString() + ": " + playermov[k].puntuation);
+                }
+            
+            }
+        }
+
 
 
     }
+
+
+
+
+
+
 
 
 
@@ -238,24 +277,24 @@ public class Management : MonoBehaviour
             if (direction.x > 0) //mueve hacia la derecha
             { 
                 rb2d.MovePosition(rb2d.position + new Vector2(velocidad * Time.deltaTime, 0f));
-                Debug.Log("HAcia derecha " + direction);
+                //Debug.Log("HAcia derecha " + direction);
             }
             if (direction.x < 0) //mueve hacia la izq
             { 
                 rb2d.MovePosition(rb2d.position + new Vector2(-velocidad * Time.deltaTime, 0f));
-                Debug.Log("HAcia izq " + direction);
+                //Debug.Log("HAcia izq " + direction);
             }
         }
         else{
 
             if (direction.y > 0) //mueve hacia arriba
             {
-                Debug.Log("Arriba " + direction);
+                //Debug.Log("Arriba " + direction);
                 rb2d.MovePosition(rb2d.position + new Vector2(0f, velocidad * Time.deltaTime));
             }
             if (direction.y < 0) //mueve hacia abajp
             { 
-                Debug.Log("Abajo " + direction);
+                //Debug.Log("Abajo " + direction);
                 rb2d.MovePosition(rb2d.position + new Vector2(0f, -velocidad * Time.deltaTime));
             }
         }

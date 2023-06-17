@@ -158,7 +158,7 @@ MonoBehaviour:
   cliente: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
   idjugador: 3
   speed: 3
-  mainGameManager: {fileID: 0}
+  mainGameManager: {fileID: 11400000, guid: dc53385e95cd992408d337d5b71d81ec, type: 2}
   puntuation: 0
   startx: 0.854
   starty: 0.575
@@ -549,7 +549,7 @@ MonoBehaviour:
   cliente: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
   idjugador: 1
   speed: 3
-  mainGameManager: {fileID: 0}
+  mainGameManager: {fileID: 11400000, guid: dc53385e95cd992408d337d5b71d81ec, type: 2}
   puntuation: 0
   startx: -0.437
   starty: 0.575
@@ -702,7 +702,7 @@ MonoBehaviour:
   cliente: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
   idjugador: 2
   speed: 3
-  mainGameManager: {fileID: 0}
+  mainGameManager: {fileID: 11400000, guid: dc53385e95cd992408d337d5b71d81ec, type: 2}
   puntuation: 0
   startx: 0.223
   starty: 0.575
@@ -1255,7 +1255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495487377}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13, y: 4.39, z: 0}
+  m_LocalPosition: {x: -3.35, y: 2.55, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12939,6 +12939,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8818435170985240757, guid: 591904ea6526ac342a4e4ce494245ea3, type: 3}
+      propertyPath: mainGameManager
+      value: 
+      objectReference: {fileID: 11400000, guid: dc53385e95cd992408d337d5b71d81ec, type: 2}
     - target: {fileID: 8818435170985240762, guid: 591904ea6526ac342a4e4ce494245ea3, type: 3}
       propertyPath: m_Name
       value: Player1

@@ -162,6 +162,7 @@ void SetRandomDirection()
 
     //Método para fijar cuanto tiempo tarda el slime en respawnear
     internal void tiempoRespawn(float time){
+        transform.position = new Vector2(10, 10); //lo llevamos lejos para que no siga contando como muerte
         gameObject.SetActive(false); // desactiva el objeto al chocar
         Invoke("ToRespawn", time); // espera time segundos y lo envía al respawn
     }
@@ -172,10 +173,15 @@ void SetRandomDirection()
     {
         //Creamos una matriz para guardar los 4 posibles respawns
         Vector2[] respawnPositions = new Vector2[] {
-
+            new Vector2(-3.35f, 2.55f),
+            new Vector2(3.11f, 2.57f),
+            new Vector2(-2.51f, -2.98f),
+            new Vector2(2.36f, -2.97f)
         };
+
         //Elegimos un respawn random
         int randomIndex = Random.Range(0, respawnPositions.Length);
+
         //Cambiamos la posición a la random
         transform.position = respawnPositions[randomIndex];
 
