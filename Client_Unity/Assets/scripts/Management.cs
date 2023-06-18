@@ -10,6 +10,7 @@ public class Management : MonoBehaviour
     public Client cliente;
     public float radiodeDeteccion = 0.5f; //radio desde el cual el jugador ya puede matar
     public float tiemporespawnslime = 3f;
+    public float tiemporespawnplayer = 4f;
 
     public int numslimes = 4; //variable para definir los slime que habrán el la partida
     public int numplayers = 4; //variable para definir los jugadores online que habrán el la partida
@@ -45,7 +46,7 @@ public class Management : MonoBehaviour
         {
             slime[i - 1] = GameObject.Find("Slime" + i.ToString());
         }
-
+        //InvokeRepeating("printMatrix1", 3f, 3f);
 
         //slime = GameObject.Find("Slime1"); //antigua forma para cuando solo había 1 slime
         //InvokeRepeating("printMatrix2", 0.01f, 4f);
@@ -59,12 +60,12 @@ public class Management : MonoBehaviour
         SlimeMovement[] slimemov = new SlimeMovement[numslimes];
         PlayerMovement[] playermov = new PlayerMovement[numplayers];
         calculateDistances();
-        //InvokeRepeating("printMatrix1", 2f, 2f);
-        //PrintMatrix();
+        
         calculateNearest();
         aporelplayer();
         slimesRojos();
         muerteSlime();
+        muertePlayer();
         
 
         /*
@@ -75,12 +76,7 @@ public class Management : MonoBehaviour
             //Debug.Log("Posicion del Player " + (i+1).ToString() + ": " + playermov[i].transform.position);
             //Debug.Log("Posicion del Slime: " + slimemov.transform.position);
             
-            if(playermov[i].killSlime())
-            {
-                playermov[i].puntuation += 1;
-                slimemov.tiempoRespawn(tiemporespawnslime);
-                Debug.Log("Bajas del Player " + (i+1).ToString() + ": " + playermov[i].puntuation);
-            }
+
             if(slimemov.colision_player){
                 slimemov.bajas_slime += 1;
                 playermov[i].tiempoRespawn(3f);
@@ -166,8 +162,37 @@ public class Management : MonoBehaviour
 
 
 
-    void muertePlayer(){
-        
+
+    //Este método permite que el slime mate a un player y le envía al respawn
+    void muertePlayer()
+    {
+        SlimeMovement[] slimemov = new SlimeMovement[numslimes];
+        PlayerMovement[] playermov = new PlayerMovement[numplayers];
+
+        //Guardo todos los players en playersmov
+        for (int p = 0; p < numplayers; p++)
+        {
+            playermov[p] = player[p].GetComponent<PlayerMovement>();
+        }
+        //Guardo todos los slimes en slimesmov
+        for (int s = 0; s < numslimes; s++)
+        {
+            slimemov[s] = slime[s].GetComponent<SlimeMovement>();
+        }
+
+        for(int i = 0; i < distanceMatrix.GetLength(0); i++) //recorrerá las filas (slimes)
+        {
+            for(int k = 0; k < distanceMatrix.GetLength(1); k++){
+                if(distanceMatrix[i, k] < 0.28) //Consideramos esta distancia como que ya se chocan
+                {
+                    playermov[k].tiempoRespawn(tiemporespawnplayer);
+                    playermov[k].muerto += 1;
+                    //Debug.Log("El slime " + (i+1).ToString() + " debería matar al jugador " + (k+1).ToString() + " .");
+                    //Debug.Log("El player " + (k+1).ToString() + " ha muerto " + playermov[k].muerto + " veces.");
+
+                }
+            }
+        }
     }
 
 

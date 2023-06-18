@@ -19,7 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private Management numplayers; //Con esto importaré el numero de jugadores en la partida
 
     public MainGameManager mainGameManager;
-    public int puntuation = 0;
+    public int puntuation = 0; //indica a cuantos slimes ha matado
+    public int muerto = 0; //indica cuantas veces ha muerto (se lo ha comido algún slime)
 
     public float startx = -1.051f;
     public float starty = 0.575f;
@@ -146,6 +147,7 @@ public class PlayerMovement : MonoBehaviour
     //Método para fijar cuanto tiempo tarda el slime en respawnear
     internal void tiempoRespawn(float time)
     {
+        transform.position = new Vector2(10, 10); //lo llevamos lejos para que no siga contando como muerte
         gameObject.SetActive(false); // desactiva el objeto al chocar
         Invoke("ToRespawn", time); // espera time segundos y lo envía al respawn
     }
@@ -154,7 +156,13 @@ public class PlayerMovement : MonoBehaviour
     //Método para reaparecer en el respawn
     void ToRespawn()
     {
-        transform.position = new Vector2(-1.051f, 0.575f);
+        float x1 = -1.216f;
+        float x2 = 1.014f;
+        float y1 = 0.266f;
+        float y2 = 0.791f;
+
+        //Hago esto para que aparezca en el respawn pero en un sitio random de él
+        transform.position = new Vector2(Random.Range(x1, x2), Random.Range(y1, y2));
         gameObject.SetActive(true); // activa el objeto después de 3 segundos
     }
 

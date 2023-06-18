@@ -44,7 +44,7 @@ public class SlimeMovement : MonoBehaviour
             //SetRandomDirection();
         }
         if(colision_pared){
-            Debug.Log("Pum Pared ");
+            //Debug.Log("Pum Pared ");
             //SetRandomDirection();
             colision_pared = false;
         } 

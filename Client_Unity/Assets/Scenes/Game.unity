@@ -160,6 +160,7 @@ MonoBehaviour:
   speed: 3
   mainGameManager: {fileID: 11400000, guid: dc53385e95cd992408d337d5b71d81ec, type: 2}
   puntuation: 0
+  muerto: 0
   startx: 0.854
   starty: 0.575
 --- !u!61 &17597762
@@ -551,6 +552,7 @@ MonoBehaviour:
   speed: 3
   mainGameManager: {fileID: 11400000, guid: dc53385e95cd992408d337d5b71d81ec, type: 2}
   puntuation: 0
+  muerto: 0
   startx: -0.11
   starty: -3.26
 --- !u!61 &552202414
@@ -704,6 +706,7 @@ MonoBehaviour:
   speed: 3
   mainGameManager: {fileID: 11400000, guid: dc53385e95cd992408d337d5b71d81ec, type: 2}
   puntuation: 0
+  muerto: 0
   startx: 0.223
   starty: 0.575
 --- !u!61 &579771900
@@ -1314,6 +1317,7 @@ MonoBehaviour:
   cliente: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
   radiodeDeteccion: 0.5
   tiemporespawnslime: 3
+  tiemporespawnplayer: 4
   numslimes: 4
   numplayers: 4
   playerprefab: {fileID: 0}
@@ -12902,11 +12906,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8818435170985240753, guid: 591904ea6526ac342a4e4ce494245ea3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.051
+      value: -1.216
       objectReference: {fileID: 0}
     - target: {fileID: 8818435170985240753, guid: 591904ea6526ac342a4e4ce494245ea3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.575
+      value: 0.791
       objectReference: {fileID: 0}
     - target: {fileID: 8818435170985240753, guid: 591904ea6526ac342a4e4ce494245ea3, type: 3}
       propertyPath: m_LocalPosition.z
