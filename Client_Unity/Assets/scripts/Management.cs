@@ -67,7 +67,9 @@ public class Management : MonoBehaviour
         muerteSlime();
         muertePlayer();
         
-
+        string mensaje = "8/1/0/"+cliente.usuario+"*"+player[0].transform.position.x.ToString()+"*"+player[0].transform.position.y.ToString();
+        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+        cliente.server.Send(msg);
         /*
         for(int i = 0; i < numplayers; i++)
         {
