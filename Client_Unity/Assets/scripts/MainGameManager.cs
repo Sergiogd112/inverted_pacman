@@ -33,6 +33,8 @@ public class MainGameManager : ScriptableObject
     public List<int> logids = new List<int>();
     public List<int> logcodes = new List<int>();
 
+    private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
+
     public void AtenderPartida()
     {
         UnityEngine.Debug.Log("Atender partida en marcha");
