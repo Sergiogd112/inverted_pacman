@@ -42,15 +42,16 @@ public class History : MonoBehaviour
             history = new List<GameObject>();
             for (int i = 0; i < client.partidas.Length; i++)
             {
-                addGame(Regex.Unescape(client.partidas[i]));
+                addGame(Regex.Unescape(client.partidas[i]),userField.text);
             }
             client.updated_partidas = false; // Set the updated list to false.
         }
 
 
     }
-    void addGame(string data)
+    void addGame(string data,string name)
     {
+        
         string[] parts = data.Split('*');
         GameObject messgObj = Instantiate(infoPartida, transform.position, Quaternion.identity); // Instantiate the message.
         messgObj.transform.SetParent(transform); // Set the parent.

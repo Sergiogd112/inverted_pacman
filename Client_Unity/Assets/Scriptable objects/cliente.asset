@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usuario: 
   num_conn: 0
-  Conectado: 1
+  Conectado: 0
   Logeado: 0
   Consultas: 0
   ip: 147.83.117.22
@@ -34,3 +34,8 @@ MonoBehaviour:
   updated_usjugado: 0
   partidas: []
   updated_partidas: 0
+  comp:
+  - 
+  - 
+  - 
+  sel: 000000000000000000000000

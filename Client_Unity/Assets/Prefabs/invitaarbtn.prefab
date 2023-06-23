@@ -217,3 +217,5 @@ MonoBehaviour:
     bottomRight: {r: 0.023529414, g: 0.59607846, b: 0, a: 0}
   test: {fileID: 0}
   pressed: 0
+  client: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
+  i: -1

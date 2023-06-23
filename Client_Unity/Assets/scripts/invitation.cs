@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 /// </summary>
 public class invitation : MonoBehaviour
 {
-    public Client client; // This is the client.
+    public Client client; // This is the client. 
     /// <summary>
     /// This is called when the invitation is created.
     /// </summary>

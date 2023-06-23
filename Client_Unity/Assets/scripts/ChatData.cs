@@ -18,6 +18,10 @@ public class ChatData : ScriptableObject
     public List<string> timestamps; // This is the list of timestamps.
     public List<string> messages; // This is the list of messages.
     public bool updated_chat = false; // This is used to check if the chat has been updated.
+    private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
+
+
+
     public void Save()
     {
         using (StreamWriter outputFile = new StreamWriter("chatdata.json", true))

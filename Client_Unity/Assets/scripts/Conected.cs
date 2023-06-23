@@ -69,25 +69,8 @@ public class conected : MonoBehaviour
     /// </summary>
     public void invitar()
     {
-        int count = 0;
-        string mensage = "5/";
+        string mensage = "5/"+String.Join("*",client.comp);
 
-        foreach (GameObject user in buttons)
-        {
-            float alpha = user.GetComponent<Image>().color.a;
-            if (alpha > .3f)
-            {
-                if (count == 0)
-                {
-                    mensage += Regex.Escape(user.GetComponentInChildren<TextMeshProUGUI>().text); // Add the player's name to the message.
-                }
-                else
-                {
-                    mensage += "*" + Regex.Escape(user.GetComponentInChildren<TextMeshProUGUI>().text); // Add the player's name to the message.
-                }
-                count++;
-            }
-        }
         UnityEngine.Debug.Log(mensage);
         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensage); // Convert the message to bytes.
         client.server.Send(msg); // Send the message to the server.

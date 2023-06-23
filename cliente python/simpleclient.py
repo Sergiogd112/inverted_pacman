@@ -16,7 +16,7 @@ def receive(s, name):
 
 def main():
     name_pwd = [
-        ("sergio", "teo"),
+        ("eustaquio", "eus"),
         ("Ana", "teo"),
         ("Carlos", "teo"),
     ]
@@ -46,12 +46,12 @@ def main():
     invitar=input("Intitar: ")
     message="5/Ana*Carlos*pepa"
     sockets[0].sendall(message.encode())
-    # while True:
-    #     if invi:
-    #         print("Invitacion recibida")
-    #         for i in range(1,len(sockets)):
-    #             sockets[i].sendall(("6/1"+str(idgame)).encode())
-    #         break
+    while True:
+        if invi:
+            print("Invitacion recibida")
+            for i in range(1,len(sockets)):
+                sockets[i].sendall(("6/1"+str(idgame)).encode())
+            break
     
     input("Acabar:")
     [thread.terminate() for thread in processes]

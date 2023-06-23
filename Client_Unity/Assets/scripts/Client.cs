@@ -40,6 +40,9 @@ public class Client : ScriptableObject
     public bool updated_usjugado = false; // This is used to check if the list of players that the user has played with has been updated.
     public string[] partidas; // This is the list of games.
     public bool updated_partidas = false; // This is used to check if the list of games has been updated.
+    public string[] comp = new string[3]; // This is the list of players in the game.
+    public int[] sel = { 0, 0, 0 }; // This is the list of selected players.
+    private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
     public int StartAtender()
     {
         return 0;
