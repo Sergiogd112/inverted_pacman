@@ -155,7 +155,7 @@ int GestionarCrearPartida(int pos, ConnectedList *list, ListaPartidas *listaPart
     snprintf(invitacion, 200, "6/%d/%s,%s*%s*%s", i_partida,
              list->connections[pos].name, list->connections[i1].name,
              list->connections[i2].name, list->connections[i3].name); // Format the invitation message
-    for (int i = 1; i < sizeof(is) / sizeof(is[0]); i++)
+    for (int i = 1; i < 4; i++)
     {
 
         snprintf(logmsg, 2000, "%d: %s\n", is[i], invitacion);                  // Create a log message
