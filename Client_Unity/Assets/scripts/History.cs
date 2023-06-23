@@ -51,8 +51,19 @@ public class History : MonoBehaviour
     }
     void addGame(string data,string name)
     {
-        
+        int i;
         string[] parts = data.Split('*');
+        for (i = 1; i < 5; i++)
+        {
+            if (parts[i].Contains(name))
+            {
+                break;
+            }
+        }
+        if (i == 5)
+        {
+            return;
+        }
         GameObject messgObj = Instantiate(infoPartida, transform.position, Quaternion.identity); // Instantiate the message.
         messgObj.transform.SetParent(transform); // Set the parent.
         messgObj.transform.Find("ID").GetComponent<TextMeshProUGUI>().text = parts[0]; // Set the text.
