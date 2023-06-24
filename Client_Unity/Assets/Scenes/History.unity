@@ -433,8 +433,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d170b55b14ce240499e677f5f29f0777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  client: {fileID: 0}
-  infoPartida: {fileID: 0}
+  client: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
+  infoPartida: {fileID: 7538310323295676042, guid: 9bba2d5fcf0a09744985e132d71146c3, type: 3}
+  userField: {fileID: 1688620347}
 --- !u!1 &987390916
 GameObject:
   m_ObjectHideFlags: 0
