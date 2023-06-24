@@ -11,22 +11,22 @@ char *get_partidas_string_by_name(MYSQL *conn, const char *name, int *string_len
     snprintf(logmsg, 200, "get_partidas_string_by_name: %s", name);
     logger(LOGINFO, logmsg);
     snprintf(query, 2000, "SELECT GROUP_CONCAT(CONCAT(partidas.id_partida, '*', usuarios_partida.str, '*', partidas.puntuacion_global) SEPARATOR ',') AS partidas_string "
-                                      "FROM partidas "
-                                      "INNER JOIN ( "
-                                      "SELECT id_partida, GROUP_CONCAT(usuarios.nombre ORDER BY partidas_usuarios.id_usuario SEPARATOR '*') AS str "
-                                      "FROM partidas_usuarios "
-                                      "INNER JOIN usuarios ON usuarios.ID = partidas_usuarios.id_usuario "
-                                      "WHERE partidas_usuarios.id_partida IN ( "
-                                      "SELECT id_partida "
-                                      "FROM partidas_usuarios "
-                                      "WHERE id_usuario = ( "
-                                      "SELECT ID "
-                                      "FROM usuarios "
-                                      "WHERE nombre = '%s' "
-                                      ") "
-                                      ") "
-                                      "GROUP BY id_partida "
-                                      ") AS usuarios_partida ON partidas.id_partida = usuarios_partida.id_partida;",
+                          "FROM partidas "
+                          "INNER JOIN ( "
+                          "SELECT id_partida, GROUP_CONCAT(usuarios.nombre ORDER BY partidas_usuarios.id_usuario SEPARATOR '*') AS str "
+                          "FROM partidas_usuarios "
+                          "INNER JOIN usuarios ON usuarios.ID = partidas_usuarios.id_usuario "
+                          "WHERE partidas_usuarios.id_partida IN ( "
+                          "SELECT id_partida "
+                          "FROM partidas_usuarios "
+                          "WHERE id_usuario = ( "
+                          "SELECT ID "
+                          "FROM usuarios "
+                          "WHERE nombre = '%s' "
+                          ") "
+                          ") "
+                          "GROUP BY id_partida "
+                          ") AS usuarios_partida ON partidas.id_partida = usuarios_partida.id_partida;",
              name);
 
     if (mysql_query(conn, query) != 0)
@@ -91,32 +91,20 @@ char *obtenerNombres(MYSQL *conexion, const char *nombre, int *longitud)
     // Obtener el número de filas
     int numFilas = mysql_num_rows(resultado);
 
+    char *nombres = NULL;
+    int nombresSize = 0;
     // Calcular la longitud total de la cadena resultante
     int longitudTotal = numFilas; // Incluye las comas entre los nombres
     MYSQL_ROW fila;
     while ((fila = mysql_fetch_row(resultado)))
     {
-        longitudTotal += strlen(fila[0]); // Longitud de cada nombre
+        int filaSize = strlen(fila[0]) + 1; // +1 for the comma
+        nombres = realloc(nombres, (nombresSize + filaSize) * sizeof(char));
+        snprintf(nombres + nombresSize, filaSize, "%s,", fila[0]);
+        nombresSize += filaSize;
     }
 
-    // Reservar memoria para la cadena resultante
-    char *nombres = (char *)malloc(longitudTotal * sizeof(char));
-    if (nombres == NULL)
-    {
-        fprintf(stderr, "Error al reservar memoria\n");
-        mysql_free_result(resultado);
-        return NULL;
-    }
-
-    // Construir la cadena resultante
-    nombres[0] = '\0'; // Inicializar la cadena vacía
-    while ((fila = mysql_fetch_row(resultado)))
-    {
-        logger(LOGINFO, fila[0]);
-        strcat(nombres, fila[0]);
-        strcat(nombres, ",");
-    }
-    nombres[strlen(nombres) - 1] = '\0'; // Eliminar la última coma
+    nombres[nombresSize - 1] = '\0'; // Eliminar la última coma
 
     // Liberar el resultado y asignar la longitud resultante
     mysql_free_result(resultado);
