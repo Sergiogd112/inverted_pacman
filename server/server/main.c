@@ -388,7 +388,7 @@ void *AtenderThread(ThreadArgs *threadArgs)
             int n12;
             char *res12 = obtenerNombres(conn, list->connections[pos].name, &n12); // Call obtenerNombres function
             response = malloc(sizeof(char) * (n12 + 4));
-            snprintf(response, n + 4, "12/%s", res12);
+            snprintf(response, n12 + 4, "12/%s", res12);
             break;
         case 14:
             logger(LOGINFO, "Se ha pedido la lista de partidas");
