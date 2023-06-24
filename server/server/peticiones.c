@@ -135,7 +135,7 @@ char *obtenerNombres(MYSQL *conn, const char *nombre, int *n)
     }
     char *str = strdup(row2[0]); // Allocate memory for the string and copy the result
     mysql_free_result(result2); // Free the memory allocated for the result set
-
+    logger(LOGINFO, str);
     *n = len; // Set the length of the string
     return str; // Return the string
 }
