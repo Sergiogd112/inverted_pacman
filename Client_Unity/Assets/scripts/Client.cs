@@ -84,7 +84,7 @@ public class Client : ScriptableObject
                 // Set a variable to the Documents path.
 
                 // Append text to an existing file named "WriteLines.txt".
-                using (StreamWriter outputFile = new StreamWriter("log.txt", true))
+                using (StreamWriter outputFile = new StreamWriter(usuario + "log.txt", true))
                 {
                     outputFile.WriteLine(error_servidor[0]);
                 }
