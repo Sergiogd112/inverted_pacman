@@ -109,11 +109,10 @@ char *obtenerNombres(MYSQL *conexion, const char *nombre, int *longitud)
     //Obtain the number of rows
     int numFilas = mysql_num_rows(resultado);
 
-<<<<<<< Updated upstream
     char *nombres = NULL;
     int nombresSize = 0;
-    // Calcular la longitud total de la cadena resultante
-    int longitudTotal = numFilas; // Incluye las comas entre los nombres
+    // Calculate the total length of the resulting string
+    int longitudTotal = numFilas;// Include commas between names
     MYSQL_ROW fila;
     while ((fila = mysql_fetch_row(resultado)))
     {
@@ -123,34 +122,7 @@ char *obtenerNombres(MYSQL *conexion, const char *nombre, int *longitud)
         nombresSize += filaSize;
     }
 
-    nombres[nombresSize - 1] = '\0'; // Eliminar la última coma
-=======
-    // Calculate the total length of the resulting string
-    int longitudTotal = numFilas; // Include commas between names
-    MYSQL_ROW fila;
-    while ((fila = mysql_fetch_row(resultado)))
-    {
-        longitudTotal += strlen(fila[0]); // Length of each name
-    }
-
-    // Reserve memory for the resulting string
-    char *nombres = (char *)malloc(longitudTotal * sizeof(char));
-    if (nombres == NULL)
-    {
-        fprintf(stderr, "Error al reservar memoria\n");
-        mysql_free_result(resultado);
-        return NULL;
-    }
-
-    // Build the resulting string
-    nombres[0] = '\0'; // Initialize empty string
-    while ((fila = mysql_fetch_row(resultado)))
-    {
-        strcat(nombres, fila[0]);
-        strcat(nombres, ",");
-    }
-    nombres[longitudTotal - 1] = '\0'; // Remove last comma
->>>>>>> Stashed changes
+    nombres[nombresSize - 1] = '\0';// Remove last comma
 
     // Free the result and assign the resulting length
     mysql_free_result(resultado);
