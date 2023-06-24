@@ -80,6 +80,11 @@ char *obtenerNombres(MYSQL *conn, const char *nombre, int *n)
     // Create the SQL queries
     char query1[250];
     char query2[250];
+    char logmsg[200];
+    // Log the function call
+    snprintf(logmsg, 200, "obtenerNombres: %s", nombre);
+    logger(LOGINFO, logmsg);
+
     snprintf(query1, 250, "SELECT LENGTH(GROUP_CONCAT(DISTINCT u.nombre SEPARATOR ',')) AS len \
                     FROM usuarios u \
                     INNER JOIN partidas_usuarios pu1 ON u.ID = pu1.id_usuario \
@@ -95,7 +100,7 @@ char *obtenerNombres(MYSQL *conn, const char *nombre, int *n)
                     INNER JOIN usuarios u2 ON u2.ID = pu2.id_usuario \
                     WHERE u2.nombre = '%s' AND u.nombre != '%s'",
             nombre, nombre);
-
+    snprintf(logmsg, 200, "queries: %s, %s", query1, query2);
     // Execute the first query
     if (mysql_query(conn, query1))
     {
@@ -112,7 +117,8 @@ char *obtenerNombres(MYSQL *conn, const char *nombre, int *n)
     }
     int len = atoi(row1[0]);
     mysql_free_result(result1);
-
+    snprintf(logmsg, 200, "len: %d", len);
+    logger(LOGINFO, logmsg);
     // Execute the second query
     if (mysql_query(conn, query2))
     {
