@@ -62,7 +62,7 @@ void UpdateThreads(ConnectedList *list)
  * @param partida A pointer to the Partida struct.
  * @param list A pointer to the ConnectedList struct.
  */
-void GestionarInvitaciones(ListaPartidas *listaPartidas, Partida *partida, ConnectedList *list)
+void ManageInvitation(ListaPartidas *listaPartidas, Partida *partida, ConnectedList *list)
 {
     int denegado = 0; // Flag to check if the invitation is denied
     int sum = 0;      // Variable to store the sum of answers
@@ -114,7 +114,7 @@ void GestionarInvitaciones(ListaPartidas *listaPartidas, Partida *partida, Conne
  * @param res The buffer to store the result message.
  * @return The index of the created partida, or -1 if the creation fails.
  */
-int GestionarCrearPartida(int pos, ConnectedList *list, ListaPartidas *listaPartidas, Nombre name1, Nombre name2,
+int ManageCrearPartida(int pos, ConnectedList *list, ListaPartidas *listaPartidas, Nombre name1, Nombre name2,
                           Nombre name3, char res[200])
 {
     char logmsg[2000]; // Buffer to store log messages
@@ -314,7 +314,7 @@ void *AtenderThread(ThreadArgs *threadArgs)
             p = strtok(NULL, "*");
             strcpy(name3, p);
             logger(LOGINFO, "Creando Partida");
-            GestionarCrearPartida(pos, list, listaPartidas, name1, name2, name3, datos); // Call GestionarCrearPartida function
+            ManageCrearPartida(pos, list, listaPartidas, name1, name2, name3, datos); // Call GestionarCrearPartida function
             response = malloc(sizeof(datos) + sizeof(char) * 12);
 
             snprintf(response, sizeof(response), "%d/%s", code, datos);
@@ -335,7 +335,7 @@ void *AtenderThread(ThreadArgs *threadArgs)
                     break;
                 }
             }
-            GestionarInvitaciones(listaPartidas, &listaPartidas->partidas[i_partida], list); // Call GestionarInvitaciones function
+            ManageInvitation(listaPartidas, &listaPartidas->partidas[i_partida], list); // Call GestionarInvitaciones function
             send_awr = 0;
             break;
         case 7:

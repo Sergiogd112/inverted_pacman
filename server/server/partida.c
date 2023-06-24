@@ -177,7 +177,7 @@ void print_partidas_idx(ListaPartidas *list)
  * @param nombre The name of the player.
  * @return The index of the player if found, or -1 if not found.
  */
-int i_jugador_partida(Partida *partida, Nombre nombre)
+int i_player_partida(Partida *partida, Nombre nombre)
 {
     for (int i = 0; i < NJUGADORESPARTIDA; i++)
     {
@@ -188,12 +188,12 @@ int i_jugador_partida(Partida *partida, Nombre nombre)
 }
 
 /**
- * Processes a message for the players in the game session.
+ * Processes a message for the players in the game session. The format of the message is in the file: Mensajes.md.
  * @param partida A pointer to the Partida object.
  * @param mesg The message to be processed.
  * @return 0 on success, or 1 if the message is invalid.
  */
-int mensage_to_jugadores(Partida *partida, char mesg[512])
+int message_to_players(Partida *partida, char mesg[512])
 {
     char *p;
     for (int i = 0; i < NJUGADORESPARTIDA; i++)
@@ -214,12 +214,12 @@ int mensage_to_jugadores(Partida *partida, char mesg[512])
 }
 
 /**
- * Processes a message for the enemies in the game session.
+ * Processes a message for the enemies in the game session. The format of the message is in the file: Mensajes.md.
  * @param partida A pointer to the Partida object.
  * @param mesg The message to be processed.
  * @return 0 on success.
  */
-int mensage_to_enemigos(Partida *partida, char mesg[512])
+int message_to_enemies(Partida *partida, char mesg[512])
 {
     char *p;
     for (int i = 0; i < 4; i++)
@@ -235,17 +235,17 @@ int mensage_to_enemigos(Partida *partida, char mesg[512])
 }
 
 /**
- * Processes a message for the game session, including players and enemies.
+ * Processes a message for the game session, including players and enemies. The format of the message is in the file: Mensajes.md.
  * @param partida A pointer to the Partida object.
  * @param mesg The message to be processed.
  * @return 0 on success, or a combination of error codes if the message is invalid.
  */
-int mesage_to_partida(Partida *partida, char mesg[512])
+int message_to_partida(Partida *partida, char mesg[512])
 {
     char *p = strtok(mesg, "|");
-    int n = mensage_to_jugadores(partida, p);
+    int n = message_to_players(partida, p);
     p = strtok(mesg, "|");
-    int m = mensage_to_enemigos(partida, p);
+    int m = message_to_enemies(partida, p);
     return n + m * 2;
 }
 
@@ -271,7 +271,7 @@ int get_enemy_with_id(Partida *partida, int id)
 void Atender_Cliente_Partida(Partida *partida, Nombre nombre)
 {
     int ret;
-    int ij = i_jugador_partida(partida, nombre); // Get the index of the player in the game session.
+    int ij = i_player_partida(partida, nombre); // Get the index of the player in the game session.
     int sock_conn = partida->sockets[ij];        // Get the socket connection for the player.
     char request[512];
     int vacios = 0;
@@ -315,7 +315,7 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre)
             else if (sscode == 0 && ij == 0)
             {
                 p = strtok(NULL, "/");
-                mesage_to_partida(partida, p);
+                message_to_partida(partida, p);
                 pthread_mutex_lock(&partida->mutex);
                 partida->listos[ij] = 1;
                 pthread_mutex_unlock(&partida->mutex);
@@ -389,7 +389,7 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre)
                 if (sscode == 0)
                 {
                     p = strtok(NULL, "/");
-                    mensage_to_enemigos(partida, p);
+                    message_to_enemies(partida, p);
                     pthread_mutex_unlock(&partida->mutex);
                 }
                 else
@@ -426,7 +426,7 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre)
 }
 
 /**
- * Generates a server message containing player information.
+ * Generates a server message containing player information. The format of the message is in the file: Mensajes.md.
  * @param partida A pointer to the Partida object.
  * @param res The buffer to store the generated message.
  * @return 0 indicating success.
@@ -447,7 +447,7 @@ int server_msg_1(Partida *partida, char res[300])
 }
 
 /**
- * Generates a server message containing enemy information.
+ * Generates a server message containing enemy information. The format of the message is in the file: Mensajes.md.
  * @param partida A pointer to the Partida object.
  * @param res The buffer to store the generated message.
  * @return 0 indicating success.
@@ -467,7 +467,7 @@ int server_msg_2(Partida *partida, char res[300])
 }
 
 /**
- * Generates a combined server message containing player and enemy information.
+ * Generates a combined server message containing player and enemy information. The format of the message is in the file: Mensajes.md.
  * @param partida A pointer to the Partida object.
  * @param res The buffer to store the generated message.
  * @return The sum of return values from server_msg_1 and server_msg_2.
@@ -485,7 +485,7 @@ int server_msg_0(Partida *partida, char res[600])
 }
 
 /**
- * Sends a message to all players in the game session.
+ * Sends a message to all players in the game session. The format of the message is in the file: Mensajes.md.
  * @param partida A pointer to the Partida object.
  * @param msg The message to be sent.
  * @param len The length of the message.
@@ -497,7 +497,7 @@ void send_to_all(Partida *partida, char *msg, int len)
 }
 
 /**
- * Sends a server message 0 to all players in the game session.
+ * Sends a server message 0 to all players in the game session. The format of the message is in the file: Mensajes.md.
  * @param partida A pointer to the Partida object.
  * @return 0 indicating success.
  */
@@ -512,7 +512,7 @@ int send_0(Partida *partida)
 }
 
 /**
- * Sends signal 1 to the game session.
+ * Sends signal 1 to the game session. The format of the message is in the file: Mensajes.md.
  * @param partida A pointer to the Partida object.
  * @return 0 on success.
  */
@@ -527,7 +527,7 @@ int send_1(Partida *partida)
 }
 
 /**
- * Sends signal 2 to the game session.
+ * Sends signal 2 to the game session. The format of the message is in the file: Mensajes.md.
  * @param partida A pointer to the Partida object.
  * @return 0 on success.
  */
