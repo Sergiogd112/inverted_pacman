@@ -8,6 +8,6 @@
 
 char *get_partidas_string_by_name(MYSQL *conn, const char *name, int *string_length);
 
-char *obtenerNombres(MYSQL *conexion, const char *nombre, int *longitud);
+char *obtenerNombres(MYSQL *conn, const char *nombre, int *n);
 
 #endif // SERVER_PETICIONES_H

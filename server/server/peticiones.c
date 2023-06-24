@@ -70,63 +70,66 @@ char *get_partidas_string_by_name(MYSQL *conn, const char *name, int *string_len
 
 /**
  * Retrieves distinct names from the database based on a given name.
- * @param conexion The MySQL connection object.
+ * @param conn The MySQL connection object.
  * @param nombre The name to search for.
- * @param longitud Pointer to an integer to store the length of the resulting string.
+ * @param n Pointer to an integer to store the length of the resulting string.
  * @return A dynamically allocated string containing the distinct names, separated by commas, or NULL if an error occurs.
  */
-char *obtenerNombres(MYSQL *conexion, const char *nombre, int *longitud)
+char *obtenerNombres(MYSQL *conn, const char *nombre, int *n)
 {
-    // Create the SQL query
-    char consulta[200];
-    char logmsg[200];
-    snprintf(logmsg, 200, "obtenerNombres: %s", nombre);
-    logger(LOGINFO, logmsg);
-    sprintf(consulta, "SELECT DISTINCT u.nombre \
+    // Create the SQL queries
+    char query1[250];
+    char query2[250];
+    snprintf(query1, 250, "SELECT LENGTH(GROUP_CONCAT(DISTINCT u.nombre SEPARATOR ',')) AS len \
                     FROM usuarios u \
                     INNER JOIN partidas_usuarios pu1 ON u.ID = pu1.id_usuario \
                     INNER JOIN partidas_usuarios pu2 ON pu1.id_partida = pu2.id_partida \
                     INNER JOIN usuarios u2 ON u2.ID = pu2.id_usuario \
                     WHERE u2.nombre = '%s' AND u.nombre != '%s'",
             nombre, nombre);
-    // Run the query
-    if (mysql_query(conexion, consulta))
+
+    snprintf(query2, 250, "SELECT GROUP_CONCAT(DISTINCT u.nombre SEPARATOR ',') AS str \
+                    FROM usuarios u \
+                    INNER JOIN partidas_usuarios pu1 ON u.ID = pu1.id_usuario \
+                    INNER JOIN partidas_usuarios pu2 ON pu1.id_partida = pu2.id_partida \
+                    INNER JOIN usuarios u2 ON u2.ID = pu2.id_usuario \
+                    WHERE u2.nombre = '%s' AND u.nombre != '%s'",
+            nombre, nombre);
+
+    // Execute the first query
+    if (mysql_query(conn, query1))
     {
-        fprintf(stderr, "Error al ejecutar la consulta: %s\n", mysql_error(conexion));
+        fprintf(stderr, "%s\n", mysql_error(conn));
+        exit(1);
+    }
+    MYSQL_RES *result1 = mysql_store_result(conn);
+    MYSQL_ROW row1 = mysql_fetch_row(result1);
+    if (row1 == NULL)
+    {
+        *n = 0;
+        mysql_free_result(result1);
         return NULL;
     }
+    int len = atoi(row1[0]);
+    mysql_free_result(result1);
 
-    // Obtain the results
-    MYSQL_RES *resultado = mysql_store_result(conexion);
-    if (resultado == NULL)
+    // Execute the second query
+    if (mysql_query(conn, query2))
     {
-        fprintf(stderr, "Error al obtener el resultado: %s\n", mysql_error(conexion));
+        fprintf(stderr, "%s\n", mysql_error(conn));
+        exit(1);
+    }
+    MYSQL_RES *result2 = mysql_store_result(conn);
+    MYSQL_ROW row2 = mysql_fetch_row(result2);
+    if (row2 == NULL)
+    {
+        *n = 0;
+        mysql_free_result(result2);
         return NULL;
     }
-    snprintf(logmsg, 200, "nombres obtenidos: %d", mysql_num_rows(resultado));
-    logger(LOGINFO, logmsg);
+    char *str = strdup(row2[0]); // Allocate memory for the string and copy the result
+    mysql_free_result(result2); // Free the memory allocated for the result set
 
-    //Obtain the number of rows
-    int numFilas = mysql_num_rows(resultado);
-
-    char *nombres = NULL;
-    int nombresSize = 0;
-    // Calculate the total length of the resulting string
-    int longitudTotal = numFilas;// Include commas between names
-    MYSQL_ROW fila;
-    while ((fila = mysql_fetch_row(resultado)))
-    {
-        int filaSize = strlen(fila[0]) + 1; // +1 for the comma
-        nombres = realloc(nombres, (nombresSize + filaSize) * sizeof(char));
-        snprintf(nombres + nombresSize, filaSize, "%s,", fila[0]);
-        nombresSize += filaSize;
-    }
-
-    nombres[nombresSize - 1] = '\0';// Remove last comma
-
-    // Free the result and assign the resulting length
-    mysql_free_result(resultado);
-    *longitud = longitudTotal - 1; // Exclude the length of the last comma
-
-    return nombres;
+    *n = len; // Set the length of the string
+    return str; // Return the string
 }
