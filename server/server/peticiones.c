@@ -1,5 +1,11 @@
 #include "peticiones.h"
-
+/**
+ * Retrieves a string representation of the game sessions associated with a given name from the database.
+ * @param conn The MySQL connection object.
+ * @param name The name to search for.
+ * @param string_length Pointer to an integer to store the length of the resulting string.
+ * @return A dynamically allocated string containing the game sessions information, or NULL if an error occurs.
+ */
 char *get_partidas_string_by_name(MYSQL *conn, const char *name, int *string_length)
 {
     MYSQL_RES *res;
@@ -8,8 +14,10 @@ char *get_partidas_string_by_name(MYSQL *conn, const char *name, int *string_len
     char *partidas_string = NULL;
     *string_length = 0;
     char logmsg[200];
+    // Log the function call
     snprintf(logmsg, 200, "get_partidas_string_by_name: %s", name);
     logger(LOGINFO, logmsg);
+    // Construct the MySQL query to retrieve the game sessions string
     snprintf(query, 2000, "SELECT GROUP_CONCAT(CONCAT(partidas.id_partida, '*', usuarios_partida.str, '*', partidas.puntuacion_global) SEPARATOR ',') AS partidas_string "
                           "FROM partidas "
                           "INNER JOIN ( "
@@ -28,38 +36,48 @@ char *get_partidas_string_by_name(MYSQL *conn, const char *name, int *string_len
                           "GROUP BY id_partida "
                           ") AS usuarios_partida ON partidas.id_partida = usuarios_partida.id_partida;",
              name);
-
+    // Execute the MySQL query
     if (mysql_query(conn, query) != 0)
     {
         fprintf(stderr, "Error executing MySQL query: %s\n", mysql_error(conn));
         return NULL;
     }
-
+    // Get the result set from the query
     res = mysql_use_result(conn);
     if (res == NULL)
     {
         fprintf(stderr, "Error retrieving MySQL result set\n");
         return NULL;
     }
-
+    // Fetch the row from the result set
     if ((row = mysql_fetch_row(res)) != NULL)
     {
         if (row[0] != NULL)
         {
+            // Calculate the length of the resulting string
             *string_length = snprintf(NULL, 0, "%s", row[0]);
+            // Allocate memory for the resulting string
             partidas_string = malloc((*string_length + 1) * sizeof(char));
+            // Copy the resulting string
             snprintf(partidas_string, *string_length + 1, "%s", row[0]);
         }
     }
-
+    // Free the result set
     mysql_free_result(res);
 
     return partidas_string;
 }
 
+/**
+ * Retrieves distinct names from the database based on a given name.
+ * @param conexion The MySQL connection object.
+ * @param nombre The name to search for.
+ * @param longitud Pointer to an integer to store the length of the resulting string.
+ * @return A dynamically allocated string containing the distinct names, separated by commas, or NULL if an error occurs.
+ */
 char *obtenerNombres(MYSQL *conexion, const char *nombre, int *longitud)
 {
-    // Crear la consulta SQL
+    // Create the SQL query
     char consulta[200];
     char logmsg[200];
     snprintf(logmsg, 200, "obtenerNombres: %s", nombre);
@@ -71,14 +89,14 @@ char *obtenerNombres(MYSQL *conexion, const char *nombre, int *longitud)
                     INNER JOIN usuarios u2 ON u2.ID = pu2.id_usuario \
                     WHERE u2.nombre = '%s' AND u.nombre != '%s'",
             nombre, nombre);
-    // Ejecutar la consulta
+    // Run the query
     if (mysql_query(conexion, consulta))
     {
         fprintf(stderr, "Error al ejecutar la consulta: %s\n", mysql_error(conexion));
         return NULL;
     }
 
-    // Obtener el resultado
+    // Obtain the results
     MYSQL_RES *resultado = mysql_store_result(conexion);
     if (resultado == NULL)
     {
@@ -88,9 +106,10 @@ char *obtenerNombres(MYSQL *conexion, const char *nombre, int *longitud)
     snprintf(logmsg, 200, "nombres obtenidos: %d", mysql_num_rows(resultado));
     logger(LOGINFO, logmsg);
 
-    // Obtener el número de filas
+    //Obtain the number of rows
     int numFilas = mysql_num_rows(resultado);
 
+<<<<<<< Updated upstream
     char *nombres = NULL;
     int nombresSize = 0;
     // Calcular la longitud total de la cadena resultante
@@ -105,10 +124,37 @@ char *obtenerNombres(MYSQL *conexion, const char *nombre, int *longitud)
     }
 
     nombres[nombresSize - 1] = '\0'; // Eliminar la última coma
+=======
+    // Calculate the total length of the resulting string
+    int longitudTotal = numFilas; // Include commas between names
+    MYSQL_ROW fila;
+    while ((fila = mysql_fetch_row(resultado)))
+    {
+        longitudTotal += strlen(fila[0]); // Length of each name
+    }
 
-    // Liberar el resultado y asignar la longitud resultante
+    // Reserve memory for the resulting string
+    char *nombres = (char *)malloc(longitudTotal * sizeof(char));
+    if (nombres == NULL)
+    {
+        fprintf(stderr, "Error al reservar memoria\n");
+        mysql_free_result(resultado);
+        return NULL;
+    }
+
+    // Build the resulting string
+    nombres[0] = '\0'; // Initialize empty string
+    while ((fila = mysql_fetch_row(resultado)))
+    {
+        strcat(nombres, fila[0]);
+        strcat(nombres, ",");
+    }
+    nombres[longitudTotal - 1] = '\0'; // Remove last comma
+>>>>>>> Stashed changes
+
+    // Free the result and assign the resulting length
     mysql_free_result(resultado);
-    *longitud = longitudTotal - 1; // Excluir la longitud de la última coma
+    *longitud = longitudTotal - 1; // Exclude the length of the last comma
 
     return nombres;
 }
