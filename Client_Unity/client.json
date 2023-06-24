@@ -11,6 +11,7 @@ Carlos,fito,sergio
 Carlos,fito,sergio
 Carlos,fito,sergio
 pepa,Carlos,fito,sergio
+<<<<<<< Updated upstream
 Ana,fito
 Ana,fito,pepa
 Ana,fito,pepa
@@ -22,3 +23,6 @@ pepa,eustaquio,Ana,sergio,Carlos
 eustaquio,Ana,Carlos,pepa
 eustaquio,Ana,Carlos,pepa
 fito
+=======
+Ana,fito,pepa
+>>>>>>> Stashed changes
