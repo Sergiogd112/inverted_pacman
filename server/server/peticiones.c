@@ -112,10 +112,11 @@ char *obtenerNombres(MYSQL *conexion, const char *nombre, int *longitud)
     nombres[0] = '\0'; // Inicializar la cadena vacía
     while ((fila = mysql_fetch_row(resultado)))
     {
+        logger(LOGINFO, fila[0]);
         strcat(nombres, fila[0]);
         strcat(nombres, ",");
     }
-    nombres[longitudTotal - 1] = '\0'; // Eliminar la última coma
+    nombres[strlen(nombres) - 1] = '\0'; // Eliminar la última coma
 
     // Liberar el resultado y asignar la longitud resultante
     mysql_free_result(resultado);
