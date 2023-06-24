@@ -61,6 +61,9 @@ char *obtenerNombres(MYSQL *conexion, const char *nombre, int *longitud)
 {
     // Crear la consulta SQL
     char consulta[200];
+    char logmsg[200];
+    snprintf(logmsg, 200, "obtenerNombres: %s", nombre);
+    logger(LOGINFO, logmsg);
     sprintf(consulta, "SELECT DISTINCT u.nombre \
                     FROM usuarios u \
                     INNER JOIN partidas_usuarios pu1 ON u.ID = pu1.id_usuario \
@@ -82,6 +85,8 @@ char *obtenerNombres(MYSQL *conexion, const char *nombre, int *longitud)
         fprintf(stderr, "Error al obtener el resultado: %s\n", mysql_error(conexion));
         return NULL;
     }
+    snprintf(logmsg, 200, "nombres obtenidos: %d", mysql_num_rows(resultado));
+    logger(LOGINFO, logmsg);
 
     // Obtener el número de filas
     int numFilas = mysql_num_rows(resultado);
