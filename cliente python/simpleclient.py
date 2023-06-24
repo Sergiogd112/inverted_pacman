@@ -43,9 +43,6 @@ def main():
         for s, (name, pwd) in zip(sockets, name_pwd)
     ]
     [thread.start() for thread in processes]
-    invitar=input("Intitar: ")
-    message="5/Ana*Carlos*pepa"
-    sockets[0].sendall(message.encode())
     while True:
         if invi:
             print("Invitacion recibida")

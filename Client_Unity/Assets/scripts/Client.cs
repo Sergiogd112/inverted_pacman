@@ -204,11 +204,11 @@ public class Client : ScriptableObject
                         }
                         break;
                     case 12: // Lista de los usuarios con los que he jugado
-                        usjugado = elements[2].Split(',');
+                        usjugado = elements[1].Split(',');
                         updated_usjugado = true;
                         break;
                     case 14: // partidas en las que alguien ha jugado
-                        partidas = elements[2].Split(',');
+                        partidas = elements[1].Split(',');
                         updated_partidas = true;
                         break;
 
