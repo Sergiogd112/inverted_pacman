@@ -1090,5 +1090,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1601df196a51ce4fa9afdcd560135ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  client: {fileID: 0}
-  manager: {fileID: 0}
+  client: {fileID: 11400000, guid: d985d442b840b504a8c628a4e0d1495f, type: 2}
+  manager: {fileID: 11400000, guid: dc53385e95cd992408d337d5b71d81ec, type: 2}
