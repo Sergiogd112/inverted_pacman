@@ -17,16 +17,19 @@
 #include "config.h"
 #include <pthread.h>
 #include "logger.h"
-typedef struct{
+typedef struct
+{
     float x;
     float y;
-}Position;
-typedef struct{
+} Position;
+typedef struct
+{
     Position pos;
     int id;
-}Enemy;
+} Enemy;
 
-typedef struct{
+typedef struct
+{
     Nombre nombres[4];
     Position player_pos[4];
     Enemy enemys[4];
@@ -40,24 +43,22 @@ typedef struct{
     int listos[4];
     pthread_mutex_t mutex;
     int kill;
-}Partida;
+} Partida;
 
-typedef struct{
+typedef struct
+{
     Partida partidas[MAXPARTIDAS];
     int used;
     int idx;
     int update_connecetions;
-}ListaPartidas;
+} ListaPartidas;
 
-typedef struct {
+typedef struct
+{
     Partida *partida;
     ListaPartidas *listaPartidas;
 
-}PartidaArgs;
-
-
-
-
+} PartidaArgs;
 
 void initialize_partidas_list(ListaPartidas *list);
 
@@ -73,6 +74,6 @@ int partidas_llist_to_string(ListaPartidas *list, char res[200]);
 
 void print_partidas_idx(ListaPartidas *list);
 
-void Atender_Cliente_Partida();
+void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn);
 
-#endif //SERVER_PARTIDA_H
+#endif // SERVER_PARTIDA_H

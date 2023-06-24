@@ -268,11 +268,11 @@ int get_enemy_with_id(Partida *partida, int id)
  * @param partida A pointer to the Partida object.
  * @param nombre The name of the client.
  */
-void Atender_Cliente_Partida(Partida *partida, Nombre nombre)
+void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
 {
     int ret;
     int ij = i_player_partida(partida, nombre); // Get the index of the player in the game session.
-    int sock_conn = partida->sockets[ij];        // Get the socket connection for the player.
+    int sock_conn = partida->sockets[ij];       // Get the socket connection for the player.
     char request[512];
     int vacios = 0;
     int code;
@@ -414,9 +414,12 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre)
             break;
         case 3:
             if (ij == 0)
+            {
                 for (int i = 0; i < NJUGADORESPARTIDA; i++)
                     if (i != ij)
                         write(sock_conn, request, strlen(request));
+                int ag = add_game_to_db(conn,partida);
+            }
             return;
             break;
         default:
@@ -570,4 +573,45 @@ void Partida_Thread(void *args)
         send_2(partida); // Send signal 2 to the game session.
         usleep(1000);    // Pause the execution for 1 millisecond.
     }
+}
+
+/**
+ * Stores a game in the database. There are two tables in the database: partidas and partidas_usuarios.
+ * The partidas table stores the game sessions(id and global points), and the partidas_usuarios table stores the users that play in each game session.
+ * Each row of the partidas_usuarios table has an id_partida and an id_usuario, which are foreign keys to the partidas and usuarios tables, respectively and puntuacion
+ * which contains the points of the user in that game session.
+ * @param conn The MySQL connection object.
+ * @param partida a Partida struct containing the game session data.
+ * @return 0 if the game was stored successfully, -1 otherwise.
+ */
+int add_game_to_db(MYSQL *conn, Partida *partida)
+{
+    char query[2000];
+    char logmsg[200];
+    // Log the function call
+    snprintf(logmsg, 200, "add_game_to_db: %s", partida->nombre);
+    logger(LOGINFO, logmsg);
+    // Construct the MySQL query to insert the game session into the partidas table
+    snprintf(query, 2000, "INSERT INTO partidas (id_partida, puntuacion_global) VALUES (%d, %d);", partida->id_partida, partida->puntuacion_global);
+    // Execute the MySQL query
+    if (mysql_query(conn, query) != 0)
+    {
+        fprintf(stderr, "Error executing MySQL query: %s\n", mysql_error(conn));
+        return -1;
+    }
+    // iterate through the users in the partida struct and insert them into the partidas_usuarios table
+    for (int i = 0; i < partida->num_usuarios; i++)
+    {
+        // Construct the MySQL query to insert the user into the partidas_usuarios table
+        snprintf(query, 2000, "INSERT INTO partidas_usuarios (id_partida, id_usuario, puntuacion) VALUES (%d, (SELECT ID FROM usuarios WHERE nombre = '%s'), %d);",
+                 partida->id_partida, partida->usuarios[i].nombre, partida->usuarios[i].puntuacion);
+        // Execute the MySQL query
+        if (mysql_query(conn, query) != 0)
+        {
+            fprintf(stderr, "Error executing MySQL query: %s\n", mysql_error(conn));
+            return -1;
+        }
+    }
+
+    return 0;
 }

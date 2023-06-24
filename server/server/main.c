@@ -115,7 +115,7 @@ void ManageInvitation(ListaPartidas *listaPartidas, Partida *partida, ConnectedL
  * @return The index of the created partida, or -1 if the creation fails.
  */
 int ManageCrearPartida(int pos, ConnectedList *list, ListaPartidas *listaPartidas, Nombre name1, Nombre name2,
-                          Nombre name3, char res[200])
+                       Nombre name3, char res[200])
 {
     char logmsg[2000]; // Buffer to store log messages
 
@@ -208,6 +208,7 @@ void *AtenderThread(ThreadArgs *threadArgs)
     int code;          // Variable to store a code
     char logmsg[2000]; // Buffer to store log messages
     int send_awr = 1;  // Flag to control sending a response
+    int i_partida;
     while (vacios < 6)
     {
         char *response;
@@ -323,8 +324,8 @@ void *AtenderThread(ThreadArgs *threadArgs)
             p = strtok(NULL, "/");
             int idx_partida = atoi(p);
             p = strtok(NULL, "/");
-            logger(LOGINFO, "Gestionando invitaciones");                          // Log a message indicating that invitations are being managed
-            int i_partida = search_on_partidas_llist(listaPartidas, idx_partida); // Search for the index of the partida in the listaPartidas
+            logger(LOGINFO, "Gestionando invitaciones");                      // Log a message indicating that invitations are being managed
+            i_partida = search_on_partidas_llist(listaPartidas, idx_partida); // Search for the index of the partida in the listaPartidas
             for (int i = 0; i < 4; i++)
             {
                 if (strcmp(list->connections[pos].name, listaPartidas->partidas[i_partida].nombres[i]) == 0)
@@ -339,7 +340,7 @@ void *AtenderThread(ThreadArgs *threadArgs)
             send_awr = 0;
             break;
         case 7:
-            Atender_Cliente_Partida(); // Call the Atender_Cliente_Partida function
+            Atender_Cliente_Partida(&listaPartidas->partidas[i_partida], name, conn); // Call the Atender_Cliente_Partida function
             break;
 
         case 9:
