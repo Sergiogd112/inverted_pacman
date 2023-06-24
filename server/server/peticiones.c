@@ -78,14 +78,14 @@ char *get_partidas_string_by_name(MYSQL *conn, const char *name, int *string_len
 char *obtenerNombres(MYSQL *conn, const char *nombre, int *n)
 {
     // Create the SQL queries
-    char query1[250];
-    char query2[250];
+    char query1[500];
+    char query2[500];
     char logmsg[200];
     // Log the function call
     snprintf(logmsg, 200, "obtenerNombres: %s", nombre);
     logger(LOGINFO, logmsg);
 
-    snprintf(query1, 250, "SELECT LENGTH(GROUP_CONCAT(DISTINCT u.nombre SEPARATOR ',')) AS len \
+    snprintf(query1, 500, "SELECT LENGTH(GROUP_CONCAT(DISTINCT u.nombre SEPARATOR ',')) AS len \
                     FROM usuarios u \
                     INNER JOIN partidas_usuarios pu1 ON u.ID = pu1.id_usuario \
                     INNER JOIN partidas_usuarios pu2 ON pu1.id_partida = pu2.id_partida \
@@ -93,7 +93,7 @@ char *obtenerNombres(MYSQL *conn, const char *nombre, int *n)
                     WHERE u2.nombre = '%s' AND u.nombre != '%s'",
             nombre, nombre);
 
-    snprintf(query2, 250, "SELECT GROUP_CONCAT(DISTINCT u.nombre SEPARATOR ',') AS str \
+    snprintf(query2, 500, "SELECT GROUP_CONCAT(DISTINCT u.nombre SEPARATOR ',') AS str \
                     FROM usuarios u \
                     INNER JOIN partidas_usuarios pu1 ON u.ID = pu1.id_usuario \
                     INNER JOIN partidas_usuarios pu2 ON pu1.id_partida = pu2.id_partida \
