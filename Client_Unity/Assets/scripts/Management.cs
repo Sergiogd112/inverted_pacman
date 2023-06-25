@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+using TMPro;
 
 
 
@@ -34,9 +36,17 @@ public class Management : MonoBehaviour
     private NavMeshAgent navMeshAgent;
 
 
+    //Estos dos atributos serán para detectar si hay paredes alrededor
+    public float raycastDistance = 5.0f;
+    public LayerMask wallLayer;
+
+
+
 
     void Start()
     {
+        TextMeshProUGUI texto = GameObject.Find("Text1").GetComponent<TextMeshProUGUI>();
+
         for (int i = 1; i <= numplayers; i++)
         {
             player[i - 1] = GameObject.Find("Player" + i.ToString());
@@ -50,6 +60,7 @@ public class Management : MonoBehaviour
 
         //slime = GameObject.Find("Slime1"); //antigua forma para cuando solo había 1 slime
         //InvokeRepeating("printMatrix2", 0.01f, 4f);
+         texto.text = "HOla?";
     }
 
     // Update is called once per frame
@@ -66,10 +77,9 @@ public class Management : MonoBehaviour
         slimesRojos();
         muerteSlime();
         muertePlayer();
+        paredDebajo(999);
         
-        string mensaje = "8/1/0/"+cliente.usuario+"*"+player[0].transform.position.x.ToString()+"*"+player[0].transform.position.y.ToString();
-        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-        cliente.server.Send(msg);
+
         /*
         for(int i = 0; i < numplayers; i++)
         {
@@ -185,7 +195,7 @@ public class Management : MonoBehaviour
         for(int i = 0; i < distanceMatrix.GetLength(0); i++) //recorrerá las filas (slimes)
         {
             for(int k = 0; k < distanceMatrix.GetLength(1); k++){
-                if(distanceMatrix[i, k] < 0.28) //Consideramos esta distancia como que ya se chocan
+                if(distanceMatrix[i, k] < 0.288) //Consideramos esta distancia como que ya se chocan
                 {
                     playermov[k].tiempoRespawn(tiemporespawnplayer);
                     playermov[k].muerto += 1;
@@ -372,6 +382,45 @@ public class Management : MonoBehaviour
 
 
         //rb2d.MovePosition(rb2d.position + direction * velocidad * Time.deltaTime);
+    }
+
+    bool paredDebajo(int jugador){
+        
+        SlimeMovement[] slimemov = new SlimeMovement[numslimes];
+        PlayerMovement[] playermov = new PlayerMovement[numplayers];
+
+        //Guardo todos los players en playersmov
+        for (int p = 0; p < numplayers; p++)
+        {
+            playermov[p] = player[p].GetComponent<PlayerMovement>();
+        }
+        //Guardo todos los slimes en slimesmov
+        for (int s = 0; s < numslimes; s++)
+        {
+            slimemov[s] = slime[s].GetComponent<SlimeMovement>();
+        }
+
+        Vector2 slimePosition = slimemov[0].transform.position;
+
+        //Tengo que inicializar la variable wallLayer y asignarla al objeto de unity conveniente
+    
+
+
+
+        // Lanza un rayo hacia abajo desde la posición del jugador
+        RaycastHit2D hit = Physics2D.Raycast(slimePosition, Vector2.down, raycastDistance, wallLayer);
+
+        // Dibuja el rayo en la escena para depuración
+        Debug.DrawRay(slimePosition, Vector2.down * raycastDistance, Color.red);
+
+
+        //Imprime por consola si hay pared debajo o no
+        Debug.Log("¿Hay pared debajo del jugador? " + hit.collider != null);
+
+
+
+
+      
 
 
 
@@ -379,6 +428,22 @@ public class Management : MonoBehaviour
 
 
 
+
+        // Realiza la detección del rayo
+        if (hit.collider != null)
+        {
+            // Si el rayo colisiona con un objeto en la capa de paredes, hay una pared debajo del jugador
+            Debug.Log("¡Hay una pared debajo del jugador!");
+            return true;
+        }
+
+        else{
+            Debug.Log("¡no Hay una pared debajo del jugador!");
+        }
+        
+
+
+        return false;
     }
 
 
@@ -387,8 +452,3 @@ public class Management : MonoBehaviour
 
 
 }
-
-
-
-
-
