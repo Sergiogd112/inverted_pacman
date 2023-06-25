@@ -3,7 +3,8 @@ guid: bc451daf0bd133640bb2783b05af2d6d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - chatdata: {fileID: 11400000, guid: 8f3c0768113c0b040a9e76cdafe992dd, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -1,0 +1,19 @@
+4/5/carlos,sergio,pepa,carlos,fito
+10/5/sergio*2023-06-25 13:01:39*What are you doing?,Ana*2023-06-25 13:01:39*How are you?,Carlos*2023-06-25 13:01:39*Hello!,pepa*2023-06-25 13:01:39*Nice to meet you!,fito*2023-06-25 13:03:04*hola,fito*2023-06-25 13:04:18*hola,joel*2023-06-25 13:06:50*hola,joel*2023-06-25 13:06:54*hola,joel*2023-06-25 13:06:55*hola,joel*2023-06-25 13:07:34*hola
+5/1/1
+4/4/carlos,sergio,carlos,fito
+10/4/sergio*2023-06-25 13:01:39*What are you doing?,Ana*2023-06-25 13:01:39*How are you?,Carlos*2023-06-25 13:01:39*Hello!,pepa*2023-06-25 13:01:39*Nice to meet you!,fito*2023-06-25 13:03:04*hola,fito*2023-06-25 13:04:18*hola,joel*2023-06-25 13:06:50*hola,joel*2023-06-25 13:06:54*hola,joel*2023-06-25 13:06:55*hola,joel*2023-06-25 13:07:34*hola
+4/3/carlos,sergio,carlos
+10/3/sergio*2023-06-25 13:01:39*What are you doing?,Ana*2023-06-25 13:01:39*How are you?,Carlos*2023-06-25 13:01:39*Hello!,pepa*2023-06-25 13:01:39*Nice to meet you!,fito*2023-06-25 13:03:04*hola,fito*2023-06-25 13:04:18*hola,joel*2023-06-25 13:06:50*hola,joel*2023-06-25 13:06:54*hola,joel*2023-06-25 13:06:55*hola,joel*2023-06-25 13:07:34*hola
+4/3/carlos,fito,carlos
+10/3/sergio*2023-06-25 13:01:39*What are you doing?,Ana*2023-06-25 13:01:39*How are you?,Carlos*2023-06-25 13:01:39*Hello!,pepa*2023-06-25 13:01:39*Nice to meet you!,fito*2023-06-25 13:03:04*hola,fito*2023-06-25 13:04:18*hola,joel*2023-06-25 13:06:50*hola,joel*2023-06-25 13:06:54*hola,joel*2023-06-25 13:06:55*hola,joel*2023-06-25 13:07:34*hola
+4/3/carlos,fito,carlos
+10/3/sergio*2023-06-25 13:01:39*What are you doing?,Ana*2023-06-25 13:01:39*How are you?,Carlos*2023-06-25 13:01:39*Hello!,pepa*2023-06-25 13:01:39*Nice to meet you!,fito*2023-06-25 13:03:04*hola,fito*2023-06-25 13:04:18*hola,joel*2023-06-25 13:06:50*hola,joel*2023-06-25 13:06:54*hola,joel*2023-06-25 13:06:55*hola,joel*2023-06-25 13:07:34*hola
+4/2/fito,carlos
+10/2/sergio*2023-06-25 13:01:39*What are you doing?,Ana*2023-06-25 13:01:39*How are you?,Carlos*2023-06-25 13:01:39*Hello!,pepa*2023-06-25 13:01:39*Nice to meet you!,fito*2023-06-25 13:03:04*hola,fito*2023-06-25 13:04:18*hola,joel*2023-06-25 13:06:50*hola,joel*2023-06-25 13:06:54*hola,joel*2023-06-25 13:06:55*hola,joel*2023-06-25 13:07:34*hola
+4/3/pepa,fito,carlos
+10/3/sergio*2023-06-25 13:01:39*What are you doing?,Ana*2023-06-25 13:01:39*How are you?,Carlos*2023-06-25 13:01:39*Hello!,pepa*2023-06-25 13:01:39*Nice to meet you!,fito*2023-06-25 13:03:04*hola,fito*2023-06-25 13:04:18*hola,joel*2023-06-25 13:06:50*hola,joel*2023-06-25 13:06:54*hola,joel*2023-06-25 13:06:55*hola,joel*2023-06-25 13:07:34*hola
+4/4/pepa,sergio,fito,carlos
+10/4/sergio*2023-06-25 13:01:39*What are you doing?,Ana*2023-06-25 13:01:39*How are you?,Carlos*2023-06-25 13:01:39*Hello!,pepa*2023-06-25 13:01:39*Nice to meet you!,fito*2023-06-25 13:03:04*hola,fito*2023-06-25 13:04:18*hola,joel*2023-06-25 13:06:50*hola,joel*2023-06-25 13:06:54*hola,joel*2023-06-25 13:06:55*hola,joel*2023-06-25 13:07:34*hola
+4/3/pepa,sergio,carlos
+10/3/sergio*2023-06-25 13:01:39*What are you doing?,Ana*2023-06-25 13:01:39*How are you?,Carlos*2023-06-25 13:01:39*Hello!,pepa*2023-06-25 13:01:39*Nice to meet you!,fito*2023-06-25 13:03:04*hola,fito*2023-06-25 13:04:18*hola,joel*2023-06-25 13:06:50*hola,joel*2023-06-25 13:06:54*hola,joel*2023-06-25 13:06:55*hola,joel*2023-06-25 13:07:34*hola

@@ -68,16 +68,26 @@ void ManageInvitation(ListaPartidas *listaPartidas, Partida *partida, ConnectedL
     int sum = 0;      // Variable to store the sum of answers
     char msg[200];    // Buffer to store messages
     sum = 0;
+    while(denegado==0 && sum<4){
+        sum=0;
+        for(int i=0;i<4;i++){
+            if(partida->answer[i]==-1){
+                denegado=1;
+                break;
+            }
+            sum+=partida->answer[i];
+        }
+    }
+    int pos_jugadores[4];
     for (int i = 0; i < 4; i++)
     {
-        if (partida->answer[i] == -1)
-        { // Invitation denied if any answer is -1
+        pos_jugadores[i] = search_name_on_connected_llist(list, partida->nombres[i]);
+        if (pos_jugadores[i] == -1)
+        {
             denegado = 1;
             break;
         }
-        sum += partida->answer[i];
     }
-
     if (denegado == 1)
     {
         snprintf(msg, 200, "7/0/%d", partida->idx); // Format the denial message
@@ -87,6 +97,8 @@ void ManageInvitation(ListaPartidas *listaPartidas, Partida *partida, ConnectedL
         {
             write(partida->sockets[i], msg, strlen(msg));
             int pos_jugador = search_name_on_connected_llist(list, partida->nombres[i]);
+            if (pos_jugador != -1)
+                continue;
             list->connections[pos_jugador].jugando = 0; // Set the player's status to not playing
         }
         remove_node_from_partidas_list(listaPartidas, partida->idx); // Remove the partida from the list

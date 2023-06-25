@@ -45,6 +45,7 @@ typedef struct
     int listos[4];
     pthread_mutex_t mutex;
     int kill;
+    int disconnected[4];
 } Partida;
 
 typedef struct

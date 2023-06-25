@@ -37,6 +37,7 @@ void initialize_partidas_list(ListaPartidas *list)
             list->partidas[i].vidas[j] = 3;
             list->partidas[i].answer[j] = 0;
             list->partidas[i].listos[j] = 0;
+            list->partidas[i].disconnected[j] = 0;
         }
         list->partidas[i].jugando = 0;
         pthread_mutex_init(&list->partidas[i].mutex, NULL);
@@ -62,6 +63,7 @@ void reset_partida(Partida *partida)
         partida->vidas[j] = 3;
         partida->answer[j] = 0;
         partida->listos[j] = 0;
+        partida->disconnected[j] = 0;
     }
     partida->jugando = 0;
     partida->usando = 0;
