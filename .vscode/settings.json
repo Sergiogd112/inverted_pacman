@@ -2,6 +2,7 @@
     "cmake.sourceDirectory": "${workspaceFolder}/server",
     "files.associations": {
         "linked_list.h": "c",
-        "map.h": "c"
+        "map.h": "c",
+        "stdlib.h": "c"
     }
 }

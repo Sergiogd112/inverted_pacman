@@ -17,6 +17,8 @@
 #include "config.h"
 #include <pthread.h>
 #include "logger.h"
+#include <mysql/mysql.h>
+
 typedef struct
 {
     float x;
