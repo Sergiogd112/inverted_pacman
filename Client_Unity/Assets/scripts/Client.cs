@@ -43,6 +43,7 @@ public class Client : ScriptableObject
     public string[] comp = new string[3]; // This is the list of players in the game.
     public int[] sel = { 0, 0, 0 }; // This is the list of selected players.
     private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
+    
     public int StartAtender()
     {
         return 0;
