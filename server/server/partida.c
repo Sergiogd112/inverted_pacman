@@ -589,22 +589,25 @@ int add_game_to_db(MYSQL *conn, Partida *partida)
     char query[2000];
     char logmsg[200];
     // Log the function call
-    snprintf(logmsg, 200, "add_game_to_db: %s", partida->nombre);
+    snprintf(logmsg, 200, "add_game_to_db: %s", partida->idx);
     logger(LOGINFO, logmsg);
     // Construct the MySQL query to insert the game session into the partidas table
-    snprintf(query, 2000, "INSERT INTO partidas (id_partida, puntuacion_global) VALUES (%d, %d);", partida->id_partida, partida->puntuacion_global);
+    snprintf(query, 2000, "INSERT INTO partidas (, puntuacion_global) VALUES ( %d);",  partida->puntuacion_global);
     // Execute the MySQL query
     if (mysql_query(conn, query) != 0)
     {
         fprintf(stderr, "Error executing MySQL query: %s\n", mysql_error(conn));
         return -1;
     }
+    //Obtain the id of the partida that was just inserted
+    int id = mysql_insert_id(conn);
+
     // iterate through the users in the partida struct and insert them into the partidas_usuarios table
     for (int i = 0; i < partida->num_usuarios; i++)
     {
         // Construct the MySQL query to insert the user into the partidas_usuarios table
         snprintf(query, 2000, "INSERT INTO partidas_usuarios (id_partida, id_usuario, puntuacion) VALUES (%d, (SELECT ID FROM usuarios WHERE nombre = '%s'), %d);",
-                 partida->id_partida, partida->usuarios[i].nombre, partida->usuarios[i].puntuacion);
+                 id, partida->usuarios[i].nombre, partida->usuarios[i].puntuacion);
         // Execute the MySQL query
         if (mysql_query(conn, query) != 0)
         {
