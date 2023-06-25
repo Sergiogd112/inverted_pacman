@@ -68,26 +68,38 @@ void ManageInvitation(ListaPartidas *listaPartidas, Partida *partida, ConnectedL
     int sum = 0;      // Variable to store the sum of answers
     char msg[200];    // Buffer to store messages
     sum = 0;
-    while(denegado==0 && sum<4){
-        sum=0;
-        for(int i=0;i<4;i++){
-            if(partida->answer[i]==-1){
-                denegado=1;
-                break;
-            }
-            sum+=partida->answer[i];
-        }
-    }
     int pos_jugadores[4];
     for (int i = 0; i < 4; i++)
     {
         pos_jugadores[i] = search_name_on_connected_llist(list, partida->nombres[i]);
+
         if (pos_jugadores[i] == -1)
         {
             denegado = 1;
             break;
         }
     }
+    while (denegado == 0 && sum < 4)
+    {
+        sum = 0;
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (list->connections[pos_jugadores[i]].using == 0)
+            {
+                denegado = 1;
+                break;
+            }
+            if (partida->answer[i] == -1)
+            {
+                denegado = 1;
+                break;
+            }
+
+            sum += partida->answer[i];
+        }
+    }
+
     if (denegado == 1)
     {
         snprintf(msg, 200, "7/0/%d", partida->idx); // Format the denial message
