@@ -37,22 +37,20 @@ public class chat : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (count < chatdata.users.Count) // If there are new messages.
+        if (count > 0)
         {
-            if (count > 0)
+            foreach (GameObject message in messageList) // Destroy the old messages.
             {
-                foreach (GameObject message in messageList) // Destroy the old messages.
-                {
-                    Destroy(message);
-                }
+                Destroy(message);
             }
-            int i;
-            for (i = (chatdata.users.Count - maxMessages) * Convert.ToInt32(maxMessages < chatdata.users.Count); i < chatdata.users.Count; i++)
-            {
-                addMessage(chatdata.users[i], chatdata.timestamps[i], chatdata.messages[i]);
-            }
-            count = i;
         }
+        int i;
+        for (i = (chatdata.users.Count - maxMessages) * Convert.ToInt32(maxMessages < chatdata.users.Count); i < chatdata.users.Count; i++)
+        {
+            addMessage(chatdata.users[i], chatdata.timestamps[i], chatdata.messages[i]);
+        }
+        count = i;
+        chatdata.updated_chat = false; // Set the updated_chat to false.
     }
     /// <summary>
     /// Adds a message to the chat scroll view. It is called when a new message is received.

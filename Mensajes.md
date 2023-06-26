@@ -65,7 +65,7 @@ En este documento se describe la estructura de los mensajes entre el cliente y e
     - `9/2`: error
 - Recibir mensages del chat:
   - Peticion cliente: `10/`
-  - Notificacion/respuesta del servidor: `10/n/nombre1*timestamp*mensage,nombre2*timestamp2*mensage2...` donde n es el numero de mensages
+  - Notificacion/respuesta del servidor: `10/n/nombre1*timestamp*mensage*id1,nombre2*timestamp2*mensage2*id2...` donde n es el numero de mensages
 - Eliminar usuario:
   - Peticion cliente `11/`
   - Respuesta servidor

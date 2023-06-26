@@ -43,7 +43,7 @@ public class Client : ScriptableObject
     public string[] comp = new string[3]; // This is the list of players in the game.
     public int[] sel = { 0, 0, 0 }; // This is the list of selected players.
     private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
-    
+
     public int StartAtender()
     {
         return 0;
@@ -180,13 +180,13 @@ public class Client : ScriptableObject
                         break;
                     case 10: // notificacion de actualizacion de chat
                         string[] messages = elements[2].Split(",");
-                        for (int i = chatdata.users.Count(); i < messages.Length; i++)
+                        for (int i = 0; i < messages.Length; i++)
                         {
                             string[] data = messages[i].Split("*");
                             UnityEngine.Debug.Log(data[0]);
                             UnityEngine.Debug.Log(data[1]);
                             UnityEngine.Debug.Log(data[2]);
-                            chatdata.addMessage(Regex.Unescape(data[0]), Regex.Unescape(data[1]), Regex.Unescape(data[2]));
+                            chatdata.addMessage(Regex.Unescape(data[0]), Regex.Unescape(data[1]), Regex.Unescape(data[2]), Regex.Unescape(data[3]));
                         }
                         chatdata.updated_chat = true;
                         break;
