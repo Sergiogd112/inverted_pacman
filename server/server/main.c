@@ -364,7 +364,8 @@ void *AtenderThread(ThreadArgs *threadArgs)
             {
                 if (strcmp(list->connections[pos].name, listaPartidas->partidas[i_partida].nombres[i]) == 0)
                 {
-                    printf("Encontrado: %s  %d\n", list->connections[pos].name, i);
+                    snprintf(logmsg,2000,"Encontrado: %s  %d\n", list->connections[pos].name, i);
+                    logger(LOGINFO, logmsg);
                     // Check if the name of the connection matches the name in the partida
                     pthread_mutex_lock(&listaPartidas->partidas[i_partida].mutex);
                     listaPartidas->partidas[i_partida].answer[i] = 2 * invres - 1;
@@ -379,8 +380,12 @@ void *AtenderThread(ThreadArgs *threadArgs)
                          list->connections[pos].idx, idx_partida);
                 logger(LOGINFO, logmsg); // Log a message indicating that the connection is not in the partida
             }
+        
             ManageInvitation(listaPartidas, &listaPartidas->partidas[i_partida],
                              list); // Call GestionarInvitaciones function
+            snprintf(logmsg, 2000, "Conexion %d ha respondido a la invitacion %d con %d",
+                     list->connections[pos].idx, idx_partida, invres);
+            logger(LOGINFO, logmsg); // Log a message indicating the response to the invitation
             send_awr = 0;
             break;
         case 7:
