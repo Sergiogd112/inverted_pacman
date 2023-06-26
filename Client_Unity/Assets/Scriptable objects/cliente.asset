@@ -17,7 +17,7 @@ MonoBehaviour:
   Conectado: 0
   Logeado: 0
   Consultas: 0
-  ip: 192.168.56.102
+  ip: 147.83.117.22
   puerto: 50053
   updated_conected_list: 0
   connected: []
