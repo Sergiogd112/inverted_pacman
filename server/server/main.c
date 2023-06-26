@@ -92,7 +92,10 @@ void ManageInvitation(ListaPartidas *listaPartidas, Partida *partida, ConnectedL
         sum += partida->answer[i];
     }
     pthread_mutex_unlock(&partida->mutex); // Unlock the partida mutex
-
+    char logmsg[2000];                     // Buffer to store log messages
+    snprintf(logmsg, 2000, "Invitacion de %s a %s, %s, %s, %s", partida->nombres[0], partida->nombres[1],
+             partida->nombres[2], partida->nombres[3]);
+    logger(LOGINFO, logmsg); // Log the invitation message
     if (denegado == 1)
     {
         snprintf(msg, 200, "7/0/%d", partida->idx); // Format the denial message
@@ -109,6 +112,7 @@ void ManageInvitation(ListaPartidas *listaPartidas, Partida *partida, ConnectedL
         remove_node_from_partidas_list(listaPartidas, partida->idx); // Remove the partida from the list
         pthread_mutex_unlock(
             &crear_partida_mutex); // Unlock the mutex after modifying the partida list
+        logger(LOGINFO, msg);      // Log the denial message
     }
     else if (sum == 4)
     {
@@ -118,6 +122,7 @@ void ManageInvitation(ListaPartidas *listaPartidas, Partida *partida, ConnectedL
         {
             write(partida->sockets[i], msg, strlen(msg));
         }
+        logger(LOGINFO, msg); // Log the acceptance message
     }
 }
 
@@ -355,9 +360,9 @@ void *AtenderThread(ThreadArgs *threadArgs)
                 if (strcmp(list->connections[pos].name, listaPartidas->partidas[i_partida].nombres[i]) == 0)
                 {
                     // Check if the name of the connection matches the name in the partida
-                    pthread_mutex_lock( &listaPartidas->partidas[i_partida].mutex);
+                    pthread_mutex_lock(&listaPartidas->partidas[i_partida].mutex);
                     listaPartidas->partidas[i_partida].answer[i] = 2 * invres - 1;
-                    pthread_mutex_unlock( &listaPartidas->partidas[i_partida].mutex);
+                    pthread_mutex_unlock(&listaPartidas->partidas[i_partida].mutex);
                     // Update the answer for the corresponding player in the partida
                     break;
                 }
