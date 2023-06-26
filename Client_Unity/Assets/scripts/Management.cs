@@ -10,7 +10,7 @@ using TMPro;
 public class Management : MonoBehaviour
 {
     public Client cliente;
-    public float radiodeDeteccion = 0.8f; //radio desde el cual el jugador ya puede matar
+    public float radiodeDeteccion = 1.1f; //radio desde el cual el jugador ya puede matar
     public float tiemporespawnslime = 3f;
     public float tiemporespawnplayer = 4f;
 
