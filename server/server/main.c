@@ -363,6 +363,7 @@ void *AtenderThread(ThreadArgs *threadArgs)
             {
                 if (strcmp(list->connections[pos].name, listaPartidas->partidas[i_partida].nombres[i]) == 0)
                 {
+                    printf("Encontrado: %s  %d\n", list->connections[pos].name,i);
                     // Check if the name of the connection matches the name in the partida
                     pthread_mutex_lock(&listaPartidas->partidas[i_partida].mutex);
                     listaPartidas->partidas[i_partida].answer[i] = 2 * invres - 1;
