@@ -79,25 +79,21 @@ void ManageInvitation(ListaPartidas *listaPartidas, Partida *partida, ConnectedL
             break;
         }
     }
-    while (denegado == 0 && sum < 4)
+
+    for (int i = 0; i < 4; i++)
     {
-        sum = 0;
-
-        for (int i = 0; i < 4; i++)
+        if (list->connections[pos_jugadores[i]].using == 0)
         {
-            if (list->connections[pos_jugadores[i]].using == 0)
-            {
-                denegado = 1;
-                break;
-            }
-            if (partida->answer[i] == -1)
-            {
-                denegado = 1;
-                break;
-            }
-
-            sum += partida->answer[i];
+            denegado = 1;
+            break;
         }
+        if (partida->answer[i] == -1)
+        {
+            denegado = 1;
+            break;
+        }
+
+        sum += partida->answer[i];
     }
 
     if (denegado == 1)
