@@ -147,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
     //Método para fijar cuanto tiempo tarda el slime en respawnear
     internal void tiempoRespawn(float time)
     {
-        transform.position = new Vector2(10, 10); //lo llevamos lejos para que no siga contando como muerte
+        transform.position = new Vector2(100, 100); //lo llevamos lejos para que no siga contando como muerte
         gameObject.SetActive(false); // desactiva el objeto al chocar
         Invoke("ToRespawn", time); // espera time segundos y lo envía al respawn
     }
@@ -164,6 +164,13 @@ public class PlayerMovement : MonoBehaviour
         //Hago esto para que aparezca en el respawn pero en un sitio random de él
         transform.position = new Vector2(Random.Range(x1, x2), Random.Range(y1, y2));
         gameObject.SetActive(true); // activa el objeto después de 3 segundos
+    }
+
+    
+    //Para cuando haya muerto 3 veces
+    internal void finPartida(){
+        transform.position = new Vector2(100, 100); //lo llevamos lejos para que no siga contando como muerte
+        gameObject.SetActive(false); // desactiva el objeto
     }
 
 
