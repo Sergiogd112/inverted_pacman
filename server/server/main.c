@@ -64,6 +64,10 @@ void UpdateThreads(ConnectedList *list)
  */
 void ManageInvitation(ListaPartidas *listaPartidas, Partida *partida, ConnectedList *list)
 {
+    char logmsg[2000]; // Buffer to store log messages
+    // Log the answer array in partida
+    snprintf(logmsg, 2000, "Respuestas de %d, %d, %d, %d", partida->answer[0], partida->answer[1],
+             partida->answer[2], partida->answer[3]);
     int denegado = 0; // Flag to check if the invitation is denied
     int sum = 0;      // Variable to store the sum of answers
     char msg[200];    // Buffer to store messages
