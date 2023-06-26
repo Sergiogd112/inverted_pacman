@@ -97,7 +97,6 @@ void SetRandomDirection()
 
     //Método para hacer que el mapasea toroidal
     void toroidalMap(){
-        Debug.Log("Estoy en toroidalMap");
         // Obtener los límites de la pantalla
         Vector2 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         float screenRight = 3.91f;

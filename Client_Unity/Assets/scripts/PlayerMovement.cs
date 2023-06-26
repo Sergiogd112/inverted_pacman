@@ -43,17 +43,20 @@ public class PlayerMovement : MonoBehaviour
         else
         {
         }
+        toroidalMap();
     }
 
 
-    void ToroidalMap()
+    void toroidalMap()
     {
         // Obtener los límites de la pantalla
         Vector2 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        float screenRight = 3.91f;
-        float screenLeft = -4.15f;
+        float screenRight = 3.92f;
+        float screenLeft = -4.13f;
         float screenTop = screenBounds.y - 0.15f;
         float screenBottom = -screenBounds.y + 0.15f;
+        //Debug.Log("ToroidalMap va bien");
+        //Debug.Log("Posicion del jugador: " + transform.position.x + " " + transform.position.y);
 
         // Verificar si el jugador está fuera de los límites de la pantalla
         if (transform.position.x > screenRight) //si se sale por la derecha
@@ -62,16 +65,16 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (transform.position.x < screenLeft) //si se sale por la izquierda
         {
-            transform.position = new Vector2(screenRight, transform.position.y);
+            transform.position = new Vector2(screenRight-0.15f, transform.position.y);
         }
 
         if (transform.position.y > screenTop)
         {
-            transform.position = new Vector2(transform.position.x, screenBottom);
+            transform.position = new Vector2(transform.position.x, screenBottom+0.1f);
         }
         else if (transform.position.y < screenBottom)
         {
-            transform.position = new Vector2(transform.position.x, screenTop);
+            transform.position = new Vector2(transform.position.x, screenTop-0.1f);
         }
     }
 
@@ -102,15 +105,6 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    internal int killSlimeI()
-    {
-
-
-
-
-
-        return 0;
-    }
 
 
 
@@ -124,13 +118,10 @@ public class PlayerMovement : MonoBehaviour
         {
             // Mover el jugador utilizando el componente rigidbody
             rb2d.MovePosition(rb2d.position + movement * speed * Time.fixedDeltaTime);
-            ToroidalMap();
         }
         else
         {
             rb2d.MovePosition(new Vector2(mainGameManager.ppositions[idjugador, 0], mainGameManager.ppositions[idjugador, 1]));
-            ToroidalMap();
-
         }
     }
 

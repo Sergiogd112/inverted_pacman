@@ -10,7 +10,7 @@ using TMPro;
 public class Management : MonoBehaviour
 {
     public Client cliente;
-    public float radiodeDeteccion = 1.1f; //radio desde el cual el jugador ya puede matar
+    public float radiodeDeteccion = 1.4f; //radio desde el cual el jugador ya puede matar
     public float tiemporespawnslime = 3f;
     public float tiemporespawnplayer = 4f;
 
@@ -44,7 +44,13 @@ public class Management : MonoBehaviour
     public float tiempoPartida = 0f;
 
     //Tiempo final cuando acaba el juego
+
+    public TextMeshProUGUI textoMeshPro;
     public float tiempoFinal = 60f;
+    public TextMeshProUGUI name1;
+    public TextMeshProUGUI name2;
+    public TextMeshProUGUI name3;
+    public TextMeshProUGUI name4;
 
 
 
@@ -65,6 +71,12 @@ public class Management : MonoBehaviour
 
         //slime = GameObject.Find("Slime1"); //antigua forma para cuando solo había 1 slime
         //InvokeRepeating("printMatrix2", 0.01f, 4f);
+
+        //Debug.Log("Los nombres: " + mainGameManager.names[0]);
+
+        nombres();
+
+    
     }
 
     // Update is called once per frame
@@ -96,6 +108,33 @@ public class Management : MonoBehaviour
         }
         
     }
+
+
+
+    void nombres(){
+        name1 = GameObject.Find("Name1").GetComponent<TextMeshProUGUI>();
+        name2 = GameObject.Find("Name2").GetComponent<TextMeshProUGUI>();
+        name3 = GameObject.Find("Name3").GetComponent<TextMeshProUGUI>();
+        name4 = GameObject.Find("Name4").GetComponent<TextMeshProUGUI>();
+
+        /*
+        if (name1 != null && name2 != null && name3 != null && name4 != null)
+        {
+            name1.text = mainGameManager.names[0];
+            name2.text = mainGameManager.names[1];
+            name3.text = mainGameManager.names[2];
+            name4.text = mainGameManager.names[3];
+        }*/
+
+  
+        name1.text = "Jaume";
+        name2.text = "Teo";
+        name3.text = "Sergio";
+        name4.text = "Joel";
+
+    }
+
+
 
 
 
