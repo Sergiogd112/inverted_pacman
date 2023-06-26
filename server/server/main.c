@@ -83,7 +83,6 @@ void ManageInvitation(ListaPartidas *listaPartidas, Partida *partida, ConnectedL
             break;
         }
     }
-    pthread_mutex_lock(&partida->mutex); // Lock the partida mutex to avoid interruption
 
     for (int i = 0; i < 4; i++)
     {
@@ -95,8 +94,7 @@ void ManageInvitation(ListaPartidas *listaPartidas, Partida *partida, ConnectedL
 
         sum += partida->answer[i];
     }
-    pthread_mutex_unlock(&partida->mutex); // Unlock the partida mutex
-    char logmsg[2000];                     // Buffer to store log messages
+    char logmsg[2000]; // Buffer to store log messages
     snprintf(logmsg, 2000, "Invitacion de %s a %s, %s, %s, %s", partida->nombres[0], partida->nombres[1],
              partida->nombres[2], partida->nombres[3]);
     logger(LOGINFO, logmsg); // Log the invitation message
@@ -364,7 +362,7 @@ void *AtenderThread(ThreadArgs *threadArgs)
             {
                 if (strcmp(list->connections[pos].name, listaPartidas->partidas[i_partida].nombres[i]) == 0)
                 {
-                    snprintf(logmsg,2000,"Encontrado: %s  %d\n", list->connections[pos].name, i);
+                    snprintf(logmsg, 2000, "Encontrado: %s  %d\n", list->connections[pos].name, i);
                     logger(LOGINFO, logmsg);
                     // Check if the name of the connection matches the name in the partida
                     listaPartidas->partidas[i_partida].answer[i] = 2 * invres - 1;
@@ -378,7 +376,7 @@ void *AtenderThread(ThreadArgs *threadArgs)
                          list->connections[pos].idx, idx_partida);
                 logger(LOGINFO, logmsg); // Log a message indicating that the connection is not in the partida
             }
-        
+
             ManageInvitation(listaPartidas, &listaPartidas->partidas[i_partida],
                              list); // Call GestionarInvitaciones function
             snprintf(logmsg, 2000, "Conexion %d ha respondido a la invitacion %d con %d",
