@@ -43,7 +43,7 @@ char *chat_to_string(MYSQL *conn, int *n)
                        LIMIT 30) as a;\n";
 
     char query1[] = "SELECT GROUP_CONCAT(str SEPARATOR ',') AS res \
-                 FROM (SELECT CONCAT(usuarios.nombre, '*', chat.time, '*', chat.mensage,chat.id) AS str \
+                 FROM (SELECT CONCAT(usuarios.nombre, '*', chat.time, '*', chat.mensage,'*',chat.id) AS str \
                        FROM usuarios, chat \
                        WHERE usuarios.id = chat.id_usuario \
                        ORDER BY chat.time DESC \
