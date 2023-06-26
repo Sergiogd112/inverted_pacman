@@ -47,7 +47,8 @@ public class SlimeMovement : MonoBehaviour
             //Debug.Log("Pum Pared ");
             //SetRandomDirection();
             colision_pared = false;
-        } 
+        }
+        toroidalMap(); 
     }
 
 
@@ -95,7 +96,8 @@ void SetRandomDirection()
 
 
     //Método para hacer que el mapasea toroidal
-    void ToroidalMap(){
+    void toroidalMap(){
+        Debug.Log("Estoy en toroidalMap");
         // Obtener los límites de la pantalla
         Vector2 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         float screenRight = 3.91f;
@@ -112,10 +114,12 @@ void SetRandomDirection()
         if (transform.position.x > screenRight) // si se sale por la derecha
         {
             transform.position = new Vector2(screenLeft, transform.position.y);
+            Debug.Log("Sale por la derecha");
         }
         if (transform.position.x < screenLeft) // si se sale por la izquierda
         {
             transform.position = new Vector2(screenRight, transform.position.y);
+            Debug.Log("Sale por la izquierda");
         }
 
         if (transform.position.y > screenTop) // si se sale por arriba
@@ -147,7 +151,7 @@ void SetRandomDirection()
         // Mover el slime en la dirección actual
         //rb2d.MovePosition(rb2d.position + direction * speed * Time.fixedDeltaTime);
 
-        ToroidalMap();
+        //toroidalMap();
     }
 
 
