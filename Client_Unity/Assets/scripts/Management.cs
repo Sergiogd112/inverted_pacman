@@ -10,7 +10,7 @@ using TMPro;
 public class Management : MonoBehaviour
 {
     public Client cliente;
-    public float radiodeDeteccion = 0.7f; //radio desde el cual el jugador ya puede matar
+    public float radiodeDeteccion = 0.8f; //radio desde el cual el jugador ya puede matar
     public float tiemporespawnslime = 3f;
     public float tiemporespawnplayer = 4f;
 
@@ -35,21 +35,23 @@ public class Management : MonoBehaviour
     GameObject[] slime = new GameObject[4];
     public MainGameManager mainGameManager;
 
-    //[SerializeField] private Transform objetivo;
-    private NavMeshAgent navMeshAgent;
-
 
     //Estos dos atributos serán para detectar si hay paredes alrededor
     public float raycastDistance = 0f;
     public string tagPared = "Pared";
+
+    //Tiempo transcurrido
+    public float tiempoPartida = 0f;
+
+    //Tiempo final cuando acaba el juego
+    public float tiempoFinal = 60f;
+
 
 
 
 
     void Start()
     {
-        //TextMeshProUGUI texto = GameObject.Find("Text1").GetComponent<TextMeshProUGUI>();
-
         for (int i = 1; i <= numplayers; i++)
         {
             player[i - 1] = GameObject.Find("Player" + i.ToString());
@@ -59,11 +61,10 @@ public class Management : MonoBehaviour
         {
             slime[i - 1] = GameObject.Find("Slime" + i.ToString());
         }
-        InvokeRepeating("printMatrix3", 0.5f, 3f);
+        //InvokeRepeating("printMatrix3", 0.5f, 3f);
 
         //slime = GameObject.Find("Slime1"); //antigua forma para cuando solo había 1 slime
         //InvokeRepeating("printMatrix2", 0.01f, 4f);
-        //texto.text = "HOla?";
     }
 
     // Update is called once per frame
@@ -85,6 +86,14 @@ public class Management : MonoBehaviour
         paredes(0.12f);
         aporelplayer();
 
+
+        if(tiempoPartida < tiempoFinal)
+        {
+            tiempoPartida += Time.deltaTime;
+            if(tiempoPartida > tiempoFinal){
+                Debug.Log("Se ha acabado el tiempo");
+            }
+        }
         
     }
 
@@ -349,28 +358,14 @@ public class Management : MonoBehaviour
             direction.Normalize();
             //Debug.Log("El slime " + (i+1).ToString() + " direccion " + direction + " por el player " + playercerca.ToString() + ".");
             
-            rb2d = slime[i].GetComponent<Rigidbody2D>();
+            rb2d = slimemov[i].GetComponent<Rigidbody2D>();
 
+            
 
             rb2d.MovePosition((Vector2)slime[i].transform.position + (direction * velocidad * Time.deltaTime));
             
 
-            
-
-
-            
         }
-
-
-
-
-
-        
-        
-        
-
-
-
 
 
     }

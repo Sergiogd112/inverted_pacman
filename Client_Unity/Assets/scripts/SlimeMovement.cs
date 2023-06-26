@@ -102,13 +102,18 @@ void SetRandomDirection()
         float screenLeft = -4.15f;
         float screenTop = screenBounds.y - 0.15f;
         float screenBottom = -screenBounds.y + 0.15f;
+        
+        //Para que los slimes entren al respawn
+        float repawnizq_x = -0.5f;
+        float repawnder_x = 0.3f;
+        float repawn_y = 1.32f;
 
         // Verificar si el slime está fuera de los límites de la pantalla
         if (transform.position.x > screenRight) // si se sale por la derecha
         {
             transform.position = new Vector2(screenLeft, transform.position.y);
         }
-        else if (transform.position.x < screenLeft) // si se sale por la izquierda
+        if (transform.position.x < screenLeft) // si se sale por la izquierda
         {
             transform.position = new Vector2(screenRight, transform.position.y);
         }
@@ -117,10 +122,21 @@ void SetRandomDirection()
         {
             transform.position = new Vector2(transform.position.x, screenBottom);
         }
-        else if (transform.position.y < screenBottom) // si se sale por abajo
+        if (transform.position.y < screenBottom) // si se sale por abajo
         {
             transform.position = new Vector2(transform.position.x, screenTop);
         }
+
+        if(transform.position.x > repawnizq_x && transform.position.x < repawnder_x && (repawn_y-0.15f) < transform.position.y && (repawn_y+0.15f) > transform.position.y){
+            Debug.Log("No te cueles");
+            transform.position = new Vector2(0f, -2.4f);
+        }
+
+        
+
+
+
+
     }
 
 
