@@ -8,15 +8,16 @@ def receive(s, name):
         data = s.recv(1024)
         if len(data) > 0:
             print(name, "Received", repr(data.decode()))
-            if(data.decode().split('/')[0]=="5"):
+            if(data.decode().split('/')[0]=="6"):
                 print("Invitacion recibida")
                 invi=True
                 idgame=int(data.decode().split('/')[1])
+                s.sendall(("6/1/"+str(idgame)).encode())
 
 
 def main():
     name_pwd = [
-        ("eustaquio", "eus"),
+        ("sergio", "teo"),
         ("Ana", "teo"),
         ("Carlos", "teo"),
     ]
@@ -26,8 +27,8 @@ def main():
     
     # create a socket object
     # get local machine name
+    host = "192.168.56.102"
     # host = "147.83.117.22"
-    host = "147.83.117.22"
     port = 50053
     a=input("Start:")
     # connection to hostname on the port.
@@ -43,12 +44,7 @@ def main():
         for s, (name, pwd) in zip(sockets, name_pwd)
     ]
     [thread.start() for thread in processes]
-    while True:
-        if invi:
-            print("Invitacion recibida")
-            for i in range(1,len(sockets)):
-                sockets[i].sendall(("6/1"+str(idgame)).encode())
-            break
+
     
     input("Acabar:")
     [thread.terminate() for thread in processes]
