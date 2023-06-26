@@ -355,15 +355,16 @@ void *AtenderThread(ThreadArgs *threadArgs)
             int invres = atoi(p);
             p = strtok(NULL, "/");
             int idx_partida = atoi(p);
-            logger(LOGINFO,
-                   "Gestionando invitaciones"); // Log a message indicating that invitations are being managed
+            snprintf(logmsg, 2000, "Conexion %d ha respondido a la invitacion %d con %d",
+                     list->connections[pos].idx, idx_partida, invres);
+            logger(LOGINFO, logmsg); // Log a message indicating the response to the invitation
             i_partida = search_on_partidas_llist(listaPartidas,
                                                  idx_partida); // Search for the index of the partida in the listaPartidas
             for (int i = 0; i < 4; i++)
             {
                 if (strcmp(list->connections[pos].name, listaPartidas->partidas[i_partida].nombres[i]) == 0)
                 {
-                    printf("Encontrado: %s  %d\n", list->connections[pos].name,i);
+                    printf("Encontrado: %s  %d\n", list->connections[pos].name, i);
                     // Check if the name of the connection matches the name in the partida
                     pthread_mutex_lock(&listaPartidas->partidas[i_partida].mutex);
                     listaPartidas->partidas[i_partida].answer[i] = 2 * invres - 1;
@@ -371,6 +372,12 @@ void *AtenderThread(ThreadArgs *threadArgs)
                     // Update the answer for the corresponding player in the partida
                     break;
                 }
+            }
+            else
+            {
+                snprintf(logmsg, 2000, "Conexion %d no esta en la partida %d",
+                         list->connections[pos].idx, idx_partida);
+                logger(LOGINFO, logmsg); // Log a message indicating that the connection is not in the partida
             }
             ManageInvitation(listaPartidas, &listaPartidas->partidas[i_partida],
                              list); // Call GestionarInvitaciones function
