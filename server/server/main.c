@@ -367,9 +367,7 @@ void *AtenderThread(ThreadArgs *threadArgs)
                     snprintf(logmsg,2000,"Encontrado: %s  %d\n", list->connections[pos].name, i);
                     logger(LOGINFO, logmsg);
                     // Check if the name of the connection matches the name in the partida
-                    pthread_mutex_lock(&listaPartidas->partidas[i_partida].mutex);
                     listaPartidas->partidas[i_partida].answer[i] = 2 * invres - 1;
-                    pthread_mutex_unlock(&listaPartidas->partidas[i_partida].mutex);
                     // Update the answer for the corresponding player in the partida
                     break;
                 }
