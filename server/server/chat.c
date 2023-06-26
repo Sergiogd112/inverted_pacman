@@ -97,6 +97,8 @@ char * chat_to_string(MYSQL *conn, int *n) {
 void push_chat(ConnectedList *list, char *res, int n) {
     char *response = malloc(sizeof(char) * (strlen(res) +
                                             13)); // Buffer to hold the formatted response string
+    logger(LOGINFO, "Pushing chat"); // Print a message to the console indicating that the chat is being pushed
+    logger(LOGINFO, res); // Print the chat response string to the console
     snprintf(response, (strlen(res) + 13), "10/%d/%s\x04", n, res); // Format the response string
 
     logger(LOGINFO, response); // Print the response string
