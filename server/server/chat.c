@@ -10,19 +10,21 @@
  * @param text The text of the message.
  * @return 0 if the message was written successfully, 2 if an error occurred.
  */
-int write_message(MYSQL *conn, Nombre name, char *text) {
-    char query[strlen(text) + 200];  // Declare a character array called query with a length of strlen(text) + 200.
+int write_message(MYSQL *conn, Nombre name, char *text)
+{
+    char query[strlen(text) + 200]; // Declare a character array called query with a length of strlen(text) + 200.
     snprintf(query, strlen(text) + 200,
              "INSERT INTO chat (id_usuario, mensage) VALUES ((SELECT ID FROM usuarios WHERE nombre = '%s'), '%s');",
              name,
              text); // Construct a SQL query to insert a message into the chat table with the user's ID and the message text, and store it in the query string.
     if (mysql_query(conn,
-                    query)) { // Execute the query using the mysql_query function and check if it returns an error.
-        fprintf(stderr, "%s: %s\n",LOGERROR, mysql_error(conn));
+                    query))
+    { // Execute the query using the mysql_query function and check if it returns an error.
+        fprintf(stderr, "%s: %s\n", LOGERROR, mysql_error(conn));
         return 2; // Return 2 to indicate that an error occurred.
     }
-    logger(LOGINFO,"Chat writen successfully"); // Print a message to the console indicating that the chat was written successfully.
-    return 0; // Return 0 to indicate that the message was written successfully.
+    logger(LOGINFO, "Chat writen successfully"); // Print a message to the console indicating that the chat was written successfully.
+    return 0;                                    // Return 0 to indicate that the message was written successfully.
 }
 
 /**
@@ -31,10 +33,11 @@ int write_message(MYSQL *conn, Nombre name, char *text) {
  * @param n A pointer to an integer variable to store the number of chat entries.
  * @return A string containing the formatted chat data, or NULL if an error occurred.
  */
-char * chat_to_string(MYSQL *conn, int *n) {
+char *chat_to_string(MYSQL *conn, int *n)
+{
     char query0[] = "SELECT LENGTH(GROUP_CONCAT(CONCAT(usuarios.nombre, '*', chat.time, '*', chat.mensage) SEPARATOR ',')) AS len\n"
-                   "FROM usuarios, chat\n"
-                   "WHERE usuarios.id = chat.id_usuario;";
+                    "FROM usuarios, chat\n"
+                    "WHERE usuarios.id = chat.id_usuario;";
     char query1[] = "SELECT GROUP_CONCAT(CONCAT(usuarios.nombre, '*', chat.time, '*', chat.mensage) SEPARATOR ',') AS str\n"
                     "FROM usuarios, chat\n"
                     "WHERE usuarios.id = chat.id_usuario;";
@@ -42,7 +45,8 @@ char * chat_to_string(MYSQL *conn, int *n) {
                     "FROM usuarios, chat\n"
                     "WHERE usuarios.id = chat.id_usuario;";
     if (mysql_query(conn,
-                    query0)) { // Execute the query using the mysql_query function and check if it returns an error.
+                    query0))
+    { // Execute the query using the mysql_query function and check if it returns an error.
         fprintf(stderr, "%s\n", mysql_error(conn));
         exit(1);
     }
@@ -51,12 +55,14 @@ char * chat_to_string(MYSQL *conn, int *n) {
     result = mysql_store_result(conn);
     MYSQL_ROW row;
     row = mysql_fetch_row(result);
-    if (row == NULL) {
-        *n=0;
+    if (row == NULL)
+    {
+        *n = 0;
         return 0; // Return NULL to indicate an error occurred.
     }
     if (mysql_query(conn,
-                    query1)) { // Execute the query using the mysql_query function and check if it returns an error.
+                    query1))
+    { // Execute the query using the mysql_query function and check if it returns an error.
         fprintf(stderr, "%s\n", mysql_error(conn));
         exit(1);
     }
@@ -65,12 +71,14 @@ char * chat_to_string(MYSQL *conn, int *n) {
     result1 = mysql_store_result(conn);
     MYSQL_ROW row1;
     row1 = mysql_fetch_row(result1);
-    if (row == NULL) {
-        *n=0;
+    if (row == NULL)
+    {
+        *n = 0;
         return '\0'; // Return NULL to indicate an error occurred.
     }
     if (mysql_query(conn,
-                    query2)) { // Execute the query using the mysql_query function and check if it returns an error.
+                    query2))
+    { // Execute the query using the mysql_query function and check if it returns an error.
         fprintf(stderr, "%s\n", mysql_error(conn));
         exit(1);
     }
@@ -79,13 +87,17 @@ char * chat_to_string(MYSQL *conn, int *n) {
     result2 = mysql_store_result(conn);
     MYSQL_ROW row2;
     row2 = mysql_fetch_row(result2);
-    if (row == NULL) {
+    if (row == NULL)
+    {
 
-        *n=0;
+        *n = 0;
         return '\0'; // Return NULL to indicate an error occurred.
     }
-    *n=atoi(row2[0]); // Convert the count value to an integer and store it in the variable pointed to by n.
-    return row1[0]; // Return the formatted chat data string.
+    *n = atoi(row2[0]); // Convert the count value to an integer and store it in the variable pointed to by n.
+    char logmsg[100];
+    snprintf(logmsg, 100, "Chat string length: %s,%d; n: %s", row[0], strlen(row1[0]), row2[0]);
+    logger(LOGINFO, logmsg); // Print a message to the console indicating the length of the chat string.
+    return row1[0];          // Return the formatted chat data string.
 }
 
 /**
@@ -94,21 +106,23 @@ char * chat_to_string(MYSQL *conn, int *n) {
  * @param res The chat response string.
  * @param n The number of chat entries.
  */
-void push_chat(ConnectedList *list, char *res, int n) {
+void push_chat(ConnectedList *list, char *res, int n)
+{
     char *response = malloc(sizeof(char) * (strlen(res) +
-                                            13)); // Buffer to hold the formatted response string
-    logger(LOGINFO, "Pushing chat"); // Print a message to the console indicating that the chat is being pushed
-    logger(LOGINFO, res); // Print the chat response string to the console
+                                            13));                   // Buffer to hold the formatted response string
+    logger(LOGINFO, "Pushing chat");                                // Print a message to the console indicating that the chat is being pushed
+    logger(LOGINFO, res);                                           // Print the chat response string to the console
     snprintf(response, (strlen(res) + 13), "10/%d/%s\x04", n, res); // Format the response string
 
     logger(LOGINFO, response); // Print the response string
 
-    for (int i = 0; i < MAXUSERS; i++) {
-        if (list->connections[i].using == 1 && list->connections[i].id != -1) {
-            list->connections[i].sending_connected = 1; // Set sending_connected flag to indicate a message is being sent
+    for (int i = 0; i < MAXUSERS; i++)
+    {
+        if (list->connections[i].using == 1 && list->connections[i].id != -1)
+        {
+            list->connections[i].sending_connected = 1;                     // Set sending_connected flag to indicate a message is being sent
             write(list->connections[i].sockfd, response, strlen(response)); // Write the response string to the socket
-            list->connections[i].sending_connected = 0; // Reset sending_connected flag after sending the message
+            list->connections[i].sending_connected = 0;                     // Reset sending_connected flag after sending the message
         }
-
     }
 }
