@@ -35,15 +35,25 @@ int write_message(MYSQL *conn, Nombre name, char *text)
  */
 char *chat_to_string(MYSQL *conn, int *n)
 {
-    char query0[] = "SELECT LENGTH(GROUP_CONCAT(CONCAT(usuarios.nombre, '*', chat.time, '*', chat.mensage) SEPARATOR ',')) AS len\n"
-                    "FROM usuarios, chat\n"
-                    "WHERE usuarios.id = chat.id_usuario;";
-    char query1[] = "SELECT GROUP_CONCAT(CONCAT(usuarios.nombre, '*', chat.time, '*', chat.mensage) SEPARATOR ',') AS str\n"
-                    "FROM usuarios, chat\n"
-                    "WHERE usuarios.id = chat.id_usuario;";
-    char query2[] = "SELECT COUNT(usuarios.nombre)\n"
-                    "FROM usuarios, chat\n"
-                    "WHERE usuarios.id = chat.id_usuario;";
+    char query0[] = "SELECT LENGTH(GROUP_CONCAT(str SEPARATOR ',')) AS len \
+                 FROM (SELECT CONCAT(usuarios.nombre, '*', chat.time, '*', chat.mensage) AS str \
+                       FROM usuarios, chat \
+                       WHERE usuarios.id = chat.id_usuario \
+                       ORDER BY chat.time DESC \
+                       LIMIT 30) as a;\n";
+
+    char query1[] = "SELECT GROUP_CONCAT(str SEPARATOR ',') AS res \
+                 FROM (SELECT CONCAT(usuarios.nombre, '*', chat.time, '*', chat.mensage) AS str \
+                       FROM usuarios, chat \
+                       WHERE usuarios.id = chat.id_usuario \
+                       ORDER BY chat.time DESC \
+                       LIMIT 30) as a;";
+
+    char query2[] = "SELECT COUNT(chat.mensage) \
+                 FROM usuarios, chat \
+                 WHERE usuarios.id = chat.id_usuario \
+                 ORDER BY chat.time DESC \
+                 LIMIT 30";
     if (mysql_query(conn,
                     query0))
     { // Execute the query using the mysql_query function and check if it returns an error.
