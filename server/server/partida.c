@@ -286,7 +286,7 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
     char logmsg[2000];
     snprintf(logmsg, 2000, "Atendiendo cliente %s en partida %d", nombre, partida->idx);
     logger(LOGINFO, logmsg);
-    while (1==1)
+    while (1 == 1)
     { // Continue processing while there are still lives left in the game.
         ret = read(sock_conn, request, sizeof(request));
         if (ret <= 0)
@@ -296,17 +296,17 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
         }
         request[ret] = '\0';
         // Extract codes from the request.
-        printf("a1\n");
+        logger(LOGINFO, "a1");
         char *p = strtok(request, "/");
-        printf("a2\n");
+        logger(LOGINFO, "a2");
         code = atoi(p);
         if (code != 8)
             continue;
         p = strtok(NULL, "/");
-        printf("a3\n");
+        logger(LOGINFO, "a3");
         scode = atoi(p);
         p = strtok(NULL, "/");
-        printf("a4\n");
+        logger(LOGINFO, "a4");
         sscode = atoi(p);
         snprintf(logmsg, 2000, "Codigo: %d, Subcodigo: %d, Subsubcodigo: %d", code, scode, sscode);
         switch (scode)
