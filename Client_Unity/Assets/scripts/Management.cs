@@ -76,7 +76,7 @@ public class Management : MonoBehaviour
 
         nombres();
 
-    
+
     }
 
     // Update is called once per frame
@@ -86,46 +86,44 @@ public class Management : MonoBehaviour
         //SlimeMovement slimemov = slime.GetComponent<SlimeMovement>();
         SlimeMovement[] slimemov = new SlimeMovement[numslimes];
         PlayerMovement[] playermov = new PlayerMovement[numplayers];
-        
+
         calculateDistances();
         calculateNearest();
-        
+
         slimesRojos();
         muerteSlime();
         muertePlayer();
-        
+
 
         paredes(0.12f);
         aporelplayer();
 
 
-        if(tiempoPartida < tiempoFinal)
+        if (tiempoPartida < tiempoFinal)
         {
             tiempoPartida += Time.deltaTime;
-            if(tiempoPartida > tiempoFinal){
+            if (tiempoPartida > tiempoFinal)
+            {
                 Debug.Log("Se ha acabado el tiempo");
             }
         }
-        
+
     }
 
 
 
-    void nombres(){
-        name1 = GameObject.Find("Name1").GetComponent<TextMeshProUGUI>();
-        name2 = GameObject.Find("Name2").GetComponent<TextMeshProUGUI>();
-        name3 = GameObject.Find("Name3").GetComponent<TextMeshProUGUI>();
-        name4 = GameObject.Find("Name4").GetComponent<TextMeshProUGUI>();
+    void nombres()
+    {
 
-        
+
 
         name1.text = mainGameManager.names[0];
         name2.text = mainGameManager.names[1];
         name3.text = mainGameManager.names[2];
         name4.text = mainGameManager.names[3];
-        
 
-  
+
+
         //name1.text = "Jaume";
         //name2.text = "Teo";
         //name3.text = "Sergio";
@@ -134,11 +132,20 @@ public class Management : MonoBehaviour
     }
 
 
-
+    public void QuitGame()
+    {
+        string message = "0/";
+        byte[] msg = System.Text.Encoding.ASCII.GetBytes(message);
+        cliente.server.Send(msg);
+        cliente.atender.Abort();
+        Debug.Log("QUIT!");
+        Application.Quit();
+    }
 
 
     //Esta función hace que si hay algún jugador cerca de cualquiera de los slimes, éste último se pondrá rojo
-    void slimesRojos(){
+    void slimesRojos()
+    {
         SlimeMovement[] slimemov = new SlimeMovement[numslimes];
         PlayerMovement[] playermov = new PlayerMovement[numplayers];
 
@@ -153,19 +160,19 @@ public class Management : MonoBehaviour
             slimemov[s] = slime[s].GetComponent<SlimeMovement>();
         }
 
-        for(int i = 0; i < distanceMatrix.GetLength(0); i++) //recorre las filas (slimes)
+        for (int i = 0; i < distanceMatrix.GetLength(0); i++) //recorre las filas (slimes)
         {
             bool algunoCerca = false; //variable que me dirá si cada uno de los slimes tiene algun jugador cerca
-            
-            for(int k = 0; k < distanceMatrix.GetLength(0); k++)
+
+            for (int k = 0; k < distanceMatrix.GetLength(0); k++)
             {
-                if(distanceMatrix[i, k] <= radiodeDeteccion) //el slime son las filas
+                if (distanceMatrix[i, k] <= radiodeDeteccion) //el slime son las filas
                 {
                     algunoCerca = true;
                     break;
                 }
             }
-            if(algunoCerca)
+            if (algunoCerca)
             {
                 slimemov[i].colorRojo();
             }
@@ -197,15 +204,15 @@ public class Management : MonoBehaviour
         //si cliente.numplayergame me da 1, en realidad llevo al player2, que está ubicado en la columna 1 de la distanceMatrix
         int idplayer = cliente.numplayergame;
 
-        for(int i = 0; i < distanceMatrix.GetLength(0); i++) //recorre las filas (slimes)
-        {               
-            if(Input.GetKeyDown(KeyCode.Space) && distanceMatrix[i, idplayer] < radiodeDeteccion)         
+        for (int i = 0; i < distanceMatrix.GetLength(0); i++) //recorre las filas (slimes)
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && distanceMatrix[i, idplayer] < radiodeDeteccion)
             {
                 slimemov[i].tiempoRespawn(tiemporespawnslime);
                 playermov[idplayer].puntuation += 1;
                 //Debug.Log("Bajas del Player " + (idplayer+1).ToString() + ": " + playermov[idplayer].puntuation);
                 //Debug.Log("El player " + (idplayer+1).ToString() + " mata al slime " + (i+1).ToString());      
-            }            
+            }
         }
     }
 
@@ -230,9 +237,9 @@ public class Management : MonoBehaviour
             slimemov[s] = slime[s].GetComponent<SlimeMovement>();
         }
 
-        for(int i = 0; i < distanceMatrix.GetLength(0); i++) //recorrerá las filas (slimes)
+        for (int i = 0; i < distanceMatrix.GetLength(0); i++) //recorrerá las filas (slimes)
         {
-            for(int k = 0; k < distanceMatrix.GetLength(1); k++)
+            for (int k = 0; k < distanceMatrix.GetLength(1); k++)
             {
                 if (playermov[k].muerto < 3) // Solo se tienen en cuenta los jugadores que no han perdido
                 {
@@ -389,27 +396,28 @@ public class Management : MonoBehaviour
 
         float velocidad = 10f;
 
-        for(int i = 0; i < slimemov.GetLength(0); i++)
+        for (int i = 0; i < slimemov.GetLength(0); i++)
         {
             int playercerca = nearestMatrix[i, 1]; //me dice el numero del player más cercano al slime i+1
-            Vector2 direction = player[playercerca-1].transform.position - slime[i].transform.position;
+            Vector2 direction = player[playercerca - 1].transform.position - slime[i].transform.position;
             direction.Normalize();
             //Debug.Log("El slime " + (i+1).ToString() + " direccion " + direction + " por el player " + playercerca.ToString() + ".");
-            
+
             rb2d = slimemov[i].GetComponent<Rigidbody2D>();
 
-            
+
 
             rb2d.MovePosition((Vector2)slime[i].transform.position + (direction * velocidad * Time.deltaTime));
-            
+
 
         }
 
 
     }
 
-    void paredes(float distance){ //La distancia es para el radio de deteccion de pared, consideramos 0.12
-        
+    void paredes(float distance)
+    { //La distancia es para el radio de deteccion de pared, consideramos 0.12
+
         SlimeMovement[] slimemov = new SlimeMovement[numslimes];
         PlayerMovement[] playermov = new PlayerMovement[numplayers];
 
@@ -424,7 +432,7 @@ public class Management : MonoBehaviour
             slimemov[s] = slime[s].GetComponent<SlimeMovement>();
         }
 
-        
+
         //Es una matriz de numslimes*4, donde cada fila es un slime y cada columna es una pared
         //Columna 0 es pared arriba, columna 1 es pared de abajo, columna 2 es pared a la izq y columna 3 es pared a la derecha
         //En la posicion [i,j] hay la distancia del Slime i+1 a la pared en j
@@ -438,16 +446,16 @@ public class Management : MonoBehaviour
             if (hit_up.collider != null && hit_up.collider.CompareTag(tagPared))
             {
                 distanceparedMatrix[j, 0] = hit_up.distance; // Guardar en la matriz la distancia a la pared
-            }  
-            
-            
+            }
+
+
             // Lanzar un raycast hacia abajo desde la posición del jugador
             RaycastHit2D hit_down = Physics2D.Raycast(slimemov[j].transform.position, Vector2.down, raycastDistance);
             if (hit_down.collider != null && hit_down.collider.CompareTag(tagPared))
             {
                 distanceparedMatrix[j, 1] = hit_down.distance; // Guardar en la matriz la distancia a la pared
             }
-            
+
             // Lanzar un raycast hacia la izquierda desde la posición del jugador
             RaycastHit2D hit_left = Physics2D.Raycast(slimemov[j].transform.position, Vector2.left, raycastDistance);
             if (hit_left.collider != null && hit_left.collider.CompareTag(tagPared))
@@ -466,12 +474,16 @@ public class Management : MonoBehaviour
         //1 si tiene una pared cerca, 0 si no; Posicion 0 es pared arriba, posicion 1 es pared de abajo, posicion 2 es pared a la izq y posicion 3 es pared a la derecha
         paredMatrix = new int[numslimes, 4];
 
-        for(int i = 0; i < distanceMatrix.GetLength(0); i++){
-            for(int k = 0; k < distanceMatrix.GetLength(1); k++){
-                if(distanceparedMatrix[i, k] < distance){
+        for (int i = 0; i < distanceMatrix.GetLength(0); i++)
+        {
+            for (int k = 0; k < distanceMatrix.GetLength(1); k++)
+            {
+                if (distanceparedMatrix[i, k] < distance)
+                {
                     paredMatrix[i, k] = 1;
                 }
-                else{
+                else
+                {
                     paredMatrix[i, k] = 0;
                 }
             }
@@ -481,7 +493,7 @@ public class Management : MonoBehaviour
 
     }
 
-        //Metodo para imprimir la matrix de distancias
+    //Metodo para imprimir la matrix de distancias
     void printMatrix3()
     {
         string matrixString = "";
@@ -501,5 +513,5 @@ public class Management : MonoBehaviour
 
 
 
-    
+
 }
