@@ -286,7 +286,7 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
     char logmsg[2000];
     snprintf(logmsg, 2000, "Atendiendo cliente %s en partida %d", nombre, partida->idx);
     logger(LOGINFO, logmsg);
-    while (sum(partida->vidas, NJUGADORESPARTIDA) > 0)
+    while (1==1)
     { // Continue processing while there are still lives left in the game.
         ret = read(sock_conn, request, sizeof(request));
         if (ret <= 0)
