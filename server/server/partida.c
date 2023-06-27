@@ -296,16 +296,17 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
         }
         request[ret] = '\0';
         // Extract codes from the request.
+        printf("a1\n");
         char *p = strtok(request, "/");
-
+        printf("a2\n");
         code = atoi(p);
         if (code != 8)
             continue;
         p = strtok(NULL, "/");
-
+        printf("a3\n");
         scode = atoi(p);
         p = strtok(NULL, "/");
-
+        printf("a4\n");
         sscode = atoi(p);
         snprintf(logmsg, 2000, "Codigo: %d, Subcodigo: %d, Subsubcodigo: %d", code, scode, sscode);
         switch (scode)
