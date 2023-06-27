@@ -295,10 +295,6 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
             continue;
         }
         request[ret] = '\0';
-        snprintf(logmsg, 2000, "Conexion %s ha mandado: %s\n", nombre, request);
-        logger(LOGINFO, logmsg);
-        printf("Continuamos?\n");
-        scanf("");
         // Extract codes from the request.
         char *p = strtok(request, "/");
 
