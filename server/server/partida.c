@@ -181,7 +181,10 @@ void print_partidas_idx(ListaPartidas *list)
  */
 int i_player_partida(Partida *partida, Nombre nombre)
 {
-    for (int i = 0; i < NJUGADORESPARTIDA; i++)
+    char logmsg[100];
+    snprintf(logmsg, 100, "Buscando jugador %s en partida %d", nombre, partida->idx);
+    logger(LOGINFO, logmsg);
+    for (int i = 0; i < 4; i++)
     {
         if (strcmp(partida->nombres[i], nombre) == 0)
             return i;
