@@ -297,7 +297,9 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
             continue;
         }
         request[ret] = '\0';
-        printf("Recibido: %d,%s\n",strlen(request), request);
+        if (strlen(request) < 0)
+            continue;
+        printf("Recibido: %d,%s\n", strlen(request), request);
         // Extract codes from the request.
         logger(LOGINFO, "a1");
         char *p = strtok(request, "/");
