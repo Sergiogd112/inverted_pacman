@@ -1951,10 +1951,10 @@ MonoBehaviour:
   tiempoPartida: 0
   textoMeshPro: {fileID: 0}
   tiempoFinal: 10
-  name1: {fileID: 0}
-  name2: {fileID: 0}
-  name3: {fileID: 0}
-  name4: {fileID: 0}
+  name1: {fileID: 2054652999}
+  name2: {fileID: 1963379043}
+  name3: {fileID: 1100304036}
+  name4: {fileID: 371477139}
 --- !u!4 &1666662902
 Transform:
   m_ObjectHideFlags: 0
@@ -2416,6 +2416,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8818435170985240753, guid: 591904ea6526ac342a4e4ce494245ea3, type: 3}
   m_PrefabInstance: {fileID: 2054652997}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2054652999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7649096055269145601, guid: 591904ea6526ac342a4e4ce494245ea3, type: 3}
+  m_PrefabInstance: {fileID: 2054652997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2096704031
 GameObject:
   m_ObjectHideFlags: 0

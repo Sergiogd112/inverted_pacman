@@ -12,18 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc451daf0bd133640bb2783b05af2d6d, type: 3}
   m_Name: cliente
   m_EditorClassIdentifier: 
-  usuario: 
+  usuario: sergio
   num_conn: 0
-  Conectado: 0
-  Logeado: 0
-  Consultas: 0
+  Conectado: 1
+  Logeado: 1
+  Consultas: 1
   ip: 147.83.117.22
   puerto: 50053
   updated_conected_list: 0
-  connected: []
+  connected:
+  - fito
+  - carlos
+  - sergio
+  - pepa
   numplayergame: 0
-  amfitrion: 
-  invitados: []
+  amfitrion: sergio
+  invitados:
+  - fito
+  - carlos
+  - pepa
   idpartida: 0
   invitado: 0
   pscene: 
@@ -35,7 +42,7 @@ MonoBehaviour:
   partidas: []
   updated_partidas: 0
   comp:
-  - 
-  - 
-  - 
-  sel: 000000000000000000000000
+  - fito
+  - carlos
+  - pepa
+  sel: 010000000100000001000000
