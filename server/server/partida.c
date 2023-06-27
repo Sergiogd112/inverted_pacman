@@ -296,8 +296,6 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
         }
         request[ret] = '\0';
         // Extract codes from the request.
-        snprintf(logmsg, 2000, "Recibido:%d | %s", ret,request);
-        logger(LOGINFO, logmsg);
         char *p = strtok(request, "/");
 
         code = atoi(p);
