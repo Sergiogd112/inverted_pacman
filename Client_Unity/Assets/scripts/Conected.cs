@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 /// <summary>
 /// This script manages the invite menu.
 /// </summary>
-public class conected : MonoBehaviour
+public class Conected : MonoBehaviour
 {
     public Client client; // This is the client.
     public GameObject button; // This is the button prefab (where the invitee is shown).
