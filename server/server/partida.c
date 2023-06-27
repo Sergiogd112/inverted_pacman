@@ -301,17 +301,17 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
             continue;
         printf("Recibido: %d,%s\n", strlen(request), request);
         // Extract codes from the request.
-        logger(LOGINFO, "a1");
+        // logger(LOGINFO, "a1");
         char *p = strtok(request, "/");
-        logger(LOGINFO, "a2");
+        // logger(LOGINFO, "a2");
         code = atoi(p);
         if (code != 8)
             continue;
         p = strtok(NULL, "/");
-        logger(LOGINFO, "a3");
+        // logger(LOGINFO, "a3");
         scode = atoi(p);
         p = strtok(NULL, "/");
-        logger(LOGINFO, "a4");
+        // logger(LOGINFO, "a4");
         sscode = atoi(p);
         snprintf(logmsg, 2000, "Codigo: %d, Subcodigo: %d, Subsubcodigo: %d", code, scode, sscode);
         switch (scode)
