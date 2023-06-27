@@ -430,6 +430,8 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
             break;
         }
     }
+    snprintf(logmsg, 300, "El jugador %s ha abandonado la partida", nombre);
+    logger(LOGINFO, logmsg);
 }
 
 /**
