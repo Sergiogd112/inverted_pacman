@@ -343,6 +343,7 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
                     partida->player_pos[ij].x = atof(p);
                     p = strtok(p, "*"); // extract y
                     partida->player_pos[ij].y = atof(p);
+                    send_1(partida);
                 }
                 pthread_mutex_unlock(&partida->mutex);
                 break;
