@@ -26,6 +26,11 @@ public class loading : MonoBehaviour
         {
             client.atender.Abort();
             client.invitationres = 0;
+            manager.names[0] = client.amfitrion;
+            manager.names[1] = client.invitados[0];
+            manager.names[2] = client.invitados[1];
+            manager.names[3] = client.invitados[2];
+            
             ThreadStart ts = delegate { manager.AtenderPartida(); };
             manager.atender = new Thread(ts);
             manager.atender.Start();

@@ -163,6 +163,7 @@ public class Client : ScriptableObject
                     case 6: //notificacion con la lista de conectados actualizada
                         string[] jugadores = elements[2].Split(',');
                         amfitrion = jugadores[0];
+                        UnityEngine.Debug.Log("Invitados a la consulta 6: " + jugadores[1]);
                         invitados = jugadores[1].Split('*');
                         idpartida = Convert.ToInt32(elements[1]);
                         invitado = true;
