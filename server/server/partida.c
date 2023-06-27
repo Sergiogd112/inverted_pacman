@@ -401,6 +401,7 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
                     p = strtok(NULL, "/");
                     message_to_enemies(partida, p);
                     pthread_mutex_unlock(&partida->mutex);
+
                 }
                 else
                 {
@@ -420,6 +421,7 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
                         if (i != ij)
                             write(sock_conn, request, strlen(request));
                 }
+                send_2(partida);
             }
             break;
         case 3:
