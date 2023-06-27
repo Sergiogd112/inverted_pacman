@@ -53,7 +53,7 @@ public class MainGameManager : ScriptableObject
                 break;
             }
             string[] elements = error_servidor[0].Split('/');
-            if (elements.Length < 3)
+            if (error_servidor.Length < 1)
             {
                 continue;
             }
