@@ -119,6 +119,7 @@ public class PlayerMovement : MonoBehaviour
             // Mover el jugador utilizando el componente rigidbody
             rb2d.MovePosition(rb2d.position + movement * speed * Time.fixedDeltaTime);
             string message="8/1/0/"+cliente.usuario+"*"+transform.position.x.ToString()+"*"+transform.position.y.ToString();
+            UnityEngine.Debug.Log(message);
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(message);
             cliente.server.Send(msg);
 
