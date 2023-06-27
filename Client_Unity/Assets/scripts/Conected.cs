@@ -69,6 +69,8 @@ public class conected : MonoBehaviour
     /// </summary>
     public void invitar()
     {
+        client.invitados=client.comp;
+        client.amfitrion = client.usuario;
         string mensage = "5/"+String.Join("*",client.comp);
 
         UnityEngine.Debug.Log(mensage);
