@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float startx = -1.051f;
     public float starty = 0.575f;
-
+    int frame = 0;
     void Start()
     {
         radio = GameObject.FindObjectOfType<Management>();
@@ -65,16 +65,16 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (transform.position.x < screenLeft) //si se sale por la izquierda
         {
-            transform.position = new Vector2(screenRight-0.15f, transform.position.y);
+            transform.position = new Vector2(screenRight - 0.15f, transform.position.y);
         }
 
         if (transform.position.y > screenTop)
         {
-            transform.position = new Vector2(transform.position.x, screenBottom+0.1f);
+            transform.position = new Vector2(transform.position.x, screenBottom + 0.1f);
         }
         else if (transform.position.y < screenBottom)
         {
-            transform.position = new Vector2(transform.position.x, screenTop-0.1f);
+            transform.position = new Vector2(transform.position.x, screenTop - 0.1f);
         }
     }
 
@@ -111,17 +111,22 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    
+
     void FixedUpdate()
     {
         if (cliente.numplayergame == idjugador)
         {
             // Mover el jugador utilizando el componente rigidbody
             rb2d.MovePosition(rb2d.position + movement * speed * Time.fixedDeltaTime);
-            string message="8/1/0/"+cliente.usuario+"*"+transform.position.x.ToString()+"*"+transform.position.y.ToString();
-            UnityEngine.Debug.Log(message);
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(message);
-            cliente.server.Send(msg);
+            if (frame % 10 == 0)
+            {
+                string message = "8/1/0/" + cliente.usuario + "*" + transform.position.x.ToString() + "*" + transform.position.y.ToString();
+                UnityEngine.Debug.Log(message);
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(message);
+                cliente.server.Send(msg);
+
+            }
+            frame++;
 
         }
         else
@@ -133,8 +138,10 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    internal bool spacebarPressed(){
-        if(Input.GetKeyDown(KeyCode.Space)){
+    internal bool spacebarPressed()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             return true;
         }
         return false;
@@ -162,9 +169,10 @@ public class PlayerMovement : MonoBehaviour
         gameObject.SetActive(true); // activa el objeto después de 3 segundos
     }
 
-    
+
     //Para cuando haya muerto 3 veces
-    internal void finPartida(){
+    internal void finPartida()
+    {
         transform.position = new Vector2(100, 100); //lo llevamos lejos para que no siga contando como muerte
         gameObject.SetActive(false); // desactiva el objeto
     }
