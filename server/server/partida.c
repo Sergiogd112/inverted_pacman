@@ -275,6 +275,7 @@ int get_enemy_with_id(Partida *partida, int id)
  */
 void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
 {
+    printf("Atendiendo cliente %s en partida %d\n", nombre, partida->idx); // Print the name of the client and the game session.
     int ret;
     int ij = i_player_partida(partida, nombre); // Get the index of the player in the game session.
     int sock_conn = partida->sockets[ij];       // Get the socket connection for the player.
@@ -289,6 +290,7 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn)
     while (1 == 1)
     { // Continue processing while there are still lives left in the game.
         ret = read(sock_conn, request, sizeof(request));
+        printf("%d\n", ret);
         if (ret <= 0)
         {
             vacios++;
