@@ -71,6 +71,7 @@ public class conected : MonoBehaviour
     {
         client.invitados=client.comp;
         client.amfitrion = client.usuario;
+        client.numplayergame = 0;
         string mensage = "5/"+String.Join("*",client.comp);
 
         UnityEngine.Debug.Log(mensage);
