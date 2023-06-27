@@ -598,7 +598,7 @@ int add_game_to_db(MYSQL *conn, Partida *partida)
     char query[2000];
     char logmsg[200];
     // Log the function call
-    snprintf(logmsg, 200, "add_game_to_db: %s", partida->idx);
+    snprintf(logmsg, 200, "add_game_to_db: %d", partida->idx);
     logger(LOGINFO, logmsg);
     // Construct the MySQL query to insert the game session into the partidas table
     snprintf(query, 2000, "INSERT INTO partidas (, puntuacion_global) VALUES ( %d);", sum(partida->puntos, 4));
