@@ -23,8 +23,8 @@ public class Client : ScriptableObject
     public bool Conectado = false; // This is used to check if the client is connected.
     public bool Logeado = false; // This is used to check if the client is logged in.
     public bool Consultas = false; // This is used to check if the client is making a query.
-    public string ip = "147.83.117.22"; // This is the ip.
-    // public string ip = "192.168.56.102"; // This is the ip.
+    // public string ip = "147.83.117.22"; // This is the ip.
+    public string ip = "192.168.56.102"; // This is the ip.
     public int puerto = 50053; // This is the port. 
     public bool updated_conected_list = false; // This is used to check if the connected list has been updated.
     public string[] connected; // This is the list of connected users.

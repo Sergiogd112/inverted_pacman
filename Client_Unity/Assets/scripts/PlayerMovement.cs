@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
             rb2d.MovePosition(rb2d.position + movement * speed * Time.fixedDeltaTime);
             if (frame % 10 == 0)
             {
-                string message = "8/1/0/" + cliente.usuario + "*" + transform.position.x.ToString() + "*" + transform.position.y.ToString();
+                string message = "8/1/0/" + cliente.usuario + "*" + transform.position.x.ToString() + "*" + transform.position.y.ToString()+"\0";
                 UnityEngine.Debug.Log(message);
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(message);
                 cliente.server.Send(msg);

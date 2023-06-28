@@ -53,10 +53,10 @@ public class MainGameManager : ScriptableObject
                 break;
             }
             string[] elements = error_servidor[0].Split('/');
-            if (error_servidor.Length < 1)
-            {
-                continue;
-            }
+            // if (error_servidor.Length < 1)
+            // {
+            //     continue;
+            // }
             UnityEngine.Debug.Log(error_servidor[0]);
             int codigo = Convert.ToInt32(elements[0]);
             if (codigo != 8)
