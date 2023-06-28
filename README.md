@@ -80,3 +80,10 @@ A causa de que hemos hechos varios cambios grandes en el proyecto hemos decidido
 - Programador: Joel
 - Verificador: Sergio
 - Comunicador: Jaume
+
+## Version Final
+
+- Video [https://youtu.be/S0dQcVi43Qc]
+- Programador: Sergio
+- Verificador: Jaume
+- Comunicador: Joel
