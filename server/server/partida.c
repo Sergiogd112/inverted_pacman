@@ -265,9 +265,11 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn) {
     char logmsg[2000];
     snprintf(logmsg, 2000, "Atendiendo cliente %s en partida %d", nombre, partida->idx);
     logger(LOGINFO, logmsg);
-    while (vacios < 10) { // Continue processing while there are still lives left in the game.
-        ret = read(sock_conn, request, sizeof(request));
-        printf("%d\n", ret);
+    snprintf(partida->player_pos[ij].x, 20,"0.0");
+    snprintf(partida->player_pos[ij].y,20, "0.0");
+    while (vacios < 10) { // Continue processing while there are still lives left in the game.t
+        size_t len_request = sizeof(request);
+        ret = read(sock_conn, request, len_request);
         if (ret <= 0) {
             vacios++;
             continue;
@@ -304,27 +306,31 @@ void Atender_Cliente_Partida(Partida *partida, Nombre nombre, MYSQL *conn) {
             case 1:
                 switch (sscode) {
                     case 0:
-                        pthread_mutex_lock(&partida->mutex);
                         p = strtok(NULL, "*");
                         if (strcmp(nombre, p) == 0) {
+                            pthread_mutex_lock(&partida->mutex);
+
                             p = strtok(NULL, "*"); // extract x
                             snprintf(partida->player_pos[ij].x, 20, "%s", p);
                             p = strtok(NULL, "*"); // extract y
                             snprintf(partida->player_pos[ij].y, 20, "%s", p);
+                            pthread_mutex_unlock(&partida->mutex);
+
                             send_1(partida);
                         }
-                        pthread_mutex_unlock(&partida->mutex);
                         break;
                     case 1:
-                        pthread_mutex_lock(&partida->mutex);
                         p = strtok(NULL, "*");
                         if (strcmp(nombre, p) == 0) {
+                            pthread_mutex_lock(&partida->mutex);
+
                             p = strtok(p, "*"); // extract id
                             partida->enemys[get_enemy_with_id(partida, atoi(p))].id = -1;
                             p = strtok(p, "*"); // extract p
                             partida->puntos[ij] = atof(p);
+                            pthread_mutex_unlock(&partida->mutex);
+
                         }
-                        pthread_mutex_unlock(&partida->mutex);
                         for (int i = 0; i < NJUGADORESPARTIDA; i++)
                             if (i != ij)
                                 write(sock_conn, request, strlen(request));
@@ -412,7 +418,7 @@ int server_msg_1(Partida *partida, char res[300]) {
     pthread_mutex_lock(&partida->mutex);
     // Iterate over each player in the partida and generate a formatted string.
     for (int i = 0; i < NJUGADORESPARTIDA; i++) {
-        snprintf(res, 300, "%s*%s*%s*%d*%d,", partida->nombres[i], partida->player_pos[i].x, partida->player_pos[i].y,
+        snprintf(res, 300, "%s%s*%s*%s*%d*%d,", res,partida->nombres[i], partida->player_pos[i].x, partida->player_pos[i].y,
                  partida->puntos[i], partida->vidas[i]);
     }
     pthread_mutex_unlock(&partida->mutex);
