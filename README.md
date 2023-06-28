@@ -8,34 +8,33 @@ This is a project for SO. A pacman where the ghosts are the players will be comp
   - [x] Inicio
     - [x] Registro
     - [x] Login
-  - [ ] Lobby
+  - [X] Lobby
     - [x] Lista de usuarios conectados
     - [x] Pedir Partida
-    - [ ] Aceptar Partidas
-    - [ ] Borrar cuenta
+    - [X] Aceptar Partidas
+    - [X] Borrar cuenta
   - [ ] Partidas
     - [x] Mapa
     - [x] Control
-    - [ ] Colisiones
-    - [ ] Puntos
+    - [X] Colisiones
+    - [X] Puntos
     - [ ] Fin de Partida
-  - [ ] Resultados
+  - [X] Resultados
   - [x] Ranking
 - [ ] Servidor
   - [x] Inicio
     - [x] Registro
     - [x] Login
-  - [ ] Lobby
+  - [X] Lobby
     - [x] Lista de usuarios conectados
     - [x] Pedir Partida
-    - [ ] Aceptar Partidas
-    - [ ] Borrar Cuenta
+    - [X] Aceptar Partidas
+    - [X] Borrar Cuenta
   - [ ] Partidas
-    - [ ] Mapa
+    - [X] Mapa
     - [ ] Control
-    - [ ] Colisiones
     - [ ] Puntos
-    - [ ] Fin de Partida
+    - [X] Fin de Partida
     - [x] Guardar partidas
   - [ ] Resultados
   - [x] Ranking
