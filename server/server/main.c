@@ -457,7 +457,11 @@ int main() {
     struct sockaddr_in server_addr;
     if ((sock_listen = socket(AF_INET, SOCK_STREAM, 0)) < 0)
         logger(LOGERROR, "Error en el socket\n"); // Log an error message if there is an issue creating the socket
+    int timeout = 2;
+//    struct timeval tv;
 
+//    tv.tv_sec = timeout;
+//    tv.tv_usec = 0;
     memset(&server_addr, 0, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
 
