@@ -86,3 +86,4 @@ A causa de que hemos hechos varios cambios grandes en el proyecto hemos decidido
 - Programador: Sergio
 - Verificador: Jaume
 - Comunicador: Joel
+
